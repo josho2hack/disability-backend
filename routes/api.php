@@ -2,6 +2,8 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Resources\User as UserResource;
+use App\User;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,6 +21,9 @@ Route::post('register', 'API\UserController@register');
 
 Route::group(['middleware' => 'auth:api'], function(){
 Route::post('details', 'API\UserController@details');
+Route::get('users', function () {
+    return UserResource::collection(User::all());
+});
 });
 
 Route::middleware('auth:api')->get('user', function (Request $request) {

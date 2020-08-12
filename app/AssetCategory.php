@@ -13,10 +13,6 @@ class AssetCategory extends Model
         return $this->hasMany(Asset::class);
     }
 
-    public function assetCategoryDisabilities() {
-        return $this->hasMany(AssetCategoryDisability::class);
-    }
-
     public function disablilityTypes()
     {
         return $this->belongsToMany('App\DisabiltyType');

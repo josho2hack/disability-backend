@@ -29,10 +29,14 @@ class CreateAssetsTable extends Migration
             $table->string("out_stock_evidance")->comment('หลักฐานการจ่าย');
             $table->dateTime("waranty_start")->comment('เริ่มรับประกัน');
             $table->dateTime("waranty_end")->comment('สิ้นสุดรับประกัน');
+
             $table->unsignedBigInteger('categories_id')->comment('ประเภท')->nullable();
             $table->foreign('categories_id')->references('id')->on('asset_categories');
+
             $table->unsignedBigInteger('statuses_id')->comment('สถานะ')->nullable();
-            $table->foreign('statuses_id')->references('id')->on('asset_statuses');
+            $table->foreign('statuses_id')->references('id')->on('asset_statuses')
+                ->constrained()->onDelete('set null');
+
             $table->timestamps();
         });
     }

@@ -17,7 +17,7 @@ class User extends Authenticatable implements MustVerifyEmail
      * @var array
      */
     protected $fillable = [
-        'username', 'name', 'email', 'password', 'email_verified_at',
+        'username', 'name', 'email', 'password', 'email_verified_at'
     ];
 
     /**
@@ -37,6 +37,11 @@ class User extends Authenticatable implements MustVerifyEmail
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function roles()
+    {
+        return $this->belongsToMany('App\Role', 'role_users', 'users_id', 'roles_id');
+    }
 
     //public function sendEmailVerificationNotification()
     //{

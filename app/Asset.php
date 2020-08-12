@@ -6,21 +6,17 @@ use Illuminate\Database\Eloquent\Model;
 
 class Asset extends Model
 {
-    public function assetMedias() {
-        return $this->hasMany(AssetMedia::class);
-    }
-
-    public function assetCategories()
+    public function assetCategory()
     {
         return $this->belongsTo('App\AssetCategory');
     }
 
-    public function assetStatuses()
+    public function assetStatus()
     {
         return $this->belongsTo('App\AssetStatus');
     }
 
-    public function assets()
+    public function medias()
     {
         return $this->belongsToMany('App\Media');
     }
