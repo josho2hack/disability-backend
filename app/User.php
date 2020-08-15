@@ -7,7 +7,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
-class User extends Authenticatable implements MustVerifyEmail
+class User extends Authenticatable //implements MustVerifyEmail
 {
     use HasApiTokens, Notifiable;
 
@@ -17,7 +17,10 @@ class User extends Authenticatable implements MustVerifyEmail
      * @var array
      */
     protected $fillable = [
-        'username', 'name', 'email', 'password', 'email_verified_at'
+        'username', 'name', 'email', 'email_verified_at', 'password', 'email_verified_at',
+        'first_name', 'last_name', 'gender', 'avatar_name', 'avatar_path', 'citizen_id',
+        'timezone', 'active', 'last_login_at', 'last_login_ip', 'to_be_logged_out', 'created_at',
+        'updated_at', 'confirmed_at', 'confirmation_code'
     ];
 
     /**
@@ -42,6 +45,28 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->belongsToMany('App\Role', 'role_users', 'users_id', 'roles_id');
     }
+
+    public function role()
+    {
+        return $this->roles()->first();
+    }
+
+    public function isAdmin()
+    {
+        return $this->roles()->where('name', 'Admin')->exists();
+    }
+
+    public function isAudit()
+    {
+        return $this->roles()->where('name', 'Audit')->exists();
+    }
+
+    public function isApprove()
+    {
+        return $this->roles()->where('name', 'Approve')->exists();
+    }
+
+
 
     //public function sendEmailVerificationNotification()
     //{

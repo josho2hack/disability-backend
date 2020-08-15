@@ -20,8 +20,9 @@ class UserController extends Controller
     {
         if (Auth::attempt(['email' => request('email'), 'password' => request('password')])) {
             $user = Auth::user();
-            $success['token'] = $user->createToken('MyApp')->accessToken;
-            return response()->json(['success' => $success], $this->successStatus);
+            $user['token'] = $user->createToken('MyApp')->accessToken;
+            $user['roles'] = $user->roles;
+            return response()->json([$user], $this->successStatus);
         } else {
             return response()->json(['error' => 'Unauthorised'], 401);
         }
@@ -44,12 +45,18 @@ class UserController extends Controller
         }
         $input = $request->all();
         $input['password'] = bcrypt($input['password']);
-        $input['email_verified_at'] = now();
+        $input['confirmed_at'] = now();
+        //$input['confirmation_code'] = null;
 
         $user = User::create($input);
-        $success['token'] = $user->createToken('MyApp')->accessToken;
-        $success['name'] = $user->name;
-        return response()->json(['success' => $success], $this->successStatus);
+        if (Auth::attempt(['email' => request('email'), 'password' => request('password')])) {
+            $user = Auth::user();
+            $user['token'] = $user->createToken('MyApp')->accessToken;
+            $user['roles'] = $user->roles;
+            return response()->json($user, $this->successStatus);
+        } else {
+            return response()->json(['error' => 'Unauthorised'], 401);
+        }
     }
     /**
      * details api

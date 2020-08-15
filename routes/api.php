@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Resources\User as UserResource;
+use App\Http\Resources\UserCollection;
 use App\User;
 
 /*
@@ -16,25 +17,35 @@ use App\User;
 |
 */
 
+Route::get('rss', 'API\RssController@getNews');
+
 Route::post('login', 'API\UserController@login');
 Route::post('register', 'API\UserController@register');
+Route::get('user', function () {
+    return User::all();
+    //return new UserCollection(User::all());
+});
 
 Route::group(['middleware' => 'auth:api'], function(){
-Route::post('details', 'API\UserController@details');
-Route::get('users', function () {
-    return UserResource::collection(User::all());
-});
-});
-
-Route::middleware('auth:api')->get('user', function (Request $request) {
-    return $request->user();
-});
-
-Route::get('test',  function (Request $request) {
-    return response()->json(['Hello Laravel']);
+    Route::post('details', 'API\UserController@details');
+    Route::get('users', function () {
+        return UserResource::collection(User::all());
+        //return new UserCollection(User::all());
+    })->middleware('admin');
+    Route::get('user/{id}', function ($id) {
+        return new UserResource(User::find($id));
+    });
 });
 
-Route::get('/rss', 'API\RssController@getNews');
+// Route::middleware('auth:api')->get('user', function (Request $request) {
+//     return $request->user();
+// });
+
+// route::get('test',  function (request $request) {
+//     return response()->json(['hello laravel']);
+// });
+
+
 /*
 Route::middleware(['cors','api'])->group(function () {
     Route::post('post', 'PostController@create');
