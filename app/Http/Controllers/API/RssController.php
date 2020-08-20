@@ -32,6 +32,6 @@ class RssController extends Controller
             //echo "<br/>";
         }
 
-        return response()->json([$data]);
+        return response()->json($data);
     }
 }

@@ -21,20 +21,18 @@ Route::get('rss', 'API\RssController@getNews');
 
 Route::post('login', 'API\UserController@login');
 Route::post('register', 'API\UserController@register');
-Route::get('user', function () {
-    return User::all();
-    //return new UserCollection(User::all());
-});
+
+// Route::get('user', function () {
+//     return User::with('roles')->get();
+// });
 
 Route::group(['middleware' => 'auth:api'], function(){
     Route::post('details', 'API\UserController@details');
-    Route::get('users', function () {
-        return UserResource::collection(User::all());
-        //return new UserCollection(User::all());
-    })->middleware('admin');
-    Route::get('user/{id}', function ($id) {
-        return new UserResource(User::find($id));
-    });
+    Route::post('users', 'API\UserController@store')->middleware('admin');
+    Route::get('users', 'API\UserController@getAll')->middleware('admin');
+    Route::get('users/{id}', 'API\UserController@getById')->middleware('admin');
+    Route::put('users/{id}', 'API\UserController@update')->middleware('admin');
+    Route::delete('users/{id}', 'API\UserController@delete')->middleware('admin');
 });
 
 // Route::middleware('auth:api')->get('user', function (Request $request) {

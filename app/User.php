@@ -7,7 +7,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
-class User extends Authenticatable //implements MustVerifyEmail
+class User extends Authenticatable implements MustVerifyEmail
 {
     use HasApiTokens, Notifiable;
 
@@ -17,10 +17,10 @@ class User extends Authenticatable //implements MustVerifyEmail
      * @var array
      */
     protected $fillable = [
-        'username', 'name', 'email', 'email_verified_at', 'password', 'email_verified_at',
-        'first_name', 'last_name', 'gender', 'avatar_name', 'avatar_path', 'citizen_id',
+        'username', 'name', 'email', 'email_verified_at', 'password',
+        'first_name', 'last_name', 'gender', 'avatar_name', 'avatar_path', 'citizen_id','pwd_id',
         'timezone', 'active', 'last_login_at', 'last_login_ip', 'to_be_logged_out', 'created_at',
-        'updated_at', 'confirmed_at', 'confirmation_code'
+        'updated_at'
     ];
 
     /**
@@ -40,6 +40,15 @@ class User extends Authenticatable //implements MustVerifyEmail
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function name(){
+        return $this->first_name ." " . $this->last_name;
+    }
+
+    public function disabilityType()
+    {
+        return $this->belongsTo('App\DisabilityType');
+    }
 
     public function roles()
     {
@@ -68,8 +77,13 @@ class User extends Authenticatable //implements MustVerifyEmail
 
 
 
-    //public function sendEmailVerificationNotification()
-    //{
-    //    $this->notify(new \App\Notifications\CustomVerifyEmail);
-    //}
+    // public function sendEmailVerificationNotification()
+    // {
+    //     $this->notify(new \App\Notifications\CustomVerifyEmail);
+    // }
+
+    public function sendApiEmailVerificationNotification()
+    {
+        $this->notify(new \App\Notifications\VerifyApiEmail); // my notification
+    }
 }

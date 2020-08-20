@@ -13,4 +13,9 @@ class DisabilityType extends Model
     {
         return $this->belongsToMany('App\AssetCategory');
     }
+
+    public function users()
+    {
+        return $this->hasMany('App\User');
+    }
 }
