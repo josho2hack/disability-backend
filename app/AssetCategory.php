@@ -15,6 +15,6 @@ class AssetCategory extends Model
 
     public function disablilityTypes()
     {
-        return $this->belongsToMany('App\DisabiltyType');
+        return $this->belongsToMany('App\DisabilityType','asset_category_disabilities','asset_category_id','disability_type_id');
     }
 }

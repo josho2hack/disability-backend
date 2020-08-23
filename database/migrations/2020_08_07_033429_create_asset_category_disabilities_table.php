@@ -15,11 +15,19 @@ class CreateAssetCategoryDisabilitiesTable extends Migration
     {
         Schema::create('asset_category_disabilities', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('asset_categories_id')->comment('ประเภทอุปกรณ์และเครื่องมือ')
+            $table->unsignedBigInteger('asset_category_id')->comment('ประเภทอุปกรณ์และเครื่องมือ')->nullable();
+            $table->foreign('asset_category_id')->references('id')->on('asset_categories')
                 ->constrained()->onDelete('cascade');
-            $table->foreignId('disability_types_id')->comment('ประเภทผู้พิการ')
+
+            $table->unsignedBigInteger('disability_type_id')->comment('ประเภทผู้พิการ')->nullable();
+            $table->foreign('disability_type_id')->references('id')->on('disability_types')
                 ->constrained()->onDelete('cascade');
-            $table->timestamps();
+
+            // $table->foreignId('asset_categories_id')->comment('ประเภทอุปกรณ์และเครื่องมือ')
+            //     ->constrained()->onDelete('cascade');
+            // $table->foreignId('disability_types_id')->comment('ประเภทผู้พิการ')
+            //     ->constrained()->onDelete('cascade');
+            // $table->timestamps();
         });
     }
 

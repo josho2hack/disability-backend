@@ -15,26 +15,32 @@ class CreateAssetsTable extends Migration
     {
         Schema::create('assets', function (Blueprint $table) {
             $table->id();
-            $table->string("code")->comment('เลขที่ครุภัณฑ์');
-            $table->year("year")->comment('ปีครุภัณฑ์');
-            $table->string("version")->comment('รุ่น');
-            $table->string("serial_no")->comment('S/N');
-            $table->string("spec")->comment('คุณสมบัติ');
-            $table->string("usability")->comment('ประยุกต์ใช้งาน');
-            $table->string("attribute")->comment('คุณลักษณะ');
-            $table->string("description")->comment('รายละเอียด');
-            $table->string("url")->comment('URL');
-            $table->string("doc_no")->comment('เลขที่เอกสาร');
-            $table->string("budget")->comment('วิธีได้มา');
-            $table->string("out_stock_evidance")->comment('หลักฐานการจ่าย');
-            $table->dateTime("waranty_start")->comment('เริ่มรับประกัน');
-            $table->dateTime("waranty_end")->comment('สิ้นสุดรับประกัน');
+            $table->string("code")->nullable()->comment('เลขที่ครุภัณฑ์');
+            $table->dateTime("received_date")->nullable()->comment('วันที่รับ');
+            $table->string("serial_no")->nullable()->comment('S/N');
+            $table->string("description",500)->nullable()->comment('รายละเอียด');
+            $table->decimal("price")->nullable()->comment('ราคา');
+            $table->string("budget")->nullable()->comment('วิธีได้มา');
+            $table->string("doc_no")->nullable()->comment('เลขที่เอกสาร');
+            $table->string("location")->nullable()->default('ทส.')->comment('ใช้ประจำที่');
+            $table->string("out_stock_evidance")->nullable()->comment('หลักฐานการจ่าย');
+            $table->dateTime("waranty_start")->nullable()->comment('เริ่มรับประกัน');
+            $table->dateTime("waranty_end")->nullable()->comment('สิ้นสุดรับประกัน');
+            $table->string("remark")->nullable()->comment('หมายเหตุ');
+            $table->binary("image")->nullable()->comment('รูปภาพ');
+            $table->string("url")->nullable()->comment('URL');
 
-            $table->unsignedBigInteger('categories_id')->comment('ประเภท')->nullable();
-            $table->foreign('categories_id')->references('id')->on('asset_categories');
+            $table->string("spec")->nullable()->comment('คุณสมบัติ');
+            $table->string("usability")->nullable()->comment('ประยุกต์ใช้งาน');
+            $table->string("attribute")->nullable()->comment('คุณลักษณะ');
+            $table->string("version")->nullable()->comment('รุ่น');
 
-            $table->unsignedBigInteger('statuses_id')->comment('สถานะ')->nullable();
-            $table->foreign('statuses_id')->references('id')->on('asset_statuses')
+            $table->unsignedBigInteger('category_id')->comment('ประเภท')->nullable();
+            $table->foreign('category_id')->references('id')->on('asset_categories')
+                ->constrained()->onDelete('set null');
+
+            $table->unsignedBigInteger('status_id')->comment('สถานะ')->nullable();
+            $table->foreign('status_id')->references('id')->on('asset_statuses')
                 ->constrained()->onDelete('set null');
 
             $table->timestamps();

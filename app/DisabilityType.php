@@ -9,9 +9,13 @@ class DisabilityType extends Model
 {
     use SoftDeletes;
 
+    protected $fillable = [
+        'description'
+    ];
+
     public function assetCategories()
     {
-        return $this->belongsToMany('App\AssetCategory');
+        return $this->belongsToMany('App\AssetCategory','asset_category_disabilities','asset_category_id','disability_type_id');
     }
 
     public function users()

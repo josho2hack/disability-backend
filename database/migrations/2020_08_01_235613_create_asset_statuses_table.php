@@ -15,7 +15,8 @@ class CreateAssetStatusesTable extends Migration
     {
         Schema::create('asset_statuses', function (Blueprint $table) {
             $table->id();
-            $table->string("description")->comment('รายละเอียด');
+            $table->string("name")->comment('สถานะ');
+            $table->string("description")->nullable()->comment('รายละเอียด');
             $table->timestamps();
             $table->softDeletes()->comment('วันที่ลบข้อมูล');
         });

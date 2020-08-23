@@ -15,10 +15,11 @@ class CreateMediaTable extends Migration
     {
         Schema::create('media', function (Blueprint $table) {
             $table->id();
-            $table->string("description")->comment('รายละเอียด');
-            $table->string("file_path")->comment('ที่อยู่ไฟล์');
-            $table->string("file_name")->comment('ชื่อไฟล์');
-            $table->string("file_ext")->comment('นามสกุลไฟล์');
+            $table->string("name")->comment('ชื่อ');
+            $table->string("description")->nullable()->comment('รายละเอียด');
+            $table->string("file_path")->nullable()->comment('ที่อยู่ไฟล์');
+            $table->string("file_name")->nullable()->comment('ชื่อไฟล์');
+            $table->string("file_ext")->nullable()->comment('นามสกุลไฟล์');
             $table->timestamps();
             $table->softDeletes()->comment('วันที่ลบข้อมูล');
         });

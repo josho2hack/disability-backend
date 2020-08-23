@@ -32,7 +32,11 @@ class CreateUsersTable extends Migration
             $table->boolean('to_be_logged_out')->nullable()->comment('บังคับออกจากระบบหรือไม่');
             $table->rememberToken()->comment('จดจำค่าการล็อกอิน');
             $table->timestamps();
-            $table->foreignId('disability_types_id')->nullable()->comment("ประเภทผู้พิการ")
+            //$table->foreignId('disability_types_id')->nullable()->comment("ประเภทผู้พิการ")
+            //    ->constrained()->onDelete('set null');
+
+            $table->unsignedBigInteger('disability_type_id')->comment('ประเภทผู้พิการ')->nullable();
+            $table->foreign('disability_type_id')->references('id')->on('disability_types')
                 ->constrained()->onDelete('set null');
         });
     }

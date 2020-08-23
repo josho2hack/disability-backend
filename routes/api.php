@@ -27,12 +27,17 @@ Route::post('register', 'API\UserController@register');
 // });
 
 Route::group(['middleware' => 'auth:api'], function(){
-    Route::post('details', 'API\UserController@details');
     Route::post('users', 'API\UserController@store')->middleware('admin');
     Route::get('users', 'API\UserController@getAll')->middleware('admin');
     Route::get('users/{id}', 'API\UserController@getById')->middleware('admin');
     Route::put('users/{id}', 'API\UserController@update')->middleware('admin');
     Route::delete('users/{id}', 'API\UserController@delete')->middleware('admin');
+
+    Route::post('assets', 'API\AssetController@store')->middleware('admin');
+    Route::get('assets', 'API\AssetController@getAll')->middleware('admin');
+    Route::get('assets/{id}', 'API\AssetController@getById')->middleware('admin');
+    Route::put('assets/{id}', 'API\AssetController@update')->middleware('admin');
+    Route::delete('assets/{id}', 'API\AssetController@delete')->middleware('admin');
 });
 
 // Route::middleware('auth:api')->get('user', function (Request $request) {
