@@ -15,19 +15,19 @@ class CreateAssetMediaTable extends Migration
     {
         Schema::create('asset_media', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('asset_id')->comment('อุปกรณ์และเครื่องมือ')->nullable();
-            $table->foreign('asset_id')->references('id')->on('assets')
-                ->constrained()->onDelete('cascade');
-
-            $table->unsignedBigInteger('media_id')->comment('มัลติมีเดีย')->nullable();
-            $table->foreign('media_id')->references('id')->on('media')
-                ->constrained()->onDelete('cascade');
-
-            // $table->foreignId('assets_id')->comment('อุปกรณ์และเครื่องมือ')
+            // $table->unsignedBigInteger('asset_id')->comment('อุปกรณ์และเครื่องมือ')->nullable();
+            // $table->foreign('asset_id')->references('id')->on('assets')
             //     ->constrained()->onDelete('cascade');
-            // $table->foreignId('media_id')->comment('มัลติมีเดีย')
+
+            // $table->unsignedBigInteger('media_id')->comment('มัลติมีเดีย')->nullable();
+            // $table->foreign('media_id')->references('id')->on('media')
             //     ->constrained()->onDelete('cascade');
-            // $table->timestamps();
+
+            $table->foreignId('assets_id')->comment('อุปกรณ์และเครื่องมือ')
+                ->constrained()->onDelete('cascade');
+            $table->foreignId('media_id')->comment('มัลติมีเดีย')
+                ->constrained()->onDelete('cascade');
+            $table->timestamps();
         });
     }
 

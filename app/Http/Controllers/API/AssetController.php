@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 use App\Asset;
+use App\SubGroup;
+use App\AssetCategory;
 use Validator;
 
 class AssetController extends Controller
@@ -27,9 +29,9 @@ class AssetController extends Controller
 
     public function getById(Request $request)
     {
-        $asset = Asset::with('assetCategory','assetStatus','medias')->findOrFail($request->id);
-
-        //$user['roles'] = $user->roles;
+        $asset = Asset::with('assetCategory')->findOrFail($request->id);
+        $subwithmain = SubGroup::with('mainGroup')->find($asset->assetCategory->sub_groups_id);
+        $asset['subgroup'] = $subwithmain;
         return response()->json($asset, $this->successStatus);
     }
 

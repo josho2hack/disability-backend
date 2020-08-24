@@ -35,13 +35,17 @@ class CreateAssetsTable extends Migration
             $table->string("attribute")->nullable()->comment('คุณลักษณะ');
             $table->string("version")->nullable()->comment('รุ่น');
 
-            $table->unsignedBigInteger('category_id')->comment('ประเภท')->nullable();
-            $table->foreign('category_id')->references('id')->on('asset_categories')
-                ->constrained()->onDelete('set null');
+            // $table->unsignedBigInteger('category_id')->comment('ประเภท')->nullable();
+            // $table->foreign('category_id')->references('id')->on('asset_categories')
+            //     ->constrained()->onDelete('set null');
+            // $table->unsignedBigInteger('status_id')->comment('สถานะ')->nullable();
+            // $table->foreign('status_id')->references('id')->on('asset_statuses')
+            //     ->constrained()->onDelete('set null');
 
-            $table->unsignedBigInteger('status_id')->comment('สถานะ')->nullable();
-            $table->foreign('status_id')->references('id')->on('asset_statuses')
-                ->constrained()->onDelete('set null');
+            $table->foreignId('asset_categories_id')->comment('ประเภท')->nullable()
+                    ->constrained()->onDelete('set null');
+            $table->foreignId('asset_statuses_id')->comment('สถานะ')->nullable()
+                    ->constrained()->onDelete('set null');
 
             $table->timestamps();
         });

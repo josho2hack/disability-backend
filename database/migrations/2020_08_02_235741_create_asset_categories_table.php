@@ -15,14 +15,15 @@ class CreateAssetCategoriesTable extends Migration
     {
         Schema::create('asset_categories', function (Blueprint $table) {
             $table->id();
-            $table->string("main_category")->nullable()->comment('ประเภทหลัก');
-            $table->string("second_category")->nullable()->comment('ประเภทรอง');
             $table->string("name")->comment('ชื่อ');
             $table->string('description',500)->nullable()->comment('รายละเอียด');
             $table->enum('for_give',['ให้','ยืม'])->default('ยืม')->comment('ให้/ยืม');
             $table->binary("image")->nullable()->comment('รูปภาพ');
             $table->timestamps();
             $table->softDeletes()->comment('วันที่ลบข้อมูล');
+
+            $table->foreignId('sub_groups_id')->comment('ประเภทอุปกรณ์รอง')->nullable()
+            ->constrained()->onDelete('set null');
         });
     }
 

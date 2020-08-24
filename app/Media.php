@@ -11,6 +11,6 @@ class Media extends Model
 
     public function assets()
     {
-        return $this->belongsToMany('App\Asset');
+        return $this->belongsToMany('App\Asset','asset_media','assets_id','media_id');
     }
 }

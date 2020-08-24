@@ -10,6 +10,6 @@ class AssetStatus extends Model
     use SoftDeletes;
 
     public function assets() {
-        return $this->hasMany(Asset::class);
+        return $this->hasMany(Asset::class,'asset_statuses_id');
     }
 }

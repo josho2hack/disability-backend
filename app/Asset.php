@@ -15,16 +15,16 @@ class Asset extends Model
 
     public function assetCategory()
     {
-        return $this->belongsTo('App\AssetCategory');
+        return $this->belongsTo('App\AssetCategory','asset_categories_id');
     }
 
     public function assetStatus()
     {
-        return $this->belongsTo('App\AssetStatus');
+        return $this->belongsTo('App\AssetStatus','asset_statuses_id');
     }
 
     public function medias()
     {
-        return $this->belongsToMany('App\Media');
+        return $this->belongsToMany('App\Media','asset_media','assets_id','media_id');
     }
 }
