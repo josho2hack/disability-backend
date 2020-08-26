@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'DisabilityAPI'),
+    'name' => env('APP_NAME', 'ระบบบริหารจัดการอุปกรณ์และเครื่องมือด้าน ICT สาหรับคนพิการ'),
 
     /*
     |--------------------------------------------------------------------------
@@ -52,7 +52,7 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'http://localhost/disability'),
+    'url' => env('APP_URL', 'http://localhost'),
 
     'asset_url' => env('ASSET_URL', null),
 

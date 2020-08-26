@@ -38,6 +38,12 @@ Route::group(['middleware' => 'auth:api'], function(){
     Route::get('assets/{id}', 'API\AssetController@getById')->middleware('admin');
     Route::put('assets/{id}', 'API\AssetController@update')->middleware('admin');
     Route::delete('assets/{id}', 'API\AssetController@delete')->middleware('admin');
+
+    Route::post('maingroups', 'API\MainGroupController@store')->middleware('admin');
+    Route::get('maingroups', 'API\MainGroupController@getAll')->middleware('admin');
+    Route::get('maingroups/{id}', 'API\MainGroupController@getById')->middleware('admin');
+    Route::put('maingroups/{id}', 'API\MainGroupController@update')->middleware('admin');
+    Route::delete('maingroups/{id}', 'API\MainGroupController@delete')->middleware('admin');
 });
 
 // Route::middleware('auth:api')->get('user', function (Request $request) {

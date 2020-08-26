@@ -1,0 +1,9 @@
+{
+    "เข้าสู่ระบบ" : "Login",
+    "ลงทะเบียนเข้าใช้งาน" : "Register",
+    "อีเมล์" : "E-Mail Address",
+    "รหัสผ่าน" : "Password",
+    "จำรหัสผ่าน" : "Remember Me",
+    "ลืมรหัสผ่าน" : "Forgot Your Password?",
+    "ออกจากระบบ" : "Logout"
+}
