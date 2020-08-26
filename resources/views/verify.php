@@ -7,7 +7,7 @@
 </head>
 <body>
 <h1>อีเมล์ได้รับการยืนยันแล้ว ท่านสามารถเข้าสู่ระบบได้ที่
-            <a href="http://thaibook.site">http://thaibook.site</a>
+            <a href="https://pwdsthai.org">pwdsthai.org</a>
 </h1>
 
 </body>
