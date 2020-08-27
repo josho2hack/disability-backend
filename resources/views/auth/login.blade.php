@@ -1,5 +1,4 @@
-@extends('layouts.app')
-
+@extends('layouts.login')
 @section('content')
 <div class="container">
     @if (session('confirmation'))
@@ -16,9 +15,9 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('เข้าสู่ระบบ') }}</div>
 
                 <div class="card-body">
+                    <div class="text-center">{{ __('เข้าสู่ระบบ') }}</div>
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
 
@@ -62,7 +61,7 @@
                             </div>
                         </div>
 
-                        <div class="form-group row mb-0">
+                        <div class="form-group row mb-0 text-center">
                             <div class="col-md-8 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('เข้าสู่ระบบ') }}

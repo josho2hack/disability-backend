@@ -1,0 +1,68 @@
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+  <meta charset="utf-8" />
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <title>:: PWDSTHAI - Admin Dashboard ::</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="assets/js/vendor/bootstrap/bootstrap.min.css">
+  <!-- CSS Files -->
+  <link href="assets/css/main.css" rel="stylesheet">
+</head>
+
+<body id="falcon" class="authentication">
+  <div class="wrapper">
+    <div class="header header-filter" style="background-image: url('assets/images/login-bg.jpg'); background-size: cover; background-position: top center;">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3 text-center">
+            <div class="card card-signup">
+              <form class="form">
+                <div class="header header-primary text-center">
+                  <h4>เข้าสู่ระบบ</h4>
+                  {{-- <div class="social-line">
+                    <a href="javascript:void(0);" class="btn btn-just-icon">
+                      <i class="fa fa-facebook-square"></i>
+                    </a>
+                    <a  href="javascript:void(0);" class="btn btn-just-icon">
+                      <i class="fa fa-twitter"></i>
+                    </a>
+                    <a href="javascript:void(0);" class="btn btn-just-icon">
+                      <i class="fa fa-google-plus"></i>
+                    </a>
+                  </div> --}}
+                </div>
+                <h3 class="mt-0">PWDSTHAI</h3>
+                <p class="help-block"></p>
+                <div class="content">
+                  <div class="form-group">
+                    <input type="email" class="form-control underline-input" placeholder="อีเมล์...">
+                  </div>
+                  <div class="form-group">
+                    <input type="password" placeholder="รหัสผ่าน..." class="form-control underline-input">
+                  </div>
+                  <div class="checkbox">
+                    <label>
+                      <input type="checkbox" name="optionsCheckboxes"> จำข้อมูลไว้ใน ระบบ</label>
+                  </div>
+                </div>
+                <div class="footer text-center">
+                  <a href="index.html" class="btn btn-info btn-raised">เข้าสู่ระบบ</a>
+                </div>
+                <a href="forgotpass.html" class="btn btn-wd">ลืมรหัสผ่าน?</a>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--  Vendor JavaScripts -->
+  <script src="assets/bundles/libscripts.bundle.js"></script>
+  <script src="assets/bundles/mainscripts.bundle.js"></script>
+  <!-- Custom Js -->
+</body>
+</html>
