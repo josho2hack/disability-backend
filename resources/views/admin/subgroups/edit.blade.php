@@ -42,13 +42,13 @@
                             </ul>
                         </div>
                     @endif
-                    <form class="form-horizontal" role="form" action="{{ route('maingroups.update',$maingroup->id) }}" method="POST">
+                    <form class="form-horizontal" role="form" action="{{ route('subgroups.update',$subgroup->id) }}" method="POST">
                         @csrf
                         @method('PUT')
                         <div class="form-group">
                             <label for="name" class="col-sm-2 control-label">กลุ่มหลัก</label>
                             <div class="col-sm-10">
-                            <input type="text" class="form-control" name="name" placeholder="" value="{{ $maingroup->name }}">
+                            <input type="text" class="form-control" name="name" placeholder="" value="{{ $subgroup->name }}">
                                 <p class="help-block mb-0">Ex: โปรแกรมพจนานุกรมสำหรับคนพิการ</p>
                             </div>
                         </div>
@@ -56,15 +56,15 @@
                             <label class="col-sm-2 control-label">ประเภท</label>
                             <div class="col-sm-10">
                                 <select name="main_groups_id" tabindex="2" class="chosen-select" style="width: 240px;">
-                                    <option value="1" @if ($maingroup->main_groups_id == 1) selected @endif>เทคโนโลยีสารสนเทศและการสื่อสาร</option>
-                                    <option value="2" @if ($maingroup->main_groups_id == 2) selected @endif>เทคโนโลยีสิ่งอำนวยความสะดวกเพื่อการสื่อสาร</option>
+                                    <option value="1" @if ($subgroup->main_groups_id == 1) selected @endif>เทคโนโลยีสารสนเทศและการสื่อสาร</option>
+                                    <option value="2" @if ($subgroup->main_groups_id == 2) selected @endif>เทคโนโลยีสิ่งอำนวยความสะดวกเพื่อการสื่อสาร</option>
                                 </select>
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="col-sm-offset-2 col-sm-10">
                                 <button type="submit" class="btn btn-raised btn-success">บันทึก</button>
-                                <a href="{{ route('maingroups.index') }}" class="btn btn-raised btn-default">ยกเลิก</a>
+                                <a href="{{ route('subgroups.index') }}" class="btn btn-raised btn-default">ยกเลิก</a>
                             </div>
                         </div>
                     </form>

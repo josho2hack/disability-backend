@@ -43,18 +43,18 @@
                         <div class="col-xs-12 col-sm-12 col-md-12">
                             <div class="form-group">
                                 <strong>Id:</strong>
-                                {{ $maingroup->id }}
+                                {{ $subgroup->id }}
                             </div>
                         </div>
                         <div class="col-xs-12 col-sm-12 col-md-12">
                             <div class="form-group">
                                 <strong>กลุ่มหลัก:</strong>
-                                {{ $maingroup->name  }}
+                                {{ $subgroup->name  }}
                             </div>
                         </div>
                     </div>
 
-                        <a class="btn btn-raised btn-default" href="{{ route('maingroups.index') }}">กลับ</a>
+                        <a class="btn btn-raised btn-default" href="{{ route('subgroups.index') }}">กลับ</a>
 
                 </div>
                 <div class="boxs-footer text-right bg-tr-black lter dvd dvd-to">

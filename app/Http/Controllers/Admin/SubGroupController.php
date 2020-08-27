@@ -41,9 +41,8 @@ class SubGroupController extends Controller
     {
         $request->validate([
             'name' => 'required',
-            'main_groups_id' => 'required',
             'for_give'=> 'required',
-            'sub_groups_id'
+            'sub_groups_id' => 'required'
         ]);
 
         AssetCategory::create($request->all());

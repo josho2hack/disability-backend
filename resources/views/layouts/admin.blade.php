@@ -15,8 +15,8 @@
     <!-- vendor css files -->
     <link rel="stylesheet" href="{{ asset('assets/js/vendor/bootstrap/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/vendor/animsition.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/js/vendor/morris/morris.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/js/vendor/sweetalert/sweetalert2.css') }}">
+    {{-- <link rel="stylesheet" href="{{ asset('assets/js/vendor/morris/morris.css') }}"> --}}
+    {{-- <link rel="stylesheet" href="{{ asset('assets/js/vendor/sweetalert/sweetalert2.css') }}"> --}}
 
     @yield('header')
 
