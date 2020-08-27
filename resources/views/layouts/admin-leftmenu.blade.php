@@ -19,7 +19,7 @@
                                 </a>
                                 <ul>
                                     <li>
-                                        <a href="{{ route('assets')}}">
+                                        <a href="{{ route('assets.dashboard')}}">
                                             <i class="fa fa-angle-right"></i>1.1 อุปกรณ์และเครื่องมือ</a>
                                     </li>
                                     <li>
