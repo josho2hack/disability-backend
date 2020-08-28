@@ -180,7 +180,7 @@
                                 </a>
                                 <ul>
                                     <li>
-                                        <a href="{{ url('admin.news.index') }}">
+                                        <a href="{{ route('admin.news.index') }}">
                                             <i class="fa fa-angle-right"></i>12.1 จัดการข่าวสาร</a>
                                     </li>
                                     <li>

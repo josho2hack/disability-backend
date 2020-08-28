@@ -50,7 +50,7 @@
                     </div>
 
                     <div class="form-group">
-                        <img src="{{ $news->cover_link }}">
+                        <img src="{{ $news->cover_link }}" style="max-width: 100%">
                     </div>
 
                     <div class="form-group">
