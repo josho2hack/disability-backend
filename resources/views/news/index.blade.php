@@ -9,8 +9,8 @@
     <div class="b-b mb-10">
         <div class="row">
             <div class="col-sm-6 col-xs-12">
-                <h3 class="h3 m-0">10 ระบบจัดการข่าว</h3>
-                <small class="text-muted">10.3 เครื่องมือจัดการข่าว</small>
+                <h3 class="h3 m-0">11 ระบบจัดการเว็บ</h3>
+                <small class="text-muted">11.1 เครื่องมือจัดการข่าวสาร</small>
             </div>
             <div class="btn-group pull-right">
                 <ol class="breadcrumb">
@@ -18,9 +18,9 @@
                         <a href=""><i class="fa fa-home"></i></a>
                     </li>
                     <li>
-                        <a href="">10 ระบบจัดการข่าว</a>
+                        <a href="">11 ระบบจัดการเว็บ</a>
                     </li>
-                    <li class="active">10.3 เครื่องมือจัดการข่าว</li>
+                    <li class="active">11.1 เครื่องมือจัดการข่าวสาร</li>
                 </ol>
             </div>
         </div>
@@ -32,13 +32,13 @@
             <section class="boxs">
                 <div class="boxs-header">
                     <h3 class="custom-font hb-cyan">
-                        <strong>รายการข่าว</strong>
+                        <strong>รายการข่าวสาร</strong>
                     </h3>
                 </div>
                 <div class="boxs-widget">
                     <div class="form-group">
                         <div class="btn-group pull-right">
-                            <a href="{{ url('news/add') }}" class="btn btn-success btn-raised">สร้างข่าว</a>
+                            <a href="{{ url('news/add') }}" class="btn btn-success btn-raised">เพิ่มข่าวสาร</a>
                         </div>
                         <label for="filter" style="padding-top: 5px">ค้นหา:</label>
                         <input id="filter" type="text" class="form-control rounded w-md mb-10 inline-block" />
@@ -57,7 +57,7 @@
                         <thead>
                             <tr>
                                 <th>ลำดับที่</th>
-                                <th>หัวข้อข่าว</th>
+                                <th>หัวข้อข่าวสาร</th>
                                 <th colspan=3>ดำเนินการ</th>
                             </tr>
                         </thead>

@@ -9,8 +9,8 @@
     <div class="b-b mb-10">
         <div class="row">
             <div class="col-sm-6 col-xs-12">
-                <h3 class="h3 m-0">10 ระบบจัดการกิจกรรม</h3>
-                <small class="text-muted">10.3 เครื่องมือจัดการกิจกรรม</small>
+                <h3 class="h3 m-0">11 ระบบจัดการเว็บ</h3>
+                <small class="text-muted">11.2 เครื่องมือจัดการกิจกรรม</small>
             </div>
             <div class="btn-group pull-right">
                 <ol class="breadcrumb">
@@ -18,9 +18,9 @@
                         <a href=""><i class="fa fa-home"></i></a>
                     </li>
                     <li>
-                        <a href="">10 ระบบจัดการกิจกรรม</a>
+                        <a href="">11 ระบบจัดการเว็บ</a>
                     </li>
-                    <li class="active">10.3 เครื่องมือจัดการกิจกรรม</li>
+                    <li class="active">11.2 เครื่องมือจัดการกิจกรรม</li>
                 </ol>
             </div>
         </div>
@@ -38,7 +38,7 @@
                 <div class="boxs-widget">
                     <div class="form-group">
                         <div class="btn-group pull-right">
-                            <a href="{{ url('activity/add') }}" class="btn btn-success btn-raised">สร้างกิจกรรม</a>
+                            <a href="{{ url('activity/add') }}" class="btn btn-success btn-raised">เพิ่มกิจกรรมใหม่</a>
                         </div>
                         <label for="filter" style="padding-top: 5px">ค้นหา:</label>
                         <input id="filter" type="text" class="form-control rounded w-md mb-10 inline-block" />
