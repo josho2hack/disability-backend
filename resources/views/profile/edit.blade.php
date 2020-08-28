@@ -26,65 +26,59 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="boxs-body">
-                                            <form class="form-horizontal" action="{{ url('profile') }}" method="post">
+                                            <form class="form-horizontal" action="{{ url('profile/edit') }}" method="post">
                                                 @csrf
                                                 <div class="form-group">
-                                                    <label for="inputEmail3" class="col-sm-2 control-label">บ้านเลขที่</label>
+                                                    <label for="inputEmail3" class="col-sm-2 control-label">ชื่อ</label>
                                                     <div class="col-sm-10">
-                                                        <input type="text" class="form-control" placeholder="บ้านเลขที่" name="house_no">
+                                                        <input type="text" class="form-control" value="{{ $user->first_name }}" name="first_name" >
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="inputPassword3" class="col-sm-2 control-label">หมู่ที่</label>
+                                                    <label for="inputPassword3" class="col-sm-2 control-label">นามสกุล</label>
                                                     <div class="col-sm-10">
-                                                        <input type="text" class="form-control" placeholder="หมู่ที่" name="village_no">
+                                                        <input type="text" class="form-control" value="{{ $user->last_name }}"  name="last_name" >
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="inputPassword3" class="col-sm-2 control-label">ซอย</label>
+                                                    <label for="inputPassword3" class="col-sm-2 control-label">เพศ</label>
                                                     <div class="col-sm-10">
-                                                        <input type="text" class="form-control" placeholder="ซอย" name="lane">
+
+                                                        <label class="radio-inline">
+                      <input type="radio" name="gender" value="1" @if($user->gender == 1) checked @endif> ชาย
+                  </label>
+                  <label class="radio-inline">
+                      <input type="radio" name="gender" value="2" @if($user->gender == 2) checked @endif> หญิง
+                  </label>
+
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="inputPassword3" class="col-sm-2 control-label">ตำบล</label>
+                                                    <label for="inputPassword3" class="col-sm-2 control-label">เลขบัตรประชาชน</label>
                                                     <div class="col-sm-10">
-                                                        <input type="text" class="form-control" placeholder="ตำบล" name="sub_district">
+                                                        <input type="text" class="form-control" value="{{ $user->citizen_id }}" >
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="inputPassword3" class="col-sm-2 control-label">อำเภอ</label>
+                                                    <label for="inputPassword3" class="col-sm-2 control-label">เลขผู้พิการ</label>
                                                     <div class="col-sm-10">
-                                                        <input type="text" class="form-control" placeholder="อำเภอ" name="district">
+                                                        <input type="text" class="form-control" value="{{ $user->pwd_id }}" >
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="inputPassword3" class="col-sm-2 control-label">จังหวัด</label>
+                                                    <label for="inputPassword3" class="col-sm-2 control-label">ประเภทผู้พิการ</label>
                                                     <div class="col-sm-10">
-                                                        <input type="text" class="form-control" placeholder="จังหวัด" name="province">
-                                                    </div>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="inputPassword3" class="col-sm-2 control-label">รหัสไปรษณีย์</label>
-                                                    <div class="col-sm-10">
-                                                        <input type="text" class="form-control" placeholder="รหัสไปรษณีย์" name="postal_code">
-                                                    </div>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="inputPassword3" class="col-sm-2 control-label">สถานที่ศึกษา</label>
-                                                    <div class="col-sm-10">
-                                                        <input type="text" class="form-control" placeholder="สถานที่ศึกษา" name="edu_place">
-                                                    </div>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="inputPassword3" class="col-sm-2 control-label">เบอร์โทร</label>
-                                                    <div class="col-sm-10">
-                                                        <input type="text" class="form-control" placeholder="เบอร์โทร" name="tel">
+                                                        <select name="disability_type_id">
+                                                            @foreach( $disability as $disabilities )
+                                                            <option value="{{ $disabilities->id }}">{{ $disabilities->description }}</option>
+                                                            @endforeach
+                                                        </select>
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
                                                     <div class="col-sm-offset-2 col-sm-10">
-                                                        <button type="submit" class="btn btn-raised btn-primary">ยืนยัน</button>
+                                                        <button type="submit" class="btn btn-raised btn-primary">แก้ไขโปรไฟล์
+                                                        </button>
                                                     </div>
                                                 </div>
                                             </form>

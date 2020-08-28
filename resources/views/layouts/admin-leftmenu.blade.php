@@ -108,7 +108,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="#">
+                                <a href="{{ url('object') }}">
                                     <i class="fa fa-bar-chart-o"></i>
                                     <span>6. รายการครุภัณฑ์ว่าง</span>
                                 </a>

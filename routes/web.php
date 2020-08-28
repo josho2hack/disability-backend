@@ -32,8 +32,12 @@ Route::get('/register', 'HomeController@register');
 Route::get('/profile', 'ProfileController@index');
 Route::post('/profile', 'ProfileController@insert_address');
 Route::get('/profile/address', 'ProfileController@address');
+Route::get('/profile/edit_address', 'ProfileController@edit_address');
+Route::post('/profile/edit_address', 'ProfileController@update_address');
 Route::get('/profile/edit', 'ProfileController@edit_profile');
+Route::post('/profile/edit', 'ProfileController@update_profile');
 Route::resources(['form-borrow' => 'Form\FormborrowController']);
+Route::get('/object', 'ObjectController@index');
 
 Route::get('news', 'NewsController@index');
 Route::get('news/add', 'NewsController@add');
