@@ -47,8 +47,12 @@ Route::prefix('admin')->group(function () {
     Route::resources([
         'assets' => 'Admin\AssetController',
         'maingroups' => 'Admin\MainGroupController',
-        'subgroups' => 'Admin\SubGroupController'
+        'subgroups' => 'Admin\SubGroupController',
     ]);
+
+    Route::resource('surveys', 'SurveyController', ['as' => 'admin']);
+    Route::resource('surveys/{id}/questions', 'QuestionController', ['as' => 'admin']);
+    Route::resource('surveys/{id}/questions', 'Admin\QuestionController', ['as' => 'admin']);
 });
 
 

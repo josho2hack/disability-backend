@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use App\SurveyType;
 
 class DatabaseSeeder extends Seeder
 {
@@ -662,5 +663,12 @@ class DatabaseSeeder extends Seeder
         $asset_categories->disablilityTypes()->attach(5);
         $asset_categories->disablilityTypes()->attach(6);
         $asset_categories->disablilityTypes()->attach(7);
+
+        DB::table('survey_types')->insert([
+            [
+                'name' => 'แบบสำรวจความพึงพอใจ',
+                'slub' => 'survey-type-one'
+            ]
+        ]);
     }
 }

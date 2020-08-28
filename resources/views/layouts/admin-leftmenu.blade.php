@@ -171,7 +171,7 @@
                                             <i class="fa fa-angle-right"></i>11.3 จัดการไฟล์</a>
                                     </li>
                                     <li>
-                                        <a href="">
+                                        <a href="{{ route('admin.surveys.index') }}">
                                             <i class="fa fa-angle-right"></i>11.4 จัดการแบบสำรวจ</a>
                                     </li>
                                 </ul>
