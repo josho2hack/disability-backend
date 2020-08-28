@@ -12,15 +12,14 @@ class ProfileController extends Controller
 
     	$user = User::where('id',\Auth::user()->id)->first();
     	$profile_address = Profile::where('user_id', $user->id)->first();
-
     	return view('profile.index', compact('user', 'profile_address'));
     }
 
-    public function add(){
+    public function address(){
     	return view('profile.add');
     }
 
-    public function insert(Request $request){
+    public function insert_address(Request $request){
     	$request['user_id'] = \Auth::user()->id;
     	$profile = New Profile;
     	$profile->fill($request->all());
@@ -28,5 +27,9 @@ class ProfileController extends Controller
     	if( $profile->save() ) {
     		return redirect('profile');
     	}
+    }
+
+    public function edit_profile(){
+    	return view('profile.edit');
     }
 }

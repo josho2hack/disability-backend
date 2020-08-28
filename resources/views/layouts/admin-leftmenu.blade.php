@@ -121,7 +121,11 @@
                                 <ul>
                                     <li>
                                         <a href="{{ url('form-borrow') }}">
+<<<<<<< HEAD
+                                            <i class="fa fa-angle-right"></i>6.1 แบบฟอร์มยืม</a>
+=======
                                             <i class="fa fa-angle-right"></i>7.1 แบบฟอร์มยืม</a>
+>>>>>>> f7b9a14bcb069d0c4d645a8b358aead6d52fe555
                                     </li>
                                     <li>
                                         <a href="#">
