@@ -44,4 +44,12 @@ class SurveyController extends Controller
 
         return view('admin.surveys.edit', compact('survey'));
     }
+
+    public function destroy($survey_id) {
+        $survey = Survey::find($survey_id);
+        
+        if ( $survey->delete() ) {
+            return back()->with('success', 'ลบข้อมูลสำเร็จ');
+        }
+    }
 }

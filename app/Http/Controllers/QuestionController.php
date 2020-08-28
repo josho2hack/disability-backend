@@ -32,6 +32,12 @@ class QuestionController extends Controller
     }
 
     public function updates($survey_id, Request $request) {
-        dd($survey_id, $request->all());
+        foreach ( $request->questions as $id => $q ) {
+            $question = SurveyQuestion::find($survey_id);
+            $question->question_id = $id;
+            $question->save();
+        }
+        
+        return back()->with('success', 'บันทึกข้อมูลสำเร็จ');
     }
 }
