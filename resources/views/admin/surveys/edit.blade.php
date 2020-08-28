@@ -28,23 +28,31 @@
   </div>
 </div>
 
-<div class="boxs">
-  <div class="boxs-body">
-    <div>
-      <h2>{{ $survey->name }} จำนวน {{ $survey->number_of_question }} ข้อ</h2>
+
+<div class="row">
+  <div class="col-lg-6">
+    <div class="boxs">
+      <div class="boxs-header">
+          <h3 class="custom-font hb-cyan">
+            <strong>{{ $survey->name }} จำนวน {{ $survey->number_of_question }} ข้อ</strong>
+          </h3>
+      </div>
+
+      <div class="boxs-body">        
+        <form action="{{ route('admin.questions.updates', [$survey->id]) }}" method="POST">
+          @csrf
+        
+          @foreach ( $survey->questions as $question )
+            <div>
+              <label for="">คำถามข้อ {{ $loop->iteration }}</label>
+              <input class="form-control" type="text" name="questions[{{ $question->id }}]" value="{{ $question->text }}" placeholder="คำถามข้อ {{ $loop->iteration }}">
+            </div>
+          @endforeach
+        
+          <button class="btn btn-primary btn-raised">บันทึก</button>
+        </form>
+      </div>
     </div>
-    
-    <form action="{{ route('admin.questions.updates', [$survey->id]) }}" method="POST">
-      @csrf
-    
-      @foreach ( $survey->questions as $question )
-        <div>
-          <input class="form-control" type="text" name="questions[{{ $question->id }}]" value="{{ $question->text }}" placeholder="คำถามข้อ {{ $loop->iteration }}">
-        </div>
-      @endforeach
-    
-      <button class="btn btn-primary btn-raised">บันทึก</button>
-    </form>
   </div>
 </div>
 

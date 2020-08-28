@@ -32,9 +32,10 @@ class QuestionController extends Controller
     }
 
     public function updates($survey_id, Request $request) {
-        foreach ( $request->questions as $id => $q ) {
-            $question = SurveyQuestion::find($survey_id);
-            $question->question_id = $id;
+        
+        foreach ( $request->questions as $qid => $q ) {
+            $question = Question::find($qid);
+            $question->text = $q;
             $question->save();
         }
         
