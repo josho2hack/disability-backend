@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('header')
-    <link rel="stylesheet" href="{{ asset('assets/js/vendor/footable/css/footable.core.min.css') }}">
+
 @endsection
 
 @section('content')
@@ -10,7 +10,7 @@
         <div class="row">
             <div class="col-sm-6 col-xs-12">
                 <h3 class="h3 m-0">1.1 ระบบอุปกรณ์และเครื่องมือ</h3>
-                <small class="text-muted">1.1.1 กลุ่มหลักอุปกรณ์และเครื่องมือ</small>
+                <small class="text-muted">1.1.2 กลุ่มย่อยอุปกรณ์และเครื่องมือ</small>
             </div>
             <div class="btn-group pull-right">
                 <ol class="breadcrumb">
@@ -23,7 +23,7 @@
                     <li>
                         <a href="{{ route('assets.dashboard') }}">1.1 ระบบอุปกรณ์และเครื่องมือ</a>
                     </li>
-                    <li class="active">1.1.1 กลุ่มหลักอุปกรณ์และเครื่องมือ</li>
+                    <li class="active">1.1.2 กลุ่มย่อยอุปกรณ์และเครื่องมือ</li>
                 </ol>
             </div>
         </div>
@@ -48,13 +48,45 @@
                         </div>
                         <div class="col-xs-12 col-sm-12 col-md-12">
                             <div class="form-group">
-                                <strong>กลุ่มหลัก:</strong>
-                                {{ $subgroup->name  }}
+                                <strong>กลุ่มย่อย:</strong>
+                                {{ $subgroup->name }}
                             </div>
                         </div>
+                        <div class="col-xs-12 col-sm-12 col-md-12">
+                            <div class="form-group">
+                                <strong>รายละเอียด:</strong>
+                                {{ $subgroup->description }}
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-12">
+                            <div class="form-group">
+                                <strong>ให้ยืม/ให้:</strong>
+                                {{ $subgroup->for_give }}
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-12">
+                            <div class="form-group">
+                                <strong>กลุ่มหลัก:</strong>
+                                {{ $subgroup->subgroup->name }}
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-12">
+                            <div class="form-group">
+                                <strong>ประเภท:</strong>
+                                {{ $subgroup->type }}
+                            </div>
+                        </div>
+                        @if ($subgroup->image)
+                        <div class="col-xs-12 col-sm-12 col-md-12">
+                            <div class="form-group">
+                            {{-- <img src="/subgroup/{{$subgroup->id}}/avatar" /> --}}
+                            <img src="data:image/png;base64,{{ chunk_split(base64_encode($subgroup->image)) }}">
+                            </div>
+                        </div>
+                        @endif
                     </div>
 
-                        <a class="btn btn-raised btn-default" href="{{ route('subgroups.index') }}">กลับ</a>
+                    <a class="btn btn-raised btn-default" href="{{ route('subgroups.index') }}">กลับ</a>
 
                 </div>
                 <div class="boxs-footer text-right bg-tr-black lter dvd dvd-to">

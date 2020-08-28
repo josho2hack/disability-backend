@@ -1,4 +1,15 @@
 @extends('layouts.admin')
+@section('header')
+    <link rel="stylesheet" href="http://blueimp.github.io/Gallery/css/blueimp-gallery.min.css">
+    <link rel="stylesheet" href="{{ asset('assets/js/vendor/file-upload/css/jquery.fileupload.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/js/vendor/file-upload/css/jquery.fileupload-ui.css') }}">
+    <noscript>
+        <link rel="stylesheet" href="{{ asset('assets/js/vendor/file-upload/css/jquery.fileupload-noscript.css') }}">
+    </noscript>
+    <noscript>
+        <link rel="stylesheet" href="{{ asset('assets/js/vendor/file-upload/css/jquery.fileupload-ui-noscript.css') }}">
+    </noscript>
+@endsection
 
 @section('content')
     <!-- bradcome -->
@@ -43,7 +54,8 @@
                             </ul>
                         </div>
                     @endif
-                    <form class="form-horizontal" role="form" action="{{ route('subgroups.store') }}" method="POST" enctype="multipart/form-data">
+                    <form class="form-horizontal" role="form" action="{{ route('subgroups.store') }}" method="POST"
+                        enctype="multipart/form-data">
                         @csrf
                         <div class="form-group">
                             <label for="name" class="col-sm-2 control-label">กลุ่มย่อย</label>
@@ -75,17 +87,22 @@
                             <div class="col-sm-10">
                                 <select name="sub_groups_id" tabindex="5" class="chosen-select" style="width: 240px;">
                                     @foreach ($maingroups as $maingroup)
-                                        <option value="{{ $maingroup->id }}">{{ $maingroup->name }}</option>
+                                        <option value="{{ $maingroup->id }}" @if ($maingroup->id == 1)
+                                            selected
+                                    @endif>{{ $maingroup->name }}</option>
                                     @endforeach
                                 </select>
                             </div>
                         </div>
-                        <div class="form-group">
+
+                        <div>
                             <label for="description" class="col-sm-2 control-label">รูปภาพ</label>
                             <div class="col-sm-10">
-                                <input type="file" class="form-control" name="image" placeholder="">
+                                <input id="fileupload" type="file" name="image">
                             </div>
                         </div>
+                        <!--//Up load File ---------------------------------------------------------->
+
                         <div class="form-group">
                             <div class="col-sm-offset-2 col-sm-10">
                                 <button type="submit" class="btn btn-raised btn-success">บันทึก</button>
@@ -103,5 +120,11 @@
 @endsection
 
 @section('footer')
+    <!-- The jQuery UI widget factory, can be omitted if jQuery UI is already included -->
+    <script src="{{ asset('assets/js/vendor/file-upload/js/vendor/jquery.ui.widget.js') }}"></script>
+    <script src="{{ asset('assets/bundles/fileuploadscripts.bundle.js') }}"></script>
+@endsection
+
+@section('footer-script')
 
 @endsection

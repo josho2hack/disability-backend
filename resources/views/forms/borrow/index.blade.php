@@ -9,22 +9,7 @@
     <div class="b-b mb-10">
         <div class="row">
             <div class="col-sm-6 col-xs-12">
-                <h3 class="h3 m-0">1.1 ระบบอุปกรณ์และเครื่องมือ</h3>
-                <small class="text-muted">1.1.1 กลุ่มหลักอุปกรณ์และเครื่องมือ</small>
-            </div>
-            <div class="btn-group pull-right">
-                <ol class="breadcrumb">
-                    <li>
-                        <a href="{{ route('root') }}"><i class="fa fa-home"></i></a>
-                    </li>
-                    <li>
-                        <a href="{{ route('admin') }}">1. บริหารจัดการระบบ</a>
-                    </li>
-                    <li>
-                        <a href="{{ route('assets.dashboard') }}">1.1 ระบบอุปกรณ์และเครื่องมือ</a>
-                    </li>
-                    <li class="active">1.1.1 กลุ่มหลักอุปกรณ์และเครื่องมือ</li>
-                </ol>
+                <h3 class="h3 m-0">6.1 แบบฟอร์มยืม</h3>
             </div>
         </div>
 
@@ -35,16 +20,14 @@
             <section class="boxs">
                 <div class="boxs-header">
                     <h3 class="custom-font hb-cyan">
-                        <strong>รายการกลุ่มหลักอุปกรณ์และเครื่องมือ</strong>
+                        <strong>รายการแบบฟอร์มยืม</strong>
                     </h3>
                 </div>
                 <div class="boxs-widget">
                     <div class="form-group">
                         <div class="btn-group pull-right">
-                            <a href="{{ route('maingroups.create') }}" class="btn btn-success btn-raised">สร้างกลุ่มหลัก</a>
+                            <a href="{{ url('form-borrow/create') }}" class="btn btn-success btn-raised">สร้างแบบฟอร์มยืม</a>
                         </div>
-                        <label for="filter" style="padding-top: 5px">ค้นหา:</label>
-                        <input id="filter" type="text" class="form-control rounded w-md mb-10 inline-block" />
                     </div>
                 </div>
 
@@ -59,34 +42,20 @@
                         class="footable table table-custom table-hover">
                         <thead>
                             <tr>
-                                <th>ลำดับที่</th>
-                                <th>กลุ่มหลัก</th>
+                                <th>แบบฟอร์ม</th>
                                 <th colspan=3>ดำเนินการ</th>
                             </tr>
                         </thead>
                         <tbody>
-                           {{--  @foreach ($maingroups as $maingroup)
+                            @foreach ($form as $forms)
                                 <tr>
-                                    <td>{{ $loop->index + 1 }}</td>
-                                    <td>{{ $maingroup->name }}</td>
+                                    <td>แบบฟอร์มที่ {{ $loop->index + 1 }}</td>
                                     <td>
-                                        <a href="{{ route('maingroups.show', $maingroup) }}" class="btn btn-raised btn-info"
+                                        <a href="{{ url("form-borrow/$forms->id") }}" class="btn btn-raised btn-info"
                                             title="รายละเอียด"> <i class="fa fa-eye"></i></a>
                                     </td>
-                                    <td>
-                                        <a href="{{ route('maingroups.edit', $maingroup->id) }}"
-                                            class="btn btn-raised btn-warning" title="แก้ไข"> <i class="fa fa-edit"></i></a>
-                                    </td>
-                                    <td>
-                                        <form action="{{ route('maingroups.destroy', $maingroup->id) }}" method="post">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button class="del btn btn-raised btn-primary" type="submit" title="ลบ">
-                                                <i class="fa fa-trash"></i></button>
-                                        </form>
-                                    </td>
                                 </tr>
-                            @endforeach --}}
+                            @endforeach
                         </tbody>
                         <tfoot class="hide-if-no-paging">
                             <tr>

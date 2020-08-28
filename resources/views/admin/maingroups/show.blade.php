@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('header')
-    <link rel="stylesheet" href="{{ asset('assets/js/vendor/footable/css/footable.core.min.css') }}">
+
 @endsection
 
 @section('content')

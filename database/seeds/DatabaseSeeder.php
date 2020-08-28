@@ -15,7 +15,7 @@ class DatabaseSeeder extends Seeder
         // $this->call(UserSeeder::class);
         DB::table('users')->insert([
             [
-                'email' => 'admin@local',   //1
+                'email' => 'admin@pwdsthai.org',   //1
                 'password' => bcrypt('password'),
                 'first_name' => 'ผู้ดูแลระบบ',
                 'last_name' => 'เครื่องมือผู้พิการ',
@@ -26,7 +26,7 @@ class DatabaseSeeder extends Seeder
                 'pwd_id' => '1234567890123'
             ],
             [
-                'email' => 'audit@local', //2
+                'email' => 'audit@pwdsthai.org', //2
                 'password' => bcrypt('password'),
                 'first_name' => 'ผู้ตรวจสอบ',
                 'last_name' => 'เครื่องมือผู้พิการ',
@@ -37,7 +37,7 @@ class DatabaseSeeder extends Seeder
                 'pwd_id' => '1234567890123'
             ],
             [
-                'email' => 'approve@local', //3
+                'email' => 'approve@pwdsthai.org', //3
                 'password' => bcrypt('password'),
                 'first_name' => 'ผู้อนุมัติ',
                 'last_name' => 'เครื่องมือผู้พิการ',
@@ -48,7 +48,7 @@ class DatabaseSeeder extends Seeder
                 'pwd_id' => '1234567890123'
             ],
             [
-                'email' => 'user@local',  //4
+                'email' => 'user@pwdsthai.org',  //4
                 'password' => bcrypt('password'),
                 'first_name' => 'ผู้ใช้งาน',
                 'last_name' => 'เครื่องมือผู้พิการ',
@@ -115,21 +115,27 @@ class DatabaseSeeder extends Seeder
 
         DB::table('asset_statuses')->insert([
             [
-                'name' => 'ปกติ',
-                'description' => "สถานะปกติ"
+                'name' => 'คงคลัง '
             ],
             [
-                'name' => 'ถูกยืม',
-                'description' => "อุปกรณ์ถูกยืม"
+                'name' => 'รอรับ'
             ],
             [
-                'name' => 'ซ่อม',
-                'description' => "อยู่ระหว่างซ่อมหรือรอซ่อม"
+                'name' => 'ยืม'
             ],
             [
-                'name' => 'รอจำหน่าย',
-                'description' => "รอจำหน่ายขายทอดตลาดหรือปลดออก"
+                'name' => 'เสีย'
             ],
+            [
+                'name' => 'ส่งซ่อม'
+            ],
+            [
+                'name' => 'สูญหาย'
+            ]
+            ,
+            [
+                'name' => 'อื่น ๆ'
+            ]
         ]);
 
         DB::table('main_groups')->insert([

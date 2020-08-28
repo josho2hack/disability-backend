@@ -30,20 +30,36 @@ Route::get('/logout', 'HomeController@logout');
 Route::get('/user-login', 'HomeController@user_login');
 Route::get('/register', 'HomeController@register');
 Route::get('/profile', 'ProfileController@index');
-Route::get('/profile/add', 'ProfileController@add');
+Route::post('/profile', 'ProfileController@insert_address');
+Route::get('/profile/address', 'ProfileController@address');
+Route::get('/profile/edit', 'ProfileController@edit_profile');
 Route::resources(['form-borrow' => 'Form\FormborrowController']);
-
 
 
 Route::get('email/verify/{id}', 'VerificationApiController@verify')->name('verificationapi.verify');
 Route::get('email/resend', 'VerificationApiController@resend')->name('verificationapi.resend');
 
+Route::get('/subgroup/{id}/avatar', 'Admin\SubGroupController@avatar');
+Route::get('/subgroup/{id}/avatar', 'Admin\SubGroupController@avatar');
 Route::prefix('admin')->group(function () {
     Route::get('', 'Admin\AdminController@index')->name('admin');
     Route::get('assets/dashboard', 'Admin\AssetController@dashboard')->name('assets.dashboard');
     Route::resources([
         'assets' => 'Admin\AssetController',
         'maingroups' => 'Admin\MainGroupController',
-        'subgroups' => 'Admin\SubGroupController'
+        'subgroups' => 'Admin\SubGroupController',
     ]);
+
+    Route::resource('surveys', 'SurveyController', ['as' => 'admin']);
+    Route::resource('surveys/{id}/questions', 'QuestionController', ['as' => 'admin']);
 });
+
+
+Route::get('news', function () { return view('news.index'); });
+Route::get('news/add', function () { return view('news.add'); });
+
+Route::get('activity', function () { return view('activity.index'); });
+Route::get('activity/add', function () { return view('activity.add'); });
+
+Route::get('fileupload', function () { return view('fileupload.index'); });
+Route::get('fileupload/add', function () { return view('fileupload.add'); });

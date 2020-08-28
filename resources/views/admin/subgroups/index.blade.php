@@ -68,7 +68,10 @@
                             @foreach ($subgroups as $subgroup)
                                 <tr>
                                     <td>{{ $loop->index + 1 }}</td>
-                                    <td>{{ $subgroup->name }}</td>
+                                    <td>
+                                        {{ $subgroup->name }}
+                                        <p class="text-info">{{$subgroup->subgroup->name}}</p>
+                                    </td>
                                     <td>
                                         <a href="{{ route('subgroups.show', $subgroup) }}" class="btn btn-raised btn-info"
                                             title="รายละเอียด"> <i class="fa fa-eye"></i></a>
