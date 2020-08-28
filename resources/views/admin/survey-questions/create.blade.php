@@ -25,22 +25,28 @@
     </div>
   </div>
 
-  <div class="boxs">
-    <div class="boxs-body">
-      <div>
-        {{ $survey->name }} จำนวน {{ $survey->number_of_question }} ข้อ
-      </div>
-    
-      <form action="{{ route('admin.questions.store', $survey->id) }}" method="POST">
-        @csrf
-        @for ( $i = 0; $i < $survey->number_of_question; $i++ )
-          <div>
-            <input class="form-control" type="text" name="questions[]" placeholder="คำถามข้อ {{ $i+1 }}">
+  <div class="row">
+    <div class="col-lg-6">
+      <div class="boxs">
+        <div class="boxs-body">
+          <div class="boxs-header">
+            <h3 class="custom-font hb-cyan">
+              <strong>{{ $survey->name }} จำนวน {{ $survey->number_of_question }} ข้อ</strong>
+            </h3>
           </div>
-        @endfor
-    
-        <button class="btn btn-primary btn-raised">ยืนยัน</button>
-      </form>
+        
+          <form action="{{ route('admin.questions.store', $survey->id) }}" method="POST">
+            @csrf
+            @for ( $i = 0; $i < $survey->number_of_question; $i++ )
+              <div>
+                <input class="form-control" type="text" name="questions[]" placeholder="คำถามข้อ {{ $i+1 }}">
+              </div>
+            @endfor
+        
+            <button class="btn btn-primary btn-raised">ยืนยัน</button>
+          </form>
+        </div>
+      </div>
     </div>
   </div>
 
