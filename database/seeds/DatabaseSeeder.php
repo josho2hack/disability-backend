@@ -669,5 +669,27 @@ class DatabaseSeeder extends Seeder
         $asset_categories->disablilityTypes()->attach(5);
         $asset_categories->disablilityTypes()->attach(6);
         $asset_categories->disablilityTypes()->attach(7);
+
+        \App\SurveyType::insert([
+            [
+                'name' => 'แบบสำรวจความพึงพอใจ',
+                'slug' => 'survey-type-one'
+            ]
+        ]);
+
+        \App\NewsCategory::insert([
+            [
+                'name' => 'ไม่มีหมวดหมู่',
+                'slug' => 'uncategory'
+            ]
+        ]);
+
+        \App\NewsGroup::insert([
+            [
+                'name' => 'ไม่มีกลุ่ม',
+                'slug' => 'ungroup'
+            ]
+        ]);
+        
     }
 }
