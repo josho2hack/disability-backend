@@ -17,9 +17,9 @@ class CreateNewsTable extends Migration
             $table->id()                                    ->comment('รหัสไอดี');
             $table->foreignId('user_id')                    ->comment('รหัสผู้ใช้')
                 ->constrained()->onDelete('cascade');
-            $table->foreignId('news_category_id')         ->comment('รหัสหมวดหมู่หลักสูตร')
+            $table->foreignId('news_category_id')           ->comment('รหัสหมวดหมู่หลักสูตร')
                 ->constrained()->onDelete('cascade');
-            $table->foreignId('news_group_id')            ->comment('รหัสกลุ่มหลักสูตร')
+            $table->foreignId('news_group_id')              ->comment('รหัสกลุ่มหลักสูตร')
                 ->constrained()->onDelete('cascade');
             $table->string('title')                         ->comment('หัวข้อ');
             $table->text('description')                     ->comment('รายละเอียด');
