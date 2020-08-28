@@ -52,7 +52,6 @@ Route::prefix('admin')->group(function () {
 
     Route::resource('surveys', 'SurveyController', ['as' => 'admin']);
     Route::resource('surveys/{id}/questions', 'QuestionController', ['as' => 'admin']);
-    Route::resource('surveys/{id}/questions', 'Admin\QuestionController', ['as' => 'admin']);
 });
 
 

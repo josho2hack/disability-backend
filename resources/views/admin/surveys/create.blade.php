@@ -6,6 +6,8 @@
 
 @section('content')
 
+<h3>11.4 จัดการแบบสำรวจ / สร้างแบบสำรวจ</h3>
+
 <form action="{{ route('admin.surveys.store') }}" method="POST">
   @csrf
 

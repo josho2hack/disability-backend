@@ -6,6 +6,8 @@
 
 @section('content')
 
+<h3>11.4 จัดการแบบสำรวจ / แก้ไขแบบสำรวจ</h3>
+
 <div>
   <h2>{{ $survey->name }} จำนวน {{ $survey->number_of_question }} ข้อ</h2>
 </div>

@@ -5,6 +5,8 @@
 @endsection
 
 @section('content')
+  <h3>11.4 จัดการแบบสำรวจ / สร้างคำถามแบบสำรวจ</h3>
+
   <div>
     {{ $survey->name }} จำนวน {{ $survey->number_of_question }} ข้อ
   </div>

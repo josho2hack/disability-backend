@@ -6,6 +6,10 @@
 
 @section('content')
 
+<h3>
+  11.4 จัดการแบบสำรวจ
+</h3>
+
 <div class="text-right">
   <a href="{{ route('admin.surveys.create') }}" class="btn btn-primary btn-raised">สร้างแบบสำรวจ</a>
 </div>
