@@ -153,6 +153,30 @@
                                 </a>
                             </li>
                             <li>
+                                <a role="button" tabindex="0">
+                                    <i class="fa fa-edit"></i>
+                                    <span>11. ระบบจัดการเว็บ</span>
+                                </a>
+                                <ul>
+                                    <li>
+                                        <a href="{{ url('news') }}">
+                                            <i class="fa fa-angle-right"></i>11.1 จัดการข่าวสาร</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ url('activity') }}">
+                                            <i class="fa fa-angle-right"></i>11.2 จัดการกิจกรรม</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ url('fileupload') }}">
+                                            <i class="fa fa-angle-right"></i>11.3 จัดการไฟล์</a>
+                                    </li>
+                                    <li>
+                                        <a href="">
+                                            <i class="fa fa-angle-right"></i>11.4 จัดการแบบสำรวจ</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
                                 <a href="#">
                                     <i class="fa fa-lock"></i>
                                     <span>เข้าสู่ระบบ</span>
