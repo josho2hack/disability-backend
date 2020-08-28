@@ -35,6 +35,16 @@ Route::get('/profile/address', 'ProfileController@address');
 Route::get('/profile/edit', 'ProfileController@edit_profile');
 Route::resources(['form-borrow' => 'Form\FormborrowController']);
 
+Route::get('news', 'NewsController@index');
+Route::get('news/add', 'NewsController@add');
+Route::post('news', 'NewsController@insert');
+
+Route::get('activity', 'EventController@index');
+Route::get('activity/add', 'EventController@add');
+Route::post('activity', 'EventController@insert');
+
+Route::get('fileupload', function () { return view('fileupload.index'); });
+Route::get('fileupload/add', function () { return view('fileupload.add'); });
 
 Route::get('email/verify/{id}', 'VerificationApiController@verify')->name('verificationapi.verify');
 Route::get('email/resend', 'VerificationApiController@resend')->name('verificationapi.resend');
@@ -54,14 +64,3 @@ Route::prefix('admin')->group(function () {
     Route::resource('surveys/{id}/questions', 'QuestionController', ['as' => 'admin']);
     Route::post('surveys/{id}/questions/updates', 'QuestionController@updates')->name('admin.questions.updates');
 });
-
-Route::get('news', 'NewsController@index');
-Route::get('news/add', 'NewsController@add');
-Route::post('news', 'NewsController@insert');
-
-Route::get('activity', 'EventController@index');
-Route::get('activity/add', 'EventController@add');
-Route::post('activity', 'EventController@insert');
-
-Route::get('fileupload', function () { return view('fileupload.index'); });
-Route::get('fileupload/add', function () { return view('fileupload.add'); });

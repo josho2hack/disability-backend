@@ -12,7 +12,7 @@ class NewsController extends Controller
         $news = News::all();
 
         return view('news.index', compact('news'));
-        // return view('news.index');
+        // return view('news');
     }
 
     public function add(){
@@ -21,9 +21,9 @@ class NewsController extends Controller
 
     public function insert(Request $request){
         $news = New News;
-        // $request['user_id'] = '1';
+        $request['user_id'] = '4';
         // dd($request);
-        $request['user_id'] = \Auth::user()->id;
+        // $request['user_id'] = \Auth::user()->id;
         $request['news_category_id'] = '1';
         $request['news_group_id'] = '1';
         $filename = $request->upload->getClientOriginalName();
@@ -38,7 +38,7 @@ class NewsController extends Controller
         $news->fill($request->all());
 
     	if( $news->save() ) {
-    		return redirect('news');
+    		return redirect('news/add');
     	}
     }
 }

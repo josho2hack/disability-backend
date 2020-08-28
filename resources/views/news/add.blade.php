@@ -29,7 +29,7 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="boxs-body">
-                                            <form class="form-horizontal" action="{{ route('news') }}" method="post">
+                                            <form class="form-horizontal" action="{{ url('news') }}" method="post">
                                                 @csrf
                                                 <div class="form-group">
                                                     <label for="title" class="col-sm-2 control-label">หัวข้อข่าวสาร</label>
