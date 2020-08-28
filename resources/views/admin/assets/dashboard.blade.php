@@ -27,26 +27,26 @@
     <div class="row clearfix stats">
         <div class="col-md-3 col-sm-6 col-xs-12 text-center">
             <div class="boxs padder-v">
-                <div class="h2 text-info">551</div>
-                <span class="text-muted">ทั้งหมด</span>
+                <div class="h2 text-info">200</div>
+                <span class="text-muted">คงหลือ</span>
             </div>
         </div>
         <div class="col-md-3 col-sm-6 col-xs-12 text-center">
             <a href="javascript:void(0);" class="block padder-v bg-amethyst">
-                <span class="text-white h2 block">400</span>
+                <span class="text-white h2 block">207</span>
                 <span class="text-white">ถูกยืม</span>
             </a>
         </div>
         <div class="col-md-3 col-sm-6 col-xs-12 text-center">
             <div class="boxs padder-v">
-                <div class="h2">30</div>
-                <span class="text-muted">ซ่อมแซม</span>
+                <div class="h2">13</div>
+                <span class="text-muted">ส่งซ่อม</span>
             </div>
         </div>
         <div class="col-md-3 col-sm-6 col-xs-12 text-center">
             <a href="javascript:void(0);" class="block padder-v bg-info">
-                <span class="text-white h2 block">21</span>
-                <span class="text-white">ชำรุด</span>
+                <span class="text-white h2 block">3</span>
+                <span class="text-white">สูญหาย</span>
             </a>
         </div>
     </div>
@@ -59,7 +59,7 @@
                     <h3 class="custom-font hb-cyan">
                         <strong>อุปกรณ์และเครื่องมือ</strong>
                     </h3>
-                    <p class="text-info"><strong>ทั้งหมด <span class="text-success">{{$assets->count()}}</span> รายการ</strong></p>
+                    <p class="text-info"><strong>ครุภัณฑ์ทั้งหมด <span class="text-success">{{$assets->count()}}</span> รายการ</strong></p>
                 </div>
                 <div class="boxs-widget">
                     <div class="form-group">
@@ -74,6 +74,7 @@
                     <table id="searchTextResults" data-filter="#filter" data-page-size="25"
                         class="footable table table-custom table-hover">
                         <thead>
+                        <tr><th colspan="12">กลุ่ม: เทคโนโลยีสารสนเทศและการสื่อสาร {{ $assets->count() }} รายการ</th></tr>
                             <tr>
                                 <th>ลำดับที่</th>
                                 <th>กลุ่มหลัก</th>
