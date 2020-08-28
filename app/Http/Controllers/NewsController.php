@@ -9,10 +9,10 @@ use App\User;
 class NewsController extends Controller
 {
     public function index(){
-        // $news = News::all();
+        $news = News::all();
 
-        // return view('news.index', compact('news'));
-        return view('news.index');
+        return view('news.index', compact('news'));
+        // return view('news.index');
     }
 
     public function add(){
