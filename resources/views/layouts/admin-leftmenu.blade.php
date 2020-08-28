@@ -193,7 +193,7 @@
                                     </li>
                                     <li>
                                         <a href="{{ route('admin.surveys.index') }}">
-                                            <i class="fa fa-angle-right"></i>11.4 จัดการแบบสำรวจ</a>
+                                            <i class="fa fa-angle-right"></i>12.4 จัดการแบบสำรวจ</a>
                                     </li>
                                 </ul>
                             </li>

@@ -39,10 +39,6 @@ Route::post('/profile/edit', 'ProfileController@update_profile');
 Route::resources(['form-borrow' => 'Form\FormborrowController']);
 Route::get('/object', 'ObjectController@index');
 
-Route::get('news', 'NewsController@index');
-Route::get('news/add', 'NewsController@add');
-Route::post('news', 'NewsController@insert');
-
 Route::get('activity', 'EventController@index');
 Route::get('activity/add', 'EventController@add');
 Route::post('activity', 'EventController@insert');
@@ -64,6 +60,11 @@ Route::prefix('admin')->group(function () {
         'maingroups' => 'Admin\MainGroupController',
         'subgroups' => 'Admin\SubGroupController',
     ]);
+
+    
+    Route::namespace('Admin')->name('admin.')->group(function() {
+        Route::resource('news', 'NewsController');
+    });
 
     Route::resource('surveys', 'SurveyController', ['as' => 'admin']);
     Route::resource('surveys/{id}/questions', 'QuestionController', ['as' => 'admin']);
