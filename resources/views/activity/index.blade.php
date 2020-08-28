@@ -62,11 +62,11 @@
                             </tr>
                         </thead>
                         <tbody>
-                           {{--  @foreach ($maingroups as $maingroup)
+                            @foreach ($events as $event)
                                 <tr>
                                     <td>{{ $loop->index + 1 }}</td>
-                                    <td>{{ $maingroup->name }}</td>
-                                    <td>
+                                    <td>{{ $event->title }}</td>
+                                    {{-- <td>
                                         <a href="{{ route('maingroups.show', $maingroup) }}" class="btn btn-raised btn-info"
                                             title="รายละเอียด"> <i class="fa fa-eye"></i></a>
                                     </td>
@@ -81,9 +81,9 @@
                                             <button class="del btn btn-raised btn-primary" type="submit" title="ลบ">
                                                 <i class="fa fa-trash"></i></button>
                                         </form>
-                                    </td>
+                                    </td> --}}
                                 </tr>
-                            @endforeach --}}
+                            @endforeach
                         </tbody>
                         <tfoot class="hide-if-no-paging">
                             <tr>

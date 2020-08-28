@@ -29,18 +29,18 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="boxs-body">
-                                            <form class="form-horizontal" action="{{ url('news') }}" method="post">
+                                            <form class="form-horizontal" action="{{ route('news') }}" method="post">
                                                 @csrf
                                                 <div class="form-group">
-                                                    <label for="news_title" class="col-sm-2 control-label">หัวข้อข่าวสาร</label>
+                                                    <label for="title" class="col-sm-2 control-label">หัวข้อข่าวสาร</label>
                                                     <div class="col-sm-10">
-                                                        <input type="text" class="form-control" val="" name="news_title">
+                                                        <input type="text" class="form-control" val="" name="title">
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="news_detail" class="col-sm-2 control-label">รายละเอียดข่าวสาร</label>
+                                                    <label for="description" class="col-sm-2 control-label">รายละเอียดข่าวสาร</label>
                                                     <div class="col-sm-10">
-                                                        <textarea class="form-control" name="news_detail" rows="5"></textarea>
+                                                        <textarea class="form-control" name="description" rows="5"></textarea>
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
@@ -51,8 +51,8 @@
                                                                 <span class="input-group-text">อัพโหลด</span>
                                                             </div>
                                                             <div class="custom-file">
-                                                                <input type="file" class="custom-file-input" name="news_picture">
-                                                                <label class="custom-file-label" for="news_picture">เลือกรูปภาพ</label>
+                                                                <input type="file" class="custom-file-input" name="upload">
+                                                                <label class="custom-file-label" for="upload">เลือกรูปภาพ</label>
                                                             </div>
                                                         </div>
                                                     </div>

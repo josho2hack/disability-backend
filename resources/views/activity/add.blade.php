@@ -29,18 +29,18 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="boxs-body">
-                                            <form class="form-horizontal" action="{{ url('activity') }}" method="post">
+                                            <form class="form-horizontal" action="{{ url('activity') }}" method="post" enctype="multipart/form-data">
                                                 @csrf
                                                 <div class="form-group">
-                                                    <label for="activity_title" class="col-sm-2 control-label">หัวข้อกิจกรรม</label>
+                                                    <label for="title" class="col-sm-2 control-label">หัวข้อกิจกรรม</label>
                                                     <div class="col-sm-10">
-                                                        <input type="text" class="form-control" val="" name="activity_title">
+                                                        <input type="text" class="form-control" val="" name="title">
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="activity_detail" class="col-sm-2 control-label">รายละเอียดกิจกรรม</label>
+                                                    <label for="description" class="col-sm-2 control-label">รายละเอียดกิจกรรม</label>
                                                     <div class="col-sm-10">
-                                                        <textarea class="form-control" name="activity_detail" rows="5"></textarea>
+                                                        <textarea class="form-control" name="description" rows="5"></textarea>
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
@@ -51,8 +51,8 @@
                                                                 <span class="input-group-text">อัพโหลด</span>
                                                             </div>
                                                             <div class="custom-file">
-                                                                <input type="file" class="custom-file-input" name="activity_picture">
-                                                                <label class="custom-file-label" for="activity_picture">เลือกรูปภาพ</label>
+                                                                <input type="file" class="custom-file-input" name="upload">
+                                                                <label class="custom-file-label" for="upload">เลือกรูปภาพ</label>
                                                             </div>
                                                         </div>
                                                     </div>

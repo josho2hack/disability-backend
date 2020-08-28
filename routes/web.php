@@ -51,12 +51,13 @@ Route::prefix('admin')->group(function () {
     ]);
 });
 
+Route::get('news', 'NewsController@index');
+Route::get('news/add', 'NewsController@add');
+Route::post('news', 'NewsController@insert');
 
-Route::get('news', function () { return view('news.index'); });
-Route::get('news/add', function () { return view('news.add'); });
-
-Route::get('activity', function () { return view('activity.index'); });
-Route::get('activity/add', function () { return view('activity.add'); });
+Route::get('activity', 'EventController@index');
+Route::get('activity/add', 'EventController@add');
+Route::post('activity', 'EventController@insert');
 
 Route::get('fileupload', function () { return view('fileupload.index'); });
 Route::get('fileupload/add', function () { return view('fileupload.add'); });
