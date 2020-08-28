@@ -73,7 +73,7 @@
                                     <td>{{ $loop->index + 1 }}</td>
                                     <td>{{ $asset->code }}</td>
                                     <td>{{ $asset->description }}</td>
-                                    <td>{{ $asset->assetstatus->name }}</td>
+                                    <td>{{ $asset->assetStatus->name }}</td>
                                     <td>{{ $asset->out_stock_evidance }}</td>
                                     <td>
                                         <a href="{{ route('assets.show', $asset) }}" class="btn btn-raised btn-info"

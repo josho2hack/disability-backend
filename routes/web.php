@@ -30,10 +30,10 @@ Route::get('/logout', 'HomeController@logout');
 Route::get('/user-login', 'HomeController@user_login');
 Route::get('/register', 'HomeController@register');
 Route::get('/profile', 'ProfileController@index');
-Route::post('/profile', 'ProfileController@insert');
-Route::get('/profile/add', 'ProfileController@add');
+Route::post('/profile', 'ProfileController@insert_address');
+Route::get('/profile/address', 'ProfileController@address');
+Route::get('/profile/edit', 'ProfileController@edit_profile');
 Route::resources(['form-borrow' => 'Form\FormborrowController']);
-
 
 
 Route::get('email/verify/{id}', 'VerificationApiController@verify')->name('verificationapi.verify');
@@ -47,8 +47,11 @@ Route::prefix('admin')->group(function () {
     Route::resources([
         'assets' => 'Admin\AssetController',
         'maingroups' => 'Admin\MainGroupController',
-        'subgroups' => 'Admin\SubGroupController'
+        'subgroups' => 'Admin\SubGroupController',
     ]);
+
+    Route::resource('surveys', 'SurveyController', ['as' => 'admin']);
+    Route::resource('surveys/{id}/questions', 'QuestionController', ['as' => 'admin']);
 });
 
 Route::get('news', 'NewsController@index');

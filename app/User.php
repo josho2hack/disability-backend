@@ -75,6 +75,11 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->roles()->where('name', 'Approve')->exists();
     }
 
+    public function disability()
+    {
+        return $this->hasOne(DisabilityType::class, 'id', 'disability_type_id');
+    }
+
 
 
     // public function sendEmailVerificationNotification()
