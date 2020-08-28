@@ -27,9 +27,20 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/logout', 'HomeController@logout');
 
+Route::get('/user-login', 'HomeController@user_login');
+Route::get('/register', 'HomeController@register');
+Route::get('/profile', 'ProfileController@index');
+Route::post('/profile', 'ProfileController@insert');
+Route::get('/profile/add', 'ProfileController@add');
+Route::resources(['form-borrow' => 'Form\FormborrowController']);
+
+
+
 Route::get('email/verify/{id}', 'VerificationApiController@verify')->name('verificationapi.verify');
 Route::get('email/resend', 'VerificationApiController@resend')->name('verificationapi.resend');
 
+Route::get('/subgroup/{id}/avatar', 'Admin\SubGroupController@avatar');
+Route::get('/subgroup/{id}/avatar', 'Admin\SubGroupController@avatar');
 Route::prefix('admin')->group(function () {
     Route::get('', 'Admin\AdminController@index')->name('admin');
     Route::get('assets/dashboard', 'Admin\AssetController@dashboard')->name('assets.dashboard');

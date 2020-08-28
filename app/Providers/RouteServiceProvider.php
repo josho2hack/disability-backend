@@ -21,7 +21,7 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @var string
      */
-    public const HOME = 'https://thaibook.site/admintle/home';
+    public const HOME = 'http://localhost/public_html';
 
     /**
      * Define your route model bindings, pattern filters, etc.

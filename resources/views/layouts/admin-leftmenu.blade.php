@@ -99,7 +99,7 @@
                                 </a>
                                 <ul>
                                     <li>
-                                        <a href="#">
+                                        <a href="{{ url('form-borrow') }}">
                                             <i class="fa fa-angle-right"></i>6.1 แบบฟอร์มยืม</a>
                                     </li>
                                     <li>

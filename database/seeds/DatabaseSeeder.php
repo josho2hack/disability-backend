@@ -115,21 +115,27 @@ class DatabaseSeeder extends Seeder
 
         DB::table('asset_statuses')->insert([
             [
-                'name' => 'ปกติ',
-                'description' => "สถานะปกติ"
+                'name' => 'คงคลัง '
             ],
             [
-                'name' => 'ถูกยืม',
-                'description' => "อุปกรณ์ถูกยืม"
+                'name' => 'รอรับ'
             ],
             [
-                'name' => 'ซ่อม',
-                'description' => "อยู่ระหว่างซ่อมหรือรอซ่อม"
+                'name' => 'ยืม'
             ],
             [
-                'name' => 'รอจำหน่าย',
-                'description' => "รอจำหน่ายขายทอดตลาดหรือปลดออก"
+                'name' => 'เสีย'
             ],
+            [
+                'name' => 'ส่งซ่อม'
+            ],
+            [
+                'name' => 'สูญหาย'
+            ]
+            ,
+            [
+                'name' => 'อื่น ๆ'
+            ]
         ]);
 
         DB::table('main_groups')->insert([

@@ -10,7 +10,8 @@ class Asset extends Model
     protected $fillable = [
         'code', 'received_date', 'version', 'serial_no', 'spec',
         'usability', 'attribute', 'description', 'url', 'doc_no', 'budget','price',
-        'out_stock_evidance', 'waranty_start', 'waranty_end', 'remark', 'image','location'
+        'out_stock_evidance', 'waranty_start', 'waranty_end', 'remark', 'image','location',
+        'asset_statuses_id','asset_categories_id '
     ];
 
     public function assetCategory()

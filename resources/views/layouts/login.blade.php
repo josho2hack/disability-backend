@@ -15,9 +15,7 @@
     <!-- vendor css files -->
     <link rel="stylesheet" href="{{ asset('assets/js/vendor/bootstrap/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/vendor/animsition.min.css') }}">
-
-    @yield('header')
-
+    <link rel="stylesheet" href="{{ asset('assets/js/vendor/morris/morris.css') }}">
     <!-- project main css files -->
     <link rel="stylesheet" href="{{ asset('assets/css/main.css') }}">
 </head>
@@ -28,8 +26,7 @@
         @include('layouts.admin-header')
 
         <div id="controls">
-            @include('layouts.admin-leftmenu')
-            @include('layouts.admin-rightmenu')
+
         </div>
         <!-- CONTENT -->
         <section id="content">
@@ -40,18 +37,7 @@
 
     </div>
 
-    <!-- Vendor JavaScripts -->
-    <script src="{{ asset('assets/bundles/libscripts.bundle.js') }}"></script>
-    <script src="{{ asset('assets/bundles/vendorscripts.bundle.js') }}"></script>
-
-    @yield('footer')
-
-    <!-- page Js -->
-    <script src="{{ asset('assets/bundles/mainscripts.bundle.js') }}"></script>
-
-    <!-- Page Specific Scripts -->
-    @yield('footer-script')
-    <!--/ Page Specific Scripts -->
+    @include('layouts.admin-footer')
 </body>
 
 </html>

@@ -7,6 +7,8 @@ use App\Http\Controllers\Controller;
 use App\SubGroup;
 use Illuminate\Http\Request;
 
+use finfo;
+
 class SubGroupController extends Controller
 {
     /**
@@ -16,8 +18,8 @@ class SubGroupController extends Controller
      */
     public function index()
     {
-        $subgroups = AssetCategory::all();
-        return view('admin.subgroups.index',compact('subgroups'));
+        $subgroups = AssetCategory::with('subgroup')->get();
+        return view('admin.subgroups.index', compact('subgroups'));
     }
 
     /**
@@ -28,7 +30,7 @@ class SubGroupController extends Controller
     public function create()
     {
         $maingroups = SubGroup::all();
-        return view('admin.subgroups.create',compact('maingroups'));
+        return view('admin.subgroups.create', compact('maingroups'));
     }
 
     /**
@@ -41,12 +43,29 @@ class SubGroupController extends Controller
     {
         $request->validate([
             'name' => 'required',
-            'for_give'=> 'required',
+            'for_give' => 'required',
             'sub_groups_id' => 'required'
         ]);
 
+        if ($request->hasFile('image')) {
+            // Get the file from the request
+            $file = $request->file('image');
+
+            // Get the contents of the file
+            $contents = $file->openFile()->fread($file->getSize());
+            $request['image'] = $contents;
+        }
+
+
         AssetCategory::create($request->all());
         return redirect()->route('subgroups.index')->with('success', 'บันทึกข้อมูลเรียบร้อยแล้ว');
+    }
+
+    public function avatar($id){
+        $subgroup = AssetCategory::find($id);
+        return response()->make($subgroup->image, 200, array(
+            'Content-Type' => (new finfo(FILEINFO_MIME))->buffer($subgroup->image)
+        ));
     }
 
     /**
@@ -57,8 +76,10 @@ class SubGroupController extends Controller
      */
     public function show($id)
     {
-        $subgroup = AssetCategory::find($id);
-        return view('admin.subgroups.show',compact('subgroup'));
+        $subgroup = AssetCategory::with('subgroup')->find($id);
+        $subgroupR = SubGroup::with('maingroup')->find($subgroup->subgroup->id);
+        $subgroup['type'] = $subgroupR->maingroup->name;
+        return view('admin.subgroups.show', compact('subgroup'));
     }
 
     /**
@@ -69,8 +90,9 @@ class SubGroupController extends Controller
      */
     public function edit($id)
     {
-        $subgoup = AssetCategory::find($id);
-        return view('admin.subgroups.edit',compact('subgoup'));
+        $maingroups = SubGroup::all();
+        $subgroup = AssetCategory::with('subgroup')->find($id);
+        return view('admin.subgroups.edit', compact('subgroup'),compact('maingroups'));
     }
 
     /**
@@ -84,8 +106,19 @@ class SubGroupController extends Controller
     {
         $subgoup = AssetCategory::find($id);
         $request->validate([
-            'name' => 'required'
+            'name' => 'required',
+            'for_give' => 'required',
+            'sub_groups_id' => 'required'
         ]);
+
+        if ($request->hasFile('image')) {
+            // Get the file from the request
+            $file = $request->file('image');
+
+            // Get the contents of the file
+            $contents = $file->openFile()->fread($file->getSize());
+            $request['image'] = $contents;
+        }
 
         $subgoup->update($request->all());
         return redirect()->route('subgroups.index')->with('success', 'ปรับปรุงอมูลเรียบร้อยแล้ว');

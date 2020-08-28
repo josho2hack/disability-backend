@@ -1,4 +1,7 @@
 @extends('layouts.admin')
+@section('header')
+
+@endsection
 
 @section('content')
     <!-- bradcome -->
@@ -43,7 +46,8 @@
                             </ul>
                         </div>
                     @endif
-                    <form class="form-horizontal" role="form" action="{{ route('subgroups.store') }}" method="POST" enctype="multipart/form-data">
+                    <form class="form-horizontal" role="form" action="{{ route('subgroups.store') }}" method="POST"
+                        enctype="multipart/form-data">
                         @csrf
                         <div class="form-group">
                             <label for="name" class="col-sm-2 control-label">กลุ่มย่อย</label>
@@ -75,17 +79,23 @@
                             <div class="col-sm-10">
                                 <select name="sub_groups_id" tabindex="5" class="chosen-select" style="width: 240px;">
                                     @foreach ($maingroups as $maingroup)
-                                        <option value="{{ $maingroup->id }}">{{ $maingroup->name }}</option>
+                                        <option value="{{ $maingroup->id }}"
+                                            @if ($maingroup->id == 1)
+                                            selected
+                                            @endif>{{ $maingroup->name }}</option>
                                     @endforeach
                                 </select>
                             </div>
                         </div>
-                        <div class="form-group">
+
+                        <div>
                             <label for="description" class="col-sm-2 control-label">รูปภาพ</label>
                             <div class="col-sm-10">
-                                <input type="file" class="form-control" name="image" placeholder="">
+                                <input id="fileupload" type="file" name="image">
                             </div>
                         </div>
+                        <!--//Up load File ---------------------------------------------------------->
+
                         <div class="form-group">
                             <div class="col-sm-offset-2 col-sm-10">
                                 <button type="submit" class="btn btn-raised btn-success">บันทึก</button>
@@ -103,5 +113,9 @@
 @endsection
 
 @section('footer')
+
+@endsection
+
+@section('footer-script')
 
 @endsection

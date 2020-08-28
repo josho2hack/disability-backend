@@ -10,7 +10,7 @@
         <div class="row">
             <div class="col-sm-6 col-xs-12">
                 <h3 class="h3 m-0">1.1 ระบบอุปกรณ์และเครื่องมือ</h3>
-                <small class="text-muted">1.1.3 อุปกรณ์และเครื่องมือ</small>
+                <small class="text-muted">1.1.1 กลุ่มหลักอุปกรณ์และเครื่องมือ</small>
             </div>
             <div class="btn-group pull-right">
                 <ol class="breadcrumb">
@@ -23,7 +23,7 @@
                     <li>
                         <a href="{{ route('assets.dashboard') }}">1.1 ระบบอุปกรณ์และเครื่องมือ</a>
                     </li>
-                    <li class="active">1.1.3 อุปกรณ์และเครื่องมือ</li>
+                    <li class="active">1.1.1 กลุ่มหลักอุปกรณ์และเครื่องมือ</li>
                 </ol>
             </div>
         </div>
@@ -35,21 +35,21 @@
             <section class="boxs">
                 <div class="boxs-header">
                     <h3 class="custom-font hb-cyan">
-                        <strong>รายการอุปกรณ์และเครื่องมือ</strong>
+                        <strong>รายการกลุ่มหลักอุปกรณ์และเครื่องมือ</strong>
                     </h3>
                 </div>
                 <div class="boxs-widget">
                     <div class="form-group">
                         <div class="btn-group pull-right">
-                            <a href="{{ route('assets.create') }}" class="btn btn-success btn-raised">เพิ่มอุปกรณ์และเครื่องมือ</a>
+                            <a href="{{ route('maingroups.create') }}" class="btn btn-success btn-raised">สร้างกลุ่มหลัก</a>
                         </div>
-                        <p class="text-info"><strong>ทั้งหมด <span class="text-success">{{$assets->count()}}</span> รายการ</strong></p>
                         <label for="filter" style="padding-top: 5px">ค้นหา:</label>
                         <input id="filter" type="text" class="form-control rounded w-md mb-10 inline-block" />
                     </div>
                 </div>
 
                 <div class="boxs-body">
+
                     @if ($message = Session::get('success'))
                         <div class="alert alert-success">
                             <p>{{ $message }}</p>
@@ -60,31 +60,25 @@
                         <thead>
                             <tr>
                                 <th>ลำดับที่</th>
-                                <th>รหัสครุภัณฑ์</th>
-                                <th>ยี่ห้อ ชนิด แบบ ขนาดและลักษณะ</th>
-                                <th>สถานะ</th>
-                                <th>หลักฐานการจ่าย</th>
+                                <th>กลุ่มหลัก</th>
                                 <th colspan=3>ดำเนินการ</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($assets as $asset)
+                           {{--  @foreach ($maingroups as $maingroup)
                                 <tr>
                                     <td>{{ $loop->index + 1 }}</td>
-                                    <td>{{ $asset->code }}</td>
-                                    <td>{{ $asset->description }}</td>
-                                    <td>{{ $asset->assetstatus->name }}</td>
-                                    <td>{{ $asset->out_stock_evidance }}</td>
+                                    <td>{{ $maingroup->name }}</td>
                                     <td>
-                                        <a href="{{ route('assets.show', $asset) }}" class="btn btn-raised btn-info"
+                                        <a href="{{ route('maingroups.show', $maingroup) }}" class="btn btn-raised btn-info"
                                             title="รายละเอียด"> <i class="fa fa-eye"></i></a>
                                     </td>
                                     <td>
-                                        <a href="{{ route('assets.edit', $asset->id) }}"
+                                        <a href="{{ route('maingroups.edit', $maingroup->id) }}"
                                             class="btn btn-raised btn-warning" title="แก้ไข"> <i class="fa fa-edit"></i></a>
                                     </td>
                                     <td>
-                                        <form action="{{ route('assets.destroy', $asset->id) }}" method="post">
+                                        <form action="{{ route('maingroups.destroy', $maingroup->id) }}" method="post">
                                             @csrf
                                             @method('DELETE')
                                             <button class="del btn btn-raised btn-primary" type="submit" title="ลบ">
@@ -92,7 +86,7 @@
                                         </form>
                                     </td>
                                 </tr>
-                            @endforeach
+                            @endforeach --}}
                         </tbody>
                         <tfoot class="hide-if-no-paging">
                             <tr>

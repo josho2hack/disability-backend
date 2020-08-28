@@ -262,9 +262,9 @@
                             <div class="dropdown-menu pull-right panel panel-default" role="menu">
                                 <ul class="app-sortcut">
                                     <li>
-                                        <a href="{{ route('login') }}" class="connection-item" role="button" tabindex="0">
+                                        <a href="{{ url('user-login') }}" class="connection-item" role="button" tabindex="0">
                                             <i class="fa fa-umbrella"></i>
-                                            <span class="block">ประชาชนทั่วไป</span>
+                                            <span class="block">สมาชิกคนพิการ</span>
                                         </a>
                                     </li>
                                     <li>
@@ -290,7 +290,9 @@
                         </li>
                         @if (Route::has('register'))
                             <li>
-                                <a class="nav-link" href="{{ route('register') }}" role="button"
+                                {{-- <a class="nav-link" href="{{ route('register') }}" role="button"
+                                    tabindex="0"><i class="fa fa-key"></i> {{ __('ลงทะเบียนเข้าใช้งาน') }}</a> --}}
+                                <a class="nav-link" href="{{ url('register') }}" role="button"
                                     tabindex="0"><i class="fa fa-key"></i> {{ __('ลงทะเบียนเข้าใช้งาน') }}</a>
                             </li>
                         @endif
@@ -306,7 +308,7 @@
                                     </div>
                                 </li>
                                 <li>
-                                    <a href="profile.html" role="button" tabindex="0">
+                                    <a href="{{url('profile')}}" role="button" tabindex="0">
                                         <span class="label label-success pull-right">80%</span>
                                         <i class="fa fa-user"></i>Profile</a>
                                 </li>

@@ -61,7 +61,8 @@
                     <div class="form-group">
                         <div class="btn-group pull-right">
                             <a href="{{route('maingroups.index')}}" class="btn btn-info btn-raised mr-10">กลุ่มหลัก</a>
-                            <a href="{{route('subgroups.index')}}" class="btn btn-info btn-raised">กลุ่มย่อย</a>
+                            <a href="{{route('subgroups.index')}}" class="btn btn-info btn-raised mr-10">กลุ่มย่อย</a>
+                            <a href="{{route('assets.index')}}" class="btn btn-info btn-raised">อุปกรณ์และเครื่องมือทั้งหมด</a>
                         </div>
                     </div>
                 </div>
