@@ -55,6 +55,21 @@
                                         <a href="#">
                                             <i class="fa fa-angle-right"></i>1.9 จัดการไฟล์</a>
                                     </li>
+                                    <li>
+                                        <a href="#">
+                                            <i class="fa fa-angle-right"></i>1.10 ระบบจัดการเนื้อห</a>
+                                            <ul>
+                                                <li>
+                                                    <a href="#">
+                                                        <i class="fa fa-angle-right"></i>1.10.1 จัดการข่าว
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="#">
+                                                        <i class="fa fa-angle-right"></i>1.10.2 จัดการกิจกรรม</a>
+                                                </li>
+                                            </ul>
+                                    </li>
                                 </ul>
                             </li>
                             <li>
@@ -93,40 +108,46 @@
                                 </a>
                             </li>
                             <li>
+                                <a href="#">
+                                    <i class="fa fa-bar-chart-o"></i>
+                                    <span>6. รายการครุภัณฑ์ว่าง</span>
+                                </a>
+                            </li>
+                            <li>
                                 <a role="button" tabindex="0">
                                     <i class="fa fa-edit"></i>
-                                    <span>6. กรอกแบบฟอร์ม</span>
+                                    <span>7. กรอกแบบฟอร์ม</span>
                                 </a>
                                 <ul>
                                     <li>
                                         <a href="{{ url('form-borrow') }}">
-                                            <i class="fa fa-angle-right"></i>6.1 แบบฟอร์มยืม</a>
+                                            <i class="fa fa-angle-right"></i>7.1 แบบฟอร์มยืม</a>
                                     </li>
                                     <li>
                                         <a href="#">
-                                            <i class="fa fa-angle-right"></i>6.2 แบบฟอร์มรับ
+                                            <i class="fa fa-angle-right"></i>7.2 แบบฟอร์มรับ
                                         </a>
                                     </li>
                                     <li>
                                         <a href="#">
-                                            <i class="fa fa-angle-right"></i>6.3 แบบฟอร์มคืน</a>
+                                            <i class="fa fa-angle-right"></i>7.3 แบบฟอร์มคืน</a>
                                     </li>
                                     <li>
                                         <a href="#">
-                                            <i class="fa fa-angle-right"></i>6.4 แบบฟอร์มสัญญา</a>
+                                            <i class="fa fa-angle-right"></i>7.4 แบบฟอร์มสัญญา</a>
                                     </li>
                                 </ul>
                             </li>
                             <li>
                                 <a href="#">
                                     <i class="fa fa-check-square-o"></i>
-                                    <span>7. สัญญายืม/ค้ำประกัน</span>
+                                    <span>8. สัญญายืม/ค้ำประกัน</span>
                                 </a>
                             </li>
                             <li>
                                 <a role="button" tabindex="0">
                                     <i class="fa fa-edit"></i>
-                                    <span>8. ปัญหาการใช้งาน</span>
+                                    <span>9. ปัญหาการใช้งาน</span>
                                 </a>
                                 <ul>
                                     <li>
@@ -142,37 +163,42 @@
                             <li>
                                 <a href="#">
                                     <i class="fa fa-calendar-check-o"></i>
-                                    <span>9. ปฏิทินกิจกรรม</span>
+                                    <span>10. ปฏิทินกิจกรรม</span>
                                     <span class="label label-primary">กิจกรรมใหม่</span>
                                 </a>
                             </li>
                             <li>
                                 <a href="#">
                                     <i class="fa fa-thumbs-o-up"></i>
-                                    <span>10. ตอบแบบสอบถาม</span>
+                                    <span>11. ตอบแบบสอบถาม</span>
                                 </a>
                             </li>
                             <li>
                                 <a role="button" tabindex="0">
                                     <i class="fa fa-edit"></i>
-                                    <span>11. ระบบจัดการเว็บ</span>
+                                    <span>12. ระบบจัดการเว็บ</span>
                                 </a>
                                 <ul>
                                     <li>
                                         <a href="{{ url('news') }}">
-                                            <i class="fa fa-angle-right"></i>11.1 จัดการข่าวสาร</a>
+                                            <i class="fa fa-angle-right"></i>12.1 จัดการข่าวสาร</a>
                                     </li>
                                     <li>
                                         <a href="{{ url('activity') }}">
-                                            <i class="fa fa-angle-right"></i>11.2 จัดการกิจกรรม</a>
+                                            <i class="fa fa-angle-right"></i>12.2 จัดการกิจกรรม</a>
                                     </li>
                                     <li>
                                         <a href="{{ url('fileupload') }}">
-                                            <i class="fa fa-angle-right"></i>11.3 จัดการไฟล์</a>
+                                            <i class="fa fa-angle-right"></i>12.3 จัดการไฟล์</a>
                                     </li>
                                     <li>
+<<<<<<< HEAD
                                         <a href="{{ route('admin.surveys.index') }}">
                                             <i class="fa fa-angle-right"></i>11.4 จัดการแบบสำรวจ</a>
+=======
+                                        <a href="">
+                                            <i class="fa fa-angle-right"></i>12.4 จัดการแบบสำรวจ</a>
+>>>>>>> a2479563a7b8c4244a9fc15f2d111c4d7e027a2e
                                     </li>
                                 </ul>
                             </li>

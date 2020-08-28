@@ -1,4 +1,7 @@
 @extends('layouts.admin')
+@section('header')
+    <link rel="stylesheet" href="{{ asset('assets/js/vendor/footable/css/footable.core.min.css') }}">
+@endsection
 @section('content')
     <!-- bradcome -->
     <div class="b-b mb-10">
@@ -56,6 +59,7 @@
                     <h3 class="custom-font hb-cyan">
                         <strong>อุปกรณ์และเครื่องมือ</strong>
                     </h3>
+                    <p class="text-info"><strong>ทั้งหมด <span class="text-success">{{$assets->count()}}</span> รายการ</strong></p>
                 </div>
                 <div class="boxs-widget">
                     <div class="form-group">
@@ -67,6 +71,47 @@
                     </div>
                 </div>
                 <div class="boxs-body">
+                    <table id="searchTextResults" data-filter="#filter" data-page-size="25"
+                        class="footable table table-custom table-hover">
+                        <thead>
+                            <tr>
+                                <th>ลำดับที่</th>
+                                <th>กลุ่มหลัก</th>
+                                <th>กลุ่มย่อย</th>
+                                <th>รูปภาพ</th>
+                                <th>ทั้งหมด</th>
+                                <th>คงคลัง</th>
+                                <th>รอรับ</th>
+                                <th>ยืม</th>
+                                <th>เสีย</th>
+                                <th>ส่งซ่อม</th>
+                                <th>สูญหาย</th>
+                                <th>อื่น ๆ</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+
+                        </tbody>
+                        <tfoot class="hide-if-no-paging">
+                            <tr>
+                                <td colspan="12" class="text-right">
+                                    <ul class="pagination">
+                                    </ul>
+                                </td>
+                            </tr>
+                        </tfoot>
+                    </table>
 
                 </div>
                 <div class="boxs-footer">
@@ -75,4 +120,18 @@
             </section>
         </div>
     </div>
+@endsection
+@section('footer')
+    <script src="{{ asset('assets/js/vendor/footable/footable.all.min.js') }}"></script>
+@endsection
+
+@section('footer-script')
+    <!--  Page Specific Scripts  -->
+    <script>
+        $(function() {
+            $('.footable').footable();
+
+        });
+
+    </script>
 @endsection

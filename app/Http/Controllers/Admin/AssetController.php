@@ -12,7 +12,8 @@ use Illuminate\Http\Request;
 class AssetController extends Controller
 {
     public function dashboard(){
-        return view('admin.assets.dashboard');
+        $assets = Asset::with('assetStatus')->get();
+        return view('admin.assets.dashboard',compact('assets'));
     }
 
     /**
@@ -22,7 +23,7 @@ class AssetController extends Controller
      */
     public function index()
     {
-        $assets = Asset::with('assetstatus')->get();
+        $assets = Asset::with('assetStatus')->get();
         return view('admin.assets.index',compact('assets'));
     }
 

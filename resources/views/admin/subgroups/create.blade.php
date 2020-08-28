@@ -1,6 +1,14 @@
 @extends('layouts.admin')
 @section('header')
-
+    <link rel="stylesheet" href="http://blueimp.github.io/Gallery/css/blueimp-gallery.min.css">
+    <link rel="stylesheet" href="{{ asset('assets/js/vendor/file-upload/css/jquery.fileupload.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/js/vendor/file-upload/css/jquery.fileupload-ui.css') }}">
+    <noscript>
+        <link rel="stylesheet" href="{{ asset('assets/js/vendor/file-upload/css/jquery.fileupload-noscript.css') }}">
+    </noscript>
+    <noscript>
+        <link rel="stylesheet" href="{{ asset('assets/js/vendor/file-upload/css/jquery.fileupload-ui-noscript.css') }}">
+    </noscript>
 @endsection
 
 @section('content')
@@ -79,10 +87,9 @@
                             <div class="col-sm-10">
                                 <select name="sub_groups_id" tabindex="5" class="chosen-select" style="width: 240px;">
                                     @foreach ($maingroups as $maingroup)
-                                        <option value="{{ $maingroup->id }}"
-                                            @if ($maingroup->id == 1)
+                                        <option value="{{ $maingroup->id }}" @if ($maingroup->id == 1)
                                             selected
-                                            @endif>{{ $maingroup->name }}</option>
+                                    @endif>{{ $maingroup->name }}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -113,7 +120,9 @@
 @endsection
 
 @section('footer')
-
+    <!-- The jQuery UI widget factory, can be omitted if jQuery UI is already included -->
+    <script src="{{ asset('assets/js/vendor/file-upload/js/vendor/jquery.ui.widget.js') }}"></script>
+    <script src="{{ asset('assets/bundles/fileuploadscripts.bundle.js') }}"></script>
 @endsection
 
 @section('footer-script')
