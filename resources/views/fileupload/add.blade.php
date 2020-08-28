@@ -29,18 +29,12 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="boxs-body">
-                                            <form class="form-horizontal" action="{{ url('fileupload') }}" method="post">
+                                            <form class="form-horizontal" action="{{ url('fileupload') }}" method="post" enctype="multipart/form-data">
                                                 @csrf
                                                 <div class="form-group">
-                                                    <label for="news_title" class="col-sm-2 control-label">ชื่อไฟล์</label>
+                                                    <label for="name" class="col-sm-2 control-label">ชื่อไฟล์</label>
                                                     <div class="col-sm-10">
-                                                        <input type="text" class="form-control" val="" name="news_title">
-                                                    </div>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="news_detail" class="col-sm-2 control-label">รายละเอียดไฟล์</label>
-                                                    <div class="col-sm-10">
-                                                        <textarea class="form-control" name="news_detail" rows="5"></textarea>
+                                                        <input type="text" class="form-control" val="" name="name">
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
@@ -51,8 +45,8 @@
                                                                 <span class="input-group-text">อัพโหลด</span>
                                                             </div>
                                                             <div class="custom-file">
-                                                                <input type="file" class="custom-file-input" name="news_picture">
-                                                                <label class="custom-file-label" for="news_picture">เลือกไฟล์</label>
+                                                                <input type="file" class="custom-file-input" name="upload">
+                                                                <label class="custom-file-label" for="upload">เลือกไฟล์</label>
                                                             </div>
                                                         </div>
                                                     </div>

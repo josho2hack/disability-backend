@@ -9,10 +9,10 @@ class File extends Model
 {
     use SoftDeletes;
 
-    protected $table = '';
+    protected $table = 'files';
 
     protected $fillable = [
-        'user_id','event_category_id','event_group_id','title','description','cover_path','cover_name','cover_link'
+        'user_id','name','cover_path','cover_name','cover_link'
     ];
 
 	protected $guarded = [];

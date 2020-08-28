@@ -58,15 +58,18 @@
                             <tr>
                                 <th>ลำดับที่</th>
                                 <th>ชื่อไฟล์</th>
+                                <th>ดาวโหลด</th>
                                 <th colspan=3>ดำเนินการ</th>
                             </tr>
                         </thead>
                         <tbody>
-                           {{--  @foreach ($maingroups as $maingroup)
+                            @foreach ($files as $file)
                                 <tr>
                                     <td>{{ $loop->index + 1 }}</td>
-                                    <td>{{ $maingroup->name }}</td>
-                                    <td>
+                                    <td>{{ $file->name }}</td>
+                                    <td><a href="{{ asset($file->cover_path) }}" class="btn btn-success btn-raised"><i class="fa fa-download"></i> ดาวโหลด</a></td>
+                                    <td> </td>
+                                    {{-- <td>
                                         <a href="{{ route('maingroups.show', $maingroup) }}" class="btn btn-raised btn-info"
                                             title="รายละเอียด"> <i class="fa fa-eye"></i></a>
                                     </td>
@@ -81,9 +84,9 @@
                                             <button class="del btn btn-raised btn-primary" type="submit" title="ลบ">
                                                 <i class="fa fa-trash"></i></button>
                                         </form>
-                                    </td>
+                                    </td> --}}
                                 </tr>
-                            @endforeach --}}
+                            @endforeach
                         </tbody>
                         <tfoot class="hide-if-no-paging">
                             <tr>

@@ -43,8 +43,9 @@ Route::get('activity', 'EventController@index');
 Route::get('activity/add', 'EventController@add');
 Route::post('activity', 'EventController@insert');
 
-Route::get('fileupload', function () { return view('fileupload.index'); });
-Route::get('fileupload/add', function () { return view('fileupload.add'); });
+Route::get('fileupload', 'FileController@index');
+Route::get('fileupload/add', 'FileController@add');
+Route::post('fileupload', 'FileController@insert');
 
 Route::get('email/verify/{id}', 'VerificationApiController@verify')->name('verificationapi.verify');
 Route::get('email/resend', 'VerificationApiController@resend')->name('verificationapi.resend');
