@@ -108,7 +108,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="#">
+                                <a href="{{ url('object') }}">
                                     <i class="fa fa-bar-chart-o"></i>
                                     <span>6. รายการครุภัณฑ์ว่าง</span>
                                 </a>
@@ -180,7 +180,7 @@
                                 </a>
                                 <ul>
                                     <li>
-                                        <a href="{{ url('news') }}">
+                                        <a href="{{ route('admin.news.index') }}">
                                             <i class="fa fa-angle-right"></i>12.1 จัดการข่าวสาร</a>
                                     </li>
                                     <li>
@@ -193,7 +193,7 @@
                                     </li>
                                     <li>
                                         <a href="{{ route('admin.surveys.index') }}">
-                                            <i class="fa fa-angle-right"></i>11.4 จัดการแบบสำรวจ</a>
+                                            <i class="fa fa-angle-right"></i>12.4 จัดการแบบสำรวจ</a>
                                     </li>
                                 </ul>
                             </li>

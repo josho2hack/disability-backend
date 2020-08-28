@@ -32,12 +32,12 @@ Route::get('/register', 'HomeController@register');
 Route::get('/profile', 'ProfileController@index');
 Route::post('/profile', 'ProfileController@insert_address');
 Route::get('/profile/address', 'ProfileController@address');
+Route::get('/profile/edit_address', 'ProfileController@edit_address');
+Route::post('/profile/edit_address', 'ProfileController@update_address');
 Route::get('/profile/edit', 'ProfileController@edit_profile');
+Route::post('/profile/edit', 'ProfileController@update_profile');
 Route::resources(['form-borrow' => 'Form\FormborrowController']);
-
-Route::get('news', 'NewsController@index');
-Route::get('news/add', 'NewsController@add');
-Route::post('news', 'NewsController@insert');
+Route::get('/object', 'ObjectController@index');
 
 Route::get('activity', 'EventController@index');
 Route::get('activity/add', 'EventController@add');
@@ -60,6 +60,11 @@ Route::prefix('admin')->group(function () {
         'maingroups' => 'Admin\MainGroupController',
         'subgroups' => 'Admin\SubGroupController',
     ]);
+
+    
+    Route::namespace('Admin')->name('admin.')->group(function() {
+        Route::resource('news', 'NewsController');
+    });
 
     Route::resource('surveys', 'SurveyController', ['as' => 'admin']);
     Route::resource('surveys/{id}/questions', 'QuestionController', ['as' => 'admin']);
