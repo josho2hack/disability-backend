@@ -100,15 +100,15 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="#">
-                                    <i class="fa fa-lock"></i>
-                                    <span>เข้าสู่ระบบ</span>
+                                <a href="{{ url('profile') }}">
+                                    <i class="fa fa-user"></i>
+                                    <span>จัดการข้อมูลส่วนตัว</span>
                                 </a>
                             </li>
                             <li>
                                 <a href="profile.html">
                                     <i class="fa fa-user"></i>
-                                    <span>ลงทะเบียนเข้าใช้งาน</span>
+                                    <span>รายละเอียดผู้ยื่นคำขอยืมแทน</span>
                                 </a>
                             </li>
                             <li>
