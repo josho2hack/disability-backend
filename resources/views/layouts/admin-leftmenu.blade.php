@@ -33,43 +33,41 @@
                                     </li>
                                     <li>
                                         <a href="#">
-                                            <i class="fa fa-angle-right"></i>1.4 สัญญา</a>
+                                            <i class="fa fa-angle-right"></i>1.4 จัดการสัญญา</a>
                                     </li>
                                     <li>
                                         <a href="#">
-                                            <i class="fa fa-angle-right"></i>1.5 แบบฟอร์ม</a>
+                                            <i class="fa fa-angle-right"></i>1.5 จัดการแบบฟอร์ม</a>
                                     </li>
                                     <li>
                                         <a href="#">
-                                            <i class="fa fa-angle-right"></i>1.6 ปฏิทินกิจกรรม</a>
+                                            <i class="fa fa-angle-right"></i>1.7 ระบบรับแจ้งปัญหา</a>
                                     </li>
                                     <li>
-                                        <a href="#">
-                                            <i class="fa fa-angle-right"></i>1.7 ปัญหา</a>
+                                        <a role="button" tabindex="0">
+                                            <i class="fa fa-edit"></i>
+                                            <span>1.8 ระบบจัดการเว็บ</span>
+                                        </a>
+                                        <ul>
+                                            <li>
+                                                <a href="{{ route('admin.news.index') }}">
+                                                    <i class="fa fa-angle-right"></i>1.8.1 จัดการข่าวสาร</a>
+                                            </li>
+                                            <li>
+                                                <a href="{{ url('activity') }}">
+                                                    <i class="fa fa-angle-right"></i>1.8.2 จัดการกิจกรรม</a>
+                                            </li>
+                                            <li>
+                                                <a href="{{ url('fileupload') }}">
+                                                    <i class="fa fa-angle-right"></i>1.8.3 จัดการไฟล์</a>
+                                            </li>
+                                            <li>
+                                                <a href="{{ route('admin.surveys.index') }}">
+                                                    <i class="fa fa-angle-right"></i>1.8.4 จัดการแบบสำรวจ</a>
+                                            </li>
+                                        </ul>
                                     </li>
-                                    <li>
-                                        <a href="#">
-                                            <i class="fa fa-angle-right"></i>1.8 แบบสอบถาม</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <i class="fa fa-angle-right"></i>1.9 จัดการไฟล์</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <i class="fa fa-angle-right"></i>1.10 ระบบจัดการเนื้อห</a>
-                                            <ul>
-                                                <li>
-                                                    <a href="#">
-                                                        <i class="fa fa-angle-right"></i>1.10.1 จัดการข่าว
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="#">
-                                                        <i class="fa fa-angle-right"></i>1.10.2 จัดการกิจกรรม</a>
-                                                </li>
-                                            </ul>
-                                    </li>
+
                                 </ul>
                             </li>
                             <li>
@@ -164,38 +162,15 @@
                                 <a href="#">
                                     <i class="fa fa-calendar-check-o"></i>
                                     <span>10. ปฏิทินกิจกรรม</span>
-                                    <span class="label label-primary">กิจกรรมใหม่</span>
+                                    <span class="label label-info">ใหม่</span>
                                 </a>
                             </li>
                             <li>
                                 <a href="#">
                                     <i class="fa fa-thumbs-o-up"></i>
-                                    <span>11. ตอบแบบสอบถาม</span>
+                                    <span>11. ตอบแบบสำรวจ</span>
+                                    <span class="label label-warning">2</span>
                                 </a>
-                            </li>
-                            <li>
-                                <a role="button" tabindex="0">
-                                    <i class="fa fa-edit"></i>
-                                    <span>12. ระบบจัดการเว็บ</span>
-                                </a>
-                                <ul>
-                                    <li>
-                                        <a href="{{ route('admin.news.index') }}">
-                                            <i class="fa fa-angle-right"></i>12.1 จัดการข่าวสาร</a>
-                                    </li>
-                                    <li>
-                                        <a href="{{ url('activity') }}">
-                                            <i class="fa fa-angle-right"></i>12.2 จัดการกิจกรรม</a>
-                                    </li>
-                                    <li>
-                                        <a href="{{ url('fileupload') }}">
-                                            <i class="fa fa-angle-right"></i>12.3 จัดการไฟล์</a>
-                                    </li>
-                                    <li>
-                                        <a href="{{ route('admin.surveys.index') }}">
-                                            <i class="fa fa-angle-right"></i>12.4 จัดการแบบสำรวจ</a>
-                                    </li>
-                                </ul>
                             </li>
                             <li>
                                 <a href="#">

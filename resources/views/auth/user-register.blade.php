@@ -22,7 +22,7 @@
         <div class="row">
           <div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3 text-center">
             <div class="card card-signup">
-              <form class="form" method="" action="">
+            <form class="form" method="POST" action="{{ route('regitersubmit')}}">
                 <div class="header header-primary text-center">
                   <h4>สมัครสมาชิก</h4>
                   <!-- <div class="social-line">
@@ -82,7 +82,7 @@
                   </div>
                 </div>
                 <div class="footer text-center mb-20">
-                  <a href="index.html" class="btn btn-info btn-raised">ยืนยัน</a>
+                    <button type="submit" class="btn btn-info btn-raised">ยืนยัน</button>
                 </div>
               </form>
             </div>

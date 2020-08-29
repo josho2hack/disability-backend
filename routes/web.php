@@ -25,10 +25,12 @@ Route::get('/verify', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/logout', 'HomeController@logout');
+//Route::get('/logout', 'HomeController@logout');
 
 Route::get('/user-login', 'HomeController@user_login');
-Route::get('/register', 'HomeController@register')->name('register');
+//Route::get('/register', 'HomeController@register')->name('register');
+
+
 Route::get('/profile', 'ProfileController@index');
 Route::post('/profile', 'ProfileController@insert_address');
 Route::get('/profile/address', 'ProfileController@address');
