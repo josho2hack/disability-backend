@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\Auth;
 
 use Illuminate\Http\Request;
 
+use App\DisabilityType;
+
 class HomeController extends Controller
 {
     /**
@@ -38,6 +40,8 @@ class HomeController extends Controller
 
     public function register()
     {
-        return view('auth.user-register');
+        $disabilitytype = DisabilityType::get();
+
+        return view('auth.user-register', compact('disabilitytype'));
     }
 }

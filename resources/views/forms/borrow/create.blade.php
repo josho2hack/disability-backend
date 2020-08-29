@@ -23,50 +23,58 @@
                             <label for="name" class="col-sm-8 control-label text-left">เขียนที่</label>
                             <div class="col-sm-4">
                                 <input type="text" class="form-control" name="write_at" placeholder="">
-                                {{-- <p class="help-block mb-0">Ex: โปรแกรมพจนานุกรมสำหรับคนพิการ</p> --}}
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="name" class="col-sm-8 control-label text-left">สำเนาบัตรประจำตัวคนพิการ พร้อมรับรองสำเนาถูกต้อง</label>
+                            <label for="name" class="col-sm-8 control-label text-left"><li>สำเนาบัตรประจำตัวคนพิการ พร้อมรับรองสำเนาถูกต้อง</li></label>
                             <div class="col-sm-4">
                                 <input type="number" class="form-control" name="copy_card" placeholder="จำนวนฉบับ">
-                                {{-- <p class="help-block mb-0">Ex: โปรแกรมพจนานุกรมสำหรับคนพิการ</p> --}}
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="name" class="col-sm-8 control-label text-left">สำเนาทะเบียนบ้านของคนพิการ พร้อมรับรองสำเนาถูกต้อง</label>
+                            <label for="name" class="col-sm-8 control-label text-left"><li>สำเนาทะเบียนบ้านของคนพิการ พร้อมรับรองสำเนาถูกต้อง</li></label>
                             <div class="col-sm-4">
                                 <input type="number" class="form-control" name="house_res" placeholder="จำนวนฉบับ">
-                                {{-- <p class="help-block mb-0">Ex: โปรแกรมพจนานุกรมสำหรับคนพิการ</p> --}}
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="name" class="col-sm-8 control-label text-left">สำเนาเอกสารรับรองการเข้ารับการฝึกอบรมตามหลักสูตรที่กระทรวงเทคโนโลยีสารสนเทศและการสื่อสารกำหนด พร้อมรับรองสำเนาถูกต้อง (ถ้ามี)</label>
+                            <label for="name" class="col-sm-8 control-label text-left"><li>สำเนาเอกสารรับรองการเข้ารับการฝึกอบรมตามหลักสูตรที่กระทรวงเทคโนโลยีสารสนเทศและการสื่อสารกำหนด พร้อมรับรองสำเนาถูกต้อง (ถ้ามี)</li></label>
                             <div class="col-sm-4">
                                 <input type="number" class="form-control" name="copy_train" placeholder="จำนวนฉบับ">
-                                {{-- <p class="help-block mb-0">Ex: โปรแกรมพจนานุกรมสำหรับคนพิการ</p> --}}
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="name" class="col-sm-8 control-label text-left">สำเนาบัตรประจำตัวประชาชนหรือสำเนาทะเบียนบ้านของ ผู้ยื่นคำขอแทน พร้อมรับรองสำเนาถูกต้อง</label>
+                            <label for="name" class="col-sm-8 control-label text-left"><li>สำเนาบัตรประจำตัวประชาชนหรือสำเนาทะเบียนบ้านของ ผู้ยื่นคำขอแทน พร้อมรับรองสำเนาถูกต้อง</li></label>
                             <div class="col-sm-4">
                                 <input type="number" class="form-control" name="sub_copy_citizen_id" placeholder="จำนวนฉบับ">
-                                {{-- <p class="help-block mb-0">Ex: โปรแกรมพจนานุกรมสำหรับคนพิการ</p> --}}
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="name" class="col-sm-8 control-label text-left">หนังสือมอบอำนาจจากคนพิการหรือหลักฐานที่แสดงว่ามีส่วนเกี่ยวข้องกับคนพิการเนื่องจากเป็นผู้ปกครอง ผู้พิทักษ์ ผู้อนุบาล หรือผู้ดูและคนพิการ (กรณี ผู้ยื่นขอแทน)</label>
+                            <label for="name" class="col-sm-8 control-label text-left"><li>หนังสือมอบอำนาจจากคนพิการหรือหลักฐานที่แสดงว่ามีส่วนเกี่ยวข้องกับคนพิการเนื่องจากเป็นผู้ปกครอง ผู้พิทักษ์ ผู้อนุบาล หรือผู้ดูและคนพิการ (กรณี ผู้ยื่นขอแทน)</li></label>
                             <div class="col-sm-4">
                                 <input type="number" class="form-control" name="power_attorney" placeholder="จำนวนฉบับ">
-                                {{-- <p class="help-block mb-0">Ex: โปรแกรมพจนานุกรมสำหรับคนพิการ</p> --}}
                             </div>
                         </div>
-                        <label class="radio-inline">
-                          <input type="radio" name="type" value="1" checked>คนพิการ
+                        <div class="form-group">
+                        <label for="name" class="col-sm-8 control-label text-left">
+                        <li>
+                            <label class="radio-inline">
+                              <input type="radio" name="type" value="1" checked>คนพิการ
+                            </label>
+                            <label class="radio-inline">
+                              <input type="radio" name="type" value="2">ผู้ยื่นคำขอแทน
+                            </label>
+                        </li>
                         </label>
-                        <label class="radio-inline">
-                          <input type="radio" name="type" value="2">ผู้ยื่นคำขอแทน
-                        </label>
+                    </div>
+                        
+
+                        <div class="form-group">
+                             <label for="name" class="col-sm-8 control-label text-left"><li>มีความประสงค์ขอยืมอุปกรณ/เครื่องมือ เทคโนโลยีสารสนเทศและการสื่อส่ารหรือ เทตโนโลยีสิ่งอำนวยความสะดวกเพื่อการสื่อสาร ให้แก่</li> </label>
+                            <div class="col-sm-4">
+                                <input type="number" class="form-control" name="power_attorney" placeholder="จำนวนฉบับ">
+                            </div>
+                        </div>
 
                         <div class="form-group">
                             <div class="col-sm-offset-2 col-sm-8">
