@@ -40,6 +40,10 @@ Route::get('/profile/edit', 'ProfileController@edit_profile');
 Route::post('/profile/edit', 'ProfileController@update_profile');
 Route::resources(['form-borrow' => 'Form\FormborrowController']);
 Route::get('/object', 'ObjectController@index');
+//pdf
+Route::get('pdf/{id}', 'PDFController@pdf');
+
+
 
 Route::get('activity', 'EventController@index');
 Route::get('activity/add', 'EventController@add');
