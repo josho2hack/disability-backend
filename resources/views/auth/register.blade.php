@@ -73,12 +73,12 @@
                                         </div>
                                         <div class="form-group mb-3">
                                             <div class="icheck-primary d-inline mr-3">
-                                                <input class="form-check-input" type="radio" value="true" name="gender"
+                                                <input class="form-check-input" type="radio" value="1" name="gender"
                                                     formControlName="gender" id="inlineRadio1" [checked]="men_checked">
                                                 <label for="inlineRadio1" class="form-check-label">ชาย</label>
                                             </div>
                                             <div class="icheck-primary d-inline">
-                                                <input class="form-check-input" type="radio" value="false" name="gender"
+                                                <input class="form-check-input" type="radio" value="0" name="gender"
                                                     formControlName="gender" id="inlineRadio2">
                                                 <label for="inlineRadio2" class="form-check-label">หญิง</label>
                                             </div>
