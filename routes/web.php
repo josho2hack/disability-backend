@@ -57,6 +57,8 @@ Route::get('/subgroup/{id}/avatar', 'Admin\SubGroupController@avatar');
 Route::prefix('admin')->group(function () {
     Route::get('', 'Admin\AdminController@index')->name('admin');
     Route::get('assets/dashboard', 'Admin\AssetController@dashboard')->name('assets.dashboard');
+    Route::get('assets/selected/{cate}', 'Admin\AssetController@selected')->name('assets.selected');
+    Route::get('assets/subselected/{sub}', 'Admin\AssetController@subselected')->name('assets.sub.selected');
     Route::resources([
         'assets' => 'Admin\AssetController',
         'maingroups' => 'Admin\MainGroupController',

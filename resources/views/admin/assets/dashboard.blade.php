@@ -13,10 +13,10 @@
             <div class="btn-group pull-right">
                 <ol class="breadcrumb">
                     <li>
-                        <a href="{{route('root')}}"><i class="fa fa-home"></i></a>
+                        <a href="{{ route('root') }}"><i class="fa fa-home"></i></a>
                     </li>
                     <li>
-                        <a href="{{route('admin')}}">1. บริหารจัดการระบบ</a>
+                        <a href="{{ route('admin') }}">1. บริหารจัดการระบบ</a>
                     </li>
                     <li class="active">1.1 ระบบอุปกรณ์และเครื่องมือ</li>
                 </ol>
@@ -59,14 +59,16 @@
                     <h3 class="custom-font hb-cyan">
                         <strong>อุปกรณ์และเครื่องมือ</strong>
                     </h3>
-                    <p class="text-info"><strong>ครุภัณฑ์ทั้งหมด <span class="text-success">{{$assets->count()}}</span> รายการ</strong></p>
+                    <p class="text-info"><strong>ครุภัณฑ์ทั้งหมด <span class="text-success">{{ $assets->count() }}</span>
+                            รายการ</strong></p>
                 </div>
                 <div class="boxs-widget">
                     <div class="form-group">
                         <div class="btn-group pull-right">
-                            <a href="{{route('maingroups.index')}}" class="btn btn-info btn-raised mr-10">กลุ่มหลัก</a>
-                            <a href="{{route('subgroups.index')}}" class="btn btn-info btn-raised mr-10">กลุ่มย่อย</a>
-                            <a href="{{route('assets.index')}}" class="btn btn-info btn-raised">อุปกรณ์และเครื่องมือทั้งหมด</a>
+                            <a href="{{ route('maingroups.index') }}" class="btn btn-info btn-raised mr-10">กลุ่มหลัก</a>
+                            <a href="{{ route('subgroups.index') }}" class="btn btn-info btn-raised mr-10">กลุ่มย่อย</a>
+                            <a href="{{ route('assets.index') }}"
+                                class="btn btn-info btn-raised">อุปกรณ์และเครื่องมือทั้งหมด</a>
                         </div>
                     </div>
                 </div>
@@ -74,7 +76,9 @@
                     <table id="searchTextResults" data-filter="#filter" data-page-size="25"
                         class="footable table table-custom table-hover">
                         <thead>
-                        <tr><th colspan="12">กลุ่ม: เทคโนโลยีสารสนเทศและการสื่อสาร {{ $assets->count() }} รายการ</th></tr>
+                            <tr>
+                                <th colspan="12">กลุ่ม: เทคโนโลยีสารสนเทศและการสื่อสาร {{ $assets->count() }} รายการ</th>
+                            </tr>
                             <tr>
                                 <th>ลำดับที่</th>
                                 <th>กลุ่มหลัก</th>
@@ -91,8 +95,10 @@
                             </tr>
                         </thead>
                         <tbody>
-
+                            @foreach ($sub1 as $sub)
                                 <tr>
+                                    <td>{{ $loop->index + 1 }}</td>
+                                    <td colspan="3"><a href="{{ route('assets.sub.selected',$sub->id) }}">{{ $sub->name }}</a></td>
                                     <td></td>
                                     <td></td>
                                     <td></td>
@@ -102,6 +108,23 @@
                                     <td></td>
                                     <td></td>
                                 </tr>
+                                @foreach ($sub->assetCategories as $cate)
+                                <tr>
+                                    <td></td>
+                                    <td>{{ $loop->index + 1 }}</td>
+                                <td><a href="{{ route('assets.selected',$cate->id) }}">{{ $cate->name }}</a></td>
+                                    <td><img src="data:image/png;base64,{{ chunk_split(base64_encode($cate->image)) }}" width="50" height="50"></td>
+
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                @endforeach
+                            @endforeach
 
                         </tbody>
                         <tfoot class="hide-if-no-paging">
