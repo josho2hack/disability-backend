@@ -28,7 +28,15 @@
         @include('layouts.admin-header')
 
         <div id="controls">
+            @if(empty(\Auth::user()))
             @include('layouts.admin-leftmenu')
+            @elseif(\Auth::user())
+            @if(\Auth::user()->roles->first->id->name == 'Admin')
+            @include('layouts.admin-leftmenu')
+            @elseif(\Auth::user()->roles->first->id->name == 'User')
+            @include('layouts.user-leftmenu')
+            @endif
+            @endif
             @include('layouts.admin-rightmenu')
         </div>
         <!-- CONTENT -->
