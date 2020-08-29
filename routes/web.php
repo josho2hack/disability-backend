@@ -28,7 +28,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/logout', 'HomeController@logout');
 
 Route::get('/user-login', 'HomeController@user_login');
-Route::get('/register', 'HomeController@register');
+Route::get('/register', 'HomeController@register')->name('register');
 Route::get('/profile', 'ProfileController@index');
 Route::post('/profile', 'ProfileController@insert_address');
 Route::get('/profile/address', 'ProfileController@address');
@@ -51,7 +51,7 @@ Route::get('email/verify/{id}', 'VerificationApiController@verify')->name('verif
 Route::get('email/resend', 'VerificationApiController@resend')->name('verificationapi.resend');
 
 Route::get('/subgroup/{id}/avatar', 'Admin\SubGroupController@avatar');
-Route::get('/subgroup/{id}/avatar', 'Admin\SubGroupController@avatar');
+
 Route::prefix('admin')->group(function () {
     Route::get('', 'Admin\AdminController@index')->name('admin');
     Route::get('assets/dashboard', 'Admin\AssetController@dashboard')->name('assets.dashboard');
@@ -61,7 +61,7 @@ Route::prefix('admin')->group(function () {
         'subgroups' => 'Admin\SubGroupController',
     ]);
 
-    
+
     Route::namespace('Admin')->name('admin.')->group(function() {
         Route::resource('news', 'NewsController');
     });

@@ -26,7 +26,7 @@
                     <li class="online">
                         <div class="media">
                             <a class="pull-left thumb thumb-sm" role="button" tabindex="0">
-                                <img class="media-object " src="assets/images/xs/avatar1.jpg" alt=""> </a>
+                                <img class="media-object " src="{{ asset('assets/images/xs/avatar1.jpg')}}" alt=""> </a>
                             <div class="media-body">
                                 <span class="name">Claire Sassu</span>
                                 <span class="message"> If you are going to use a passage of Lorem Ipsum</span>
@@ -37,7 +37,7 @@
                     <li class="online">
                         <div class="media">
                             <a class="pull-left thumb thumb-sm" role="button" tabindex="0">
-                                <img class="media-object " src="assets/images/xs/avatar8.jpg" alt=""> </a>
+                                <img class="media-object " src="{{ asset('assets/images/xs/avatar8.jpg') }}" alt=""> </a>
                             <div class="media-body">
                                 <div class="media-body">
                                     <span class="name">Maggie jackson</span>
@@ -50,7 +50,7 @@
                     <li class="online">
                         <div class="media">
                             <a class="pull-left thumb thumb-sm" role="button" tabindex="0">
-                                <img class="media-object " src="assets/images/xs/avatar3.jpg" alt=""> </a>
+                                <img class="media-object " src="{{ asset('assets/images/xs/avatar3.jpg') }}" alt=""> </a>
                             <div class="media-body">
                                 <div class="media-body">
                                     <span class="name">Joel King</span>
@@ -63,7 +63,7 @@
                     <li class="online">
                         <div class="media">
                             <a class="pull-left thumb thumb-sm" role="button" tabindex="0">
-                                <img class="media-object " src="assets/images/xs/avatar6.jpg" alt=""> </a>
+                                <img class="media-object " src="{{ asset('assets/images/xs/avatar6.jpg') }}" alt=""> </a>
                             <div class="media-body">
                                 <div class="media-body">
                                     <span class="name">Isabella</span>
@@ -76,7 +76,7 @@
                     <li class="online">
                         <div class="media">
                             <a class="pull-left thumb thumb-sm" role="button" tabindex="0">
-                                <img class="media-object " src="assets/images/xs/avatar5.jpg" alt=""> </a>
+                                <img class="media-object " src="{{ asset('assets/images/xs/avatar5.jpg') }}" alt=""> </a>
                             <div class="media-body">
                                 <div class="media-body">
                                     <span class="name">Alexander</span>
@@ -92,7 +92,7 @@
                     <li class="offline">
                         <div class="media">
                             <a class="pull-left thumb thumb-sm" role="button">
-                                <img class="media-object " src="assets/images/xs/avatar5.jpg" alt=""> </a>
+                                <img class="media-object " src="{{ asset('assets/images/xs/avatar5.jpg') }}" alt=""> </a>
                             <div class="media-body">
                                 <div class="media-body">
                                     <span class="name mt-5">Matthew</span>
@@ -104,7 +104,7 @@
                     <li class="offline">
                         <div class="media">
                             <a class="pull-left thumb thumb-sm" role="button">
-                                <img class="media-object " src="assets/images/xs/avatar4.jpg" alt=""> </a>
+                                <img class="media-object " src="{{ asset('assets/images/xs/avatar4.jpg') }}" alt=""> </a>
                             <div class="media-body">
                                 <div class="media-body">
                                     <span class="name mt-5">Aaliyah</span>
@@ -116,7 +116,7 @@
                     <li class="offline">
                         <div class="media">
                             <a class="pull-left thumb thumb-sm" role="button">
-                                <img class="media-object " src="assets/images/xs/avatar8.jpg" alt=""> </a>
+                                <img class="media-object " src="{{ asset('assets/images/xs/avatar8.jpg') }}" alt=""> </a>
                             <div class="media-body">
                                 <div class="media-body">
                                     <span class="name mt-5">Arianna</span>
@@ -128,7 +128,7 @@
                     <li class="online">
                         <div class="media">
                             <a class="pull-left thumb thumb-sm" role="button">
-                                <img class="media-object " src="assets/images/xs/avatar9.jpg" alt=""> </a>
+                                <img class="media-object " src="{{ asset('assets/images/xs/avatar9.jpg') }}" alt=""> </a>
                             <div class="media-body">
                                 <div class="media-body">
                                     <span class="name mt-5">Scarlett</span>
@@ -140,7 +140,7 @@
                     <li class="offline">
                         <div class="media">
                             <a class="pull-left thumb thumb-sm" role="button">
-                                <img class="media-object " src="assets/images/xs/avatar10.jpg" alt=""> </a>
+                                <img class="media-object " src="{{ asset('assets/images/xs/avatar10.jpg') }}" alt=""> </a>
                             <div class="media-body">
                                 <div class="media-body">
                                     <span class="name mt-5">David</span>
