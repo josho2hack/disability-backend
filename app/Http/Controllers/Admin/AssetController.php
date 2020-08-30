@@ -19,14 +19,12 @@ class AssetController extends Controller
     }
 
     public function selected($cate){
-        $assets = Asset::all();
-        $sub1 = SubGroup::with('assetCategories')->where('main_groups_id','1')->get();
+        $assets = Asset::with('assetStatus')->where('asset_categories_id',$cate)->get();
         return view('admin.assets.index',compact('assets'));
     }
 
     public function subselected($sub){
-        $assets = Asset::all();
-        $sub1 = SubGroup::with('assetCategories')->where('main_groups_id','1')->get();
+        $assets = Asset::with('assetStatus')->where('sub_groups_id',$sub)->get();
         return view('admin.assets.index',compact('assets'));
     }
 
