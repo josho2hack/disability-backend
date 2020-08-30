@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-use Illuminate\Support\Facades\Auth;
+use App\Providers\RouteServiceProvider;
 
 use Illuminate\Http\Request;
 
@@ -9,13 +9,10 @@ use App\DisabilityType;
 
 class HomeController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
+    protected $redirectTo = RouteServiceProvider::HOME;
     public function __construct()
     {
+        //$this->middleware('guest')->except('logout');
         // $this->middleware(['auth','verified']);
     }
 

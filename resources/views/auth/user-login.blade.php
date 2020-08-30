@@ -20,7 +20,8 @@
         <div class="row">
           <div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3 text-center">
             <div class="card card-signup">
-              <form class="form">
+                <form method="POST" action="{{ route('login') }}">
+                    @csrf
                 <div class="header header-primary text-center">
                   <h4>เข้าสู่ระบบสมาชิก</h4>
                   {{-- <div class="social-line">
@@ -39,10 +40,10 @@
                 <p class="help-block"></p>
                 <div class="content">
                   <div class="form-group">
-                    <input type="email" class="form-control underline-input" placeholder="อีเมล์...">
+                    <input id="email" type="email" class="form-control underline-input" name="email" placeholder="อีเมล์..." value="" required autocomplete="email" autofocus>
                   </div>
                   <div class="form-group">
-                    <input type="password" placeholder="รหัสผ่าน..." class="form-control underline-input">
+                    <input id="password" type="password" placeholder="รหัสผ่าน..." name="password"class="form-control underline-input" required autocomplete="current-password">
                   </div>
                   <div class="checkbox">
                     <label>
@@ -50,7 +51,9 @@
                   </div>
                 </div>
                 <div class="footer text-center">
-                  <a href="index.html" class="btn btn-info btn-raised">เข้าสู่ระบบ</a>
+                    <button type="submit" class="btn btn-info">
+                        {{ __('เข้าสู่ระบบ') }}
+                    </button>
                 </div>
                 <a href="forgotpass.html" class="btn btn-wd">ลืมรหัสผ่าน?</a>
               </form>

@@ -28,15 +28,16 @@
         @include('layouts.admin-header')
 
         <div id="controls">
-            @if(empty(\Auth::user()))
-            @include('layouts.admin-leftmenu')
-            @elseif(\Auth::user())
-            @if(\Auth::user()->roles->first->id->name == 'Admin')
-            @include('layouts.admin-leftmenu')
-            @elseif(\Auth::user()->roles->first->id->name == 'User')
-            @include('layouts.user-leftmenu')
-            @endif
-            @endif
+            @guest
+                @include('layouts.admin-leftmenu')
+            @else
+                @if(Auth::user()->roles()->first()->name == 'Admin')
+                    @include('layouts.admin-leftmenu')
+                @elseif(Auth::user()->roles()->first()->name == 'User')
+                    @include('layouts.user-leftmenu')
+                @endif
+            @endguest
+
             @include('layouts.admin-rightmenu')
         </div>
         <!-- CONTENT -->
