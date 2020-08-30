@@ -12,9 +12,10 @@ use Illuminate\Http\Request;
 class AssetController extends Controller
 {
     public function dashboard(){
-        $assets = Asset::all();
-        $sub1 = SubGroup::with('assetCategories')->where('main_groups_id','1')->get();
-        return view('admin.assets.dashboard',compact('assets'),compact('sub1'));
+        $assetcount = Asset::all()->count();
+        $sub1 = SubGroup::with('assetCategories','assets')->where('main_groups_id','1')->get();
+        $sub2 = SubGroup::with('assetCategories','assets')->where('main_groups_id','2')->get();
+        return view('admin.assets.dashboard',compact('assetcount','sub1','sub2'));
     }
 
     public function selected($cate){

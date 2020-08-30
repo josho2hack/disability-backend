@@ -46,6 +46,8 @@ class CreateAssetsTable extends Migration
                     ->constrained()->onDelete('set null');
             $table->foreignId('asset_statuses_id')->comment('สถานะ')->nullable()
                     ->constrained()->onDelete('set null');
+            $table->foreignId('sub_groups_id')->comment('ประเภทอุปกรณ์ย่อย')->nullable()
+                    ->constrained()->onDelete('set null');
 
             $table->timestamps();
         });

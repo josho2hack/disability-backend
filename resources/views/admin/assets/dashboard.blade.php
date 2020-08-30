@@ -59,7 +59,7 @@
                     <h3 class="custom-font hb-cyan">
                         <strong>อุปกรณ์และเครื่องมือ</strong>
                     </h3>
-                    <p class="text-info"><strong>ครุภัณฑ์ทั้งหมด <span class="text-success">{{ $assets->count() }}</span>
+                    <p class="text-info"><strong>ครุภัณฑ์ทั้งหมด <span class="text-success">{{ $assetcount }}</span>
                             รายการ</strong></p>
                 </div>
                 <div class="boxs-widget">
@@ -77,7 +77,10 @@
                         class="footable table table-custom table-hover">
                         <thead>
                             <tr>
-                                <th colspan="12">กลุ่ม: เทคโนโลยีสารสนเทศและการสื่อสาร {{ $assets->count() }} รายการ</th>
+                                <th colspan="12">กลุ่ม: เทคโนโลยีสารสนเทศและการสื่อสาร
+
+
+                                    รายการ</th>
                             </tr>
                             <tr>
                                 <th>ลำดับที่</th>
@@ -98,31 +101,36 @@
                             @foreach ($sub1 as $sub)
                                 <tr>
                                     <td>{{ $loop->index + 1 }}</td>
-                                    <td colspan="3"><a href="{{ route('assets.sub.selected',$sub->id) }}">{{ $sub->name }}</a></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
+                                    <td colspan="3"><a
+                                            href="{{ route('assets.sub.selected', $sub->id) }}">{{ $sub->name }}</a></td>
+                                    <td>
+                                        {{ $sub->assets->count() }}
+                                    </td>
+                                    <td>{{ $sub->assets->where('asset_statuses_id','1')->count() }}</td>
+                                    <td>{{ $sub->assets->where('asset_statuses_id','2')->count() }}</td>
+                                    <td>{{ $sub->assets->where('asset_statuses_id','3')->count() }}</td>
+                                    <td>{{ $sub->assets->where('asset_statuses_id','4')->count() }}</td>
+                                    <td>{{ $sub->assets->where('asset_statuses_id','5')->count() }}</td>
+                                    <td>{{ $sub->assets->where('asset_statuses_id','6')->count() }}</td>
+                                    <td>{{ $sub->assets->where('asset_statuses_id','7')->count() }}</td>
                                 </tr>
                                 @foreach ($sub->assetCategories as $cate)
-                                <tr>
-                                    <td></td>
-                                    <td>{{ $loop->index + 1 }}</td>
-                                <td><a href="{{ route('assets.selected',$cate->id) }}">{{ $cate->name }}</a></td>
-                                    <td><img src="data:image/png;base64,{{ chunk_split(base64_encode($cate->image)) }}" width="50" height="50"></td>
+                                    <tr>
+                                        <td></td>
+                                        <td>{{ $loop->index + 1 }}</td>
+                                        <td><a href="{{ route('assets.selected', $cate->id) }}">{{ $cate->name }}</a></td>
+                                        <td><img src="data:image/png;base64,{{ chunk_split(base64_encode($cate->image)) }}"
+                                                width="50" height="50"></td>
 
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
+                                        <td>{{ $sub->assets->where('asset_categories_id',$cate->id)->count() }}</td>
+                                        <td>{{ $sub->assets->where('asset_categories_id',$cate->id)->where('asset_statuses_id','1')->count() }}</td>
+                                        <td>{{ $sub->assets->where('asset_categories_id',$cate->id)->where('asset_statuses_id','2')->count() }}</td>
+                                        <td>{{ $sub->assets->where('asset_categories_id',$cate->id)->where('asset_statuses_id','3')->count() }}</td>
+                                        <td>{{ $sub->assets->where('asset_categories_id',$cate->id)->where('asset_statuses_id','4')->count() }}</td>
+                                        <td>{{ $sub->assets->where('asset_categories_id',$cate->id)->where('asset_statuses_id','5')->count() }}</td>
+                                        <td>{{ $sub->assets->where('asset_categories_id',$cate->id)->where('asset_statuses_id','6')->count() }}</td>
+                                        <td>{{ $sub->assets->where('asset_categories_id',$cate->id)->where('asset_statuses_id','7')->count() }}</td>
+                                    </tr>
                                 @endforeach
                             @endforeach
 

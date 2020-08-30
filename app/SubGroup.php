@@ -19,4 +19,9 @@ class SubGroup extends Model
     {
         return $this->belongsTo('App\MainGroup','main_groups_id');
     }
+
+    public function assets()
+    {
+        return $this->hasMany('App\Asset','sub_groups_id');
+    }
 }

@@ -18,7 +18,7 @@ class CreateSubGroupssTable extends Migration
             $table->string("name")->comment('ประเภทอุปกรณ์รอง');
             $table->timestamps();
 
-            $table->foreignId('main_groups_id')->comment('ประเภทอุปกรณ์รหลัก')->nullable()
+            $table->foreignId('main_groups_id')->comment('ประเภทอุปกรณ์หลัก')->nullable()
             ->constrained()->onDelete('set null');
         });
     }
