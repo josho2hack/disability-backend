@@ -25,6 +25,7 @@ class CreateAssetCategoriesTable extends Migration
             $table->foreignId('sub_groups_id')->comment('ประเภทอุปกรณ์รอง')->nullable()
             ->constrained()->onDelete('set null');
         });
+        DB::statement("ALTER TABLE asset_categories MODIFY image MEDIUMBLOB NULL");
     }
 
     /**

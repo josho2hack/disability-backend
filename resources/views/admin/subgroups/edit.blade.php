@@ -1,5 +1,14 @@
 @extends('layouts.admin')
 @section('header')
+    <link rel="stylesheet" href="http://blueimp.github.io/Gallery/css/blueimp-gallery.min.css">
+    <link rel="stylesheet" href="{{ asset('assets/js/vendor/file-upload/css/jquery.fileupload.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/js/vendor/file-upload/css/jquery.fileupload-ui.css') }}">
+    <noscript>
+        <link rel="stylesheet" href="{{ asset('assets/js/vendor/file-upload/css/jquery.fileupload-noscript.css') }}">
+    </noscript>
+    <noscript>
+        <link rel="stylesheet" href="{{ asset('assets/js/vendor/file-upload/css/jquery.fileupload-ui-noscript.css') }}">
+    </noscript>
 
 @endsection
 
@@ -46,8 +55,8 @@
                             </ul>
                         </div>
                     @endif
-                    <form class="form-horizontal" role="form" action="{{ route('subgroups.update', $subgroup->id) }}"
-                        method="POST" enctype="multipart/form-data">
+                    <form class="form-horizontal" role="form"
+                        action="{{ route('subgroups.update', $subgroup->id) }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
                         @csrf
@@ -94,10 +103,8 @@
                         </div>
 
                         <div class="">
-                            <label for="image" class="col-sm-2 control-label">รูปภาพ</label>
-                            <div class="col-sm-10">
-                                <input id="fileupload" type="file" name="image">
-                            </div>
+                            <label for="image" class="col-sm-2">รูปภาพ</label>
+                            <input type="file" class="col-sm-10 form-control-file" name="image">
                         </div>
                         <!--//Up load File ---------------------------------------------------------->
 
@@ -129,7 +136,9 @@
 @endsection
 
 @section('footer')
-
+    <!-- The jQuery UI widget factory, can be omitted if jQuery UI is already included -->
+    <script src="{{ asset('assets/js/vendor/file-upload/js/vendor/jquery.ui.widget.js') }}"></script>
+    <script src="{{ asset('assets/bundles/fileuploadscripts.bundle.js') }}"></script>
 @endsection
 
 @section('footer-script')

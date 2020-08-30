@@ -6,6 +6,7 @@ use App\AssetCategory;
 use App\Http\Controllers\Controller;
 use App\SubGroup;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 use finfo;
 
@@ -111,16 +112,21 @@ class SubGroupController extends Controller
             'sub_groups_id' => 'required'
         ]);
 
+        $input = $request->all();
+
         if ($request->hasFile('image')) {
             // Get the file from the request
-            $file = $request->file('image');
+            //$file = $request->file('image');
+            $path = $request->image->store('assets');
 
             // Get the contents of the file
-            $contents = $file->openFile()->fread($file->getSize());
-            $request['image'] = $contents;
+            $contents = Storage::get($path);
+            //$contents = $file->openFile()->fread($file->getSize());
+            $input['image'] = $contents;
+            Storage::delete($path);
         }
 
-        $subgoup->update($request->all());
+        $subgoup->update($input);
         return redirect()->route('subgroups.index')->with('success', 'ปรับปรุงอมูลเรียบร้อยแล้ว');
     }
 
