@@ -67,6 +67,7 @@ Route::prefix('admin')->group(function () {
         'assets' => 'Admin\AssetController',
         'maingroups' => 'Admin\MainGroupController',
         'subgroups' => 'Admin\SubGroupController',
+        'users' => 'Admin\UserController',
     ]);
 
 

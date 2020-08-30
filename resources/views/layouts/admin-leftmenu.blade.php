@@ -7,23 +7,23 @@
                         <!--  NAVIGATION Content -->
                         <ul id="navigation">
                             <li class="active open">
-                                <a href="{{ route('admin')}}">
+                                <a href="{{ route('admin') }}">
                                     <i class="fa fa-dashboard"></i>
                                     <span>ภาพรวมระบบ</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="{{ route('admin')}}" role="button" tabindex="0">
+                                <a href="{{ route('admin') }}" role="button" tabindex="0">
                                     <i class="fa fa-list"></i>
                                     <span>1. บริหารจัดการระบบ</span>
                                 </a>
                                 <ul>
                                     <li>
-                                        <a href="{{ route('assets.dashboard')}}">
+                                        <a href="{{ route('assets.dashboard') }}">
                                             <i class="fa fa-angle-right"></i>1.1 อุปกรณ์และเครื่องมือ</a>
                                     </li>
                                     <li>
-                                        <a href="admin/users">
+                                        <a href="{{ route('users.index') }}">
                                             <i class="fa fa-angle-right"></i>1.2 สมาชิก</a>
                                     </li>
                                     <li>
@@ -95,7 +95,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a  href="#">
+                                <a href="#">
                                     <i class="fa fa-university"></i>
                                     <span>4. อนุมัติสัญญา</span>
                                 </a>
