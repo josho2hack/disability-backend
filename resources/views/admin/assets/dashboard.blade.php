@@ -73,13 +73,20 @@
                     </div>
                 </div>
                 <div class="boxs-body">
-                    <table id="searchTextResults" data-filter="#filter" data-page-size="25"
+                    <table id="searchTextResults" data-filter="#filter" data-page-size="25" data-sorting="false"
                         class="footable table table-custom table-hover">
                         <thead>
                             <tr>
                                 <th colspan="12">กลุ่ม: เทคโนโลยีสารสนเทศและการสื่อสาร
-
-
+                                    @php
+                                        $all = 0;
+                                        foreach ($sub1 as $sub) {
+                                            $all += $sub->assets->count();
+                                        }
+                                    @endphp
+                                    <span class="text-info">
+                                    {{ $all }}
+                                    </span>
                                     รายการ</th>
                             </tr>
                             <tr>
@@ -145,6 +152,85 @@
                         </tfoot>
                     </table>
 
+                    <table id="searchTextResults1" data-filter="#filter" data-page-size="25" data-sorting="false"
+                        class="footable table table-custom table-hover">
+                        <thead>
+                            <tr>
+                                <th colspan="12">กลุ่ม: เทคโนโลยีสิ่งอำนวยความสะดวกเพื่อการสื่อสาร
+                                    @php
+                                        $all = 0;
+                                        foreach ($sub2 as $sub) {
+                                            $all += $sub->assets->count();
+                                        }
+                                    @endphp
+                                    <span class="text-info">
+                                    {{ $all }}
+                                    </span>
+                                    รายการ</th>
+                            </tr>
+                            <tr>
+                                <th>ลำดับที่</th>
+                                <th>กลุ่มหลัก</th>
+                                <th>กลุ่มย่อย</th>
+                                <th>รูปภาพ</th>
+                                <th>ทั้งหมด</th>
+                                <th>คงคลัง</th>
+                                <th>รอรับ</th>
+                                <th>ยืม</th>
+                                <th>เสีย</th>
+                                <th>ส่งซ่อม</th>
+                                <th>สูญหาย</th>
+                                <th>อื่น ๆ</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($sub2 as $sub)
+                                <tr>
+                                    <td>{{ $loop->index + 1 }}</td>
+                                    <td colspan="3"><a
+                                            href="{{ route('assets.sub.selected', $sub->id) }}">{{ $sub->name }}</a></td>
+                                    <td>
+                                        {{ $sub->assets->count() }}
+                                    </td>
+                                    <td>{{ $sub->assets->where('asset_statuses_id','1')->count() }}</td>
+                                    <td>{{ $sub->assets->where('asset_statuses_id','2')->count() }}</td>
+                                    <td>{{ $sub->assets->where('asset_statuses_id','3')->count() }}</td>
+                                    <td>{{ $sub->assets->where('asset_statuses_id','4')->count() }}</td>
+                                    <td>{{ $sub->assets->where('asset_statuses_id','5')->count() }}</td>
+                                    <td>{{ $sub->assets->where('asset_statuses_id','6')->count() }}</td>
+                                    <td>{{ $sub->assets->where('asset_statuses_id','7')->count() }}</td>
+                                </tr>
+                                @foreach ($sub->assetCategories as $cate)
+                                    <tr>
+                                        <td></td>
+                                        <td>{{ $loop->index + 1 }}</td>
+                                        <td><a href="{{ route('assets.selected', $cate->id) }}">{{ $cate->name }}</a></td>
+                                        <td><img src="data:image/png;base64,{{ chunk_split(base64_encode($cate->image)) }}"
+                                                width="50" height="50"></td>
+
+                                        <td>{{ $sub->assets->where('asset_categories_id',$cate->id)->count() }}</td>
+                                        <td>{{ $sub->assets->where('asset_categories_id',$cate->id)->where('asset_statuses_id','1')->count() }}</td>
+                                        <td>{{ $sub->assets->where('asset_categories_id',$cate->id)->where('asset_statuses_id','2')->count() }}</td>
+                                        <td>{{ $sub->assets->where('asset_categories_id',$cate->id)->where('asset_statuses_id','3')->count() }}</td>
+                                        <td>{{ $sub->assets->where('asset_categories_id',$cate->id)->where('asset_statuses_id','4')->count() }}</td>
+                                        <td>{{ $sub->assets->where('asset_categories_id',$cate->id)->where('asset_statuses_id','5')->count() }}</td>
+                                        <td>{{ $sub->assets->where('asset_categories_id',$cate->id)->where('asset_statuses_id','6')->count() }}</td>
+                                        <td>{{ $sub->assets->where('asset_categories_id',$cate->id)->where('asset_statuses_id','7')->count() }}</td>
+                                    </tr>
+                                @endforeach
+                            @endforeach
+
+                        </tbody>
+                        <tfoot class="hide-if-no-paging">
+                            <tr>
+                                <td colspan="12" class="text-right">
+                                    <ul class="pagination">
+                                    </ul>
+                                </td>
+                            </tr>
+                        </tfoot>
+                    </table>
+
                 </div>
                 <div class="boxs-footer">
 
@@ -162,7 +248,6 @@
     <script>
         $(function() {
             $('.footable').footable();
-
         });
 
     </script>
