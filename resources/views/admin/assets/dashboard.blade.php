@@ -24,28 +24,46 @@
         </div>
     </div>
     <!-- cards row -->
+    @php
+    $stock = 0;
+    $inuse = 0;
+    $repair = 0;
+    $lost = 0;
+    foreach ($sub1 as $sub) {
+        $stock += $sub->assets->where('asset_statuses_id','1')->count();
+        $inuse += $sub->assets->where('asset_statuses_id','3')->count();
+        $repair += $sub->assets->where('asset_statuses_id','5')->count();
+        $lost += $sub->assets->where('asset_statuses_id','6')->count();
+    }
+    foreach ($sub2 as $sub) {
+        $stock += $sub->assets->where('asset_statuses_id','1')->count();
+        $inuse += $sub->assets->where('asset_statuses_id','3')->count();
+        $repair += $sub->assets->where('asset_statuses_id','5')->count();
+        $lost += $sub->assets->where('asset_statuses_id','6')->count();
+    }
+    @endphp
     <div class="row clearfix stats">
         <div class="col-md-3 col-sm-6 col-xs-12 text-center">
             <div class="boxs padder-v">
-                <div class="h2 text-info">200</div>
+                <div class="h2 text-info">{{ $stock }}</div>
                 <span class="text-muted">คงหลือ</span>
             </div>
         </div>
         <div class="col-md-3 col-sm-6 col-xs-12 text-center">
             <a href="javascript:void(0);" class="block padder-v bg-amethyst">
-                <span class="text-white h2 block">207</span>
+                <span class="text-white h2 block">{{ $inuse }}</span>
                 <span class="text-white">ถูกยืม</span>
             </a>
         </div>
         <div class="col-md-3 col-sm-6 col-xs-12 text-center">
             <div class="boxs padder-v">
-                <div class="h2">13</div>
+                <div class="h2">{{ $repair }}</div>
                 <span class="text-muted">ส่งซ่อม</span>
             </div>
         </div>
         <div class="col-md-3 col-sm-6 col-xs-12 text-center">
             <a href="javascript:void(0);" class="block padder-v bg-info">
-                <span class="text-white h2 block">3</span>
+                <span class="text-white h2 block">{{ $lost }}</span>
                 <span class="text-white">สูญหาย</span>
             </a>
         </div>
