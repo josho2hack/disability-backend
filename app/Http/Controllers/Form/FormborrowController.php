@@ -36,6 +36,9 @@ class FormborrowController extends Controller
      */
     public function create()
     {
+        if( \Auth::user()->disability_type_id == null ){
+            return redirect()->back()->with('message', 'กรุณาเพิ่มข้อมูลโปรไฟล์ให้ครบถ้วน');
+        }
         $check_data = Profile::where('user_id', \Auth::user()->id)->first();
         if ( $check_data == null){
             return redirect()->back()->with('message', 'กรุณาเพิ่มข้อมูลโปรไฟล์ให้ครบถ้วน');
