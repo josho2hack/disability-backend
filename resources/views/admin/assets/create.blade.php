@@ -31,7 +31,7 @@
         <div class="col-md-12">
             <section class="boxs">
                 <div class="boxs-header">
-                    <h3 class="custom-font hb-cyan">
+                    <h3 class="custom-font">
                         <strong>เพิ่มอุปกรณ์และเครื่องมือ</strong>
                     </h3>
                 </div>

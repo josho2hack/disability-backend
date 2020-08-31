@@ -9,7 +9,7 @@
     <div class="b-b mb-10">
         <div class="row">
             <div class="col-sm-6 col-xs-12">
-                <h3 class="h3 m-0">1.1 ระบบอุปกรณ์และเครื่องมือ</h3>
+                <h3 class="h3 m-0">1.1 ระบบบริหารจัดการครุภัณฑ์</h3>
                 <small class="text-muted">1.1.1 กลุ่มหลักอุปกรณ์และเครื่องมือ</small>
             </div>
             <div class="btn-group pull-right">
@@ -21,7 +21,7 @@
                         <a href="{{ route('admin') }}">1. บริหารจัดการระบบ</a>
                     </li>
                     <li>
-                        <a href="{{ route('assets.dashboard') }}">1.1 ระบบอุปกรณ์และเครื่องมือ</a>
+                        <a href="{{ route('assets.dashboard') }}">1.1 ระบบบริหารจัดการครุภัณฑ์</a>
                     </li>
                     <li class="active">1.1.1 กลุ่มหลักอุปกรณ์และเครื่องมือ</li>
                 </ol>
@@ -34,7 +34,7 @@
         <div class="col-md-12">
             <section class="boxs">
                 <div class="boxs-header">
-                    <h3 class="custom-font hb-cyan">
+                    <h3 class="custom-font">
                         <strong>รายการกลุ่มหลักอุปกรณ์และเครื่องมือ</strong>
                     </h3>
                 </div>

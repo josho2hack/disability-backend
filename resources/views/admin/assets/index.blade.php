@@ -34,7 +34,7 @@
         <div class="col-md-12">
             <section class="boxs">
                 <div class="boxs-header">
-                    <h3 class="custom-font hb-cyan">
+                    <h3 class="custom-font">
                         <strong>รายการอุปกรณ์และเครื่องมือ</strong>
                     </h3>
                 </div>
@@ -43,7 +43,7 @@
                         <div class="btn-group pull-right">
                             <a href="{{ route('assets.create') }}" class="btn btn-success btn-raised">เพิ่มอุปกรณ์และเครื่องมือ</a>
                         </div>
-                        <p class="text-info"><strong>ทั้งหมด <span class="text-success">{{$assets->count()}}</span> รายการ</strong></p>
+                        <p><strong>ทั้งหมด <span class="text-success">{{$assets->count()}}</span> รายการ</strong></p>
                         <label for="filter" style="padding-top: 5px">ค้นหา:</label>
                         <input id="filter" type="text" class="form-control rounded w-md mb-10 inline-block" />
                     </div>
