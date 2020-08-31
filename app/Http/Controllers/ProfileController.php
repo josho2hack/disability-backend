@@ -21,11 +21,14 @@ class ProfileController extends Controller
 
         $user = User::where('id',\Auth::user()->id)->first();
         $disability = DisabilityType::get();
+        $profile = Profile::where('user_id', \Auth::user()->id)->first();
 
-    	return view('profile.edit', compact('user', 'disability'));
+    	return view('profile.edit', compact('user', 'disability', 'profile'));
     }
 
     public function update_profile(Request $request){
+
+        $profile = Profile::where('user_id',\Auth::user()->id)->update(['title' => $request->title]);
 
         $update = User::find(\Auth::user()->id);
         $update->first_name = $request->first_name;

@@ -67,12 +67,22 @@
                         </li>
                         </label>
                     </div>
-                        
-
                         <div class="form-group">
-                             <label for="name" class="col-sm-8 control-label text-left"><li>มีความประสงค์ขอยืมอุปกรณ/เครื่องมือ เทคโนโลยีสารสนเทศและการสื่อส่ารหรือ เทตโนโลยีสิ่งอำนวยความสะดวกเพื่อการสื่อสาร ให้แก่</li> </label>
-                            <div class="col-sm-4">
-                                <input type="number" class="form-control" name="power_attorney" placeholder="จำนวนฉบับ">
+                            <label for="name" class="col-sm-4 control-label text-left"><li>โดยมีวัตถุประสงค์เพื่อ (โปรดระบุ) </li></label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" name="objective" placeholder="โดยมีวัตถุประสงค์เพื่อ (โปรดระบุ)">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="name" class="col-sm-4 control-label text-left"><li>ในรายการอุปกรณ์</li></label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" name="accessorie_list" placeholder="ในรายการอุปกรณ์">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="name" class="col-sm-4 control-label text-left"><li>เลขที่อุปกรณ์</li></label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" name="accessorie_no" placeholder="เลขที่อุปกรณ์">
                             </div>
                         </div>
 

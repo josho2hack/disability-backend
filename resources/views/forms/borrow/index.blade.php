@@ -33,9 +33,9 @@
 
                 <div class="boxs-body">
 
-                    @if ($message = Session::get('success'))
-                        <div class="alert alert-success">
-                            <p>{{ $message }}</p>
+                    @if(session()->has('message'))
+                        <div class="alert alert-danger">
+                            {{ session()->get('message') }}
                         </div>
                     @endif
                     <table id="searchTextResults" data-filter="#filter" data-page-size="25"
@@ -51,7 +51,7 @@
                                 <tr>
                                     <td>แบบฟอร์มที่ {{ $loop->index + 1 }}</td>
                                     <td>
-                                        <a href="{{ url("form-borrow/$forms->id") }}" class="btn btn-raised btn-info"
+                                        <a href="{{ url("pdf/$forms->id") }}" class="btn btn-raised btn-info"
                                             title="รายละเอียด"> <i class="fa fa-eye"></i></a>
                                     </td>
                                 </tr>

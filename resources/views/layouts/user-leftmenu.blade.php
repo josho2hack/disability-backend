@@ -106,7 +106,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="profile.html">
+                                <a href="{{url('substitute')}}">
                                     <i class="fa fa-user"></i>
                                     <span>รายละเอียดผู้ยื่นคำขอยืมแทน</span>
                                 </a>

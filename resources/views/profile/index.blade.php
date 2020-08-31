@@ -14,7 +14,7 @@
                         </div>
                         @if( $profile_address == null)
                         <div class="btn-group pull-right">
-                            <a href="{{ url('profile/add') }}" class="btn btn-warning btn-raised">เพิ่มข้อมูลโปรไฟล์ที่อยู่</a>
+                            <a href="{{ url('profile/address') }}" class="btn btn-success btn-raised">เพิ่มข้อมูลโปรไฟล์ที่อยู่</a>
                         </div>
                         @endif
                     </div>
@@ -32,7 +32,23 @@
                                     <div class="col-md-12">
                                         <div class="boxs-body">
                                             <form class="form-horizontal" >
-                                                
+                                                <div class="form-group">
+                                                    <label for="inputEmail3" class="col-sm-2 control-label">
+                                                        @if ( $profile_address )
+                                                            @if( $profile_address->title != null)
+                                                            คำนำหน้าชื่อ
+                                                            @else
+                                                            <span class="text-danger">คำนำหน้าชื่อ</span>
+                                                            @endif
+                                                        @else
+                                                            <span class="text-danger">คำนำหน้าชื่อ</span>
+                                                        @endif
+                                                    </label>
+                                                    <div class="col-sm-10">
+                                                        <input type="text" class="form-control" value="@if( $profile_address ){{ $profile_address->title }}@endif
+                                                        " name="first_name" readonly>
+                                                    </div>
+                                                </div>
                                                 <div class="form-group">
                                                     <label for="inputEmail3" class="col-sm-2 control-label">ชื่อ</label>
                                                     <div class="col-sm-10">
@@ -78,7 +94,13 @@
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="inputPassword3" class="col-sm-2 control-label">ประเภทผู้พิการ</label>
+                                                    <label for="inputPassword3" class="col-sm-2 control-label">
+                                                        @if( $user->disability_type_id != null )
+                                                        ประเภทผู้พิการ
+                                                        @else
+                                                        <span class="text-danger">ประเภทผู้พิการ</span>
+                                                        @endif
+                                                    </label>
                                                     <div class="col-sm-10">
                                                         <input type="text" class="form-control" 
                                                         @if ( $user->disability_type_id != null )
@@ -181,12 +203,14 @@
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
-                                                    <button type="button" class="btn btn-raised btn-warning">
-                                                            <a href="{{ url('profile/edit_address') }}" style="
-                                                            text-decoration: none;
-                                                            color: #ffffff;
-                                                            " >แก้ไขที่อยู่</a>
-                                                        </button>
+                                                    <div class="col-sm-offset-2 col-sm-10">
+                                                        <button type="button" class="btn btn-raised btn-warning">
+                                                                <a href="{{ url('profile/edit_address') }}" style="
+                                                                text-decoration: none;
+                                                                color: #ffffff;
+                                                                " >แก้ไขที่อยู่</a>
+                                                            </button>
+                                                    </div>
                                                 </div>
                                             </form>
                                         </div>

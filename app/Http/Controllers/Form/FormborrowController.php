@@ -5,7 +5,9 @@ namespace App\Http\Controllers\Form;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\FormBorrow;
+use App\Substitute;
 use App\User;
+use App\Profile;
 
 class FormborrowController extends Controller
 {
@@ -34,6 +36,11 @@ class FormborrowController extends Controller
      */
     public function create()
     {
+        $check_data = Profile::where('user_id', \Auth::user()->id)->first();
+        if ( $check_data == null){
+            return redirect()->back()->with('message', 'กรุณาเพิ่มข้อมูลโปรไฟล์ให้ครบถ้วน');
+        }
+
         return view('forms.borrow.create');
     }
 
@@ -46,6 +53,15 @@ class FormborrowController extends Controller
     public function store(Request $request)
     {
         $request['user_id'] = \Auth::user()->id;
+
+        if ( $request->type == 2 ) {
+            $check = Substitute::where('user_id', \Auth::user()->id)->first();
+            if( $check == null ) {
+                return redirect('form-borrow')->with('message', 'กรุณาเพิ่มข้อมูลผู้ยื่นคำขอแทน');
+            }
+            $request['substitute_id'] = Substitute::where('user_id', \Auth::user()->id)->first()->id;
+        }
+        
         $borrow = New FormBorrow;
         $borrow->fill($request->all());
 

@@ -29,6 +29,12 @@
                                             <form class="form-horizontal" action="{{ url('profile/edit') }}" method="post">
                                                 @csrf
                                                 <div class="form-group">
+                                                    <label for="inputEmail3" class="col-sm-2 control-label">คำนำหน้าชื่อ</label>
+                                                    <div class="col-sm-10">
+                                                        <input type="text" class="form-control" value="{{ $profile->title }}" name="title" >
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
                                                     <label for="inputEmail3" class="col-sm-2 control-label">ชื่อ</label>
                                                     <div class="col-sm-10">
                                                         <input type="text" class="form-control" value="{{ $user->first_name }}" name="first_name" >

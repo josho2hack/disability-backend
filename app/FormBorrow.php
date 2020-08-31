@@ -21,4 +21,9 @@ class FormBorrow extends Model
     {
         return $this->hasOne(Profile::class, 'user_id', 'user_id');
     }
+
+    public function substitute()
+    {
+        return $this->hasOne(Substitute::class, 'id', 'substitute_id');
+    }
 }

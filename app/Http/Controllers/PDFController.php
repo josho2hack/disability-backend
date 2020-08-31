@@ -13,7 +13,7 @@ class PDFController extends Controller
     {
     	$form = FormBorrow::where('id', $id)->first();
     	$pdf = PDF::loadview('forms.borrow.pdf', compact('form'));
-
+    	// return view('forms.borrow.pdf', compact('form'));
     	return @$pdf->stream();
     }
 }
