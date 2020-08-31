@@ -47,7 +47,7 @@
                   </div>
                   <div class="checkbox">
                     <label>
-                      <input type="checkbox" name="optionsCheckboxes"> จำข้อมูลไว้ใน ระบบ</label>
+                      <input type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}> จำข้อมูลไว้ใน ระบบ</label>
                   </div>
                 </div>
                 <div class="footer text-center">

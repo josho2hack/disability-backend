@@ -60,8 +60,9 @@ Route::get('email/resend', 'VerificationApiController@resend')->name('verificati
 
 Route::get('/subgroup/{id}/avatar', 'Admin\SubGroupController@avatar');
 
+Route::get('dashboard', 'Admin\AdminController@index')->name('dashboard');
 Route::prefix('admin')->group(function () {
-    Route::get('', 'Admin\AdminController@index')->name('admin');
+    Route::get('dashboard', 'Admin\AdminController@index')->name('admin');
     Route::get('assets/dashboard', 'Admin\AssetController@dashboard')->name('assets.dashboard');
     Route::get('assets/selected/{cate}', 'Admin\AssetController@selected')->name('assets.selected');
     Route::get('assets/subselected/{sub}', 'Admin\AssetController@subselected')->name('assets.sub.selected');

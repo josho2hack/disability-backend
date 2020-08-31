@@ -6,23 +6,23 @@
                     <div class="panel-body">
                         <!--  NAVIGATION Content -->
                         <ul id="navigation">
-                            <li class="active open">
-                                <a href="{{ route('admin') }}">
+                            <li class="{{ (request()->is('dashboard')) ? 'active open' : '' }}">
+                                <a href="{{ route('dashboard') }}">
                                     <i class="fa fa-dashboard"></i>
                                     <span>ภาพรวมระบบ</span>
                                 </a>
                             </li>
-                            <li>
+                            <li class="{{ (request()->is('admin/*')) ? 'active open' : '' }}">
                                 <a href="{{ route('admin') }}" role="button" tabindex="0">
                                     <i class="fa fa-list"></i>
                                     <span>1. บริหารจัดการระบบ</span>
                                 </a>
                                 <ul>
-                                    <li>
+                                    <li class="{{ (request()->is('admin/assets*')) ? 'active' : '' }}">
                                         <a href="{{ route('assets.dashboard') }}">
                                             <i class="fa fa-angle-right"></i>1.1 ระบบบริหารจัดการครุภัณฑ์</a>
                                     </li>
-                                    <li>
+                                    <li class="{{ (request()->is('admin/users*')) ? 'active' : '' }}">
                                         <a href="{{ route('users.index') }}">
                                             <i class="fa fa-angle-right"></i>1.2 สมาชิก</a>
                                     </li>
