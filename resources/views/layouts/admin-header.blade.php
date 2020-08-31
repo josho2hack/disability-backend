@@ -4,7 +4,13 @@
                 <!-- Branding -->
                 <div class="branding">
                     <a class="brand" href="{{ url('/') }}">
-                        <span>ONDE</span>
+                        <span>ONDE
+                            @guest
+                                ผู้เยี่ยมชม
+                            @else
+                                {{ Auth::user()->roles()->first()->description }}
+                            @endguest
+                        </span>
                     </a>
                     <a role="button" tabindex="0" class="offcanvas-toggle visible-xs-inline">
                         <i class="fa fa-bars"></i>
@@ -184,7 +190,7 @@
                             <ul class="dropdown-menu pull-right" role="menu">
                                 <li>
                                     <div class="user-info">
-                                        <div class="user-name">{{ Auth::user()->name }}</div>
+                                        <div class="user-name">{{ Auth::user()->FullName }}</div>
                                         <div class="user-position online">Available</div>
                                     </div>
                                 </li>
@@ -210,8 +216,8 @@
                                 <li>
                                     <div>
                                         <a href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                            document.getElementById('logout-form').submit();" role="button"
-                                            tabindex="0">
+                                                                document.getElementById('logout-form').submit();"
+                                            role="button" tabindex="0">
                                             <i class="fa fa-sign-out"></i>{{ __('ออกจากระบบ') }}</a>
 
                                         <form id="logout-form" action="{{ route('logout') }}" method="POST"

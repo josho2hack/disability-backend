@@ -62,16 +62,20 @@ class DatabaseSeeder extends Seeder
 
         DB::table('roles')->insert([
             [
-                'name' => 'Admin' //1
+                'name' => 'Admin', //1
+                'description' => 'ผู้ดูแลระบบ'
             ],
             [
-                'name' => 'Audit' //2
+                'name' => 'Audit', //2
+                'description' => 'ผู้ตรวจสอบ'
             ],
             [
-                'name' => 'Approve' //3
+                'name' => 'Approve', //3
+                'description' => 'ผู้อนุมัติ'
             ],
             [
-                'name' => 'User' //4
+                'name' => 'User', //4
+                'description' => 'สมาชิก'
             ],
         ]);
 
@@ -690,6 +694,6 @@ class DatabaseSeeder extends Seeder
                 'slug' => 'ungroup'
             ]
         ]);
-        
+
     }
 }

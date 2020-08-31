@@ -1,5 +1,5 @@
 <aside id="leftmenu">
-    <div id="leftmenu-wrap">
+    <div id="leftmenu-wrap l-parpl">
         <div class="panel-group slim-scroll" role="tablist">
             <div class="panel panel-default">
                 <div id="leftmenuNav" class="panel-collapse collapse in" role="tabpanel">
@@ -44,25 +44,22 @@
                                             <i class="fa fa-angle-right"></i>1.7 ระบบรับแจ้งปัญหา</a>
                                     </li>
                                     <li>
-                                        <a role="button" tabindex="0">
-                                            <i class="fa fa-edit"></i>
-                                            <span>1.8 ระบบจัดการเว็บ</span>
-                                        </a>
+                                        <a role="button" tabindex="0"><i class="fa fa-angle-right"></i>1.8 ระบบจัดการเว็บ</a>                                        </a>
                                         <ul>
                                             <li>
-                                                <a href="{{ route('admin.news.index') }}">
+                                                <a role="button" tabindex="0" href="{{ route('admin.news.index') }}">
                                                     <i class="fa fa-angle-right"></i>1.8.1 จัดการข่าวสาร</a>
                                             </li>
                                             <li>
-                                                <a href="{{ url('activity') }}">
+                                                <a role="button" tabindex="0" href="{{ url('activity') }}">
                                                     <i class="fa fa-angle-right"></i>1.8.2 จัดการกิจกรรม</a>
                                             </li>
                                             <li>
-                                                <a href="{{ url('fileupload') }}">
+                                                <a role="button" tabindex="0" href="{{ url('fileupload') }}">
                                                     <i class="fa fa-angle-right"></i>1.8.3 จัดการไฟล์</a>
                                             </li>
                                             <li>
-                                                <a href="{{ route('admin.surveys.index') }}">
+                                                <a role="button" tabindex="0" href="{{ route('admin.surveys.index') }}">
                                                     <i class="fa fa-angle-right"></i>1.8.4 จัดการแบบสำรวจ</a>
                                             </li>
                                         </ul>
