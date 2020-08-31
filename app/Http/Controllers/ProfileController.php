@@ -22,7 +22,9 @@ class ProfileController extends Controller
         $user = User::where('id',\Auth::user()->id)->first();
         $disability = DisabilityType::get();
         $profile = Profile::where('user_id', \Auth::user()->id)->first();
-
+        if($profile == null){
+            return redirect('profile/address');
+        }
     	return view('profile.edit', compact('user', 'disability', 'profile'));
     }
 
