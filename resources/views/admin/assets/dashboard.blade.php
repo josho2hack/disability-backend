@@ -74,22 +74,20 @@
         <div class="col-md-12">
             <section class="boxs">
                 <div class="boxs-header">
-                    <h3 class="custom-font hb-blue">
-                        อุปกรณ์และเครื่องมือ
+                    <h3 class="custom-font">
+                        <strong>อุปกรณ์และเครื่องมือ</strong>
                     </h3>
-                    <p class="text-info"><strong>ครุภัณฑ์ทั้งหมด <span class="text-success">{{ $assetcount }}</span>
+                    <div class="btn-group pull-right">
+                        <a href="{{ route('maingroups.index') }}" class="btn btn-info btn-raised mr-10">กลุ่มหลัก</a>
+                        <a href="{{ route('subgroups.index') }}" class="btn btn-info btn-raised mr-10">กลุ่มย่อย</a>
+                        <a href="{{ route('assets.index') }}"
+                            class="btn btn-info btn-raised">อุปกรณ์และเครื่องมือทั้งหมด</a>
+                    </div>
+
+                    <p class=""><strong>ครุภัณฑ์ทั้งหมด <span class="text-success">{{ $assetcount }}</span>
                             รายการ</strong></p>
                 </div>
-                <div class="boxs-widget">
-                    <div class="form-group">
-                        <div class="btn-group pull-right">
-                            <a href="{{ route('maingroups.index') }}" class="btn btn-info btn-raised mr-10">กลุ่มหลัก</a>
-                            <a href="{{ route('subgroups.index') }}" class="btn btn-info btn-raised mr-10">กลุ่มย่อย</a>
-                            <a href="{{ route('assets.index') }}"
-                                class="btn btn-info btn-raised">อุปกรณ์และเครื่องมือทั้งหมด</a>
-                        </div>
-                    </div>
-                </div>
+
                 <div class="boxs-body">
                     <table id="searchTextResults" data-filter="#filter" data-page-size="25" data-sorting="false"
                         class="footable table table-custom table-hover">
@@ -108,7 +106,7 @@
                                     รายการ</th>
                             </tr>
                             <tr>
-                                <th>ลำดับที่</th>
+                                <th>ลำดับ</th>
                                 <th>กลุ่มหลัก</th>
                                 <th>กลุ่มย่อย</th>
                                 <th>รูปภาพ</th>
@@ -142,8 +140,7 @@
                                 @foreach ($sub->assetCategories as $cate)
                                     <tr>
                                         <td></td>
-                                        <td>{{ $loop->index + 1 }}</td>
-                                        <td><a href="{{ route('assets.selected', $cate->id) }}">{{ $cate->name }}</a></td>
+                                        <td colspan="2"><a href="{{ route('assets.selected', $cate->id) }}">{{ $loop->index + 1 }}. {{ $cate->name }}</a></td>
                                         <td><img src="data:image/png;base64,{{ chunk_split(base64_encode($cate->image)) }}"
                                                 width="50" height="50"></td>
 
@@ -194,7 +191,7 @@
                                     รายการ</th>
                             </tr>
                             <tr>
-                                <th>ลำดับที่</th>
+                                <th>ลำดับ</th>
                                 <th>กลุ่มหลัก</th>
                                 <th>กลุ่มย่อย</th>
                                 <th>รูปภาพ</th>
@@ -228,8 +225,7 @@
                                 @foreach ($sub->assetCategories as $cate)
                                     <tr>
                                         <td></td>
-                                        <td>{{ $loop->index + 1 }}</td>
-                                        <td><a href="{{ route('assets.selected', $cate->id) }}">{{ $cate->name }}</a></td>
+                                        <td colspan="2"><a href="{{ route('assets.selected', $cate->id) }}">{{ $loop->index + 1 }}. {{ $cate->name }}</a></td>
                                         <td><img src="data:image/png;base64,{{ chunk_split(base64_encode($cate->image)) }}"
                                                 width="50" height="50"></td>
 

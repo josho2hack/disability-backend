@@ -48,17 +48,20 @@ class SubGroupController extends Controller
             'sub_groups_id' => 'required'
         ]);
 
+        $input = $request->all();
+
         if ($request->hasFile('image')) {
-            // Get the file from the request
-            $file = $request->file('image');
+
+            // Get the file from the request store to disk
+            $path = $request->image->store('assets');
 
             // Get the contents of the file
-            $contents = $file->openFile()->fread($file->getSize());
-            $request['image'] = $contents;
+            $contents = Storage::get($path);
+            $input['image'] = $contents;
+            Storage::delete($path);
         }
 
-
-        AssetCategory::create($request->all());
+        AssetCategory::create($input);
         return redirect()->route('subgroups.index')->with('success', 'บันทึกข้อมูลเรียบร้อยแล้ว');
     }
 
