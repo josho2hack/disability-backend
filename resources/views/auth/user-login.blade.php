@@ -51,7 +51,7 @@
                   </div>
                 </div>
                 <div class="footer text-center">
-                    <button type="submit" class="btn btn-info">
+                    <button type="submit" class="btn btn-raised btn-info">
                         {{ __('เข้าสู่ระบบ') }}
                     </button>
                 </div>

@@ -7,7 +7,7 @@
     <div class="b-b mb-10">
         <div class="row">
             <div class="col-sm-6 col-xs-12">
-                <h3 class="h3 m-0">1.1 ระบบอุปกรณ์และเครื่องมือ</h3>
+                <h3 class="h3 m-0">1.1 ระบบบริหารจัดการครุภัณฑ์</h3>
                 <small class="text-muted">ภาพรวมอุปกรณ์และเครื่องมือ</small>
             </div>
             <div class="btn-group pull-right">
@@ -18,7 +18,7 @@
                     <li>
                         <a href="{{ route('admin') }}">1. บริหารจัดการระบบ</a>
                     </li>
-                    <li class="active">1.1 ระบบอุปกรณ์และเครื่องมือ</li>
+                    <li class="active">1.1 ระบบบริหารจัดการครุภัณฑ์</li>
                 </ol>
             </div>
         </div>
@@ -30,16 +30,16 @@
     $repair = 0;
     $lost = 0;
     foreach ($sub1 as $sub) {
-        $stock += $sub->assets->where('asset_statuses_id','1')->count();
-        $inuse += $sub->assets->where('asset_statuses_id','3')->count();
-        $repair += $sub->assets->where('asset_statuses_id','5')->count();
-        $lost += $sub->assets->where('asset_statuses_id','6')->count();
+    $stock += $sub->assets->where('asset_statuses_id','1')->count();
+    $inuse += $sub->assets->where('asset_statuses_id','3')->count();
+    $repair += $sub->assets->where('asset_statuses_id','5')->count();
+    $lost += $sub->assets->where('asset_statuses_id','6')->count();
     }
     foreach ($sub2 as $sub) {
-        $stock += $sub->assets->where('asset_statuses_id','1')->count();
-        $inuse += $sub->assets->where('asset_statuses_id','3')->count();
-        $repair += $sub->assets->where('asset_statuses_id','5')->count();
-        $lost += $sub->assets->where('asset_statuses_id','6')->count();
+    $stock += $sub->assets->where('asset_statuses_id','1')->count();
+    $inuse += $sub->assets->where('asset_statuses_id','3')->count();
+    $repair += $sub->assets->where('asset_statuses_id','5')->count();
+    $lost += $sub->assets->where('asset_statuses_id','6')->count();
     }
     @endphp
     <div class="row clearfix stats">
@@ -74,8 +74,8 @@
         <div class="col-md-12">
             <section class="boxs">
                 <div class="boxs-header">
-                    <h3 class="custom-font hb-cyan">
-                        <strong>อุปกรณ์และเครื่องมือ</strong>
+                    <h3 class="custom-font hb-blue">
+                        อุปกรณ์และเครื่องมือ
                     </h3>
                     <p class="text-info"><strong>ครุภัณฑ์ทั้งหมด <span class="text-success">{{ $assetcount }}</span>
                             รายการ</strong></p>
@@ -97,13 +97,13 @@
                             <tr>
                                 <th colspan="12">กลุ่ม: เทคโนโลยีสารสนเทศและการสื่อสาร
                                     @php
-                                        $all = 0;
-                                        foreach ($sub1 as $sub) {
-                                            $all += $sub->assets->count();
-                                        }
+                                    $all = 0;
+                                    foreach ($sub1 as $sub) {
+                                    $all += $sub->assets->count();
+                                    }
                                     @endphp
                                     <span class="text-info">
-                                    {{ $all }}
+                                        {{ $all }}
                                     </span>
                                     รายการ</th>
                             </tr>
@@ -131,13 +131,13 @@
                                     <td>
                                         {{ $sub->assets->count() }}
                                     </td>
-                                    <td>{{ $sub->assets->where('asset_statuses_id','1')->count() }}</td>
-                                    <td>{{ $sub->assets->where('asset_statuses_id','2')->count() }}</td>
-                                    <td>{{ $sub->assets->where('asset_statuses_id','3')->count() }}</td>
-                                    <td>{{ $sub->assets->where('asset_statuses_id','4')->count() }}</td>
-                                    <td>{{ $sub->assets->where('asset_statuses_id','5')->count() }}</td>
-                                    <td>{{ $sub->assets->where('asset_statuses_id','6')->count() }}</td>
-                                    <td>{{ $sub->assets->where('asset_statuses_id','7')->count() }}</td>
+                                    <td>{{ $sub->assets->where('asset_statuses_id', '1')->count() }}</td>
+                                    <td>{{ $sub->assets->where('asset_statuses_id', '2')->count() }}</td>
+                                    <td>{{ $sub->assets->where('asset_statuses_id', '3')->count() }}</td>
+                                    <td>{{ $sub->assets->where('asset_statuses_id', '4')->count() }}</td>
+                                    <td>{{ $sub->assets->where('asset_statuses_id', '5')->count() }}</td>
+                                    <td>{{ $sub->assets->where('asset_statuses_id', '6')->count() }}</td>
+                                    <td>{{ $sub->assets->where('asset_statuses_id', '7')->count() }}</td>
                                 </tr>
                                 @foreach ($sub->assetCategories as $cate)
                                     <tr>
@@ -147,14 +147,21 @@
                                         <td><img src="data:image/png;base64,{{ chunk_split(base64_encode($cate->image)) }}"
                                                 width="50" height="50"></td>
 
-                                        <td>{{ $sub->assets->where('asset_categories_id',$cate->id)->count() }}</td>
-                                        <td>{{ $sub->assets->where('asset_categories_id',$cate->id)->where('asset_statuses_id','1')->count() }}</td>
-                                        <td>{{ $sub->assets->where('asset_categories_id',$cate->id)->where('asset_statuses_id','2')->count() }}</td>
-                                        <td>{{ $sub->assets->where('asset_categories_id',$cate->id)->where('asset_statuses_id','3')->count() }}</td>
-                                        <td>{{ $sub->assets->where('asset_categories_id',$cate->id)->where('asset_statuses_id','4')->count() }}</td>
-                                        <td>{{ $sub->assets->where('asset_categories_id',$cate->id)->where('asset_statuses_id','5')->count() }}</td>
-                                        <td>{{ $sub->assets->where('asset_categories_id',$cate->id)->where('asset_statuses_id','6')->count() }}</td>
-                                        <td>{{ $sub->assets->where('asset_categories_id',$cate->id)->where('asset_statuses_id','7')->count() }}</td>
+                                        <td>{{ $sub->assets->where('asset_categories_id', $cate->id)->count() }}</td>
+                                        <td>{{ $sub->assets->where('asset_categories_id', $cate->id)->where('asset_statuses_id', '1')->count() }}
+                                        </td>
+                                        <td>{{ $sub->assets->where('asset_categories_id', $cate->id)->where('asset_statuses_id', '2')->count() }}
+                                        </td>
+                                        <td>{{ $sub->assets->where('asset_categories_id', $cate->id)->where('asset_statuses_id', '3')->count() }}
+                                        </td>
+                                        <td>{{ $sub->assets->where('asset_categories_id', $cate->id)->where('asset_statuses_id', '4')->count() }}
+                                        </td>
+                                        <td>{{ $sub->assets->where('asset_categories_id', $cate->id)->where('asset_statuses_id', '5')->count() }}
+                                        </td>
+                                        <td>{{ $sub->assets->where('asset_categories_id', $cate->id)->where('asset_statuses_id', '6')->count() }}
+                                        </td>
+                                        <td>{{ $sub->assets->where('asset_categories_id', $cate->id)->where('asset_statuses_id', '7')->count() }}
+                                        </td>
                                     </tr>
                                 @endforeach
                             @endforeach
@@ -176,13 +183,13 @@
                             <tr>
                                 <th colspan="12">กลุ่ม: เทคโนโลยีสิ่งอำนวยความสะดวกเพื่อการสื่อสาร
                                     @php
-                                        $all = 0;
-                                        foreach ($sub2 as $sub) {
-                                            $all += $sub->assets->count();
-                                        }
+                                    $all = 0;
+                                    foreach ($sub2 as $sub) {
+                                    $all += $sub->assets->count();
+                                    }
                                     @endphp
                                     <span class="text-info">
-                                    {{ $all }}
+                                        {{ $all }}
                                     </span>
                                     รายการ</th>
                             </tr>
@@ -210,13 +217,13 @@
                                     <td>
                                         {{ $sub->assets->count() }}
                                     </td>
-                                    <td>{{ $sub->assets->where('asset_statuses_id','1')->count() }}</td>
-                                    <td>{{ $sub->assets->where('asset_statuses_id','2')->count() }}</td>
-                                    <td>{{ $sub->assets->where('asset_statuses_id','3')->count() }}</td>
-                                    <td>{{ $sub->assets->where('asset_statuses_id','4')->count() }}</td>
-                                    <td>{{ $sub->assets->where('asset_statuses_id','5')->count() }}</td>
-                                    <td>{{ $sub->assets->where('asset_statuses_id','6')->count() }}</td>
-                                    <td>{{ $sub->assets->where('asset_statuses_id','7')->count() }}</td>
+                                    <td>{{ $sub->assets->where('asset_statuses_id', '1')->count() }}</td>
+                                    <td>{{ $sub->assets->where('asset_statuses_id', '2')->count() }}</td>
+                                    <td>{{ $sub->assets->where('asset_statuses_id', '3')->count() }}</td>
+                                    <td>{{ $sub->assets->where('asset_statuses_id', '4')->count() }}</td>
+                                    <td>{{ $sub->assets->where('asset_statuses_id', '5')->count() }}</td>
+                                    <td>{{ $sub->assets->where('asset_statuses_id', '6')->count() }}</td>
+                                    <td>{{ $sub->assets->where('asset_statuses_id', '7')->count() }}</td>
                                 </tr>
                                 @foreach ($sub->assetCategories as $cate)
                                     <tr>
@@ -226,14 +233,21 @@
                                         <td><img src="data:image/png;base64,{{ chunk_split(base64_encode($cate->image)) }}"
                                                 width="50" height="50"></td>
 
-                                        <td>{{ $sub->assets->where('asset_categories_id',$cate->id)->count() }}</td>
-                                        <td>{{ $sub->assets->where('asset_categories_id',$cate->id)->where('asset_statuses_id','1')->count() }}</td>
-                                        <td>{{ $sub->assets->where('asset_categories_id',$cate->id)->where('asset_statuses_id','2')->count() }}</td>
-                                        <td>{{ $sub->assets->where('asset_categories_id',$cate->id)->where('asset_statuses_id','3')->count() }}</td>
-                                        <td>{{ $sub->assets->where('asset_categories_id',$cate->id)->where('asset_statuses_id','4')->count() }}</td>
-                                        <td>{{ $sub->assets->where('asset_categories_id',$cate->id)->where('asset_statuses_id','5')->count() }}</td>
-                                        <td>{{ $sub->assets->where('asset_categories_id',$cate->id)->where('asset_statuses_id','6')->count() }}</td>
-                                        <td>{{ $sub->assets->where('asset_categories_id',$cate->id)->where('asset_statuses_id','7')->count() }}</td>
+                                        <td>{{ $sub->assets->where('asset_categories_id', $cate->id)->count() }}</td>
+                                        <td>{{ $sub->assets->where('asset_categories_id', $cate->id)->where('asset_statuses_id', '1')->count() }}
+                                        </td>
+                                        <td>{{ $sub->assets->where('asset_categories_id', $cate->id)->where('asset_statuses_id', '2')->count() }}
+                                        </td>
+                                        <td>{{ $sub->assets->where('asset_categories_id', $cate->id)->where('asset_statuses_id', '3')->count() }}
+                                        </td>
+                                        <td>{{ $sub->assets->where('asset_categories_id', $cate->id)->where('asset_statuses_id', '4')->count() }}
+                                        </td>
+                                        <td>{{ $sub->assets->where('asset_categories_id', $cate->id)->where('asset_statuses_id', '5')->count() }}
+                                        </td>
+                                        <td>{{ $sub->assets->where('asset_categories_id', $cate->id)->where('asset_statuses_id', '6')->count() }}
+                                        </td>
+                                        <td>{{ $sub->assets->where('asset_categories_id', $cate->id)->where('asset_statuses_id', '7')->count() }}
+                                        </td>
                                     </tr>
                                 @endforeach
                             @endforeach
