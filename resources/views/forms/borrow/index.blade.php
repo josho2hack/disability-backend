@@ -9,7 +9,7 @@
     <div class="b-b mb-10">
         <div class="row">
             <div class="col-sm-6 col-xs-12">
-                <h3 class="h3 m-0">6.1 แบบฟอร์มยืม</h3>
+                <h3 class="h3 m-0"> แบบฟอร์มยืม</h3>
             </div>
         </div>
 
