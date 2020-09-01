@@ -190,7 +190,7 @@
                         </li>
                         <li class="dropdown nav-profile">
                             <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">
-                                @if (Auth::user()->avatar)
+                                @if (!empty(Auth::user()->avatar_name))
                                     <img src="{{ url(Auth::user()->avatar) }}" alt="" class="0 size-30x30"> </a>
                                 @else
                                     <img src="{{ asset('assets/images/profile-photo.jpg') }}" alt="" class="0 size-30x30"> </a>

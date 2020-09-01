@@ -113,7 +113,7 @@
                             </div>
                         </div>
 
-                        @if ($user->avatar)
+                        @if (!empty($user->avatar_name))
                             <div class="col-xs-12 col-sm-12 col-md-12">
                                 <div class="form-group">
                                     {{-- <img src="/subgroup/{{ $subgroup->id }}/avatar" />
