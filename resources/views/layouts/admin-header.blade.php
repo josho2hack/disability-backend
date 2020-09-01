@@ -190,7 +190,11 @@
                         </li>
                         <li class="dropdown nav-profile">
                             <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">
-                                <img src="{{ asset('assets/images/profile-photo.jpg') }}" alt="" class="0 size-30x30"> </a>
+                                @if (Auth::user()->avatar)
+                                    <img src="{{ url(Auth::user()->avatar) }}" alt="" class="0 size-30x30"> </a>
+                                @else
+                                    <img src="{{ asset('assets/images/profile-photo.jpg') }}" alt="" class="0 size-30x30"> </a>
+                                @endif
                             <ul class="dropdown-menu pull-right" role="menu">
                                 <li>
                                     <div class="user-info">

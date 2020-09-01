@@ -45,9 +45,7 @@ class UserController extends Controller
             'password' => 'required',
             'first_name' => 'required',
             'last_name' => 'required',
-            'gender' => 'required',
-            'citizen_id' => 'required',
-            'pwd_id' => 'required'
+            'gender' => 'required'
         ]);
 
         if (!isset($request['active'])) {
@@ -59,14 +57,14 @@ class UserController extends Controller
         $role_id = $input['role'];
         unset($input['role']);
 
-        if ($request->hasFile('avatar_name')) {
+        if ($request->hasFile('avatar')) {
 
             // Get the file from the request store to disk
-            $path = $request->image->store('users');
+            $path = $request->avatar->store('public/users');
 
             // Get the contents of the file
-            $contents = Storage::get($path);
-            //$input['avatar_name'] = $contents;
+            //$contents = Storage::get($path);
+            $input['avatar_name'] = basename($path);
             $input['avatar_path'] = $path;
         }
 
@@ -85,7 +83,7 @@ class UserController extends Controller
     public function show($id)
     {
         $user = User::with('roles','disability')->find($id);
-        return view('admin.users.create', compact('user'));
+        return view('admin.users.show', compact('user'));
     }
 
     /**

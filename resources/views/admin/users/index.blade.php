@@ -34,23 +34,20 @@
         <div class="col-md-12">
             <section class="boxs">
                 <div class="boxs-header">
-                    <h3 class="custom-font hb-cyan">
+                    <h3 class="custom-font">
                         <strong>รายการสมาชิก</strong>
                     </h3>
-                </div>
-                <div class="boxs-widget">
+                    <div class="btn-group pull-right">
+                        <a href="{{ route('users.create') }}" class="btn btn-success btn-raised mr-10">เพิ่มสมาชิก</a>
+                        <a href="#" class="btn btn-info btn-raised">กำหนดค่าสมาชิก</a>
+                    </div>
+                    <p class=""><strong>สมาชิกทั้งหมด <span class="text-info"> {{ $users->count() }} </span>
+                            รายการ</strong></p>
                     <div class="form-group">
-                        <div class="btn-group pull-right">
-                            <a href="{{ route('users.create') }}" class="btn btn-success btn-raised mr-10">เพิ่มสมาชิก</a>
-                            <a href="#" class="btn btn-info btn-raised">กำหนดค่าสมาชิก</a>
-                        </div>
-                        <p class="text-info"><strong>สมาชิกทั้งหมด <span class="text-success">{{ $users->count() }}</span>
-                                รายการ</strong></p>
                         <label for="filter" style="padding-top: 5px">ค้นหา:</label>
                         <input id="filter" type="text" class="form-control rounded w-md mb-10 inline-block" />
                     </div>
                 </div>
-
                 <div class="boxs-body">
                     @if ($message = Session::get('success'))
                         <div class="alert alert-success">
@@ -67,7 +64,7 @@
                                 <th>เพศ</th>
                                 <th>เลขผู้พิการ</th>
                                 <th>สถานะ</th>
-                                <th colspan=3>ดำเนินการ</th>
+                                <th colspan=3 style="width: 5%">ดำเนินการ</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -79,40 +76,41 @@
                                     <td>
                                         @php
                                         if($user->gender == 1)
-                                            echo "ชาย";
+                                        echo "ชาย";
                                         else
-                                            echo "หญิง";
+                                        echo "หญิง";
                                         @endphp
                                     </td>
                                     <td>{{ $user->pwd_id }}</td>
                                     <td>
                                         @php
                                         if($user->active == 1)
-                                            echo "เปิด";
+                                        echo "เปิด";
                                         else
-                                            echo "ปิด";
+                                        echo "ปิด";
                                         @endphp
                                     </td>
                                     <td>
-                                        <a href="{{ route('users.show', $user) }}" class="btn btn-raised btn-info"
+                                        <a href="{{ route('users.show', $user) }}" class="btn btn-raised btn-info btn-sm"
                                             title="รายละเอียด"> <i class="fa fa-eye"></i></a>
                                     </td>
                                     <td>
-                                        <a href="{{ route('users.edit', $user->id) }}" class="btn btn-raised btn-warning"
-                                            title="แก้ไข"> <i class="fa fa-edit"></i></a>
+                                        <a href="{{ route('users.edit', $user->id) }}"
+                                            class="btn btn-raised btn-warning btn-sm" title="แก้ไข"> <i
+                                                class="fa fa-edit"></i></a>
                                     </td>
                                     <td>
                                         <form action="{{ route('users.destroy', $user->id) }}" method="post">
                                             @csrf
                                             @method('DELETE')
-                                            <button class="del btn btn-raised btn-primary" type="submit" title="ลบ"
-                                            @if ($user->id == 1)
+                                            <button class="del btn btn-raised btn-primary btn-sm" type="submit" title="ลบ"
+                                                @if ($user->id == 1)
                                                 disabled
-                                            @endif>
-                                                <i class="fa fa-trash"></i></button>
-                                        </form>
-                                    </td>
-                                </tr>
+                            @endif>
+                            <i class="fa fa-trash"></i></button>
+                            </form>
+                            </td>
+                            </tr>
                             @endforeach
                         </tbody>
                         <tfoot class="hide-if-no-paging">

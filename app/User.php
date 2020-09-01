@@ -6,6 +6,7 @@ use Laravel\Passport\HasApiTokens;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Storage;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
@@ -20,7 +21,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'username', 'name', 'email', 'email_verified_at', 'password',
         'first_name', 'last_name', 'gender', 'avatar_name', 'avatar_path', 'citizen_id','pwd_id',
         'timezone', 'active', 'last_login_at', 'last_login_ip', 'to_be_logged_out', 'created_at',
-        'updated_at','disability_type_id'
+        'updated_at','disability_type_id','title'
     ];
 
     /**
@@ -40,6 +41,10 @@ class User extends Authenticatable implements MustVerifyEmail
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function getAvatarAttribute(){
+        return Storage::url($this->avatar_path);
+    }
 
     public function getFullNameAttribute(){
         return $this->first_name ." " . $this->last_name;

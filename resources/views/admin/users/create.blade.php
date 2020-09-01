@@ -21,15 +21,14 @@
                 <li>
                     <a href="{{ route('users.index') }}">1.2 ระบบสมาชิก</a>
                 </li>
-                <li class="active">1.2.2 เพิ่มสมาชิก</li>
+                <li class="active">1.2.1 สมาชิก</li>
             </ol>
         </div>
-    </div>
     </div>
 
     <!-- row -->
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-6 col-md-offset-3">
             <section class="boxs">
                 <div class="boxs-header">
                     <h3 class="custom-font hb-green">
@@ -51,9 +50,10 @@
                         enctype="multipart/form-data">
                         @csrf
                         <div class="form-group">
-                            <label for="prefix" class="col-sm-2 control-label">คำนำหน้าชื่อ</label>
+                            <label for="title" class="col-sm-2 control-label">คำนำหน้าชื่อ</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" name="prefix" placeholder="">
+                                <input type="text" class="form-control" name="title" placeholder="">
+                                <p class="help-block mb-0">ตัวอย่าง: นาย นาง นางสาว</p>
                             </div>
                         </div>
                         <div class="form-group">
@@ -111,9 +111,8 @@
                                 <select id="disability_type_id" name="disability_type_id" class="chosen-select"
                                     style="width: 400px;">
                                     @foreach ($disabilities as $disability)
-                                        <option value="{{ $disability->id }}" @if ($disability->id == 1)
-                                            selected
-                                        @endif>{{ $disability->description }}</option>
+                                        <option value="">เลือกประเภทคนพิการ</option>
+                                        <option value="{{ $disability->id }}">{{ $disability->description }}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -124,20 +123,28 @@
                             @endphp
                             <label for="role" class="col-sm-2 control-label">สิทธิ์การใช้งาน</label>
                             <div class="col-sm-10">
-                                <select name="role" class="chosen-select"
-                                    style="width: 400px;">
+                                <select name="role" class="chosen-select" style="width: 400px;">
                                     @foreach ($roles as $role)
                                         <option value="{{ $role->id }}" @if ($role->id == 1)
                                             selected
-                                        @endif>{{ $role->description }}</option>
+                                    @endif>{{ $role->description }}</option>
                                     @endforeach
                                 </select>
                             </div>
                         </div>
+                        <hr class="line-dashed full-witdh-line" />
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">รูปภาพ</label>
+                            <div class="col-sm-10">
+                                <input type="file" class="filestyle" data-buttonText="เลือกรูป" data-iconName="fa fa-inbox"
+                                    name="avatar">
+                            </div>
+                        </div>
+                        <hr class="line-dashed full-witdh-line" />
                         <div class="form-group">
                             <label for="active" class="col-sm-2 control-label">เปิดใช้งาน</label>
                             <div class="togglebutto col-sm-10">
-                                    <input name="active" type="checkbox" value="1" checked>
+                                <input name="active" type="checkbox" value="1" checked>
                             </div>
                         </div>
                         <div class="form-group">
@@ -155,9 +162,8 @@
         </div>
     </div>
 @endsection
-
 @section('footer')
-
+    <script src="{{ asset('assets/js/vendor/filestyle/bootstrap-filestyle.min.js') }}"></script>
 @endsection
 
 @section('footer-script')
