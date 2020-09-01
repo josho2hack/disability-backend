@@ -37,8 +37,8 @@ class HomeController extends Controller
 
     public function register()
     {
-        $disabilitytype = DisabilityType::get();
+        $disability = DisabilityType::get();
 
-        return view('auth.user-register', compact('disabilitytype'));
+        return view('auth.user-register', compact('disability'));
     }
 }

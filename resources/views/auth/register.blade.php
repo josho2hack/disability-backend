@@ -76,16 +76,14 @@
                                                 name="pwd_id">
                                         </div>
                                         <div class="form-group">
+                                            @php
+                                            $disability = \App\DisabilityType::all();
+                                            @endphp
                                             <select id="disability_type" name="disability_type" class="chosen-select"
                                                 style="width: 100%;">
-                                                <option value="1" selected>1. คนพิการทางการเห็น
-                                                </option>
-                                                <option value="2">2. คนพิการทางการได้ยินหรือสื่อความหมาย</option>
-                                                <option value="3">3. คนพิการทางการเคลื่อนไหวหรือร่างกาย</option>
-                                                <option value="4">4. คนพิการทางจิตใจหรือพฤติกรรม</option>
-                                                <option value="5">5. คนพิการทางสติปัญญา</option>
-                                                <option value="6">6. คนพิการทางการเรียนรู้</option>
-                                                <option value="7">7. คนพิการทางออทิสติก</option>
+                                                @foreach( $disability as $disabilities )
+                                                    <option value="{{ $disabilities->id }}">{{ $disabilities->description }}</option>
+                                                @endforeach
                                             </select>
                                         </div>
                                         <div class="redio">
