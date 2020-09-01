@@ -33,17 +33,17 @@ class ObjectController extends Controller
             // var_dump($as);
             $main_group_id = $ass->assetCategory->subGroup->mainGroup->id;
             $sub_group_name = $ass->assetCategory->subGroup->name;
+            $sub_group_id = $ass->assetCategory->subGroup->id;
             $cate_name = $ass->assetCategory->name;
+            $cate_id = $ass->assetCategory->id;
 
             $data[$main_group_id][$sub_group_name][$cate_name] = $as;
-            // $data[$main_group_id]['total'] = $total;
+            
                 $data['total'][$main_group_id][$sub_group_name] = array_sum($data[$main_group_id][$sub_group_name]);
+                $data['image'][$main_group_id][$cate_name] = $ass->assetCategory->image; 
          }
         }
 
-//         // dd(collect($data['1']['เครื่องคอมพิวเตอร์'])->sum());
-// // dd(collect($data['1']['เครื่องคอมพิวเตอร์'])->sum());
-// dd(array_sum($data['total']['1']));
         $assetcount = Asset::where('asset_statuses_id', 1)->count();
 
     	return view('object.index', compact('data','assetcount'));
