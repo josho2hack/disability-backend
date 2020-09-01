@@ -20,7 +20,8 @@ class FormborrowController extends Controller
     {
         if( isset(\Auth::user()->id) ) {
             $form = FormBorrow::where('user_id', \Auth::user()->id)->get();
-
+            $form->name = 'ทก.01';
+            
             return view('forms.borrow.index' ,compact('form'));
         }else{
             return redirect('login');

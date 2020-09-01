@@ -40,4 +40,19 @@ class SubstituteController extends Controller
     		return redirect('substitute');
     	} 
     }
+
+    public function edit($id){
+        $substitute = Substitute::find($id);
+        
+        return view('substitutes.edit', compact('substitute'));
+    }
+
+    public function update(Request $request, $id){
+        $update = Substitute::find($id);
+        $update->fill($request->all());
+
+        if ( $update->save() ) {
+            return redirect('substitute');
+        }
+    }
 }

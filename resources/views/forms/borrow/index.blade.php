@@ -25,9 +25,16 @@
                 </div>
                 <div class="boxs-widget">
                     <div class="form-group">
+                        @if ($form->count() < 1)
                         <div class="btn-group pull-right">
-                            <a href="{{ url('form-borrow/create') }}" class="btn btn-success btn-raised">สร้างแบบฟอร์มยืม</a>
+                            <a href="{{ url('form-borrow/create') }}" class="btn btn-success btn-raised">สร้างแบบฟอร์มยืมเดี่ยว (ทก.01)</a>
                         </div>
+                        @endif
+                        {{-- @if ($form->count() < 1)
+                        <div class="btn-group pull-right">
+                            <a href="{{ url('form-borrow/create') }}" class="btn btn-success btn-raised">สร้างแบบฟอร์มกลุ่ม (ทก.01)</a>
+                        </div>
+                        @endif --}}
                     </div>
                 </div>
 
@@ -43,15 +50,15 @@
                         <thead>
                             <tr>
                                 <th>แบบฟอร์ม</th>
-                                <th colspan=3>ดำเนินการ</th>
+                                <th>ดำเนินการ</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach ($form as $forms)
                                 <tr>
-                                    <td>แบบฟอร์มที่ {{ $loop->index + 1 }}</td>
+                                    <td>แบบฟอร์มที่ {{ $loop->index + 1 }} ({{ $form->name }})</td>
                                     <td>
-                                        <a href="{{ url("pdf/$forms->id") }}" class="btn btn-raised btn-info"
+                                        <a href="{{ url('pdf/'.$forms->id) }}" class="btn btn-raised btn-info"
                                             title="รายละเอียด"> <i class="fa fa-eye"></i></a>
                                     </td>
                                 </tr>

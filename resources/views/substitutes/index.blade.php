@@ -14,7 +14,7 @@
                         </div>
                         <div class="btn-group pull-right">
                             @if($check < 2)
-                            <a href="{{ url('substitute/create') }}" class="btn btn-warning btn-raised">เพิ่มข้อมูลโปรไฟล์ที่อยู่</a>
+                            <a href="{{ url('substitute/create') }}" class="btn btn-success btn-raised">เพิ่มข้อมูลผู้ยื่นคำขอแทนคนที่2</a>
                             @endif
                         </div>
                     </div>
@@ -27,7 +27,7 @@
                         <section class="boxs">
                             <div class="boxs-header">
                                 <h3 class="custom-font ">
-                                    <strong>ผู้ยื่อคำขอแทน </strong></h3>
+                                    <strong>ผู้ยื่อคำขอแทนคนที่{{ $loop->iteration }} </strong></h3>
                             </div>
                             <div class="boxs-body">
                                 <div class="row">
@@ -144,11 +144,11 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <div class="col-sm-offset-2 col-sm-8">
-                                                        <button type="button" class="btn btn-raised btn-primary">
-                                                            <a href="{{ url('profile/edit') }}" style="
+                                                        <button type="button" class="btn btn-raised btn-warning">
+                                                            <a href="{{ url('substitute/'.$sub->id.'/edit') }}" style="
                                                             text-decoration: none;
                                                             color: #ffffff;
-                                                            " >แก้ไขโปรไฟล์</a>
+                                                            " >แก้ไขข้อมูลผู้ยื่นคำขอแทน</a>
                                                         </button>
                                                     </div>
                                                 </div>
