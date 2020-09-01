@@ -106,10 +106,10 @@
                                     รายการ</th>
                             </tr>
                             <tr>
-                                <th>ลำดับ</th>
-                                <th>กลุ่มหลัก</th>
-                                <th>กลุ่มย่อย</th>
-                                <th>รูปภาพ</th>
+                                <th style="width:5%">ลำดับ</th>
+                                <th style="width:15%">กลุ่มหลัก</th>
+                                <th style="width:25%">กลุ่มย่อย</th>
+                                <th style="width:5%">รูปภาพ</th>
                                 <th>ทั้งหมด</th>
                                 <th>คงคลัง</th>
                                 <th>รอรับ</th>
@@ -191,10 +191,10 @@
                                     รายการ</th>
                             </tr>
                             <tr>
-                                <th>ลำดับ</th>
-                                <th>กลุ่มหลัก</th>
-                                <th>กลุ่มย่อย</th>
-                                <th>รูปภาพ</th>
+                                <th style="width:5%">ลำดับ</th>
+                                <th style="width:15%">กลุ่มหลัก</th>
+                                <th style="width:25%">กลุ่มย่อย</th>
+                                <th style="width:5%">รูปภาพ</th>
                                 <th>ทั้งหมด</th>
                                 <th>คงคลัง</th>
                                 <th>รอรับ</th>

@@ -53,15 +53,15 @@
             @guest
                 @include('layouts.admin-leftmenu')
             @else
-                @if(Auth::user()->roles()->first()->name == 'Admin')
+                @if(Auth::user()->roles()->first()->name == 'User')
+                    @include('layouts.user-leftmenu')
+                @else
                     <style>
                         #leftmenu , #navigation {
                             background-color: #d9cde4;
                         }
                     </style>
                     @include('layouts.admin-leftmenu')
-                @elseif(Auth::user()->roles()->first()->name == 'User')
-                    @include('layouts.user-leftmenu')
                 @endif
             @endguest
 

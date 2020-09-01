@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
+use App\Role;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use App\User;
 use Illuminate\Http\Request;
@@ -42,17 +43,21 @@ class UserController extends Controller
         $request->validate([
             'email' => 'required',
             'password' => 'required',
-            'active' => 'required',
             'first_name' => 'required',
             'last_name' => 'required',
             'gender' => 'required',
             'citizen_id' => 'required',
-            'pwd_id' => 'required',
-            'disability_types_id' => 'required'
+            'pwd_id' => 'required'
         ]);
+
+        if (!isset($request['active'])) {
+            $request['active'] = 0;
+        }
 
         $input = $request->all();
         $input['password'] = bcrypt($input['password']);
+        $role_id = $input['role'];
+        unset($input['role']);
 
         if ($request->hasFile('avatar_name')) {
 
@@ -65,7 +70,9 @@ class UserController extends Controller
             $input['avatar_path'] = $path;
         }
 
-        User::create($input);
+        $user = User::create($input);
+        $user->roles()->attach($role_id);
+
         return redirect()->route('users.index')->with('success', 'บันทึกข้อมูลเรียบร้อยแล้ว');
     }
 
@@ -105,8 +112,17 @@ class UserController extends Controller
         $user = User::find($id);
         $request->validate([
             'email' => 'required',
-            'password' => 'password'
+            'password' => 'required',
+            'first_name' => 'required',
+            'last_name' => 'required',
+            'gender' => 'required',
+            'citizen_id' => 'required',
+            'pwd_id' => 'required'
         ]);
+
+        if (!isset($request['active'])) {
+            $request['active'] = 0;
+        }
 
         $input = $request->all();
 

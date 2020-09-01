@@ -83,7 +83,7 @@ return [
     |
     */
 
-    'from' => ['address' => 'disability@thaibook.site', 'name' => 'Disability System'],
+    'from' => ['address' => 'disability@pwdsthai.org', 'name' => 'Disability System'],
     /*
     'from' => [
         'address' => env('MAIL_FROM_ADDRESS', 'disability@thaibook.site'),

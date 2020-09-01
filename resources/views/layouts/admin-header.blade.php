@@ -49,23 +49,23 @@
                                         <a href="{{ url('user-login') }}" class="connection-item" role="button"
                                             tabindex="0">
                                             <i class="fa fa-umbrella"></i>
-                                            <span class="block">สมาชิกคนพิการ</span>
+                                            <span class="block">สมาชิก</span>
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="{{ route('login') }}" class="connection-item" role="button" tabindex="0">
+                                        <a href="{{ url('audit-login') }}" class="connection-item" role="button" tabindex="0">
                                             <i class="fa fa-object-ungroup"></i>
                                             <span class="block">ผู้ตรวจสอบ</span>
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="{{ route('login') }}" class="connection-item" role="button" tabindex="0">
+                                        <a href="{{ url('approve-login') }}" class="connection-item" role="button" tabindex="0">
                                             <i class="fa fa-calendar-check-o"></i>
                                             <span class="block">ผู้อนุมัติ</span>
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="{{ route('login') }}" class="connection-item" role="button" tabindex="0">
+                                        <a href="{{ url('admin-login') }}" class="connection-item" role="button" tabindex="0">
                                             <i class="fa fa-map-o"></i>
                                             <span class="block">ผู้ดูแลระบบ</span>
                                         </a>

@@ -7,24 +7,24 @@
     <!-- bradcome -->
     <div class="b-b mb-10">
         <div class="col-sm-6 col-xs-12">
-            h3 class="h3 m-0">1.2 ระบบสมาชิก</h3>
-                <small class="text-muted">1.2.1 สมาชิก</small>
-            </div>
-            <div class="btn-group pull-right">
-                <ol class="breadcrumb">
-                    <li>
-                        <a href="{{ route('root') }}"><i class="fa fa-home"></i></a>
-                    </li>
-                    <li>
-                        <a href="{{ route('admin') }}">1. บริหารจัดการระบบ</a>
-                    </li>
-                    <li>
-                        <a href="{{ route('users.index') }}">1.2 ระบบสมาชิก</a>
-                    </li>
-                    <li class="active">1.2.2 เพิ่มสมาชิก</li>
-                </ol>
-            </div>
+            <h3 class="h3 m-0">1.2 ระบบสมาชิก</h3>
+            <small class="text-muted">1.2.1 สมาชิก</small>
         </div>
+        <div class="btn-group pull-right">
+            <ol class="breadcrumb">
+                <li>
+                    <a href="{{ route('root') }}"><i class="fa fa-home"></i></a>
+                </li>
+                <li>
+                    <a href="{{ route('admin') }}">1. บริหารจัดการระบบ</a>
+                </li>
+                <li>
+                    <a href="{{ route('users.index') }}">1.2 ระบบสมาชิก</a>
+                </li>
+                <li class="active">1.2.2 เพิ่มสมาชิก</li>
+            </ol>
+        </div>
+    </div>
     </div>
 
     <!-- row -->
@@ -32,8 +32,8 @@
         <div class="col-md-12">
             <section class="boxs">
                 <div class="boxs-header">
-                    <h3 class="custom-font hb-cyan">
-                        <strong>เพิ่มสมาชิก</strong>
+                    <h3 class="custom-font hb-green">
+                        เพิ่มสมาชิก
                     </h3>
                 </div>
                 <div class="boxs-body">
@@ -92,16 +92,54 @@
                                 <input type="password" class="form-control" name="password" placeholder="">
                             </div>
                         </div>
+
                         <div class="form-group">
                             <label for="gender" class="col-sm-2 control-label">เพศ</label>
                             <div class="col-sm-10">
                                 <select name="gender" tabindex="5" class="chosen-select" style="width: 240px;">
-                                        <option value="1" selected>ชาย</option>
-                                        <option value="0">หญิง</option>
+                                    <option value="1" selected>ชาย</option>
+                                    <option value="0">หญิง</option>
                                 </select>
                             </div>
                         </div>
-
+                        <div class="form-group">
+                            @php
+                            $disabilities = \App\DisabilityType::all();
+                            @endphp
+                            <label for="disability_type_id" class="col-sm-2 control-label">ประเภทคนพิการ</label>
+                            <div class="col-sm-10">
+                                <select id="disability_type_id" name="disability_type_id" class="chosen-select"
+                                    style="width: 400px;">
+                                    @foreach ($disabilities as $disability)
+                                        <option value="{{ $disability->id }}" @if ($disability->id == 1)
+                                            selected
+                                        @endif>{{ $disability->description }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            @php
+                            $roles = \App\Role::all();
+                            @endphp
+                            <label for="role" class="col-sm-2 control-label">สิทธิ์การใช้งาน</label>
+                            <div class="col-sm-10">
+                                <select name="role" class="chosen-select"
+                                    style="width: 400px;">
+                                    @foreach ($roles as $role)
+                                        <option value="{{ $role->id }}" @if ($role->id == 1)
+                                            selected
+                                        @endif>{{ $role->description }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="active" class="col-sm-2 control-label">เปิดใช้งาน</label>
+                            <div class="togglebutto col-sm-10">
+                                    <input name="active" type="checkbox" value="1" checked>
+                            </div>
+                        </div>
                         <div class="form-group">
                             <div class="col-sm-offset-2 col-sm-10">
                                 <button type="submit" class="btn btn-raised btn-success">บันทึก</button>

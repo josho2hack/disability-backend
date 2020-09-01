@@ -105,7 +105,10 @@
                                         <form action="{{ route('users.destroy', $user->id) }}" method="post">
                                             @csrf
                                             @method('DELETE')
-                                            <button class="del btn btn-raised btn-primary" type="submit" title="ลบ">
+                                            <button class="del btn btn-raised btn-primary" type="submit" title="ลบ"
+                                            @if ($user->id == 1)
+                                                disabled
+                                            @endif>
                                                 <i class="fa fa-trash"></i></button>
                                         </form>
                                     </td>

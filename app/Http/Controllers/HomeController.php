@@ -34,6 +34,18 @@ class HomeController extends Controller
     {
         return view('auth.user-login');
     }
+    public function admin_login()
+    {
+        return view('auth.admin-login');
+    }
+    public function audit_login()
+    {
+        return view('auth.audit-login');
+    }
+    public function approve_login()
+    {
+        return view('auth.approve-login');
+    }
 
     public function register()
     {

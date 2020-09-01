@@ -28,8 +28,9 @@ Route::get('/home', 'HomeController@index')->name('home');
 //Route::get('/logout', 'HomeController@logout');
 
 Route::get('/user-login', 'HomeController@user_login');
-//Route::get('/register', 'HomeController@register')->name('register');
-
+Route::get('/admin-login', 'HomeController@admin_login');
+Route::get('/audit-login', 'HomeController@audit_login');
+Route::get('/approve-login', 'HomeController@approve_login');
 
 Route::get('/profile', 'ProfileController@index');
 Route::post('/profile', 'ProfileController@insert_address');
