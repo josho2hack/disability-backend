@@ -22,21 +22,20 @@ class ProfileController extends Controller
         $user = User::where('id',\Auth::user()->id)->first();
         $disability = DisabilityType::get();
         $profile = Profile::where('user_id', \Auth::user()->id)->first();
-        if($profile == null){
-            return redirect('profile/address');
-        }
+        
     	return view('profile.edit', compact('user', 'disability', 'profile'));
     }
 
     public function update_profile(Request $request){
 
-        $profile = Profile::where('user_id',\Auth::user()->id)->update(['title' => $request->title]);
 
         $update = User::find(\Auth::user()->id);
         $update->first_name = $request->first_name;
         $update->last_name = $request->last_name;
         $update->gender = $request->gender;
         $update->disability_type_id = $request->disability_type_id;
+        $update->title = $request->title;
+        $update->brithday = $request->brithday;
 
         if ( $update->save() ){
             return redirect('profile');

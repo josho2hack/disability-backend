@@ -11,6 +11,7 @@ class PDFController extends Controller
 {
     public function pdf($id)
     {
+
     	$form = FormBorrow::where('id', $id)->first();
     	$pdf = PDF::loadview('forms.borrow.pdf', compact('form'));
     	// return view('forms.borrow.pdf', compact('form'));

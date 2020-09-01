@@ -34,18 +34,14 @@
                                             <form class="form-horizontal" >
                                                 <div class="form-group">
                                                     <label for="inputEmail3" class="col-sm-2 control-label">
-                                                        @if ( $profile_address )
-                                                            @if( $profile_address->title != null)
+                                                        @if( $user->title != null)
                                                             คำนำหน้าชื่อ
                                                             @else
-                                                            <span class="text-danger">คำนำหน้าชื่อ</span>
-                                                            @endif
-                                                        @else
                                                             <span class="text-danger">คำนำหน้าชื่อ</span>
                                                         @endif
                                                     </label>
                                                     <div class="col-sm-10">
-                                                        <input type="text" class="form-control" value="@if( $profile_address ){{ $profile_address->title }}@endif
+                                                        <input type="text" class="form-control" value="{{ $user->title }}
                                                         " name="first_name" readonly>
                                                     </div>
                                                 </div>
@@ -59,6 +55,12 @@
                                                     <label for="inputPassword3" class="col-sm-2 control-label">นามสกุล</label>
                                                     <div class="col-sm-10">
                                                         <input type="text" class="form-control" value="{{ $user->last_name }}"  name="last_name" readonly>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="inputPassword3" class="col-sm-2 control-label">วันเกิด</label>
+                                                    <div class="col-sm-10">
+                                                        <input type="text" class="form-control" value="{{ $user->brithday }}"  name="last_name" readonly>
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
@@ -184,12 +186,12 @@
                                                         <input type="text" class="form-control" value="{{$profile_address->postal_code}}" placeholder="รหัสไปรษณีย์" name="postal_code" readonly>
                                                     </div>
                                                 </div>
-                                                <div class="form-group">
+                                                {{-- <div class="form-group">
                                                     <label for="inputPassword3" class="col-sm-2 control-label">กำลังศึกษาระดับ</label>
                                                     <div class="col-sm-10">
                                                         <input type="text" class="form-control" value="{{$profile_address->degree}}" placeholder="สถานที่ศึกษา" name="degree" readonly>
                                                     </div>
-                                                </div>
+                                                </div> --}}
                                                 <div class="form-group">
                                                     <label for="inputPassword3" class="col-sm-2 control-label">สถานที่ศึกษา</label>
                                                     <div class="col-sm-10">
