@@ -54,7 +54,27 @@
                 @include('layouts.admin-leftmenu')
             @else
                 @if(Auth::user()->roles()->first()->name == 'User')
-                    @include('layouts.user-leftmenu')
+                    <style>
+                        #header{
+                        @if (Auth::user()->disability_type_id == 1)
+                            background-color: green;
+                        @elseif(Auth::user()->disability_type_id == 2)
+                            background-color: brown;
+                        @elseif(Auth::user()->disability_type_id == 3)
+                            background-color: purple;
+                        @elseif(Auth::user()->disability_type_id == 4)
+                            background-color: orange;
+                        @elseif(Auth::user()->disability_type_id == 5)
+                            background-color: #c9c900;
+                        @elseif(Auth::user()->disability_type_id == 6)
+                            background-color: pink;
+                        @elseif(Auth::user()->disability_type_id == 7)
+                            background-color: blue;
+                        @endif
+                          }
+                    </style>
+                        @include('layouts.user-leftmenu')
+
                 @else
                     <style>
                         #leftmenu , #navigation {

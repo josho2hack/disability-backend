@@ -31,9 +31,18 @@
                                                 <div class="form-group">
                                                     <label for="inputEmail3" class="col-sm-2 control-label">คำนำหน้าชื่อ</label>
                                                     <div class="col-sm-10">
-                                                        <input type="text" class="form-control" value="{{ $profile->title }}" name="title" >
+                                                        <select id="title" name="title" class="chosen-select"
+                                                            style="width: 100%;">
+                                                            <option value="นาย" selected>นาย
+                                                            </option>
+                                                            <option value="นางสาว">นางสาว</option>
+                                                            <option value="นาง">นาง</option>
+                                                            <option value="ดช.">ดช.</option>
+                                                            <option value="ดญ.">ดญ.</option>
+                                                        </select>
                                                     </div>
                                                 </div>
+
                                                 <div class="form-group">
                                                     <label for="inputEmail3" class="col-sm-2 control-label">ชื่อ</label>
                                                     <div class="col-sm-10">
@@ -44,6 +53,12 @@
                                                     <label for="inputPassword3" class="col-sm-2 control-label">นามสกุล</label>
                                                     <div class="col-sm-10">
                                                         <input type="text" class="form-control" value="{{ $user->last_name }}"  name="last_name" >
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="inputPassword3" class="col-sm-2 control-label">วันเกิด</label>
+                                                    <div class="col-sm-10">
+                                                        <input type="date" class="form-control" value="{{ $user->brithday }}"  name="brithday" >
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
@@ -83,7 +98,7 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <div class="col-sm-offset-2 col-sm-10">
-                                                        <button type="submit" class="btn btn-raised btn-primary">แก้ไขโปรไฟล์
+                                                        <button type="submit" class="btn btn-raised btn-primary">ยืนยัน
                                                         </button>
                                                     </div>
                                                 </div>

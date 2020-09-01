@@ -75,6 +75,10 @@
                         </li>
 
                     @else
+                    <li>
+                        <a class="nav-link" style="color: white;" href="#" role="button" tabindex="0"><i
+                            class="fa fa-user"></i> {{ \Auth::user()->disability->description }}</a>
+                    </li>
                         <li class="dropdown messages">
                             <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">
                                 <i class="fa fa-envelope"></i>
