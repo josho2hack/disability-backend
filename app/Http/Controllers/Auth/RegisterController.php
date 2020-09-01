@@ -10,6 +10,8 @@ use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
+use App\UserOption;
+
 class RegisterController extends Controller
 {
     /*
@@ -67,15 +69,30 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+        $register = [
             'first_name' => $data['first_name'],
             'last_name' => $data['last_name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
             'citizen_id' => $data['citizen_id'],
             'pwd_id' => $data['pwd_id'],
-            'gender' => $data['gender'],
-            //'email_verified_at' => now() //Carbon instance
-        ]);
+            'gender' => $data['gender']
+        ];
+
+        if (UserOption::find(1)->verify == 0) {
+            $register['email_verified_at'] = now();
+        }
+
+        $user = User::create($register);
+        $user->roles()->attach(4);
+        $dis_type = App\DisabilityType::find($data['disability_type']);
+        $user->disabilityType()->associate($dis_type);
+        $user->save();
+
+        if ($user->email_verified_at == null) {
+            $user->sendApiEmailVerificationNotification();
+        }
+
+        return $user;
     }
 }
