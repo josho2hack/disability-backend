@@ -8,13 +8,13 @@
                         <ul id="navigation">
                             @guest
                                 <li>
-                                    <a href="#">
+                                    <a href="{{ url('user-login')}}">
                                         <i class="fa fa-lock"></i>
                                         <span>เข้าสู่ระบบ</span>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="profile.html">
+                                <a href="{{ route('register')}}">
                                         <i class="fa fa-user"></i>
                                         <span>ลงทะเบียนเข้าใช้งาน</span>
                                     </a>
