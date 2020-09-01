@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
 use App\UserOption;
+use App\DisabilityType;
 
 class RegisterController extends Controller
 {
@@ -76,7 +77,8 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
             'citizen_id' => $data['citizen_id'],
             'pwd_id' => $data['pwd_id'],
-            'gender' => $data['gender']
+            'gender' => $data['gender'],
+            'disability_type_id' => $data['disability_type']
         ];
 
         if (UserOption::find(1)->verify == 0) {
@@ -85,8 +87,6 @@ class RegisterController extends Controller
 
         $user = User::create($register);
         $user->roles()->attach(4);
-        $dis_type = App\DisabilityType::find($data['disability_type']);
-        $user->disabilityType()->associate($dis_type);
         $user->save();
 
         if ($user->email_verified_at == null) {

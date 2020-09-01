@@ -39,7 +39,34 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'email' => 'required',
+            'password' => 'required',
+            'active' => 'required',
+            'first_name' => 'required',
+            'last_name' => 'required',
+            'gender' => 'required',
+            'citizen_id' => 'required',
+            'pwd_id' => 'required',
+            'disability_types_id' => 'required'
+        ]);
+
+        $input = $request->all();
+        $input['password'] = bcrypt($input['password']);
+
+        if ($request->hasFile('avatar_name')) {
+
+            // Get the file from the request store to disk
+            $path = $request->image->store('users');
+
+            // Get the contents of the file
+            $contents = Storage::get($path);
+            //$input['avatar_name'] = $contents;
+            $input['avatar_path'] = $path;
+        }
+
+        User::create($input);
+        return redirect()->route('users.index')->with('success', 'บันทึกข้อมูลเรียบร้อยแล้ว');
     }
 
     /**
@@ -50,7 +77,8 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        //
+        $user = User::with('roles','disability')->find($id);
+        return view('admin.users.create', compact('user'));
     }
 
     /**
@@ -61,7 +89,8 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user = User::with('roles','disability')->find($id);
+        return view('admin.users.create', compact('user'));
     }
 
     /**
@@ -73,7 +102,33 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $user = User::find($id);
+        $request->validate([
+            'email' => 'required',
+            'password' => 'password'
+        ]);
+
+        $input = $request->all();
+
+        if($input['password'] != ""){
+            $input['password'] = bcrypt($input['password']);
+        }else{
+            unset($input['password']);
+        }
+
+        if ($request->hasFile('image')) {
+
+            // Get the file from the request store to disk
+            $path = $request->image->store('users');
+
+            // Get the contents of the file
+            $contents = Storage::get($path);
+            $input['image'] = $contents;
+            Storage::delete($path);
+        }
+
+        $user->update($input);
+        return redirect()->route('subgroups.index')->with('success', 'ปรับปรุงอมูลเรียบร้อยแล้ว');
     }
 
     /**
@@ -84,6 +139,8 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $user = User::find($id);
+        $user->delete();
+        return redirect()->route('users.index')->with('success', 'ลบข้อมูลเรียบร้อยแล้ว');
     }
 }
