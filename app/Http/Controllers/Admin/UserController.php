@@ -167,7 +167,7 @@ class UserController extends Controller
         return view('admin.users.option', compact('option'));
     }
 
-    public function updateoption(Request $request){
+    public function optionupdate(Request $request){
         $option = UserOption::find(1);
 
         if (!isset($request['first_name'])) {
@@ -186,10 +186,6 @@ class UserController extends Controller
             $request['citizen_id'] = 0;
         }
 
-        if (!isset($request['password'])) {
-            $request['password'] = 0;
-        }
-
         if (!isset($request['avatar_name'])) {
             $request['avatar_name'] = 0;
         }
@@ -198,7 +194,9 @@ class UserController extends Controller
             $request['verify'] = 0;
         }
 
-        $option->update($request);
+        $input = $request->all();
+
+        $option->update($input);
         return redirect()->route('users.index')->with('success', 'บันทึกกำหนดค่าสมาชิกเรียบร้อยแล้ว');
     }
 }

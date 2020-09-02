@@ -46,7 +46,7 @@
                             </ul>
                         </div>
                     @endif
-                    <form class="form-horizontal" role="form" action="{{ route('users.updateoption') }}" method="POST"
+                    <form class="form-horizontal" role="form" action="{{ route('users.optionupdate') }}" method="POST"
                         enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
@@ -98,7 +98,7 @@
                                 @endif>
                             </div>
                         </div> --}}
-                        <div class="form-group">
+                        {{-- <div class="form-group">
                             <label for="password" class="col-sm-2 control-label">รหัสผ่าน</label>
                             <div class="col-sm-10">
                                 <label>
@@ -107,7 +107,7 @@
                                     @endif> แก้ไขได้
                                 </label>
                             </div>
-                        </div>
+                        </div> --}}
                         <div class="form-group">
                             <label class="col-sm-2 control-label">รูปภาพ</label>
                             <div class="col-sm-10">
