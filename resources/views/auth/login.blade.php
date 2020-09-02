@@ -55,7 +55,7 @@
                         {{ __('เข้าสู่ระบบ') }}
                     </button>
                 </div>
-                <a href="forgotpass.html" class="btn btn-wd">ลืมรหัสผ่าน?</a>
+                <a href="{{ route('password.request') }}" class="btn btn-wd">ลืมรหัสผ่าน?</a>
               </form>
             </div>
           </div>

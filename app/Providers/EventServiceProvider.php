@@ -8,6 +8,8 @@ use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvi
 use Illuminate\Support\Facades\Event;
 //use BeyondCode\EmailConfirmation\Events\Confirmed;
 
+use App\UserOption;
+
 class EventServiceProvider extends ServiceProvider
 {
     /**
@@ -16,9 +18,9 @@ class EventServiceProvider extends ServiceProvider
      * @var array
      */
     protected $listen = [
-        //Registered::class => [
-        //    SendEmailVerificationNotification::class,
-        //],
+        Registered::class => [
+            SendEmailVerificationNotification::class,
+        ]
         //'Illuminate\Auth\Events\Verified' => [
         //    'App\Listeners\LogVerifiedUser',
         //],
@@ -35,7 +37,9 @@ class EventServiceProvider extends ServiceProvider
     public function boot()
     {
         parent::boot();
-
-        //
+        // $option = UserOption::find(1);
+        // if ($option->verify) {
+        //     $listen[Registered::class] = [SendEmailVerificationNotification::class];
+        // }
     }
 }

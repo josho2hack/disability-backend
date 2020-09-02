@@ -18,11 +18,11 @@ Route::get('', function () {
     return view('welcome');
 })->name('root');
 
-Route::get('/verify', function () {
-    return view('verify');
-});
+// Route::get('/verify', function () {
+//     return view('verify');
+// });
 
-Auth::routes();
+Auth::routes(['verify' => true]);
 
 Route::get('/home', 'HomeController@index')->name('home');
 //Route::get('/logout', 'HomeController@logout');
@@ -56,8 +56,8 @@ Route::get('fileupload', 'FileController@index');
 Route::get('fileupload/add', 'FileController@add');
 Route::post('fileupload', 'FileController@insert');
 
-Route::get('email/verify/{id}', 'VerificationApiController@verify')->name('verificationapi.verify');
-Route::get('email/resend', 'VerificationApiController@resend')->name('verificationapi.resend');
+// Route::get('email/verify/{id}', 'VerificationApiController@verify')->name('verificationapi.verify');
+// Route::get('email/resend', 'VerificationApiController@resend')->name('verificationapi.resend');
 
 Route::get('/subgroup/{id}/avatar', 'Admin\SubGroupController@avatar');
 

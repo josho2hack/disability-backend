@@ -89,9 +89,9 @@ class RegisterController extends Controller
         $user->roles()->attach(4);
         $user->save();
 
-        if ($user->email_verified_at == null) {
-            $user->sendApiEmailVerificationNotification();
-        }
+        // if ($user->email_verified_at == null) {
+        //     $user->sendApiEmailVerificationNotification();
+        // }
 
         return $user;
     }
