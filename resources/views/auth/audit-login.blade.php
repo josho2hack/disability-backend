@@ -15,7 +15,7 @@
 
 <body id="falcon" class="authentication">
   <div class="wrapper">
-    <div class="header header-filter" style="background-image: url('assets/images/login-bg-audit.jpg'); background-size: cover; background-position: top center;">
+    <div class="header header-filter" style="background-image: url('assets/images/aditor_login.jpg'); background-size: cover; background-position: top center;">
       <div class="container">
         <div class="row">
           <div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3 text-center">
@@ -23,7 +23,7 @@
                 <form method="POST" action="{{ route('login') }}">
                     @csrf
                 <div class="header header-primary text-center">
-                  <h4>เข้าสู่ระบบผู้ตรวจสอบ</h4>
+                  <h2>เข้าสู่ระบบสำหรับผู้ตรวจสอบ</h2>
                   {{-- <div class="social-line">
                     <a href="javascript:void(0);" class="btn btn-just-icon">
                       <i class="fa fa-facebook-square"></i>
@@ -36,7 +36,10 @@
                     </a>
                   </div> --}}
                 </div>
-                <h3 class="mt-0">PWDSTHAI</h3>
+                <h4 class="mt-0">
+                  ระบบบริหารจัดการ<br>
+                  อุปกรณ์และเครื่องมือด้าน ICT สำหรับคนพิการ
+                </h4>
                 <p class="help-block"></p>
                 <div class="content">
                   <div class="form-group">

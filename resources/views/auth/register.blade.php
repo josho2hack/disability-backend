@@ -31,7 +31,10 @@
                                             </a> --}}
                                         </div>
                                     </div>
-                                    <h3 class="mt-0">PWDSTHAI</h3>
+                                    <h4 class="mt-0">
+                                        ระบบบริหารจัดการ<br>
+                                        อุปกรณ์และเครื่องมือด้าน ICT สำหรับคนพิการ
+                                      </h4>
                                     <p class="help-block">กรอกข้อมูลสำหรับสมัครสมาชิก</p>
                                     <div class="content">
                                         <div class="form-group">
