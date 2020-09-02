@@ -22,7 +22,7 @@
             <div class="card card-signup">
                 <form method="POST" action="{{ route('login') }}">
                     @csrf
-                <div class="header header-primary text-center">
+                <div class="header header-primary text-center" style="background: linear-gradient(45deg, #D3D3D3, #C0C0C0); color: #1a1a1a;">
                   <h2>เข้าสู่ระบบสำหรับผู้ใช้</h2>
                   {{-- <div class="social-line">
                     <a href="javascript:void(0);" class="btn btn-just-icon">

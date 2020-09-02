@@ -22,8 +22,8 @@
             <div class="card card-signup">
                 <form method="POST" action="{{ route('login') }}">
                     @csrf
-                <div class="header header-primary text-center">
-                  <h2>เข้าสู่ระบบสำหรับผู้ตรวจสอบ</h2>
+                <div class="header header-primary text-center" style="background: linear-gradient(45deg, #ff4500, #ff5349);">
+                  <h2>เข้าสู่ระบบผู้ตรวจสอบ</h2>
                   {{-- <div class="social-line">
                     <a href="javascript:void(0);" class="btn btn-just-icon">
                       <i class="fa fa-facebook-square"></i>
