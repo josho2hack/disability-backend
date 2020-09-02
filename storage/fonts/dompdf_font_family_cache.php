@@ -78,7 +78,7 @@
     'normal' => $rootDir . '/lib/fonts/DejaVuSerif',
   ),
   'kanit' => array(
-    '300' => $fontDir . '/kanit-300_b803dc609793b55438551233ce5104d9',
+    '300' => $fontDir . '/kanit-300_7e3d4308a543edc4aae4dd36f2286f3e',
   ),
   'thsarabunnew' => array(
     'normal' => $fontDir . '/thsarabunnew-normal_8687cceb6f43eaa77116ac9a9fa17158',

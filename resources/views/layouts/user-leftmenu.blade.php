@@ -37,65 +37,82 @@
                                     <span>3. ประวัติการยืม</span>
                                 </a>
                             </li>
-                            
+                            <li>
+                                <a href="{{ url('tutorial') }}">
+                                    <i class="fa fa-mortar-board"></i>
+                                    <span>4. ศึกษาการใช้อุปกรณ์/เครื่องมือ</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="fa fa-edit"></i>
+                                    <span>5. ลงทะเบียนความต้องการขอฝึกอบรมการใช้อุปกรณ์/ เครื่องมือ </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ url('doc') }}">
+                                    <i class="fa fa-search-plus"></i>
+                                    <span>6. จัดเตรียมเอกสาร </span>
+                                </a>
+                            </li>
                             <li>
                                 <a role="button" tabindex="0">
                                     <i class="fa fa-edit"></i>
-                                    <span>4. กรอกแบบฟอร์ม</span>
+                                    <span>7. กรอกแบบฟอร์ม</span>
                                 </a>
                                 <ul>
                                     <li>
                                         <a href="{{ url('form-borrow') }}">
-                                            <i class="fa fa-angle-right"></i>4.1 แบบฟอร์มยืม</a>
+                                            <i class="fa fa-angle-right"></i>7.1 แบบฟอร์มยืม</a>
                                     </li>
                                     <li>
                                         <a href="#">
-                                            <i class="fa fa-angle-right"></i>4.2 แบบฟอร์มรับ
+                                            <i class="fa fa-angle-right"></i>7.2 แบบฟอร์มรับ
                                         </a>
                                     </li>
                                     <li>
                                         <a href="#">
-                                            <i class="fa fa-angle-right"></i>4.3 แบบฟอร์มคืน</a>
+                                            <i class="fa fa-angle-right"></i>7.3 แบบฟอร์มคืน</a>
                                     </li>
                                     <li>
                                         <a href="#">
-                                            <i class="fa fa-angle-right"></i>4.4 แบบฟอร์มสัญญา</a>
+                                            <i class="fa fa-angle-right"></i>7.4 แบบฟอร์มสัญญา</a>
                                     </li>
                                 </ul>
                             </li>
                             <li>
                                 <a href="#">
                                     <i class="fa fa-check-square-o"></i>
-                                    <span>5. สัญญายืม/ค้ำประกัน</span>
+                                    <span>8. สัญญายืม/ค้ำประกัน</span>
                                 </a>
                             </li>
                             <li>
                                 <a role="button" tabindex="0">
                                     <i class="fa fa-edit"></i>
-                                    <span>6. ปัญหาการใช้งาน</span>
+                                    <span>9. ปัญหาการใช้งาน</span>
                                 </a>
                                 <ul>
                                     <li>
                                         <a href="#">
-                                            <i class="fa fa-angle-right"></i>6.1 แจ้งปัญหา</a>
+                                            <i class="fa fa-angle-right"></i>9.1 แจ้งปัญหา</a>
                                     </li>
                                     <li>
                                         <a href="tables-static.html">
-                                            <i class="fa fa-angle-right"></i>6.2 ปัญหาที่พบบ่อย</a>
+                                            <i class="fa fa-angle-right"></i>9.2 ปัญหาที่พบบ่อย</a>
                                     </li>
                                 </ul>
                             </li>
                             <li>
                                 <a href="#">
                                     <i class="fa fa-calendar-check-o"></i>
-                                    <span>7. ปฏิทินกิจกรรม</span>
+                                    <span>10. ปฏิทินกิจกรรม</span>
                                     <span class="label label-info">ใหม่</span>
                                 </a>
                             </li>
                             <li>
                                 <a href="#">
                                     <i class="fa fa-thumbs-o-up"></i>
-                                    <span>8. ตอบแบบสำรวจ</span>
+                                    <span>11. ตอบแบบสำรวจ</span>
                                     <span class="label label-warning">2</span>
                                 </a>
                             </li>

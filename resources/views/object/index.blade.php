@@ -77,27 +77,27 @@
                                     รายการ</th>
                             </tr>
                             <tr>
-                                <th>ลำดับ</th>
-                                <th>กลุ่มหลัก</th>
-                                <th>กลุ่มย่อย</th>
-                                <th >รูปภาพ</th>
-                                <th style="text-align: center;">คงคลัง</th>
+                                <th width="100">ลำดับ</th>
+                                <th width="500" style="padding-left: 100px;">กลุ่มหลัก</th>
+                                <th style="width: auto;" >กลุ่มย่อย</th>
+                                <th width="400" style="text-align:center;">รูปภาพ</th>
+                                <th width="400" >คงคลัง</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach($data['1'] as $main => $total)
                                 <tr>
                                     <td>{{ $loop->index + 1 }}</td>
-                                    <td colspan="3"><a href="">{{ $main }}</a></td>
-                                    <td align="center">{{ array_sum($total) }}</td>
+                                    <td colspan="3" style="padding-left: 100px"> <a href=""> {{ $main }}</a></td>
+                                    <td>{{ array_sum($total) }}</td>
                                 </tr>
                                 @foreach($total as $sub => $ac)
                                     <tr>
                                         <td colspan=""></td>                                        
-                                        <td colspan="2"style="padding-left: 80px;"><a href="">{{ $loop->index + 1 }}. {{ $sub }}</a></td>
-                                        <td ><img src="data:image/png;base64,{{ base64_encode($data['image'][1][$sub]) }}"
+                                        <td colspan="2" style="padding-left: 100px;"><a href="">{{ $loop->index + 1 }}. {{ $sub }}</a></td>
+                                        <td align="center" ><img src="data:image/png;base64,{{ base64_encode($data['image'][1][$sub]) }}"
                                                 width="50" height="50"></td>
-                                        <td align="center">{{ $ac }}</td>
+                                        <td >{{ $ac }}</td>
                                         </td>
                                     </tr>
                                     @endforeach
@@ -125,27 +125,27 @@
                                     รายการ</th>
                             </tr>
                             <tr>
-                                <th>ลำดับ</th>
-                                <th>กลุ่มหลัก</th>
-                                <th>กลุ่มย่อย</th>
-                                <th >รูปภาพ</th>
-                                <th style="text-align: center;">คงคลัง</th>
+                                <th width="100">ลำดับ</th>
+                                <th width="500" style="padding-left: 100px;">กลุ่มหลัก</th>
+                                <th >กลุ่มย่อย</th>
+                                <th width="400" style="text-align:center;">รูปภาพ</th>
+                                <th width="400">คงคลัง</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach($data['2'] as $main => $total)
                                 <tr>
                                     <td >{{ $loop->index + 1 }}</td>
-                                    <td colspan="3"><a href="">{{ $main }}</a></td>
-                                    <td align="center">{{ array_sum($total) }}</td>
+                                    <td colspan="3" style="padding-left: 100px;"><a href="">{{ $main }}</a></td>
+                                    <td >{{ array_sum($total) }}</td>
                                 </tr>
                                 @foreach($total as $sub => $ac)
                                     <tr>
                                         <td></td>                                        
-                                        <td colspan="2"style="padding-left: 80px;"><a href="">{{ $loop->index + 1 }}. {{ $sub }}</a></td>
-                                        <td><img src="data:image/png;base64,{{ base64_encode($data['image'][2][$sub]) }}"
+                                        <td colspan="2" style="padding-left: 100px;"><a href="">{{ $loop->index + 1 }}. {{ $sub }}</a></td>
+                                        <td align="center" ><img src="data:image/png;base64,{{ base64_encode($data['image'][2][$sub]) }}"
                                                 width="50" height="50"></td>
-                                        <td align="center">{{ $ac }}</td>
+                                        <td>{{ $ac }}</td>
                                         </td>
                                     </tr>
                                     @endforeach

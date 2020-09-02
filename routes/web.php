@@ -40,6 +40,7 @@ Route::post('/profile/edit_address', 'ProfileController@update_address');
 Route::get('/profile/edit', 'ProfileController@edit_profile');
 Route::post('/profile/edit', 'ProfileController@update_profile');
 Route::resources(['substitute' => 'SubstituteController']);
+Route::get('doc', function(){return view('document');});
 
 Route::resources(['form-borrow' => 'Form\FormborrowController']);
 Route::get('/object', 'ObjectController@index');
