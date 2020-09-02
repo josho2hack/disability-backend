@@ -41,11 +41,14 @@ Route::get('/profile/edit', 'ProfileController@edit_profile');
 Route::post('/profile/edit', 'ProfileController@update_profile');
 Route::resources(['substitute' => 'SubstituteController']);
 Route::get('doc', function(){return view('document');});
-
+Route::resources(['form-receive' => 'Form\FormreceiveController']);
+Route::get('form-receive/receive/pdf', 'Form\FormreceiveController@pdf_receive');
 Route::resources(['form-borrow' => 'Form\FormborrowController']);
+Route::get('/tutorial', 'ManualController@index');
 Route::get('/object', 'ObjectController@index');
 //pdf
 Route::get('pdf/{id}', 'PDFController@pdf');
+
 
 
 
