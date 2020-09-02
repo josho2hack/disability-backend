@@ -383,7 +383,7 @@ case '12' : $month="ธันวาคม"; break;
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;มีความประสงค์ขอยืมอุปกรณ์/เครื่องมือ เทคโนโลยีสารสนเทศและการสื่อสารหรือ เทคโนโลยีสิ่ง
 		อำนวยความสะดวกเพี่อการสื่อสาร ให้แก่
 		<div class="name2">
-			{{ $form->user->first_name }}&nbsp;&nbsp;{{ $form->user->last_name }}
+			{{ $form->user->title }}&nbsp;&nbsp;{{ $form->user->first_name }}&nbsp;&nbsp;{{ $form->user->last_name }}
 		</div>
 		เลขบัตรประจำตัวคนพิการ 
 		<div class="pwd_id">
