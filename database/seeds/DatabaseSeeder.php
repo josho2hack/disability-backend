@@ -79,6 +79,12 @@ class DatabaseSeeder extends Seeder
             ],
         ]);
 
+        DB::table('user_options')->insert([
+            [
+                'verify' => 1
+            ],
+        ]);
+
         DB::table('disability_types')->insert([
             [
                 'description' => "คนพิการทางการเห็น" //1

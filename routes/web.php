@@ -67,6 +67,8 @@ Route::prefix('admin')->group(function () {
     Route::get('assets/dashboard', 'Admin\AssetController@dashboard')->name('assets.dashboard');
     Route::get('assets/selected/{cate}', 'Admin\AssetController@selected')->name('assets.selected');
     Route::get('assets/subselected/{sub}', 'Admin\AssetController@subselected')->name('assets.sub.selected');
+    Route::get('users/option', 'Admin\UserController@option')->name('users.option');
+    Route::put('users/updateoption', 'Admin\UserController@updateoption')->name('users.updateoption');
     Route::resources([
         'assets' => 'Admin\AssetController',
         'maingroups' => 'Admin\MainGroupController',

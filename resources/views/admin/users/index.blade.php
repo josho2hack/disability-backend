@@ -39,7 +39,7 @@
                     </h3>
                     <div class="btn-group pull-right">
                         <a href="{{ route('users.create') }}" class="btn btn-success btn-raised mr-10">เพิ่มสมาชิก</a>
-                        <a href="#" class="btn btn-info btn-raised">กำหนดค่าสมาชิก</a>
+                        <a href="{{ route('users.option') }}" class="btn btn-info btn-raised">กำหนดค่าสมาชิก</a>
                     </div>
                     <p class=""><strong>สมาชิกทั้งหมด <span class="text-info"> {{ $users->count() }} </span>
                             รายการ</strong></p>
