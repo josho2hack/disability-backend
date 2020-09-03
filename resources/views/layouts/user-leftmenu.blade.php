@@ -19,7 +19,7 @@
                                 </a>
                                 <ul>
                                     <li>
-                                        <a href="{{ url('manual') }}">
+                                        <a href="{{ url('tutorial') }}">
                                             <i class="fa fa-angle-right"></i>1.1 ศึกษาการใช้อุปกรณ์เครื่องมือ
                                         </a>
                                     </li>
@@ -167,7 +167,7 @@
                                 <ul>
                                     <li>
                                         <a href="{{ url('profile') }}">
-                                            <i class="fa fa-angle-right"></i>8.1 ข้อมูลผู้พิการ
+                                            <i class="fa fa-angle-right"></i>8.1 ข้อมูลคนพิการ
                                         </a>
                                     </li>
                                     <li>

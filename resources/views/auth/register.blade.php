@@ -57,7 +57,7 @@
                                             @enderror
                                         </div>
                                         <div class="form-group">
-                                            <input id="password" type="password" placeholder="รหัสผ่าน..."
+                                            <input id="password" type="password" placeholder="รหัสผ่าน... (ไม่น้อยกว่า 8 ตัวอักษร)"
                                                 class="form-control" name="password" required autocomplete="new-password" />
                                             @error('password')
                                             <span class="invalid-feedback" role="alert">

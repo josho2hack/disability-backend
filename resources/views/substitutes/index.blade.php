@@ -27,7 +27,7 @@
                         <section class="boxs">
                             <div class="boxs-header">
                                 <h3 class="custom-font ">
-                                    <strong>ผู้ยื่อคำขอแทนคนที่{{ $loop->iteration }} </strong></h3>
+                                    <strong>ผู้ยื่นคำขอแทนคนที่{{ $loop->iteration }} </strong></h3>
                             </div>
                             <div class="boxs-body">
                                 <div class="row">
