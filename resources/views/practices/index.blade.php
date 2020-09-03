@@ -26,7 +26,7 @@
                 <div class="boxs-widget">
                     <div class="form-group">
                         <div class="btn-group pull-right">
-                            <a href="{{ url('practice') }}" class="btn btn-success btn-raised">ลงทะเบียนความต้องการฝึกอบ</a>
+                            <a href="{{ url('practice') }}" class="btn btn-success btn-raised">ลงทะเบียนความต้องการฝึกอบรม</a>
                         </div>
                     </div>
                 </div>

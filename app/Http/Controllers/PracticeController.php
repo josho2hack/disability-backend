@@ -15,7 +15,7 @@ class PracticeController extends Controller
     	$subgroup = SubGroup::get();
     	$assetcategory = AssetCategory::get();
 
-    	return view('pratices.pratice', compact('maingroup','subgroup','assetcategory'));
+    	return view('practices.pratice', compact('maingroup','subgroup','assetcategory'));
     }
 
 
@@ -35,14 +35,14 @@ class PracticeController extends Controller
     {
     	$practice = Pratice::where('user_id', \Auth::user()->id)->get();
 
-    	return view('pratices.index', compact('practice'));
+    	return view('practices.index', compact('practice'));
     }
 
     public function view($id)
     {
     	$practice = Pratice::where('id', $id)->first();
 
-    	return view('pratices.show', compact('practice'));
+    	return view('practices.show', compact('practice'));
     }
 
 
