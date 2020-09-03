@@ -31,27 +31,18 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="boxs-body">
-                                            <form class="form-horizontal" @if( isset($_POST['maingroup']) && isset($_POST['subgroup']) ) action="practice/add" @else action="" @endif method="post">
+                                            <form class="form-horizontal" action="practice/add" method="post">
                                                 @csrf
-                                                @if(isset($_POST['maingroup']))
                                                 <div class="form-group">
                                                     <label for="inputEmail3" class="col-sm-2 control-label">ชื่อหลักสูตร</label>
                                                     <div class="col-sm-10">
-                                                        <input type="text" class="form-control" value="{{$_POST['name']}}" name="name">
+                                                        <input type="text" class="form-control" value="" name="name">
                                                     </div>
                                                 </div>
-                                                @else
                                                 <div class="form-group">
-                                                    <label for="inputEmail3" class="col-sm-2 control-label">ชื่อหลักสูตร</label>
-                                                    <div class="col-sm-10">
-                                                        <input type="text" class="form-control" placeholder="ชื่อหลักสูตร" name="name">
-                                                    </div>
-                                                </div>
-                                                @endif
-                                                <div class="form-group" @if(isset($_POST['maingroup'])) style="display: none;" @endif>
                                                     <label for="inputEmail3" class="col-sm-2 control-label">กลุ่มหลัก</label>
                                                     <div class="col-sm-10">
-                                                        <select name="maingroup" id="" onchange="this.form.submit();">
+                                                        <select name="maingroup" id="maingroup" >
                                                             <option value="" disabled selected> กลุ่มหลัก </option>
                                                             @foreach( $maingroup as $main )
                                                             <option value="{{ $main->id }}">{{ $main->name }}</option>
@@ -59,75 +50,22 @@
                                                         </select>
                                                     </div>
                                                 </div>
-                                                @if(isset($_POST['maingroup']))
-                                                <div class="form-group">
-                                                    <label for="inputEmail3" class="col-sm-2 control-label">กลุ่มหลัก</label>
-                                                    <div class="col-sm-10">
-                                                        <select name="maingroup" id="" onchange="this.form.submit();">
-                                                            @foreach( $maingroup as $main )
-                                                            <option value="{{ $main->id }}" 
-                                                            @if($main->id == $_POST['maingroup']) selected @else  @endif
-                                                            >{{ $main->name }}</option>
-                                                            @endforeach
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group" @if(isset($_POST['subgroup'])) style="display: none;" @endif>
-                                                    <label for="inputEmail3" class="col-sm-2 control-label">กลุ่มย่อย</label>
-                                                    <div class="col-sm-10">
-                                                        <select name="subgroup" id="" onchange="this.form.submit();">
-                                                            @foreach( $subgroup->where('main_groups_id', $_POST['maingroup']) as $sub )
-                                                            <option value="{{ $sub->id }}">{{ $sub->name }}</option>
-                                                            @endforeach
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                                @else
                                                 <div class="form-group">
                                                     <label for="inputEmail3" class="col-sm-2 control-label">กลุ่มย่อย</label>
                                                     <div class="col-sm-10">
-                                                        <select name="subgroup" id="" onchange="this.form.submit();">
-                                                            <option value="" selected disabled>กลุ่มย่อย</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                                @endif
-                                                
-                                                @if(isset($_POST['subgroup']))
-                                                <div class="form-group">
-                                                    <label for="inputEmail3" class="col-sm-2 control-label">กลุ่มย่อย</label>
-                                                    <div class="col-sm-10">
-                                                        <select name="subgroup" id="" onchange="this.form.submit();">
-                                                            @foreach( $subgroup->where('main_groups_id', $_POST['maingroup']) as $sub )
-                                                            <option value="{{ $sub->id }}"
-                                                                @if( $sub->id == $_POST['subgroup'] )
-                                                                selected
-                                                                @endif 
-                                                                >{{ $sub->name }}</option>
-                                                            @endforeach
+                                                        <select name="subgroup" id="subgroup">
+                                                            
                                                         </select>
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="inputEmail3" class="col-sm-2 control-label">ชื่ออุปกรณ์</label>
                                                     <div class="col-sm-10">
-                                                        <select name="subgroup" id="" onchange="this.form.submit();">
-                                                            @foreach( $assetcategory->where('sub_groups_id', $_POST['subgroup']) as $asset )
-                                                            <option value="{{ $asset->id }}">{{ $asset->name }}</option>
-                                                            @endforeach
+                                                        <select name="asset" id="asset">
+                                                            
                                                         </select>
                                                     </div>
                                                 </div>
-                                                @else
-                                                <div class="form-group">
-                                                    <label for="inputEmail3" class="col-sm-2 control-label">ชื่ออุปกรณ์</label>
-                                                    <div class="col-sm-10">
-                                                        <select name="asset" id="" onchange="this.form.submit();">
-                                                            <option value="" selected disabled>ชื่ออุปกรณ์</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                                @endif
                                                 
                                                 <input type="hidden" value="{{ \Auth::user()->id }}" name="user_id">
                                                 <div class="form-group">
@@ -150,9 +88,29 @@
     <script src="{{ asset('assets/js/vendor/footable/footable.all.min.js') }}"></script>
     <script>
         $(document).ready(function() {
-        $("#AttorneyEmpresa").change(function(){
-            console.log($('#AttorneyEmpresa option:selected').val());
-        })
+            $.ajaxSetup({
+            headers:
+            { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') }
+        });
+        $("#maingroup").change(function(){
+            var main_id = $("option:selected", this).val();
+
+            if (main_id != "") {
+                $.post("{{ url('practice/subgroup') }}", {main_id: main_id}, function (data) {
+                    $("#subgroup").html(data);
+                });
+            }
+        });
+
+        $("#subgroup").change(function(){
+            var sub_id = $("option:selected", this).val();
+
+            if (sub_id != "") {
+                $.post("{{ url('practice/category') }}", {sub_id: sub_id}, function (data) {
+                    $("#asset").html(data);
+                });
+            }
+        });
     });
     </script>
 @endsection
