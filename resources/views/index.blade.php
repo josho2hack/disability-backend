@@ -80,7 +80,7 @@
     <div class="row clearfix">
         @foreach ($news as $item)
         <div class="col-xs-12 col-sm-6 col-md-4">
-            {{-- <a href="" style="text-decoration: none;"> --}}
+            <a href="shownews/{{ $item["id"] }}" style="text-decoration: none;">
                 <div class="boxs project_widget">
                     <div class="pw_img" style="height: 250px;">
                         <img class="img-responsive" src="{{ asset('uploads/news/'.$item["cover_name"]) }}" alt="{{ $item["title"] }}" >
@@ -91,7 +91,7 @@
                         </div>
                     </div>
                 </div>
-            {{-- </a> --}}
+            </a>
         </div>
         @endforeach
     </div>

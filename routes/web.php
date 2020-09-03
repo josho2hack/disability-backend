@@ -19,10 +19,9 @@ use Illuminate\Support\Facades\Auth;
 // })->name('welcome');
 
 Route::get('', 'HomeController@allLogin');
+Route::get('shownews/{id}', 'HomeController@show_news');
 
-// Route::get('index', function () {
-//     return view('index');
-// })->name('root');
+// Route::get('index', 'HomeController@allLogin');
 
 // Route::get('/verify', function () {
 //     return view('verify');

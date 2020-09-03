@@ -24,13 +24,21 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $news = News::latest()->limit(3)->get();
+
+        return view('home', compact('news'));
     }
 
     public function allLogin() {
-        $news = News::orderBy('created_at', 'DESC')->take(3)->get();
+        $news = News::latest()->limit(3)->get();
 
         return view('index', compact('news'));
+    }
+
+    public function show_news($id) {
+        $news = News::find($id)->limit(1)->get();
+
+        return view('shownews', compact('news'));
     }
 
     public function logout(){
