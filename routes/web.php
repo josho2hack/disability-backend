@@ -56,6 +56,8 @@ Route::post('/practice/subgroup', 'PracticeController@getsubgroup');
 Route::post('/practice/category', 'PracticeController@getcategory');
 Route::post('/practice', 'PracticeController@index');
 Route::post('/practice/add', 'PracticeController@add');
+Route::get('/practice/index', 'PracticeController@home');
+Route::get('/practice/{id}', 'PracticeController@view');
 Route::get('/object', 'ObjectController@index');
 //pdf
 Route::get('pdf/{id}', 'PDFController@pdf');

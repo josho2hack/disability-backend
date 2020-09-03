@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\MainGroup;
 use App\SubGroup;
 use App\AssetCategory;
+use App\Pratice;
 
 class PracticeController extends Controller
 {
@@ -14,12 +15,34 @@ class PracticeController extends Controller
     	$subgroup = SubGroup::get();
     	$assetcategory = AssetCategory::get();
 
-    	return view('pratice', compact('maingroup','subgroup','assetcategory'));
+    	return view('pratices.pratice', compact('maingroup','subgroup','assetcategory'));
     }
+
+
 
     public function add(Request $request){
 
-    	return redirect('practice')->with('message', 'ลงทะเบียนเรียบร้อยแล้ว');
+    	$practice = New Pratice;
+    	$practice->fill($request->all());
+
+    	if( $practice->save() ){
+    		return redirect('practice/index')->with('message', 'ลงทะเบียนเรียบร้อยแล้ว');
+    	}
+    	
+    }
+
+    public function home()
+    {
+    	$practice = Pratice::where('user_id', \Auth::user()->id)->get();
+
+    	return view('pratices.index', compact('practice'));
+    }
+
+    public function view($id)
+    {
+    	$practice = Pratice::where('id', $id)->first();
+
+    	return view('pratices.show', compact('practice'));
     }
 
 
