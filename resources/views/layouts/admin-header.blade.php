@@ -6,7 +6,7 @@
                     <a class="brand" href="{{ url('/') }}">
                         <span>ONDE
                             @guest
-                                ผู้เยี่ยมชม
+
                             @else
                                 {{ Auth::user()->roles()->first()->description }}
                             @endguest
@@ -40,10 +40,13 @@
                             </li>
                         @endif
                         <li class="dropdown users">
-                            <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">
+                            <a href="{{ route('root') }}" role="button" tabindex="0">
                                 <i class="fa fa-sign-in"></i> {{ __('เข้าสู่ระบบ') }}
                             </a>
-                            <div class="dropdown-menu pull-right panel panel-default" role="menu">
+                            {{-- <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">
+                                <i class="fa fa-sign-in"></i> {{ __('เข้าสู่ระบบ') }}
+                            </a> --}}
+                            {{-- <div class="dropdown-menu pull-right panel panel-default" role="menu">
                                 <ul class="app-sortcut">
                                     <li>
                                         <a href="{{ url('user-login') }}" class="connection-item" role="button"
@@ -74,7 +77,7 @@
                                         </a>
                                     </li>
                                 </ul>
-                            </div>
+                            </div> --}}
                         </li>
 
                     @else
