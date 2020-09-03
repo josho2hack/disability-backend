@@ -25,11 +25,11 @@
                 </div>
                 <div class="boxs-widget">
                     <div class="form-group">
-                        @if ($form->count() < 1)
+                        {{-- @if ($form->count() < 1) --}}
                         <div class="btn-group pull-right">
                             <a href="{{ url('form-borrow/create') }}" class="btn btn-success btn-raised">สร้างแบบฟอร์มยืมเดี่ยว (ทก.01)</a>
                         </div>
-                        @endif
+                        {{-- @endif --}}
                         {{-- @if ($form->count() < 1)
                         <div class="btn-group pull-right">
                             <a href="{{ url('form-borrow/create') }}" class="btn btn-success btn-raised">สร้างแบบฟอร์มกลุ่ม (ทก.01)</a>

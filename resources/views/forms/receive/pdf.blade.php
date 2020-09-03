@@ -157,13 +157,13 @@
 	.name2{
 		display: inline-block;
 		border-bottom: 1px dotted;
-		width: 400px;
+		width: 570px;
 		text-align: center;
 	}
 	.pwd_id{
 		display: inline-block;
 		border-bottom: 1px dotted;
-		width: 360px;
+		width: 470px;
 		text-align: center;
 	}
 	.object{
@@ -387,62 +387,19 @@ case '12' : $month="ธันวาคม"; break;
 		<div class="pwd_id">
 			{{-- {{ $form->user->pwd_id }} --}}
 		</div>
-		ที่อยู่ที่สามารถติดต่อได้
-		บ้านเลขที่
-		<div class="house">
-			{{-- {{ $form->address->house_no }} --}}
-		</div>
-		หมู่ที่ 
-		<div class="moo">
-			{{-- @if($form->type == 2) --}}
-				{{-- {{ $form->substitute->village_no }} --}}
-			{{-- @else --}}
-				{{-- {{ $form->address->village_no }} --}}
-			{{-- @endif --}}
-		</div>
-		ซอย/ถนน
-		<div class="lane">
-			{{-- {{ $form->address->lane }} --}}
-		</div>
-		ตำบล/แขวง
-		<div class="district">
-			{{-- {{ $form->address->sub_district }} --}}
-		</div>
-		อำเภอ/เขต
-		<div class="district">
-			{{-- {{ $form->address->district }} --}}
-		</div>
-		จังหวัด
-		<div class="province">
-			{{-- {{ $form->address->province }} --}}
-		</div>
-		รหัสไปรษณีย์
-		<div class="postal_code">
-			{{-- {{ $form->address->postal_code }} --}}
-		</div>
-		สถานศึกษา
-		<div class="edu">
-			{{-- {{ $form->address->edu_place }} --}}
-		</div>
-		โทรศัพท์
-		<div class="tel">
-			{{-- {{ $form->address->tel }} --}}
-		</div>
-		ที่อยู่อีเมล์ (e-mail address)
-		<div class="email2">
-			{{-- {{ $form->user->email }} --}}
-		</div>
 		โดยมีวัตถุประสงค์เพื่อ (โปรดระบุ)
 		<div class="object">
 			{{-- {{ $form->objective }} --}}
 		</div>
-		ในรายการอุปกรณ์
+		ในรายการต่อไปนี้<br>
+
+		(๑) ชื่ออุปกรณ์
 		<div class="accessorie">
 			{{-- {{ $form->accessorie_list }} --}}
 		</div>
 		เลขที่อุปกรณ์
 		<div class="accessorie">
-			{{-- {{ $form->accessorie_no }} --}}
+			{{-- {{ $form->accessorie_list }} --}}
 		</div>
 </div>
 	<div class="foot"><br>
