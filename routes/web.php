@@ -51,6 +51,9 @@ Route::resources(['form-receive' => 'Form\FormreceiveController']);
 Route::get('form-receive/receive/pdf', 'Form\FormreceiveController@pdf_receive');
 Route::resources(['form-borrow' => 'Form\FormborrowController']);
 Route::get('/tutorial', 'ManualController@index');
+Route::get('/practice', 'PracticeController@index');
+Route::post('/practice', 'PracticeController@index');
+Route::post('/practice/add', 'PracticeController@add');
 Route::get('/object', 'ObjectController@index');
 //pdf
 Route::get('pdf/{id}', 'PDFController@pdf');
