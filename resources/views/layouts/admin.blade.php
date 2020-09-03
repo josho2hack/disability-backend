@@ -85,7 +85,7 @@
                 @endif
             @endguest
 
-            @include('layouts.admin-rightmenu')
+            {{-- @include('layouts.admin-rightmenu') --}}
         </div>
         <!-- CONTENT -->
         <section id="content">

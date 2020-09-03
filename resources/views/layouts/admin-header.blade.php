@@ -53,19 +53,22 @@
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="{{ url('audit-login') }}" class="connection-item" role="button" tabindex="0">
+                                        <a href="{{ url('audit-login') }}" class="connection-item" role="button"
+                                            tabindex="0">
                                             <i class="fa fa-object-ungroup"></i>
                                             <span class="block">ผู้ตรวจสอบ</span>
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="{{ url('approve-login') }}" class="connection-item" role="button" tabindex="0">
+                                        <a href="{{ url('approve-login') }}" class="connection-item" role="button"
+                                            tabindex="0">
                                             <i class="fa fa-calendar-check-o"></i>
                                             <span class="block">ผู้อนุมัติ</span>
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="{{ url('admin-login') }}" class="connection-item" role="button" tabindex="0">
+                                        <a href="{{ url('admin-login') }}" class="connection-item" role="button"
+                                            tabindex="0">
                                             <i class="fa fa-map-o"></i>
                                             <span class="block">ผู้ดูแลระบบ</span>
                                         </a>
@@ -75,10 +78,12 @@
                         </li>
 
                     @else
-                    <li>
-                        <a class="nav-link" style="color: white;" href="#" role="button" tabindex="0"><i
-                            class="fa fa-user"></i> {{ \Auth::user()->disability->description ?? ''}}</a>
-                    </li>
+                        <li>
+                            @if (!empty(Auth::user()->disability->description))
+                                <a class="nav-link" style="color: white;" href="#" role="button" tabindex="0"><i
+                                        class="fa fa-user"></i> {{ \Auth::user()->disability->description ?? '' }}</a>
+                            @endif
+                        </li>
                         <li class="dropdown messages">
                             <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">
                                 <i class="fa fa-envelope"></i>
@@ -191,40 +196,30 @@
                         <li class="dropdown nav-profile">
                             <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">
                                 @if (!empty(Auth::user()->avatar_name))
-                                    <img src="{{ url(Auth::user()->avatar) }}" alt="" class="0 size-30x30"> </a>
-                                @else
-                                    <img src="{{ asset('assets/images/profile-photo.jpg') }}" alt="" class="0 size-30x30"> </a>
-                                @endif
+                                    <img src="{{ url(Auth::user()->avatar) }}" alt="" class="0 size-30x30">
+                            </a>
+                        @else
+                            <img src="{{ asset('assets/images/profile-photo.jpg') }}" alt="" class="0 size-30x30"> </a>
+                            @endif
                             <ul class="dropdown-menu pull-right" role="menu">
                                 <li>
                                     <div class="user-info">
                                         <div class="user-name">{{ Auth::user()->FullName }}</div>
-                                        <div class="user-position online">Available</div>
                                     </div>
                                 </li>
                                 <li>
                                     <a href="{{ url('profile') }}" role="button" tabindex="0">
-                                        <span class="label label-success pull-right">80%</span>
-                                        <i class="fa fa-user"></i>Profile</a>
-                                </li>
-                                <li>
-                                    <a role="button" tabindex="0">
-                                        <span class="label label-info pull-right">new</span>
-                                        <i class="fa fa-check"></i>Tasks</a>
-                                </li>
-                                <li>
-                                    <a role="button" tabindex="0">
-                                        <i class="fa fa-cog"></i>Settings</a>
+                                        <i class="fa fa-user"></i>โปรไฟล์</a>
                                 </li>
                                 <li class="divider"></li>
                                 <li>
                                     <a href="locked.html" role="button" tabindex="0">
-                                        <i class="fa fa-lock"></i>Lock</a>
+                                        <i class="fa fa-lock"></i>ล็อคหน้าจอ</a>
                                 </li>
                                 <li>
                                     <div>
                                         <a href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                                document.getElementById('logout-form').submit();"
+                                                                    document.getElementById('logout-form').submit();"
                                             role="button" tabindex="0">
                                             <i class="fa fa-sign-out"></i>{{ __('ออกจากระบบ') }}</a>
 
@@ -237,11 +232,11 @@
                             </ul>
                         </li>
 
-                        <li class="toggle-right-leftmenu">
+                        {{-- <li class="toggle-right-leftmenu">
                             <a role="button" tabindex="0">
                                 <i class="fa fa-align-left"></i>
                             </a>
-                        </li>
+                        </li> --}}
                     @endguest
                 </ul>
                 <!-- Right-side navigation end -->
