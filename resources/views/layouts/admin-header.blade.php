@@ -211,11 +211,15 @@
                                     <a href="{{ url('profile') }}" role="button" tabindex="0">
                                         <i class="fa fa-user"></i>โปรไฟล์</a>
                                 </li>
-                                <li class="divider"></li>
                                 <li>
+                                    <a href="#" role="button" tabindex="0">
+                                        <i class="fa fa-bullhorn"></i>แจ้งเตือน</a>
+                                </li>
+                                <li class="divider"></li>
+                                {{-- <li>
                                     <a href="locked.html" role="button" tabindex="0">
                                         <i class="fa fa-lock"></i>ล็อคหน้าจอ</a>
-                                </li>
+                                </li> --}}
                                 <li>
                                     <div>
                                         <a href="{{ route('logout') }}" onclick="event.preventDefault();

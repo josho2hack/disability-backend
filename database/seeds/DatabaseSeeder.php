@@ -112,9 +112,9 @@ class DatabaseSeeder extends Seeder
         $user = App\User::find(1);
         $user->roles()->attach(1);
 
-        $dis_type = App\DisabilityType::find(1);
-        $user->disabilityType()->associate($dis_type);
-        $user->save();
+        // $dis_type = App\DisabilityType::find(1);
+        // $user->disabilityType()->associate($dis_type);
+        // $user->save();
 
         $user = App\User::find(2);
         $user->roles()->attach(2);

@@ -53,33 +53,40 @@
             @guest
                 @include('layouts.admin-leftmenu')
             @else
-                @if(Auth::user()->roles()->first()->name == 'User')
+                @if (Auth::user()
+            ->roles()
+            ->first()->name == 'User')
                     <style>
-                        #header{
-                        @if (Auth::user()->disability_type_id == 1)
-                            background-color: green;
-                        @elseif(Auth::user()->disability_type_id == 2)
-                            background-color: brown;
-                        @elseif(Auth::user()->disability_type_id == 3)
-                            background-color: purple;
-                        @elseif(Auth::user()->disability_type_id == 4)
-                            background-color: orange;
-                        @elseif(Auth::user()->disability_type_id == 5)
-                            background-color: #c9c900;
-                        @elseif(Auth::user()->disability_type_id == 6)
-                            background-color: pink;
-                        @elseif(Auth::user()->disability_type_id == 7)
-                            background-color: blue;
-                        @endif
-                          }
+                        #header {
+                        @if (Auth::user()->disability_type_id == 1)background-color: green;
+                        @elseif(Auth::user()->disability_type_id==2) background-color: brown;
+                        @elseif(Auth::user()->disability_type_id==3) background-color: purple;
+                        @elseif(Auth::user()->disability_type_id==4) background-color: orange;
+                        @elseif(Auth::user()->disability_type_id==5) background-color: #c9c900;
+                        @elseif(Auth::user()->disability_type_id==6) background-color: pink;
+                        @elseif(Auth::user()->disability_type_id==7) background-color: blue;
+                            @endif
+                        }
+
                     </style>
-                        @include('layouts.user-leftmenu')
+                    @include('layouts.user-leftmenu')
 
                 @else
                     <style>
-                        #leftmenu , #navigation {
-                            background-color: #d9cde4;
+                        #leftmenu,
+                        #navigation {
+                            @if (Auth::user()->role()->id == 1)background-color: #d9cde4;
+                            @elseif(Auth::user()->role()->id == 2)background-color: #FFF6ED;
+                            @elseif(Auth::user()->role()->id==3) background-color: #F4FCF1;
+                            @endif
                         }
+
+                        #header {
+                            @if (Auth::user()->role()->id == 2)background-color: #f5710c;
+                            @elseif(Auth::user()->role()->id==3) background-color: #008000;
+                            @endif
+                        }
+
                     </style>
                     @include('layouts.admin-leftmenu')
                 @endif
