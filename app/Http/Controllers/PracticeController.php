@@ -38,7 +38,7 @@ class PracticeController extends Controller
 
     public function getcategory(Request $request)
     {
-    	$category = SubGroup::where('main_groups_id',$request->sub_id)->get();
+    	$category = AssetCategory::where('sub_groups_id',$request->sub_id)->get();
 		$categories = "<option value=''>- เลือก -</option>";
 		
 		foreach( $category as $cate ){
