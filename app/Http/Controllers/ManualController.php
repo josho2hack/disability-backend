@@ -3,13 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Maingroup;
-use App\Subgroup;
+use App\MainGroup;
+use App\SubGroup;
 
 class ManualController extends Controller
 {
     public function index(){
-    	$subgroup = Subgroup::get();
+    	$subgroup = SubGroup::get();
     	
     	return view('manual', compact('subgroup'));
     }

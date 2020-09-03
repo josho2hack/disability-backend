@@ -24,7 +24,7 @@
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="#">
+                                        <a href="{{ url('practice') }}">
                                             <i class="fa fa-angle-right"></i>1.2 ลงทะเบียนความต้องการฝึกอบรมการใช้อุปกรณ์/เครื่องมือ</a>
                                     </li>
                                     <li>
