@@ -6,6 +6,7 @@ use App\Providers\RouteServiceProvider;
 use Illuminate\Http\Request;
 
 use App\DisabilityType;
+use App\News;
 
 class HomeController extends Controller
 {
@@ -24,6 +25,12 @@ class HomeController extends Controller
     public function index()
     {
         return view('home');
+    }
+
+    public function allLogin() {
+        $news = News::orderBy('created_at', 'DESC')->take(3)->get();
+
+        return view('index', compact('news'));
     }
 
     public function logout(){

@@ -14,13 +14,15 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-Route::get('', function () {
-    return view('welcome');
-})->name('welcome');
+// Route::get('', function () {
+//     return view('welcome');
+// })->name('welcome');
 
-Route::get('index', function () {
-    return view('index');
-})->name('root');
+Route::get('', 'HomeController@allLogin');
+
+// Route::get('index', function () {
+//     return view('index');
+// })->name('root');
 
 // Route::get('/verify', function () {
 //     return view('verify');
