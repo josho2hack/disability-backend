@@ -70,7 +70,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="inputPassword3" class="col-sm-2 control-label">เลขผู้พิการ</label>
+                                                    <label for="inputPassword3" class="col-sm-2 control-label">เลขคนพิการ</label>
                                                     <div class="col-sm-10">
                                                         <input type="text" class="form-control" value="{{ $user->pwd_id }}" readonly>
                                                     </div>
@@ -98,9 +98,9 @@
                                                 <div class="form-group">
                                                     <label for="inputPassword3" class="col-sm-2 control-label">
                                                         @if( $user->disability_type_id != null )
-                                                        ประเภทผู้พิการ
+                                                        ประเภทคนพิการ
                                                         @else
-                                                        <span class="text-danger">ประเภทผู้พิการ</span>
+                                                        <span class="text-danger">ประเภทคนพิการ</span>
                                                         @endif
                                                     </label>
                                                     <div class="col-sm-10">
@@ -113,7 +113,7 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <div class="col-sm-offset-2 col-sm-10">
-                                                        <button type="button" class="btn btn-raised btn-primary">
+                                                        <button type="button" class="btn btn-raised btn-warning">
                                                             <a href="{{ url('profile/edit') }}" style="
                                                             text-decoration: none;
                                                             color: #ffffff;
