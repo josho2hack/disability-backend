@@ -8,11 +8,11 @@
     <title>:: PWDSTHAI ::</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="{{ asset('assets/js/vendor/bootstrap/bootstrap.min.css')}}">
-	<link rel="stylesheet" href="{{ asset('assets/css/vendor/animsition.min.css')}}">
-	<link rel="stylesheet" href="{{ asset('assets/js/vendor/touchspin/jquery.bootstrap-touchspin.min.css')}}">
+    <link rel="stylesheet" href="{{ asset('assets/js/vendor/bootstrap/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/vendor/animsition.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/js/vendor/touchspin/jquery.bootstrap-touchspin.min.css') }}">
     <!-- CSS Files -->
-    <link href="{{ asset('assets/css/main.css')}}" rel="stylesheet">
+    <link href="{{ asset('assets/css/main.css') }}" rel="stylesheet">
 
     <style>
         a:link {
@@ -30,6 +30,7 @@
         a:active {
             text-decoration: none;
         }
+
         #header .branding {
             background-color: #fff;
             width: 235px;
@@ -37,10 +38,18 @@
             float: left;
             padding: 0 15px;
         }
+
+        #content {
+            padding-top: 0px;
+        }
+        .no-leftmenu.device-xs #header .nav-left .leftmenu-collapse {
+            display: none;
+        }
+
     </style>
 </head>
 
-<body id="falcon" class="main_Wrapper">
+<body id="falcon" class="no-leftmenu">
     <div id="wrap" class="animsition">
 
         <!-- HEADER Content -->
@@ -98,19 +107,20 @@
             </header>
         </div>
         <!--/ HEADER Content  -->
-
-        <div class="header header-filter">
-            <div class="container">
-                @yield('content')
+        <section id="content">
+            <div class="header header-filter">
+                <div class="container">
+                    @yield('content')
+                </div>
             </div>
-        </div>
+        </section>
     </div>
     <!--  Vendor JavaScripts -->
-    <script src="{{ asset('assets/bundles/libscripts.bundle.js')}}"></script>
-	<script src="{{ asset('assets/bundles/vendorscripts.bundle.js')}}"></script>
+    <script src="{{ asset('assets/bundles/libscripts.bundle.js') }}"></script>
+    <script src="{{ asset('assets/bundles/vendorscripts.bundle.js') }}"></script>
 
     <!-- Custom Js -->
-    <script src="{{ asset('assets/bundles/mainscripts.bundle.js')}}"></script>
+    <script src="{{ asset('assets/bundles/mainscripts.bundle.js') }}"></script>
 </body>
 
 </html>
