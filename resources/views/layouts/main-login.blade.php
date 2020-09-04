@@ -8,9 +8,11 @@
     <title>:: PWDSTHAI ::</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="assets/js/vendor/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ asset('assets/js/vendor/bootstrap/bootstrap.min.css')}}">
+	<link rel="stylesheet" href="{{ asset('assets/css/vendor/animsition.min.css')}}">
+	<link rel="stylesheet" href="{{ asset('assets/js/vendor/touchspin/jquery.bootstrap-touchspin.min.css')}}">
     <!-- CSS Files -->
-    <link href="assets/css/main.css" rel="stylesheet">
+    <link href="{{ asset('assets/css/main.css')}}" rel="stylesheet">
 
     <style>
         a:link {
@@ -38,8 +40,8 @@
     </style>
 </head>
 
-<body id="falcon" class="authentication">
-    <div class="wrapper">
+<body id="falcon" class="main_Wrapper">
+    <div id="wrap" class="animsition">
 
         <!-- HEADER Content -->
         <div id="header">
@@ -68,7 +70,6 @@
                             โครงการพัฒนาระบบบริหารจัดการ อุปกรณ์และเครื่องมือด้าน ICT สาหรับคนพิการ
                         </a>
                     </li>
-
                 </ul>
                 <!-- Left-side navigation end -->
 
@@ -105,9 +106,11 @@
         </div>
     </div>
     <!--  Vendor JavaScripts -->
-    <script src="assets/bundles/libscripts.bundle.js"></script>
-    <script src="assets/bundles/mainscripts.bundle.js"></script>
+    <script src="{{ asset('assets/bundles/libscripts.bundle.js')}}"></script>
+	<script src="{{ asset('assets/bundles/vendorscripts.bundle.js')}}"></script>
+
     <!-- Custom Js -->
+    <script src="{{ asset('assets/bundles/mainscripts.bundle.js')}}"></script>
 </body>
 
 </html>

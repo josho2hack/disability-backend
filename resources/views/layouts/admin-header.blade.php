@@ -22,11 +22,11 @@
                 <ul class="nav-left pull-left list-unstyled list-inline">
                     <li class="leftmenu-collapse">
                         <a role="button" tabindex="0" class="collapse-leftmenu">
-                            <i class="fa fa-outdent"></i>
+                            โครงการพัฒนาระบบบริหารจัดการ อุปกรณ์และเครื่องมือด้าน ICT สาหรับคนพิการ
                         </a>
                     </li>
-
                 </ul>
+                <!-- Left-side navigation end -->
 
                 <!-- Right-side navigation -->
                 <ul class="nav-right pull-right list-inline">
