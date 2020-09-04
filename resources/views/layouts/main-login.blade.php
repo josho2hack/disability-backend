@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="{{ asset('assets/js/vendor/touchspin/jquery.bootstrap-touchspin.min.css') }}">
     <!-- CSS Files -->
     <link href="{{ asset('assets/css/main.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/css/custom-css.css') }}" rel="stylesheet">
 
     <style>
         a:link {
@@ -55,10 +56,12 @@
         <!-- HEADER Content -->
         <div id="header">
             <header class="clearfix">
+                <div class="container p-0">
+
                 <!-- Branding -->
-                <div class="branding">
+                <div class="branding p-0 m-0" style="background-color: #8560a9 !important; width: 80px !important;">
                     <a class="brand" href="{{ url('/') }}">
-                        <span>ONDE
+                        <span style="color: white !important;">ONDE
                             @guest
 
                             @else
@@ -104,6 +107,7 @@
                     @endguest
                 </ul>
                 <!-- Right-side navigation end -->
+                </div>
             </header>
         </div>
         <!--/ HEADER Content  -->
@@ -111,6 +115,23 @@
             <div class="header header-filter">
                 <div class="container">
                     @yield('content')
+                </div>
+            </div>
+        </section>
+
+        <!--/ FOOTER Content -->
+        <section id="footer">
+            <div class="container p-0">
+                <div class="row clearfix">
+                    <div class="col-sm-12 col-md-8">
+                        <p>สำนักงานคณะกรรมการดิจิทัลเพื่อเศรษฐกิจและสังคมแห่งชาติ</p>
+                        <p>120 หมู่ 3 ชั้น 9 อาคารรัฐประศาสนภักดี ศูนย์ราชการเฉลิมพระเกียรติ 80 พรรษา 5 ธันวาคม 2550</p>
+                        <p>ถนนแจ้งวัฒนะ แขวงทุ่งสองห้อง เขตหลักสี่ กรุงเทพฯ 10210</p>
+                        <p>โทร. 0 2142 1202 | แฟกซ์. 0 2143 7962 | อีเมล์. pr.onde@onde.go.th</p>
+                    </div>
+                    <div class="col-sm-12 col-md-4 text-center">
+                        Social
+                    </div>
                 </div>
             </div>
         </section>
