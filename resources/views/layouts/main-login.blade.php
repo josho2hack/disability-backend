@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="{{ asset('assets/js/vendor/bootstrap/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/vendor/animsition.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/js/vendor/touchspin/jquery.bootstrap-touchspin.min.css') }}">
+    @yield('header')
     <!-- CSS Files -->
     <link href="{{ asset('assets/css/main.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/css/custom-css.css') }}" rel="stylesheet">
@@ -139,7 +140,7 @@
     <!--  Vendor JavaScripts -->
     <script src="{{ asset('assets/bundles/libscripts.bundle.js') }}"></script>
     <script src="{{ asset('assets/bundles/vendorscripts.bundle.js') }}"></script>
-
+    @yield('footer')
     <!-- Custom Js -->
     <script src="{{ asset('assets/bundles/mainscripts.bundle.js') }}"></script>
 </body>

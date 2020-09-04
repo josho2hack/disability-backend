@@ -11,7 +11,7 @@ class AssetCategory extends Model
 
     protected $fillable = [
         'name', 'description', 'for_give',
-        'image','sub_groups_id'
+        'image','sub_groups_id','url'
     ];
 
     public function assets() {
