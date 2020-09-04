@@ -19,9 +19,9 @@ class User extends Authenticatable implements MustVerifyEmail
      */
     protected $fillable = [
         'username', 'name', 'email', 'email_verified_at', 'password',
-        'first_name', 'last_name', 'gender', 'avatar_name', 'avatar_path', 'citizen_id','pwd_id',
+        'first_name', 'last_name', 'gender', 'avatar_name', 'avatar_path', 'citizen_id', 'pwd_id',
         'timezone', 'active', 'last_login_at', 'last_login_ip', 'to_be_logged_out', 'created_at',
-        'updated_at','disability_type_id','title'
+        'updated_at', 'disability_type_id', 'title'
     ];
 
     /**
@@ -42,12 +42,14 @@ class User extends Authenticatable implements MustVerifyEmail
         'email_verified_at' => 'datetime',
     ];
 
-    public function getAvatarAttribute(){
+    public function getAvatarAttribute()
+    {
         return Storage::url($this->avatar_path);
     }
 
-    public function getFullNameAttribute(){
-        return $this->first_name ." " . $this->last_name;
+    public function getFullNameAttribute()
+    {
+        return $this->first_name . " " . $this->last_name;
     }
 
     public function disabilityType()
@@ -87,10 +89,10 @@ class User extends Authenticatable implements MustVerifyEmail
 
 
 
-    // public function sendEmailVerificationNotification()
-    // {
-    //     $this->notify(new \App\Notifications\CustomVerifyEmail);
-    // }
+    public function sendEmailVerificationNotification()
+    {
+        $this->notify(new \App\Notifications\VerifyEmailNotification());
+    }
 
     public function sendApiEmailVerificationNotification()
     {
