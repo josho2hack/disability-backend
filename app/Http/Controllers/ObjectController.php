@@ -7,30 +7,28 @@ use App\Asset;
 use App\SubGroup;
 use App\MainGroup;
 use App\AssetCategory;
+use App\AssetCategoryDisabilityType;
 
 class ObjectController extends Controller
 {
     public function index(){
 
+        if(empty(\Auth::user()->disability_type_id)){
+            return redirect('/');
+        }
+
     	$data = [];
     	$asset_cate = AssetCategory::all();
     	$subgroup = SubGroup::all();
+        $disability_types = \Auth::user()->disability_type_id;
+        $disability = AssetCategoryDisabilityType::where('disability_types_id', $disability_types)->get();
 
-    	// foreach($asset_cate as $assets){
-    	// 	$as = Asset::where(['asset_statuses_id' => 1, 'asset_categories_id' => $assets->id])->first();
-    	// 	if( $as != null ){
-    	// 		$data[$as->assetCategory->subGroup->name] = Asset::where(['asset_statuses_id' => 1, 'asset_categories_id' => $assets->id])->count();
-    			
-    	// 	}
-    	// }
+        foreach($disability as $assets){
 
-        foreach($asset_cate as $assets){
-
-         $ass = Asset::where(['asset_statuses_id' => 1, 'asset_categories_id' => $assets->id])->first();
-         $as = Asset::where(['asset_statuses_id' => 1, 'asset_categories_id' => $assets->id])->count();
+         $ass = Asset::where(['asset_statuses_id' => 1, 'asset_categories_id' => $assets->disability_types_id])->first();
+         $as = Asset::where(['asset_statuses_id' => 1, 'asset_categories_id' => $assets->disability_types_id])->count();
 
          if( $ass != null ){
-            // var_dump($as);
             $main_group_id = $ass->assetCategory->subGroup->mainGroup->id;
             $sub_group_name = $ass->assetCategory->subGroup->name;
             $sub_group_id = $ass->assetCategory->subGroup->id;

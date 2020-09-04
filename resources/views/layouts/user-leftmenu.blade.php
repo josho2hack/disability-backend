@@ -20,7 +20,7 @@
                                 <ul>
                                     <li>
                                         <a href="{{ url('tutorial') }}">
-                                            <i class="fa fa-angle-right"></i>1.1 ศึกษาการใช้อุปกรณ์เครื่องมือ
+                                            <i class="fa fa-angle-right"></i>1.1  รายละเอียดอุปกรณ์
                                         </a>
                                     </li>
                                     <li>
@@ -173,6 +173,11 @@
                                     <li>
                                         <a href="{{ url('substitute') }}">
                                             <i class="fa fa-angle-right"></i>8.2 ข้อมูลผู้ยื่นคำขอแทน
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ url('file') }}">
+                                            <i class="fa fa-angle-right"></i>8.3 เอกสารของฉัน
                                         </a>
                                     </li>
                                 </ul>
