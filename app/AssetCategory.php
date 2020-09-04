@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Facades\Storage;
 
 class AssetCategory extends Model
 {
@@ -11,8 +12,13 @@ class AssetCategory extends Model
 
     protected $fillable = [
         'name', 'description', 'for_give',
-        'image','sub_groups_id','url'
+        'image','sub_groups_id','url','document'
     ];
+
+    public function getDocAttribute()
+    {
+        return Storage::url($this->document);
+    }
 
     public function assets() {
         return $this->hasMany('App\Asset','asset_categories_id');

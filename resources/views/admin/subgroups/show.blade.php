@@ -77,12 +77,22 @@
                             </div>
                         </div>
                         @if ($subgroup->image)
-                        <div class="col-xs-12 col-sm-12 col-md-12">
-                            <div class="form-group">
-                            {{-- <img src="/subgroup/{{$subgroup->id}}/avatar" /> --}}
-                            <img src="data:image/png;base64,{{ chunk_split(base64_encode($subgroup->image)) }}">
+                            <div class="col-xs-12 col-sm-12 col-md-12">
+                                <div class="form-group">
+                                    {{-- <img src="/subgroup/{{ $subgroup->id }}/avatar" />
+                                    --}}
+                                    <img src="data:image/png;base64,{{ chunk_split(base64_encode($subgroup->image)) }}">
+                                </div>
                             </div>
-                        </div>
+                        @endif
+
+                        @if (!empty($subgroup->document))
+                            <div class="col-xs-12 col-sm-12 col-md-12">
+                                <div class="form-group">
+                                    <strong>คู่มือ:</strong>
+                                    <a href="{{ url($subgroup->doc) }}">ไฟล์เอกสารคู่มือ</a>
+                                </div>
+                            </div>
                         @endif
 
                         <div class="col-xs-12 col-sm-12 col-md-12">

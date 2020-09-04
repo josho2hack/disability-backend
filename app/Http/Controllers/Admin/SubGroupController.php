@@ -61,6 +61,17 @@ class SubGroupController extends Controller
             Storage::delete($path);
         }
 
+        if ($request->hasFile('document')) {
+
+            // Get the file from the request store to disk
+            $path = $request->document->store('public/document');
+
+            // Get the contents of the file
+            //$contents = Storage::get($path);
+            //$input['avatar_name'] = basename($path);
+            $input['document'] = $path;
+        }
+
         AssetCategory::create($input);
         return redirect()->route('subgroups.index')->with('success', 'บันทึกข้อมูลเรียบร้อยแล้ว');
     }
@@ -127,6 +138,17 @@ class SubGroupController extends Controller
             //$contents = $file->openFile()->fread($file->getSize());
             $input['image'] = $contents;
             Storage::delete($path);
+        }
+
+        if ($request->hasFile('document')) {
+
+            // Get the file from the request store to disk
+            $path = $request->document->store('public/document');
+
+            // Get the contents of the file
+            //$contents = Storage::get($path);
+            //$input['avatar_name'] = basename($path);
+            $input['document'] = $path;
         }
 
         $subgoup->update($input);
