@@ -27,6 +27,9 @@ Route::get('shownews/{id}', 'HomeController@show_news');
 //     return view('verify');
 // });
 
+
+Route::get('welcome', 'HomeController@welcome');
+
 Auth::routes(['verify' => true]);
 
 Route::get('/home', 'HomeController@index')->name('home')->middleware('verified');

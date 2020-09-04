@@ -18,21 +18,7 @@
                     </div>
                     <div class="pw_content">
                         <div class="pw_header">
-                            <h6>เมนูเข้าสู่ระบบสำหรับผู้ใช้</h6>
-                        </div>
-                    </div>
-                </div>
-            </a>
-        </div>
-        <div class="col-xs-12 col-sm-6 col-md-3">
-            <a href="{{ url('admin-login') }}" style="text-decoration: none;">
-                <div class="boxs project_widget">
-                    <div class="pw_img" style="height: 160px;">
-                        <img class="img-responsive" src="{{ asset('assets/images/administrator_login.png') }}" alt="เมนูเข้าสู่ระบบสำหรับผู้ดูแลระบบ" >
-                    </div>
-                    <div class="pw_content">
-                        <div class="pw_header">
-                            <h6>เมนูเข้าสู่ระบบสำหรับผู้ดูแลระบบ</h6>
+                            <h6>ระบบจัดการสำหรับคนพิการ</h6>
                         </div>
                     </div>
                 </div>
@@ -46,7 +32,7 @@
                     </div>
                     <div class="pw_content">
                         <div class="pw_header">
-                            <h6>เมนูเข้าสู่ระบบสำหรับผู้ตรวจสอบ</h6>
+                            <h6>ระบบจัดการสำหรับผู้ตรวจสอบ</h6>
                         </div>
                     </div>
                 </div>
@@ -60,7 +46,21 @@
                     </div>
                     <div class="pw_content">
                         <div class="pw_header">
-                            <h6>เมนูเข้าสู่ระบบสำหรับผู้อนุมัติ</h6>
+                            <h6>ระบบจัดการสำหรับผู้อนุมัติ</h6>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-3">
+            <a href="{{ url('admin-login') }}" style="text-decoration: none;">
+                <div class="boxs project_widget">
+                    <div class="pw_img" style="height: 160px;">
+                        <img class="img-responsive" src="{{ asset('assets/images/administrator_login.png') }}" alt="เมนูเข้าสู่ระบบสำหรับผู้ดูแลระบบ" >
+                    </div>
+                    <div class="pw_content">
+                        <div class="pw_header">
+                            <h6>ระบบจัดการสำหรับผู้ดูแลระบบ</h6>
                         </div>
                     </div>
                 </div>

@@ -44,14 +44,14 @@
                   @if (Route::has('register'))
                       <li>
                           <a class="nav-link" href="{{ route('register') }}" role="button" tabindex="0"><i
-                                  class="fa fa-key"></i> {{ __('ลงทะเบียนเข้าใช้งาน') }}</a>
+                                  class="fa fa-key"></i> {{ __('สมัครสมาชิก') }}</a>
                       </li>
                   @endif
-                  <li class="dropdown users">
+                  {{-- <li class="dropdown users">
                       <a href="" role="button" tabindex="0">
                           <i class="fa fa-sign-in"></i> {{ __('เข้าสู่ระบบ') }}
                       </a>
-                  </li>
+                  </li> --}}
 
               @else
 

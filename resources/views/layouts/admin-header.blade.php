@@ -36,17 +36,17 @@
                         @if (Route::has('register'))
                             <li>
                                 <a class="nav-link" href="{{ route('register') }}" role="button" tabindex="0"><i
-                                        class="fa fa-key"></i> {{ __('ลงทะเบียนเข้าใช้งาน') }}</a>
+                                        class="fa fa-key"></i> {{ __('สมัครสมาชิก') }}</a>
                             </li>
                         @endif
-                        <li class="dropdown users">
+                        {{-- <li class="dropdown users">
                             <a href="{{ route('root') }}" role="button" tabindex="0">
                                 <i class="fa fa-sign-in"></i> {{ __('เข้าสู่ระบบ') }}
                             </a>
-                            {{-- <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">
+                            <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">
                                 <i class="fa fa-sign-in"></i> {{ __('เข้าสู่ระบบ') }}
-                            </a> --}}
-                            {{-- <div class="dropdown-menu pull-right panel panel-default" role="menu">
+                            </a>
+                            <div class="dropdown-menu pull-right panel panel-default" role="menu">
                                 <ul class="app-sortcut">
                                     <li>
                                         <a href="{{ url('user-login') }}" class="connection-item" role="button"
@@ -77,8 +77,8 @@
                                         </a>
                                     </li>
                                 </ul>
-                            </div> --}}
-                        </li>
+                            </div>
+                        </li> --}}
 
                     @else
                         <li>

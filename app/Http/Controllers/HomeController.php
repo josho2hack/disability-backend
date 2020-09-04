@@ -29,6 +29,13 @@ class HomeController extends Controller
         return view('home', compact('news'));
     }
 
+    public function welcome()
+    {
+        $news = News::latest()->limit(3)->get();
+
+        return view('welcome', compact('news'));
+    }
+
     public function allLogin() {
         $news = News::latest()->limit(3)->get();
 
