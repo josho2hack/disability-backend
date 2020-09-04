@@ -84,6 +84,13 @@
                             </div>
                         </div>
                         @endif
+
+                        <div class="col-xs-12 col-sm-12 col-md-12">
+                            <div class="form-group">
+                                <strong>เรียนรู้การใช้งาน:</strong>
+                                {{ $subgroup->url }}
+                            </div>
+                        </div>
                     </div>
 
                     <a class="btn btn-raised btn-default" href="{{ route('subgroups.index') }}">กลับ</a>

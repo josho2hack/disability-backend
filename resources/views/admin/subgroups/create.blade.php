@@ -104,6 +104,13 @@
                         <!--//Up load File ---------------------------------------------------------->
 
                         <div class="form-group">
+                            <label for="url" class="col-sm-2 control-label">เรียนรู้การใช้งาน</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" name="url" placeholder="Ex: http://...">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
                             <div class="col-sm-offset-2 col-sm-10">
                                 <button type="submit" class="btn btn-raised btn-success">บันทึก</button>
                                 <a href="{{ route('subgroups.index') }}" class="btn btn-raised btn-default">ยกเลิก</a>
