@@ -11,7 +11,6 @@
     <link rel="stylesheet" href="{{ asset('assets/js/vendor/bootstrap/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/vendor/animsition.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/js/vendor/touchspin/jquery.bootstrap-touchspin.min.css') }}">
-    @yield('header')
     <!-- CSS Files -->
     <link href="{{ asset('assets/css/main.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/css/custom-css.css') }}" rel="stylesheet">
@@ -124,15 +123,52 @@
         <section id="footer">
             <div class="container p-0">
                 <div class="row clearfix">
-                    <div class="col-sm-12 col-md-8">
-                        <p>สำนักงานคณะกรรมการดิจิทัลเพื่อเศรษฐกิจและสังคมแห่งชาติ</p>
+                    <div class="col-sm-12 col-md-9">
+                        <h4 class="title">สำนักงานคณะกรรมการดิจิทัลเพื่อเศรษฐกิจและสังคมแห่งชาติ</h4>
                         <p>120 หมู่ 3 ชั้น 9 อาคารรัฐประศาสนภักดี ศูนย์ราชการเฉลิมพระเกียรติ 80 พรรษา 5 ธันวาคม 2550</p>
                         <p>ถนนแจ้งวัฒนะ แขวงทุ่งสองห้อง เขตหลักสี่ กรุงเทพฯ 10210</p>
-                        <p>โทร. 0 2142 1202 | แฟกซ์. 0 2143 7962 | อีเมล์. pr.onde@onde.go.th</p>
+                        <p>โทร. <a href="tel:+6621421202" class="footer-link">0 2142 1202</a> | แฟกซ์. <a href="tel:+6621437962" class="footer-link">0 2143 7962</a> | อีเมล์. <a href="mailto:pr.onde@onde.go.th" class="footer-link">pr.onde@onde.go.th</a> </p>
                     </div>
-                    <div class="col-sm-12 col-md-4 text-center">
-                        Social
+                    <div class="col-sm-12 col-md-3 text-center">
+                        <h4><span>ช่องทางการติดต่อ</span></h4>
+                        <div class="row clearfix text-center">
+                            {{-- <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4"> --}}
+                                <a href="https://www.youtube.com/channel/UCuCrGM49GT0kFdXMRDYqQRA/playlists" target="_blank">
+                                    <img class="footer-icons" src="{{ asset('../assets/images/footer-icons/youtube.png') }}" alt="Youtube">
+                                </a>
+                            {{-- </div> --}}
+                            {{-- <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4"> --}}
+                                <a href="https://web.facebook.com/ONDE.GO.TH/" target="_blank">
+                                    <img class="footer-icons" src="{{ asset('../assets/images/footer-icons/fb.png') }}" alt="Facebook">
+                                </a>
+                            {{-- </div> --}}
+                            {{-- <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4"> --}}
+                                <a href="mailto:pr.onde@onde.go.th" target="_blank">
+                                    <img class="footer-icons" src="{{ asset('../assets/images/footer-icons/mail.png') }}" alt="E-mail">
+                                </a>
+                            {{-- </div> --}}
+                            {{-- <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4"> --}}
+                                <a href="https://twitter.com/ONDE_GO_TH" target="_blank">
+                                    <img class="footer-icons" src="{{ asset('../assets/images/footer-icons/twitter.png') }}" alt="Twitter">
+                                </a>
+                            {{-- </div> --}}
+                            {{-- <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4"> --}}
+                                <a href="https://www.instagram.com/onde_go_th/" target="_blank">
+                                    <img class="footer-icons" src="{{ asset('../assets/images/footer-icons/instagram.png') }}" alt="Instagram">
+                                </a>
+                            {{-- </div> --}}
+                            {{-- <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4"> --}}
+                                <a href="http://line.me/ti/p/%40uvj2550p" target="_blank">
+                                    <img class="footer-icons" src="{{ asset('../assets/images/footer-icons/Line_icon.png') }}" alt="Line">
+                                </a>
+                            {{-- </div> --}}
+                        </div>
                     </div>
+                </div>
+            </div>
+            <div class="row clearfix p-0 m-0" style="background: #382851;">
+                <div class="container p-0 text-center pt-15 pb-15">
+                    <h5>สงวนลิขสิทธิ์ © 2560 สำนักงานคณะกรรมการดิจิทัลเพื่อเศรษฐกิจและสังคมแห่งชาติ</h5>
                 </div>
             </div>
         </section>
@@ -140,7 +176,7 @@
     <!--  Vendor JavaScripts -->
     <script src="{{ asset('assets/bundles/libscripts.bundle.js') }}"></script>
     <script src="{{ asset('assets/bundles/vendorscripts.bundle.js') }}"></script>
-    @yield('footer')
+
     <!-- Custom Js -->
     <script src="{{ asset('assets/bundles/mainscripts.bundle.js') }}"></script>
 </body>

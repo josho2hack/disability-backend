@@ -1,5 +1,36 @@
 #footer {
     background-color: #8560a9;
-    padding: 25px 0px;
+    padding: 0px;
+    padding-top: 30px;
     color: whitesmoke;
+}
+
+#footer h4 {
+    margin-bottom: 15px;
+}
+
+#footer h4.title {
+    margin: 20px 0px;
+}
+
+#footer h4 span {
+    border: 2px solid #FFF;
+    padding: 10px;
+    margin-bottom: 5px;
+}
+
+.footer-link {
+    text-decoration: none;
+    cursor: pointer;
+    color: whitesmoke;
+}
+
+.footer-link:hover {
+    color: whitesmoke;
+}
+
+.footer-icons {
+    height: auto;
+    width: 48px !important;
+    margin: 15px;
 }
