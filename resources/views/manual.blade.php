@@ -52,10 +52,15 @@
                                     <tr>
                                         <td colspan=""></td>                                        
                                         <td colspan="" style="padding-left: 100px;">{{ $loop->index + 1 }}. {{ $cate->name }}</td>
-                                        <td align="center" ><img src="data:image/png;base64,{{ base64_encode($cate->image) }}"
+                                        <td align="center" >
+                                            <img src="data:image/png;base64,{{ base64_encode($cate->image) }}"
                                                 width="50" height="50"></td>
-                                        <td align="center"><a target="_blank" href="{{ asset('manual/1.คอมพิวเตอร์ตั้งโต๊ะ1.jpg') }}" class="btn btn-raised btn-info"
-                                            title="รายละเอียด"> <i class="fa fa-download"></i></a></td>
+                                        <td align="center">
+                                            <a target="_blank" href="{{ url($cate->doc) }}" class="btn btn-raised btn-info"
+                                            title="รายละเอียด" @if (empty($cate->document)) disabled @endif> <i class="fa fa-desktop"></i></a>
+                                            &nbsp;&nbsp;<a target="_blank" href="{{ url("$cate->url") }}" class="btn btn-raised btn-primary"
+                                            title="รายละเอียด" @if (empty($cate->url)) disabled @endif> <i class="fa fa-youtube-play"></i></a>
+                                        </td>
                                     </tr>
                                 @endforeach
                             @endforeach
