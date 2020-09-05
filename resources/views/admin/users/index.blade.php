@@ -28,6 +28,32 @@
             </div>
         </div>
     </div>
+    <div class="row clearfix stats">
+        <div class="col-md-3 col-sm-6 col-xs-12 text-center">
+            <div class="boxs padder-v">
+                <div class="h2 text-info">{{ $users->where('active','1')->count() }}</div>
+                <span class="text-muted">เปิดใช้งาน</span>
+            </div>
+        </div>
+        <div class="col-md-3 col-sm-6 col-xs-12 text-center">
+            <a href="javascript:void(0);" class="block padder-v bg-amethyst">
+                <span class="text-white h2 block">{{ $users->where('active','0')->count() }}</span>
+                <span class="text-white">ปิดใช้งาน</span>
+            </a>
+        </div>
+        <div class="col-md-3 col-sm-6 col-xs-12 text-center">
+            <div class="boxs padder-v">
+                <div class="h2">{{ $users->where('gender','1')->count() }}</div>
+                <span class="text-muted">ชาย</span>
+            </div>
+        </div>
+        <div class="col-md-3 col-sm-6 col-xs-12 text-center">
+            <a href="javascript:void(0);" class="block padder-v bg-info">
+                <span class="text-white h2 block">{{ $users->where('gender','0')->count() }}</span>
+                <span class="text-white">หญิง</span>
+            </a>
+        </div>
+    </div>
     <!-- row -->
     <div class="row">
         <div class="col-md-12">
@@ -53,15 +79,34 @@
                             <p>{{ $message }}</p>
                         </div>
                     @endif
+                    @php
+                        $admin = 0;
+                        $approve = 0;
+                        $audit = 0;
+                        $u = 0;
+                        foreach ($users as $user) {
+                            $u += $user->roles->where('name','User')->count();
+                            $audit += $user->roles->where('name','Audit')->count();
+                            $approve += $user->roles->where('name','Approve')->count();
+                            $admin += $user->roles->where('name','Admin')->count();
+                        }
+                    @endphp
+                    <div class="btn-group pull-right">
+                        <a href="#" class="btn btn-info btn-raised mr-10">ทั้งหมด ( {{ $users->count()}} )</a>
+                        <a href="#" class="btn btn-info btn-raised mr-10">สมาชิก ( {{ $u }} )</a>
+                        <a href="#" class="btn btn-info btn-raised mr-10">ผู้ตรวจสอบ ( {{ $audit }} )</a>
+                        <a href="#" class="btn btn-info btn-raised mr-10">ผู้อนุมัติ ( {{ $approve }} )</a>
+                        <a href="#" class="btn btn-info btn-raised mr-10">ผู้ดูแลระบบ ( {{ $admin }} )</a>
+                    </div>
                     <table id="searchTextResults" data-filter="#filter" data-page-size="25"
                         class="footable table table-custom table-hover">
                         <thead>
                             <tr>
-                                <th>ลำดับที่</th>
+                                <th>ลำดับ</th>
+                                <th>ID</th>
+                                <th>ประเภท</th>
                                 <th>ชื่อ</th>
                                 <th>นามสกุล</th>
-                                <th>เพศ</th>
-                                <th>เลขผู้พิการ</th>
                                 <th>สถานะ</th>
                                 <th colspan=3 style="width: 5%">ดำเนินการ</th>
                             </tr>
@@ -70,17 +115,9 @@
                             @foreach ($users as $user)
                                 <tr>
                                     <td>{{ $loop->index + 1 }}</td>
+                                    <td>{{ $user->pwd_id }}</td>
                                     <td>{{ $user->first_name }}</td>
                                     <td>{{ $user->last_name }}</td>
-                                    <td>
-                                        @php
-                                        if($user->gender == 1)
-                                        echo "ชาย";
-                                        else
-                                        echo "หญิง";
-                                        @endphp
-                                    </td>
-                                    <td>{{ $user->pwd_id }}</td>
                                     <td>
                                         @php
                                         if($user->active == 1)
