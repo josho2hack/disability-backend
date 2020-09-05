@@ -7,7 +7,7 @@
     <div class="b-b mb-10">
         <div class="row">
             <div class="col-sm-6 col-xs-12">
-                <h3 class="h3 m-0">ศึกษาการใช้อุปกรณ์เครื่องมือ</h3>
+                <h3 class="h3 m-0"> รายละเอียดอุปกรณ์</h3>
                 <small class="text-muted">&nbsp;</small>
             </div>
         </div>
@@ -38,7 +38,6 @@
                             <tr>
                                 <th width="100">ลำดับ</th>
                                 <th width="500" style="padding-left: 100px;">กลุ่มหลัก</th>
-                                <th style="width: auto;" >กลุ่มย่อย</th>
                                 <th width="400" style="text-align:center;">รูปภาพ</th>
                                 <th width="400" style="text-align:center;">ศึกษาการใช้อุปกรณ์เครื่องมือ</th>
                             </tr>
@@ -47,16 +46,21 @@
                             @foreach( $subgroup->where('main_groups_id', 1) as $sub )
                                 <tr>
                                     <td>{{ $loop->index + 1 }}</td>
-                                    <td colspan="4" style="padding-left: 100px"> <a href=""> {{ $sub->name }}</a></td>
+                                    <td colspan="4" style="padding-left: 100px">  {{ $sub->name }}</td>
                                 </tr>
                                 @foreach( $sub->assetCategories as $cate )
                                     <tr>
                                         <td colspan=""></td>                                        
-                                        <td colspan="2" style="padding-left: 100px;"><a href="">{{ $loop->index + 1 }}. {{ $cate->name }}</a></td>
-                                        <td align="center" ><img src="data:image/png;base64,{{ base64_encode($cate->image) }}"
+                                        <td colspan="" style="padding-left: 100px;">{{ $loop->index + 1 }}. {{ $cate->name }}</td>
+                                        <td align="center" >
+                                            <img src="data:image/png;base64,{{ base64_encode($cate->image) }}"
                                                 width="50" height="50"></td>
-                                        <td align="center"><a download="1.คอมพิวเตอร์ตั้งโต๊ะ1.jpg" href="{{ asset('manual/1.คอมพิวเตอร์ตั้งโต๊ะ1.jpg') }}" class="btn btn-raised btn-info"
-                                            title="รายละเอียด"> <i class="fa fa-download"></i></a></td>
+                                        <td align="center">
+                                            <a target="_blank" href="{{ url($cate->doc) }}" class="btn btn-raised btn-info"
+                                            title="รายละเอียด" @if (empty($cate->document)) disabled @endif> <i class="fa fa-desktop"></i></a>
+                                            &nbsp;&nbsp;<a target="_blank" href="{{ url("$cate->url") }}" class="btn btn-raised btn-primary"
+                                            title="รายละเอียด" @if (empty($cate->url)) disabled @endif> <i class="fa fa-youtube-play"></i></a>
+                                        </td>
                                     </tr>
                                 @endforeach
                             @endforeach
@@ -85,7 +89,6 @@
                             <tr>
                                 <th width="100">ลำดับ</th>
                                 <th width="500" style="padding-left: 100px;">กลุ่มหลัก</th>
-                                <th >กลุ่มย่อย</th>
                                 <th width="400" style="text-align:center;">รูปภาพ</th>
                                 <th width="400" style="text-align:center;">ศึกษาการใช้อุปกรณ์เครื่องมือ</th>
                             </tr>
@@ -94,12 +97,12 @@
                             @foreach( $subgroup->where('main_groups_id', 2) as $sub )
                                 <tr>
                                     <td >{{ $loop->index + 1 }}</td>
-                                    <td colspan="4" style="padding-left: 100px;"><a href="">{{ $sub->name }}</a></td>
+                                    <td colspan="4" style="padding-left: 100px;">{{ $sub->name }}</td>
                                 </tr>
                                 @foreach( $sub->assetCategories as $cate )
                                     <tr>
                                         <td></td>                                        
-                                        <td colspan="2" style="padding-left: 100px;"><a href="">{{ $loop->index + 1 }}. {{ $cate->name }}</a></td>
+                                        <td colspan="" style="padding-left: 100px;">{{ $loop->index + 1 }}. {{ $cate->name }}</td>
                                         <td align="center" ><img src="data:image/png;base64,{{ base64_encode($cate->image) }}"
                                                 width="50" height="50"></td>
                                         <td align="center"><a href="" class="btn btn-raised btn-info"

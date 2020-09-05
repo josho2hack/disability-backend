@@ -55,8 +55,8 @@
                             </ul>
                         </div>
                     @endif
-                    <form class="form-horizontal" role="form"
-                        action="{{ route('subgroups.update', $subgroup->id) }}" method="POST" enctype="multipart/form-data">
+                    <form class="form-horizontal" role="form" action="{{ route('subgroups.update', $subgroup->id) }}"
+                        method="POST" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
                         @csrf
@@ -102,9 +102,12 @@
                             </div>
                         </div>
 
-                        <div class="">
-                            <label for="image" class="col-sm-2">รูปภาพ</label>
-                            <input type="file" class="col-sm-10 form-control-file" name="image">
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">รูปภาพ</label>
+                            <div class="col-sm-10">
+                                <input type="file" class="filestyle" data-buttonText="เลือกไฟล์รูปภาพ"
+                                    data-iconName="fa fa-inbox" name="image">
+                            </div>
                         </div>
                         <!--//Up load File ---------------------------------------------------------->
 
@@ -118,6 +121,36 @@
                                 </div>
                             </div>
                         @endif
+
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">คู่มือ</label>
+                            <div class="col-sm-10">
+                                <input type="file" class="filestyle" data-buttonText="เลือกไฟล์คู่มือ"
+                                    data-iconName="fa fa-inbox" name="document">
+                            </div>
+                        </div>
+
+                        @if (!empty($subgroup->document))
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">คู่มือเดิม</label>
+                                <div class="col-xs-10 col-sm-10 col-md-10">
+                                    {{-- <img src="/subgroup/{{ $subgroup->id }}/avatar" />
+                                    --}}
+                                    {{-- <img
+                                        src="data:image/png;base64,{{ chunk_split(base64_encode($user->cate->image)) }}">
+                                    --}}
+                                    <a href="{{ url($subgroup->doc) }}">ไฟล์เอกสารคู่มือ</a>
+                                </div>
+                            </div>
+                        @endif
+
+                        <div class="form-group">
+                            <label for="url" class="col-sm-2 control-label">เรียนรู้การใช้งาน</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" name="url" placeholder=""
+                                    value="{{ $subgroup->url }}">
+                            </div>
+                        </div>
 
                         <div class="form-group">
                             <div class="col-sm-offset-2 col-sm-10">
@@ -136,9 +169,7 @@
 @endsection
 
 @section('footer')
-    <!-- The jQuery UI widget factory, can be omitted if jQuery UI is already included -->
-    <script src="{{ asset('assets/js/vendor/file-upload/js/vendor/jquery.ui.widget.js') }}"></script>
-    <script src="{{ asset('assets/bundles/fileuploadscripts.bundle.js') }}"></script>
+    <script src="{{ asset('assets/js/vendor/filestyle/bootstrap-filestyle.min.js') }}"></script>
 @endsection
 
 @section('footer-script')

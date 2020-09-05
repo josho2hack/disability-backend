@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Validator;
 
 use App\UserOption;
 use App\DisabilityType;
+use Illuminate\Http\Request;
 
 class RegisterController extends Controller
 {
@@ -80,6 +81,17 @@ class RegisterController extends Controller
             'gender' => $data['gender'],
             'disability_type_id' => $data['disability_type']
         ];
+
+        if (request()->hasFile('pwd_pic')) {
+
+            //dd(request());
+
+            // Get the file from the request store to disk
+            $path = request()->pwd_pic->store('users');
+
+            // Get the path of the file
+            $register['pwd_pic'] = $path;
+        }
 
         if (UserOption::find(1)->verify == 0) {
             $register['email_verified_at'] = now();

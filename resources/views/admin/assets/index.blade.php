@@ -9,8 +9,8 @@
     <div class="b-b mb-10">
         <div class="row">
             <div class="col-sm-6 col-xs-12">
-                <h3 class="h3 m-0">1.1 ระบบบริหารจัดการครุภัณฑ์</h3>
-                <small class="text-muted">1.1.3 อุปกรณ์และเครื่องมือ</small>
+                <h3 class="h3 m-0">1.1 อุปกรณ์และเครื่องมือ</h3>
+                <small class="text-muted">1.1.3 รายละเอียดอุปกรณ์และเครื่องมือ</small>
             </div>
             <div class="btn-group pull-right">
                 <ol class="breadcrumb">
@@ -18,16 +18,15 @@
                         <a href="{{ route('root') }}"><i class="fa fa-home"></i></a>
                     </li>
                     <li>
-                        <a href="{{ route('admin') }}">1. บริหารจัดการระบบ</a>
+                        <a href="{{ route('admin') }}">1. ระบบจัดการครุภัณฑ์ </a>
                     </li>
                     <li>
-                        <a href="{{ route('assets.dashboard') }}">1.1 ระบบบริหารจัดการครุภัณฑ์</a>
+                        <a href="{{ route('users.index') }}">1.1 อุปกรณ์และเครื่องมือ</a>
                     </li>
-                    <li class="active">1.1.3 อุปกรณ์และเครื่องมือ</li>
+                    <li class="active">1.1.3 รายละเอียดอุปกรณ์</li>
                 </ol>
             </div>
         </div>
-
     </div>
     <!-- row -->
     <div class="row">

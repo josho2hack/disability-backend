@@ -69,6 +69,11 @@ class UserController extends Controller
             $input['avatar_path'] = $path;
         }
 
+        if ($request->hasFile('pwd_pic')) {
+            $path = $request->pwd_pic->store('users');
+            $input['pwd_pic'] = $path;
+        }
+
         $user = User::create($input);
         $user->roles()->attach($role_id);
 
@@ -136,6 +141,11 @@ class UserController extends Controller
             //$contents = Storage::get($path);
             $input['avatar_name'] = basename($path);
             $input['avatar_path'] = $path;
+        }
+
+        if ($request->hasFile('pwd_pic')) {
+            $path = $request->pwd_pic->store('users');
+            $input['pwd_pic'] = $path;
         }
 
         $role_id = $input['role'];

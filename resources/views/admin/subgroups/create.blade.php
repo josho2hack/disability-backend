@@ -95,13 +95,28 @@
                             </div>
                         </div>
 
-                        <div>
-                            <label for="description" class="col-sm-2 control-label">รูปภาพ</label>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">รูปภาพ</label>
                             <div class="col-sm-10">
-                                <input id="fileupload" type="file" name="image">
+                                <input type="file" class="filestyle" data-buttonText="เลือกไฟล์รูปภาพ" data-iconName="fa fa-inbox"
+                                    name="image">
                             </div>
                         </div>
                         <!--//Up load File ---------------------------------------------------------->
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">คู่มือ</label>
+                            <div class="col-sm-10">
+                                <input type="file" class="filestyle" data-buttonText="เลือกไฟล์คู่มือ" data-iconName="fa fa-inbox"
+                                    name="document">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="url" class="col-sm-2 control-label">เรียนรู้การใช้งาน</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" name="url" placeholder="http://...">
+                            </div>
+                        </div>
 
                         <div class="form-group">
                             <div class="col-sm-offset-2 col-sm-10">
@@ -120,9 +135,7 @@
 @endsection
 
 @section('footer')
-    <!-- The jQuery UI widget factory, can be omitted if jQuery UI is already included -->
-    <script src="{{ asset('assets/js/vendor/file-upload/js/vendor/jquery.ui.widget.js') }}"></script>
-    <script src="{{ asset('assets/bundles/fileuploadscripts.bundle.js') }}"></script>
+    <script src="{{ asset('assets/js/vendor/filestyle/bootstrap-filestyle.min.js') }}"></script>
 @endsection
 
 @section('footer-script')

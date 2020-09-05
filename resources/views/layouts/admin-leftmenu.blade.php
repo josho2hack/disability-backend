@@ -32,12 +32,12 @@
                                     <li class="{{ request()->is('admin/*') ? 'active open' : '' }}">
                                         <a href="{{ route('admin') }}" role="button" tabindex="0">
                                             <i class="fa fa-list"></i>
-                                            <span>1. บริหารจัดการระบบ</span>
+                                            <span>1. ระบบจัดการครุภัณฑ์</span>
                                         </a>
                                         <ul>
                                             <li class="{{ request()->is('admin/assets*') ? 'active' : '' }}">
                                                 <a href="{{ route('assets.dashboard') }}">
-                                                    <i class="fa fa-angle-right"></i>1.1 ระบบบริหารจัดการครุภัณฑ์</a>
+                                                    <i class="fa fa-angle-right"></i>1.1 อุปกรณ์และเครื่องมือ</a>
                                             </li>
                                             <li class="{{ request()->is('admin/users*') ? 'active' : '' }}">
                                                 <a href="{{ route('users.index') }}">

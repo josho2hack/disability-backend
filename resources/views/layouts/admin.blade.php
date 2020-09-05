@@ -57,6 +57,13 @@
             ->roles()
             ->first()->name == 'User')
                     <style>
+                        table{
+                            font-size: 1.2em;
+                        }
+                        span {
+                            font-size: 1.2em;
+                        }
+
                         #header {
                         @if (Auth::user()->disability_type_id == 1)background-color: green;
                         @elseif(Auth::user()->disability_type_id==2) background-color: brown;

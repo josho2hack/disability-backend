@@ -9,7 +9,7 @@
     <div class="b-b mb-10">
         <div class="row">
             <div class="col-sm-6 col-xs-12">
-                <h3 class="h3 m-0"> แบบฟอร์มยืม</h3>
+                <h3 class="h3 m-0"> รายการแบบคำขอยืม</h3>
             </div>
         </div>
 
@@ -20,14 +20,14 @@
             <section class="boxs">
                 <div class="boxs-header">
                     <h3 class="custom-font hb-cyan">
-                        <strong>รายการแบบฟอร์มยืม</strong>
+                        <strong>รายการแบบคำขอยืมอุปกรณ์และเครื่องมือ ฯ (ทก.01)</strong>
                     </h3>
                 </div>
                 <div class="boxs-widget">
                     <div class="form-group">
                         {{-- @if ($form->count() < 1) --}}
                         <div class="btn-group pull-right">
-                            <a href="{{ url('form-borrow/create') }}" class="btn btn-success btn-raised">สร้างแบบฟอร์มยืมเดี่ยว (ทก.01)</a>
+                            <a href="{{ url('form-borrow/create') }}" class="btn btn-success btn-raised">สร้างแบบคำขอยืมอุปกรณ์และเครื่องมือ ฯ (ทก.01)</a>
                         </div>
                         {{-- @endif --}}
                         {{-- @if ($form->count() < 1)
@@ -46,17 +46,21 @@
                         </div>
                     @endif
                     <table id="searchTextResults" data-filter="#filter" data-page-size="25"
-                        class="footable table table-custom table-hover">
+                        class=" table table-custom table-hover">
                         <thead>
                             <tr>
-                                <th>แบบฟอร์ม</th>
-                                <th>ดำเนินการ</th>
+                                <th>ลำดับที่</th>
+                                <th>วันที่</th>
+                                <th>รายงานแบบคำขอยืมอุปกรณ์และเครื่องมือ ฯ (ทก.01)</th>
+                                <th></th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach ($form as $forms)
                                 <tr>
-                                    <td>แบบฟอร์มที่ {{ $loop->index + 1 }} ({{ $form->name }})</td>
+                                    <td>{{ $loop->index + 1 }}</td>
+                                    <td>{{ date('d-m-Y', strtotime($forms->created_at)) }}</td>
+                                    <td>แบบฟอร์มขอยืม {{ $forms->accessorie_list }}</td>
                                     <td>
                                         <a href="{{ url('pdf/'.$forms->id) }}" class="btn btn-raised btn-info"
                                             title="รายละเอียด"> <i class="fa fa-eye"></i></a>

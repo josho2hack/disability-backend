@@ -38,22 +38,18 @@
                 <select class="swal2-select" style="display: none;"></select>
                 <div class="swal2-radio" style="display: none;"></div>
                 <label for="swal2-checkbox" class="swal2-checkbox" style="display: none;"><input type="checkbox"></label>
-                <textarea class="swal2-textarea" style="display: block;">หากยังไม่ได้รับอีเมล์ยืนยันการสมัครโปรคคลิกลิงค์ด้านล่าง</textarea>
+                <textarea class="swal2-textarea" style="display: block;">หากยังไม่ได้รับอีเมล์ยืนยันการสมัครโปรคคลิกปุ่ม ส่งอีเมล์อีกครั้ง ด้านล่าง</textarea>
                 <div class="swal2-validationerror" style="display: none;"></div>
                 <hr class="swal2-spacer" style="display: block;">
+                <form class="d-inline" method="POST" action="{{ route('verification.resend') }}">
+                    @csrf
                 <a href="{{ route('root') }}" type="button" class="swal2-confirm swal2-styled"
                     style="background-color: rgb(48, 133, 214); border-left-color: rgb(48, 133, 214); border-right-color: rgb(48, 133, 214);">กลับหน้าหลัก</a>
-                <button type="button" class="swal2-cancel swal2-styled"
-                    style="display: none; background-color: rgb(170, 170, 170);">ยกเลิก</button>
+                <button type="submit" class="swal2-cancel swal2-styled"
+                    style="display: inline-block; background-color: rgb(170, 170, 170);">{{ __('ส่งอีเมล์อีกครั้ง') }}</button>
+                </form>
                 <span class="swal2-close" style="display: none;">×</span>
             </div>
-
-            {{ __('หากยังไม่ได้รับอีเมล์ยืนยันการสมัครโปรคคลิกลิงค์ด้านล่าง') }},
-            <form class="d-inline" method="POST" action="{{ route('verification.resend') }}">
-                @csrf
-                <button type="submit"
-                    class="btn btn-link p-0 m-0 align-baseline">{{ __('ส่งอีเมล์เพื่อยืนยันการสมัครอีกครั้ง') }}</button>.
-            </form>
         </div>
     </div>
 @endsection

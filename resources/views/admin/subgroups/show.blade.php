@@ -77,13 +77,30 @@
                             </div>
                         </div>
                         @if ($subgroup->image)
+                            <div class="col-xs-12 col-sm-12 col-md-12">
+                                <div class="form-group">
+                                    {{-- <img src="/subgroup/{{ $subgroup->id }}/avatar" />
+                                    --}}
+                                    <img src="data:image/png;base64,{{ chunk_split(base64_encode($subgroup->image)) }}">
+                                </div>
+                            </div>
+                        @endif
+
+                        @if (!empty($subgroup->document))
+                            <div class="col-xs-12 col-sm-12 col-md-12">
+                                <div class="form-group">
+                                    <strong>คู่มือ:</strong>
+                                    <a href="{{ url($subgroup->doc) }}">ไฟล์เอกสารคู่มือ</a>
+                                </div>
+                            </div>
+                        @endif
+
                         <div class="col-xs-12 col-sm-12 col-md-12">
                             <div class="form-group">
-                            {{-- <img src="/subgroup/{{$subgroup->id}}/avatar" /> --}}
-                            <img src="data:image/png;base64,{{ chunk_split(base64_encode($subgroup->image)) }}">
+                                <strong>เรียนรู้การใช้งาน:</strong>
+                                {{ $subgroup->url }}
                             </div>
                         </div>
-                        @endif
                     </div>
 
                     <a class="btn btn-raised btn-default" href="{{ route('subgroups.index') }}">กลับ</a>
