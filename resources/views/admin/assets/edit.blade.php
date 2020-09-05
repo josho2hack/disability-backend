@@ -1,14 +1,5 @@
 @extends('layouts.admin')
 @section('header')
-    <link rel="stylesheet" href="http://blueimp.github.io/Gallery/css/blueimp-gallery.min.css">
-    <link rel="stylesheet" href="{{ asset('assets/js/vendor/file-upload/css/jquery.fileupload.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/js/vendor/file-upload/css/jquery.fileupload-ui.css') }}">
-    <noscript>
-        <link rel="stylesheet" href="{{ asset('assets/js/vendor/file-upload/css/jquery.fileupload-noscript.css') }}">
-    </noscript>
-    <noscript>
-        <link rel="stylesheet" href="{{ asset('assets/js/vendor/file-upload/css/jquery.fileupload-ui-noscript.css') }}">
-    </noscript>
 
 @endsection
 
@@ -16,8 +7,8 @@
     <!-- bradcome -->
     <div class="b-b mb-10">
         <div class="col-sm-6 col-xs-12">
-            <h3 class="h3 m-0">1.1 ระบบบริหารจัดการครุภัณฑ์</h3>
-            <small class="text-muted">1.1.3 อุปกรณ์และเครื่องมือ</small>
+            <h3 class="h3 m-0">1.1 อุปกรณ์และเครื่องมือ</h3>
+            <small class="text-muted">1.1.3 รายละเอียดอุปกรณ์และเครื่องมือ</small>
         </div>
         <div class="btn-group pull-right">
             <ol class="breadcrumb">
@@ -25,12 +16,12 @@
                     <a href="{{ route('root') }}"><i class="fa fa-home"></i></a>
                 </li>
                 <li>
-                    <a href="{{ route('admin') }}">1. บริหารจัดการระบบ</a>
+                    <a href="{{ route('admin') }}">1. ระบบจัดการครุภัณฑ์</a>
                 </li>
                 <li>
-                    <a href="{{ route('assets.dashboard') }}">1.1 ระบบบริหารจัดการครุภัณฑ์</a>
+                    <a href="{{ route('assets.dashboard') }}">1.1 อุปกรณ์และเครื่องมือ</a>
                 </li>
-                <li class="active">1.1.3 อุปกรณ์และเครื่องมือ</li>
+                <li class="active">1.1.3 รายละเอียดอุปกรณ์</li>
             </ol>
         </div>
     </div>

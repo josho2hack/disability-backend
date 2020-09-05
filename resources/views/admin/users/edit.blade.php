@@ -166,6 +166,26 @@
                             </div>
                         </div>
                         @endif
+
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">บัตรคนพิการ</label>
+                            <div class="col-sm-10">
+                                <input type="file" class="filestyle" data-buttonText="แนบบัตรคนพิการ" data-iconName="fa fa-inbox"
+                                    name="pwd_pic">
+                            </div>
+                        </div>
+                        @if (!empty($user->pwd_pic))
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">บัตรคนพิการเดิม</label>
+                            <div class="col-xs-10 col-sm-10 col-md-10">
+                                    {{-- <img src="/subgroup/{{ $subgroup->id }}/avatar" />
+                                    --}}
+                                    <img src="data:image/png;base64,{{ chunk_split(base64_encode($user->pwd)) }}" alt="บัตรคนพิการ">>
+                                    {{-- <img src="{{ $user->pwd }}" alt="รูปแทนผู้ใช้"> --}}
+                            </div>
+                        </div>
+                        @endif
+
                         <hr class="line-dashed full-witdh-line" />
                         <div class="form-group">
                             <label for="active" class="col-sm-2 control-label">เปิดใช้งาน</label>

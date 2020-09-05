@@ -7,7 +7,7 @@
     <div class="b-b mb-10">
         <div class="row">
             <div class="col-sm-6 col-xs-12">
-                <h3 class="h3 m-0">1.1 ระบบบริหารจัดการครุภัณฑ์</h3>
+                <h3 class="h3 m-0">1.1 อุปกรณ์และเครื่องมือ</h3>
                 <small class="text-muted">ภาพรวมอุปกรณ์และเครื่องมือ</small>
             </div>
             <div class="btn-group pull-right">
@@ -16,9 +16,9 @@
                         <a href="{{ route('root') }}"><i class="fa fa-home"></i></a>
                     </li>
                     <li>
-                        <a href="{{ route('admin') }}">1. บริหารจัดการระบบ</a>
+                        <a href="{{ route('admin') }}">1. ระบบจัดการครุภัณฑ์</a>
                     </li>
-                    <li class="active">1.1 ระบบบริหารจัดการครุภัณฑ์</li>
+                    <li class="active">1.1 อุปกรณ์และเครื่องมือ</li>
                 </ol>
             </div>
         </div>

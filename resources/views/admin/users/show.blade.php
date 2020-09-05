@@ -123,6 +123,17 @@
                                 </div>
                             </div>
                         @endif
+
+                        @if (!empty($user->pwd_pic))
+                            <div class="col-xs-12 col-sm-12 col-md-12">
+                                <div class="form-group">
+                                    {{-- <img src="/users/{{ $user->id }}/pwd_pic" />
+                                    --}}
+                                    <img src="data:image/png;base64,{{ chunk_split(base64_encode($user->pwd)) }}" alt="บัตรคนพิการ">
+                                    {{-- <img src="{{ url($user->pwd) }}" alt="บัตรคนพิการ"> --}}
+                                </div>
+                            </div>
+                        @endif
                     </div>
 
                     <a class="btn btn-raised btn-default" href="{{ route('users.index') }}">กลับ</a>

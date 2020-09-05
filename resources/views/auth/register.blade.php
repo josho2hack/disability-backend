@@ -10,12 +10,12 @@
         <!-- Application Content -->
         <div class="wrapper">
             <div class="header header-filter"
-                style="background-image: url('{{ asset('assets/images/login-bg.jpg') }}'); background-size: cover; background-position: top center;">
+                style="background-image: url('{{ asset('assets/images/user_login_bg2.png') }}'); background-size: cover; background-position: top center;">
                 <div class="container">
                     <div class="row">
                         <div class="col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3 text-center">
                             <div class="card card-signup">
-                                <form class="form" method="POST" action="{{ route('register') }}">
+                                <form class="form" method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
                                     @csrf
                                     <div class="header header-primary text-center">
                                         <h4>สมัครสมาชิก</h4>
@@ -99,6 +99,10 @@
                                                     id="inlineRadio2">หญิง
                                             </label>
                                         </div>
+                                        <div class="form-group">
+                                                <input type="file" class="filestyle" data-buttonText="แนบบัตรคนพิการ" data-iconName="fa fa-inbox"
+                                                    name="pwd_pic" placeholder="แนบบัตรคนพิการ...">
+                                        </div>
                                         <div class="checkbox">
                                             <label>
                                                 <input type="checkbox" id="terms_and_conditions" onclick="terms_changed(this)"> ยอมรับ
@@ -137,5 +141,6 @@
             }
 
         </script>
+        <script src="{{ asset('assets/js/vendor/filestyle/bootstrap-filestyle.min.js') }}"></script>
     </body>
 @endsection
