@@ -49,9 +49,6 @@ Route::get('/profile/edit', 'ProfileController@edit_profile');
 Route::post('/profile/edit', 'ProfileController@update_profile');
 Route::resource('substitute' , 'SubstituteController');
 Route::get('doc', function(){return view('document');});
-Route::resource('form-receive' , 'Form\FormreceiveController');
-Route::get('form-receive/receive/pdf', 'Form\FormreceiveController@pdf_receive');
-Route::resource('form-borrow' , 'Form\FormborrowController');
 Route::get('/tutorial', 'ManualController@index');
 Route::get('/practice', 'PracticeController@index');
 Route::get('/practice2', 'PracticeController@index2');
@@ -62,6 +59,12 @@ Route::post('/practice/add', 'PracticeController@add');
 Route::get('/practice/index', 'PracticeController@home');
 Route::get('/practice/{id}', 'PracticeController@view');
 Route::get('/object', 'ObjectController@index');
+//form
+Route::resource('form-receive' , 'Form\FormreceiveController');
+Route::get('form-receive/receive/pdf', 'Form\FormreceiveController@pdf_receive');
+Route::resource('form-borrow' , 'Form\FormborrowController');
+Route::post('form-borrow/getNo' , 'Form\FormborrowController@get_number');
+Route::post('form-borrow/getData' , 'Form\FormborrowController@get_data');
 //pdf
 Route::get('pdf/{id}', 'PDFController@pdf');
 
