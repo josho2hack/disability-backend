@@ -9,11 +9,40 @@
         text-align: center;
         font-size: 17px;
     }
+    .fill-text-justify{
+        text-align: justify;
+        text-justify: distribute;
+    }
     input{
         border: none;
-        background-color: #a1a1a1;
+        background-color: #FFF;
         padding: 0px;
         width: 50px;
+        text-align: center;
+        font-size: 1.2rem;
+    }
+    input[type="text"]{
+        text-align: left;
+        width: auto;
+        padding: 0px 10px;
+        border-bottom: 2px dotted #4D585F;
+    }
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+    input[type="number"]{
+        border-bottom: 2px dotted #4D585F;
+        -moz-appearance: textfield;
+    }
+    input[type="checkbox"],input[type="radio"]{
+        width: auto;
+    }
+    input[type="file"]{
+        background: #1a1a1a;
+        border: 1px solid #FCF;
+        color: #FCC:
     }
 
 </style>
@@ -76,7 +105,7 @@
                         เรื่อง
                         </div>
                         <div class="col-sm-11">
-                            ขอยืมอุปกรณ์และเครื่องมือเทคโนโลยีสารสนเทศและการสื่อสารหรือเทคโนโลยีสิ่งอำนวยความสะดวกเพื่อ<br>
+                            ขอยืมอุปกรณ์และเครื่องมือเทคโนโลยีสารสนเทศและการสื่อสารหรือเทคโนโลยีสิ่งอำนวยความสะดวกเพื่อ
                             การสื่อสาร ตามกฎกระทรวงฯ
                         </div>  
                     </div>
@@ -85,136 +114,185 @@
                         เรียน
                         </div>
                         <div class="col-sm-11">
-                            ประธานคณะกรรมการส่งเสริมและพัฒนาการเข้าถึงและใช้ประโยชน์จากข้อมูลข่าวสาร การสื่อสาร <br>
-                            บริการโทรคมนาคม เทคโนโลยีสารสนเทศและการสื่อสาร เทคโนโลยีสิ่งอำนวยความสะดวกเพื่อการ <br>
+                            ประธานคณะกรรมการส่งเสริมและพัฒนาการเข้าถึงและใช้ประโยชน์จากข้อมูลข่าวสาร การสื่อสาร 
+                            บริการโทรคมนาคม เทคโนโลยีสารสนเทศและการสื่อสาร เทคโนโลยีสิ่งอำนวยความสะดวกเพื่อการ 
                             สื่อสารและบริการสื่อสารธารณะสำหรับคนพิการ
-                        </div>                    
+                        </div>
                     </div>
                 </div>
                 <div class="form-group">
                     สิ่งที่แนบมาด้วย
                 </div>
-                <div class="row">
-                    <div class="form-group "> 
-                        <div class="col-sm-1 text-right">
-                        <input type="checkbox">
+                <div class="row fill-text-justify">
+                    <div class="form-group clearfix mt-0"> 
+                        <div class="col-sm-1 text-right pr-0">
+                            <input type="checkbox">
                         </div>
                         <div class="col-sm-6">
                             สำเนาบัตรประจำตัวคนพิการ พร้อมรับรองสำเนาถูกต้อง
                         </div>   
-                        <div class="col-sm-5">
-                            จำนวน
-                            <input type="text">
-                            ฉบับ แนบไฟล์
-                            <input type="file">
-                        </div>                  
+                        <div class="col-sm-3 text-right">
+                            จำนวน <input type="number"> ฉบับ 
+                        </div>
+                        <div class="col-sm-2">
+                            <span class="btn btn-raised btn-xs btn-default fileinput-button m-0">
+                                <i class="glyphicon glyphicon-plus"></i>
+                                <span>แนบไฟล์</span>
+                                <input type="file" name="files">
+                            </span>
+                        </div>
                     </div>
-                    <div class="form-group "> 
-                        <div class="col-sm-1 text-right">
-                        <input type="checkbox">
+                    <div class="form-group clearfix mt-0"> 
+                        <div class="col-sm-1 text-right pr-0">
+                            <input type="checkbox">
                         </div>
                         <div class="col-sm-6">
                             สำเนาทะเบียนบ้านคนพิการ พร้อมรับรองสำเนาถูกต้อง
                         </div>   
-                        <div class="col-sm-5">
-                            จำนวน
-                            <input type="text">
-                            ฉบับ แนบไฟล์
-                            <input type="file">
-                        </div>                  
+                        <div class="col-sm-3 text-right">
+                            จำนวน <input type="number"> ฉบับ 
+                        </div>
+                        <div class="col-sm-2">
+                            <span class="btn btn-raised btn-xs btn-default fileinput-button m-0">
+                                <i class="glyphicon glyphicon-plus"></i>
+                                <span>แนบไฟล์</span>
+                                <input type="file" name="files">
+                            </span>
+                        </div>
                     </div>
-                    <div class="form-group "> 
-                        <div class="col-sm-1 text-right">
+                    <div class="form-group clearfix mt-0"> 
+                        <div class="col-sm-1 text-right pr-0">
+                            <input type="checkbox">
+                        </div>
+                        <div class="col-sm-6">
+                            สำเนาเอกสารรับรองการเข้ารับการฝึกอบรมตามหลักสูตรที่กระทรวงเทคโนโลยีสารสนเทศและการสื่อสารกำหนดพร้อมรับรองสำเนาถูกต้อง (ถ้ามี)
+                        </div>   
+                        <div class="col-sm-3 text-right">
+                            จำนวน <input type="number"> ฉบับ 
+                        </div>
+                        <div class="col-sm-2">
+                            <span class="btn btn-raised btn-xs btn-default fileinput-button m-0">
+                                <i class="glyphicon glyphicon-plus"></i>
+                                <span>แนบไฟล์</span>
+                                <input type="file" name="files">
+                            </span>
+                        </div>
+                    </div>
+                    <div class="form-group clearfix mt-0"> 
+                        <div class="col-sm-1 text-right pr-0">
+                            <input type="checkbox">
+                        </div>
+                        <div class="col-sm-6">
+                            สำเนาบัตรประจำตัวประชาชนหรือสำเนาทะเบียนบ้านของ ผู้ยื่นคำขอแทน พร้อมร้บรองสำเนาถูกต้อง
+                        </div>   
+                        <div class="col-sm-3 text-right">
+                            จำนวน <input type="number"> ฉบับ 
+                        </div>
+                        <div class="col-sm-2">
+                            <span class="btn btn-raised btn-xs btn-default fileinput-button m-0">
+                                <i class="glyphicon glyphicon-plus"></i>
+                                <span>แนบไฟล์</span>
+                                <input type="file" name="files">
+                            </span>
+                        </div>
+                    </div>
+                    <div class="form-group clearfix mt-0"> 
+                        <div class="col-sm-1 text-right pr-0">
                         <input type="checkbox">
                         </div>
                         <div class="col-sm-6">
-                            สำเนาเอกสารรับรองการเข้ารับการฝึกอบรมตามหลักสูตรที่<br>
-                            กระทรวงเทคโนโลยีสารสนเทศและการสื่อสารกำหนด<br>
-                            พร้อมรับรองสำเนาถูกต้อง (ถ้ามี)<br>
-                        </div>   
-                        <div class="col-sm-5">
-                            จำนวน
-                            <input type="text">
-                            ฉบับ แนบไฟล์
-                            <input type="file">
-                        </div>                  
-                    </div>
-                    <br>    
-                    <div class="form-group "> 
-                        <div class="col-sm-1 text-right">
-                        <input type="checkbox">
+                            หนังสือมอบอำนาจจากคนพิการหรือหลักฐานที่แสดงว่ามีส่วน เกี่ยวข้องกับคนพิการเนื่องจากเป็นผู้ปกครอง ผู้พิทักษ์ ผู้อนุบาล หรือผู้ดูแลคนพิการ (กรณี ผู้ยื่นคำขอแทน)
+                        </div> 
+                        <div class="col-sm-3 text-right">
+                            จำนวน <input type="number"> ฉบับ 
                         </div>
-                        <div class="col-sm-5">
-                            สำเนาบัตรประจำตัวประชาชนหรือสำเนาทะเบียนบ้านของ<br>
-                            ผู้ยื่นคำขอแทน พร้อมร้บรองสำเนาถูกต้อง
-                        </div>   
-                        <div class="col-sm-6">
-                            จำนวน
-                            <input type="text">
-                            ฉบับ แนบไฟล์
-                            <input type="file">
-                        </div>                  
-                    </div>
-                    <div class="form-group "> 
-                        <div class="col-sm-1 text-right">
-                        <input type="checkbox">
+                        <div class="col-sm-2">
+                            <span class="btn btn-raised btn-xs btn-default fileinput-button m-0">
+                                <i class="glyphicon glyphicon-plus"></i>
+                                <span>แนบไฟล์</span>
+                                <input type="file" name="files">
+                            </span>
                         </div>
-                        <div class="col-sm-5">
-                            หนังสือมอบอำนาจจากคนพิการหรือหลักฐานที่แสดงว่ามีส่วน<br>
-                            เกี่ยวข้องกับคนพิการเนื่องจากเป็นผู้ปกครอง ผู้พิทักษ์ ผู้อนุบาล<br>
-                            หรือผู้ดูแลคนพิการ (กรณี ผู้ยื่นคำขอแทน)
-                        </div>   
-                        <div class="col-sm-6">
-                            จำนวน
-                            <input type="text">
-                            ฉบับ แนบไฟล์
-                            <input type="file">
-                        </div>                  
                     </div>
                 </div>
                 
                 <div class="row">   
-                    <div class="col-sm-1"></div>
-                    ข้าพเจ้า.....................................<input type="checkbox" name="">คนพิการ <input type="checkbox" name=""> ผู้ยื่นคำขอแทน <br> 
-                    ประเภทความพิการ..................................................................................................................<br>
-                    บัตรประจำตัวคนพิการ/บัตรประชาชนเลขที่ .................................................................................ที่อยู่ที่สามารถติดต่อได้<br>
-                    บ้านเลขที่......................................หมู่ที่..............................ซอย/ถนน........................ตำบล/แขวง..................................<br> 
-                    อำเภอ/เขต..........................................................จังหวัด...................................รหัสไปรษณีย์...................................................<br>
-                    สถานศึกษา...............................................................................โทรศัพท์ ............................<br>   
-                    ที่อยู่อีเมล์ (e-mail address) ................................................................................................................................................<br> 
-                    <div class="col-sm-1"></div>มีความประสงค์ขอยืมอุปกรณ์/เครื่องมือ เทคโนโลยีสารสนเทศและการสื่อสารหรือ เทคโนโลยีสิ่งอำนวย<br>
-                    ความสะดวกเพี่อการสื่อสาร ให้แก่ ........................................................ (ชื่อ-นามสกุลคนพิการ) ..........................................<br>
-                    เลขบัตรประจำตัวคนพิการ .............................................................................................................. ที่อยู่ที่สามารถติดต่อได้  <br>
-                    บ้านเลขที่ ....................... หมู่ที่ ........... ซอย/ถนน .............................................. ตำบล/แขวง .............................................<br>
-                    อำเภอ/เขต ........................................... จังหวัด ......................................................... รหัสไปรษณีย์ ...................................<br>
-                    สถานศึกษา ........................................................................................................................ โทรศัพท์ ...................................<br>
-                    ที่อยู่อีเมล์ (e-mail address) ................................................................................................................................................<br>
-                    โดยมีวัตถุประสงค์เพื่อ (โปรดระบุ) ........................................................................................................................................
-                    ...............................................................................................................................................................................................<br>
-                    ในรายการอุปกรณ์ ............................................................................. เลขที่อุปกรณ์ ............................................................<br>
-                    <div class="col-sm-1"></div>
-                    ข้าพเจ้าขอรับรองว่า ข้อความข้างต้นเป็นจริงทุกประการ เมื่อได้รับอุกปกรณ์/เครื่องมือเทคโนโลยี<br>
-                    สารสนเทศและการสื่อสารหรือเทคโนโลยีสิ่งอำนวยความสะดวกเพื่อการสื่อสารแล้ว จะนำไปใช้ให้เกิดประโยชน์ตาม<br>
-                    หลักเกณฑ์ วิธีการ และเงื่อนไขที่กระทรวงเทคโนโลยีสารสนเทศและการสื่อสารกำหนด
+                    <div class="col-sm-offset-2 col-sm-10">
+                        ข้าพเจ้า <input type="text" name="name" style="width: 65%;"> <input type="radio" name="chkType" checked> คนพิการ <input type="radio" name="chkType"> ผู้ยื่นคำขอแทน
+                    </div>
+                    <div class="col-sm-12">
+                        ประเภทความพิการ <input type="text" cname="disabilityType" style="width: 85%;">
+                    </div>
+                    <div class="col-sm-12">
+                        บัตรประจำตัวคนพิการ/บัตรประชาชนเลขที่ <input type="text" name="citizenId" style="width: 53%;"> ที่อยู่ที่สามารถติดต่อได้<br>
+                    </div>
+                    <div class="col-sm-12">
+                        บ้านเลขที่ <input type="text" name="addressNo" style="width: 10%;"> หมู่ที่ <input type="text" name="subDistricNo" style="width: 10%;"> ซอย/ถนน <input type="text" name="stress" style="width: 25%;"> ตำบล/แขวง <input type="text" name="subDistrict" style="width: 25%;"> 
+                    </div>
+                    <div class="col-sm-12">
+                        อำเภอ/เขต <input type="text" name="district" style="width: 25%;"> จังหวัด <input type="text" name="province" style="width: 25%;"> รหัสไปรษณีย์ <input type="text" name="postcode" style="width: 25%;">
+                    </div>
+                    <div class="col-sm-12">
+                        สถานศึกษา <input type="text" name="colledge" style="width: 58%;"> โทรศัพท์ <input type="text" name="phoneNumber" style="width: 26%;">
+                    </div>
+                    <div class="col-sm-12 mb-20">
+                        ที่อยู่อีเมล์ (e-mail address) <input type="text" name="email" style="width: 77%;">
+                    </div>
+
+                    <div class="col-sm-offset-2 col-sm-10">
+                        มีความประสงค์ขอยืมอุปกรณ์/เครื่องมือ เทคโนโลยีสารสนเทศและการสื่อสารหรือ เทคโนโลยีสิ่งอำนวยความสะดวกเพี่อ
+                    </div>
+                    <div class="col-sm-12">
+                        การสื่อสารให้แก่ <input type="text" name="borrwTo" style="width: 30%;"> (ชื่อ-นามสกุลคนพิการ) <input type="text" name="disabilityName" style="width: 41%;">
+                    </div>
+                    <div class="col-sm-12">
+                        เลขบัตรประจำตัวคนพิการ <input type="text" name="disabilityId" style="width: 65%;"> ที่อยู่ที่สามารถติดต่อได้ 
+                    </div>
+                    <div class="col-sm-12">
+                        บ้านเลขที่ <input type="text" name="disabilityAddressNo" style="width: 10%;"> หมู่ที่ <input type="text" name="disabilitySubDistricNo" style="width: 10%;"> ซอย/ถนน <input type="text" name="disabilityStress" style="width: 25%;"> ตำบล/แขวง <input type="text" name="disabilitySubDistrict" style="width: 25%;"> 
+                    </div>
+                    <div class="col-sm-12">
+                        อำเภอ/เขต <input type="text" name="disabilityDistrict" style="width: 25%;"> จังหวัด <input type="text" name="disabilityProvince" style="width: 25%;"> รหัสไปรษณีย์ <input type="text" name="disabilityPostcode" style="width: 25%;">
+                    </div>
+                    <div class="col-sm-12">
+                        สถานศึกษา <input type="text" name="disabilityColledge" style="width: 58%;"> โทรศัพท์ <input type="text" name="disabilityPhoneNumber" style="width: 26%;">
+                    </div>
+                    <div class="col-sm-12">
+                        ที่อยู่อีเมล์ (e-mail address) <input type="text" name="disabilityEmail" style="width: 77%;">
+                    </div>
+                    <div class="col-sm-12">
+                        โดยมีวัตถุประสงค์เพื่อ (โปรดระบุ) <input type="text" name="objective1" style="width: 76%;">
+                    </div>
+                    <div class="col-sm-12">
+                        <input type="text" name="objective2" style="width: 100%;">
+                    </div>
+                    <div class="col-sm-12 mb-20">
+                        ในรายการอุปกรณ์ <input type="text" name="assetName" style="width: 37%;"> เลขที่อุปกรณ์ <input type="text" name="assetNo" style="width: 40%;"> 
+                    </div>
+                    <div class="col-sm-offset-2 col-sm-10">
+                        ข้าพเจ้าขอรับรองว่า ข้อความข้างต้นเป็นจริงทุกประการ เมื่อได้รับอุกปกรณ์/เครื่องมือเทคโนโลยีสารสนเทศและการสื่อสาร
+                    </div>
+                    <div class="col-sm-12">
+                        หรือเทคโนโลยีสิ่งอำนวยความสะดวกเพื่อการสื่อสารแล้ว จะนำไปใช้ให้เกิดประโยชน์ตาม
+                        หลักเกณฑ์ วิธีการ และเงื่อนไขที่กระทรวงเทคโนโลยีสารสนเทศและการสื่อสารกำหนด
+                    </div>
 
                     <div class="col-sm-offset-6 col-sm-6">
                         <div class="form-group">
-                            ขอแสดงความนับถือ 
+                            ขอแสดงความนับถือ
                         </div>
                     </div>
 
                     <div class="row">
-                        <div class="col-sm-5"></div>
-                        <div class="col-sm-7">
+                        <div class="col-sm-offset-5 col-sm-7">
                             <div class="form-group">
-                            ลงชื่อ ......................................................................... ( คนพิการ/ผู้ยื่นคำขอแทน)<br>
-                                ( .............................................................................)
+                            ลงชื่อ <input type="text" name="submitSign" style="width: 58%;"> ( คนพิการ/ผู้ยื่นคำขอแทน)
+                                <span>( <input type="text" name="submitSign" style="width: 70%;"> )</span>
 
                         </div>
                         </div>
 
                     </div>
-                    
                 </div>
 
 

@@ -23,7 +23,7 @@
                 <form method="POST" action="{{ route('login') }}">
                     @csrf
                 <div class="header header-primary text-center" style="background: linear-gradient(45deg, #D3D3D3, #C0C0C0); color: #1a1a1a;">
-                  <h2>เข้าสู่ระบบสำหรับผู้ใช้</h2>
+                  <h2>เข้าสู่ระบบสำหรับคนพิการ</h2>
                   {{-- <div class="social-line">
                     <a href="javascript:void(0);" class="btn btn-just-icon">
                       <i class="fa fa-facebook-square"></i>
@@ -50,7 +50,7 @@
                   </div>
                   <div class="checkbox">
                     <label>
-                      <input type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}> จำข้อมูลไว้ใน ระบบ</label>
+                      <input type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}> จำข้อมูลไว้ในระบบ</label>
                   </div>
                 </div>
                 <div class="footer text-center">
