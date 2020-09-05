@@ -37,6 +37,8 @@ class FormborrowController extends Controller
      */
     public function create()
     {
+
+
         if( \Auth::user()->disability_type_id == null ){
             return redirect()->back()->with('message', 'กรุณาเพิ่มข้อมูลโปรไฟล์ให้ครบถ้วน');
         }
@@ -45,7 +47,9 @@ class FormborrowController extends Controller
             return redirect()->back()->with('message', 'กรุณาเพิ่มข้อมูลโปรไฟล์ให้ครบถ้วน');
         }
 
-        return view('forms.borrow.create');
+        $address = Profile::where('user_id',\Auth::user()->id)->first();
+
+        return view('forms.borrow.create', compact('address'));
     }
 
     /**
