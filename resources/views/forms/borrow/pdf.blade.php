@@ -201,7 +201,6 @@
 	<div class="date">
 		วันที่ ...{{ date('d', strtotime($form->created_at)) }}..  
 @php
-
 switch (date('m', strtotime($form->created_at)))
 {
 case '01' : $month="มกราคม"; break;
