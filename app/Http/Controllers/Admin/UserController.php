@@ -9,9 +9,31 @@ use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use App\User;
 use App\UserOption;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
 {
+    public function selected($role)
+    {
+        $userstemp = User::all();
+        $userall['all'] = $userstemp->count();
+        $userall['admin'] = 0;
+        $userall['approve'] = 0;
+        $userall['audit'] = 0;
+        $userall['user'] = 0;
+        foreach ($userstemp as $user) {
+            $userall['user'] += $user->roles->where('name', 'User')->count();
+            $userall['audit'] += $user->roles->where('name', 'Audit')->count();
+            $userall['approve'] += $user->roles->where('name', 'Approve')->count();
+            $userall['admin'] += $user->roles->where('name', 'Admin')->count();
+        }
+        //dd($userall);
+        $role = Role::with('users')->find($role);
+        //dd($role);
+        $users = $role->users;
+        //dd($users);
+        return view('admin.users.index', compact('users'))->with('userall', $userall);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -19,8 +41,20 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::with('roles','disability')->get();
-        return view('admin.users.index',compact('users'));
+        $userstemp = User::all();
+        $userall['all'] = $userstemp->count();
+        $userall['admin'] = 0;
+        $userall['approve'] = 0;
+        $userall['audit'] = 0;
+        $userall['user'] = 0;
+        foreach ($userstemp as $user) {
+            $userall['user'] += $user->roles->where('name', 'User')->count();
+            $userall['audit'] += $user->roles->where('name', 'Audit')->count();
+            $userall['approve'] += $user->roles->where('name', 'Approve')->count();
+            $userall['admin'] += $user->roles->where('name', 'Admin')->count();
+        }
+        $users = User::with('roles', 'disability')->get();
+        return view('admin.users.index', compact('users'))->with('userall', $userall);
     }
 
     /**
@@ -88,7 +122,7 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        $user = User::with('roles','disability')->find($id);
+        $user = User::with('roles', 'disability')->find($id);
         return view('admin.users.show', compact('user'));
     }
 
@@ -100,7 +134,7 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        $user = User::with('roles','disability')->find($id);
+        $user = User::with('roles', 'disability')->find($id);
         return view('admin.users.edit', compact('user'));
     }
 
@@ -128,7 +162,7 @@ class UserController extends Controller
 
         if ($input['password'] == "") {
             unset($input['password']);
-        }else {
+        } else {
             $input['password'] = bcrypt($input['password']);
         }
 
@@ -172,12 +206,14 @@ class UserController extends Controller
         return redirect()->route('users.index')->with('success', 'ลบข้อมูลเรียบร้อยแล้ว');
     }
 
-    public function option(){
+    public function option()
+    {
         $option = UserOption::find(1);
         return view('admin.users.option', compact('option'));
     }
 
-    public function optionupdate(Request $request){
+    public function optionupdate(Request $request)
+    {
         $option = UserOption::find(1);
 
         if (!isset($request['first_name'])) {

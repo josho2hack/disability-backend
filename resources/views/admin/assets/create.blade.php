@@ -64,7 +64,7 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="serial_no" class="col-sm-2 control-label">หมายเลข (Serail Number)</label>
+                            <label for="serial_no" class="col-sm-2 control-label">หมายเลข (Serial Number)</label>
                             <div class="col-sm-10">
                                 <input type="text" class="form-control" name="serial_no" placeholder="">
                             </div>

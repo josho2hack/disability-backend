@@ -89,6 +89,7 @@ Route::prefix('admin')->middleware('auth')->group(function () {
     Route::get('assets/subselected/{sub}', 'Admin\AssetController@subselected')->name('assets.sub.selected');
     Route::get('users/option', 'Admin\UserController@option')->name('users.option');
     Route::put('users/optionupdate', 'Admin\UserController@optionupdate')->name('users.optionupdate');
+    Route::get('users/selected/{role}', 'Admin\UserController@selected')->name('users.selected');
     Route::resources([
         'assets' => 'Admin\AssetController',
         'maingroups' => 'Admin\MainGroupController',

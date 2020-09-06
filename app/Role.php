@@ -8,7 +8,7 @@ class Role extends Model
 {
     public function users()
     {
-        return $this->belongsToMany('App\User', 'role_users', 'users_id', 'roles_id');
+        return $this->belongsToMany('App\User', 'role_users', 'roles_id', 'users_id');
     }
 
     protected $fillable = [

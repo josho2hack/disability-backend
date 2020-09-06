@@ -111,7 +111,7 @@
                                 <th style="width: auto;">กลุ่มย่อย</th>
                                 <th width="70">รูปภาพ</th>
                                 <th width="70">ทั้งหมด</th>
-                                <th width="70">คงคลัง</th>
+                                <th width="70">คงหลือ</th>
                                 <th width="70">รอรับ</th>
                                 <th width="70">ยืม</th>
                                 <th width="70">เสีย</th>

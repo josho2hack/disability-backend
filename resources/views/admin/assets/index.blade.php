@@ -58,7 +58,7 @@
                         class="footable table table-custom table-hover">
                         <thead>
                             <tr>
-                                <th>ลำดับที่</th>
+                                <th>ลำดับ</th>
                                 <th>รหัสครุภัณฑ์</th>
                                 <th>ยี่ห้อ ชนิด แบบ ขนาดและลักษณะ</th>
                                 <th>สถานะ</th>

@@ -31,25 +31,25 @@
     <div class="row clearfix stats">
         <div class="col-md-3 col-sm-6 col-xs-12 text-center">
             <div class="boxs padder-v">
-                <div class="h2 text-info">{{ $users->where('active','1')->count() }}</div>
+                <div class="h2 text-info">{{ $users->where('active', 1)->count() }}</div>
                 <span class="text-muted">เปิดใช้งาน</span>
             </div>
         </div>
         <div class="col-md-3 col-sm-6 col-xs-12 text-center">
             <a href="javascript:void(0);" class="block padder-v bg-amethyst">
-                <span class="text-white h2 block">{{ $users->where('active','0')->count() }}</span>
+                <span class="text-white h2 block">{{ $users->where('active', '!=', 1)->count() }}</span>
                 <span class="text-white">ปิดใช้งาน</span>
             </a>
         </div>
         <div class="col-md-3 col-sm-6 col-xs-12 text-center">
             <div class="boxs padder-v">
-                <div class="h2">{{ $users->where('gender','1')->count() }}</div>
+                <div class="h2">{{ $users->where('gender', '1')->count() }}</div>
                 <span class="text-muted">ชาย</span>
             </div>
         </div>
         <div class="col-md-3 col-sm-6 col-xs-12 text-center">
             <a href="javascript:void(0);" class="block padder-v bg-info">
-                <span class="text-white h2 block">{{ $users->where('gender','0')->count() }}</span>
+                <span class="text-white h2 block">{{ $users->where('gender', '0')->count() }}</span>
                 <span class="text-white">หญิง</span>
             </a>
         </div>
@@ -66,12 +66,25 @@
                         <a href="{{ route('users.create') }}" class="btn btn-success btn-raised mr-10">เพิ่มสมาชิก</a>
                         <a href="{{ route('users.option') }}" class="btn btn-info btn-raised">กำหนดค่าสมาชิก</a>
                     </div>
+
                     <p class=""><strong>สมาชิกทั้งหมด <span class="text-info"> {{ $users->count() }} </span>
                             รายการ</strong></p>
                     <div class="form-group">
                         <label for="filter" style="padding-top: 5px">ค้นหา:</label>
                         <input id="filter" type="text" class="form-control rounded w-md mb-10 inline-block" />
+                        <div class="btn-group pull-right">
+                            <a href="{{ route('users.index') }}" class="btn btn-default btn-raised mr-10">ทั้งหมด ( {{ $userall['all'] }} )</a>
+                            <a href="{{ route('users.selected', 4) }}" class="btn btn-default btn-raised mr-10">สมาชิก (
+                                {{ $userall['user'] }} )</a>
+                            <a href="{{ route('users.selected', 2) }}" class="btn btn-default btn-raised mr-10">ผู้ตรวจสอบ (
+                                {{ $userall['audit'] }} )</a>
+                            <a href="{{ route('users.selected', 3) }}" class="btn btn-default btn-raised mr-10">ผู้อนุมัติ (
+                                {{ $userall['approve'] }} )</a>
+                            <a href="{{ route('users.selected', 1) }}" class="btn btn-default btn-raised mr-10">ผู้ดูแลระบบ
+                                ( {{ $userall['admin'] }} )</a>
+                        </div>
                     </div>
+
                 </div>
                 <div class="boxs-body">
                     @if ($message = Session::get('success'))
@@ -79,25 +92,7 @@
                             <p>{{ $message }}</p>
                         </div>
                     @endif
-                    @php
-                        $admin = 0;
-                        $approve = 0;
-                        $audit = 0;
-                        $u = 0;
-                        foreach ($users as $user) {
-                            $u += $user->roles->where('name','User')->count();
-                            $audit += $user->roles->where('name','Audit')->count();
-                            $approve += $user->roles->where('name','Approve')->count();
-                            $admin += $user->roles->where('name','Admin')->count();
-                        }
-                    @endphp
-                    <div class="btn-group pull-right">
-                        <a href="#" class="btn btn-info btn-raised mr-10">ทั้งหมด ( {{ $users->count()}} )</a>
-                        <a href="#" class="btn btn-info btn-raised mr-10">สมาชิก ( {{ $u }} )</a>
-                        <a href="#" class="btn btn-info btn-raised mr-10">ผู้ตรวจสอบ ( {{ $audit }} )</a>
-                        <a href="#" class="btn btn-info btn-raised mr-10">ผู้อนุมัติ ( {{ $approve }} )</a>
-                        <a href="#" class="btn btn-info btn-raised mr-10">ผู้ดูแลระบบ ( {{ $admin }} )</a>
-                    </div>
+
                     <table id="searchTextResults" data-filter="#filter" data-page-size="25"
                         class="footable table table-custom table-hover">
                         <thead>
@@ -107,6 +102,7 @@
                                 <th>ประเภท</th>
                                 <th>ชื่อ</th>
                                 <th>นามสกุล</th>
+                                <th>วันที่อนุมัติ</th>
                                 <th>สถานะ</th>
                                 <th colspan=3 style="width: 5%">ดำเนินการ</th>
                             </tr>
@@ -115,16 +111,17 @@
                             @foreach ($users as $user)
                                 <tr>
                                     <td>{{ $loop->index + 1 }}</td>
-                                    <td>{{ $user->pwd_id }}</td>
-                                    <td>{{ $user->first_name }}</td>
-                                    <td>{{ $user->last_name }}</td>
+                                    <td>{{ $user->pwd_id ?? '' }}</td>
+                                    <td>{{ $user->disability->description ?? '' }}</td>
+                                    <td>{{ $user->first_name ?? '' }}</td>
+                                    <td>{{ $user->last_name ?? ''}}</td>
+                                    <td></td>
                                     <td>
-                                        @php
-                                        if($user->active == 1)
-                                        echo "เปิด";
-                                        else
-                                        echo "ปิด";
-                                        @endphp
+                                        @if ($user->active == 1)
+                                            <span style="color: green">เปิด</span>
+                                        @else
+                                            <span style="color: red">ปิด</span>
+                                        @endif
                                     </td>
                                     <td>
                                         <a href="{{ route('users.show', $user) }}" class="btn btn-raised btn-info btn-sm"
