@@ -8,6 +8,7 @@ use App\FormBorrow;
 use App\Substitute;
 use App\User;
 use App\Profile;
+use App\Asset;
 
 class FormborrowController extends Controller
 {
@@ -38,7 +39,6 @@ class FormborrowController extends Controller
     public function create()
     {
 
-
         if( \Auth::user()->disability_type_id == null ){
             return redirect()->back()->with('message', 'กรุณาเพิ่มข้อมูลโปรไฟล์ให้ครบถ้วน');
         }
@@ -48,8 +48,9 @@ class FormborrowController extends Controller
         }
 
         $address = Profile::where('user_id',\Auth::user()->id)->first();
+        $assets = Asset::where('asset_statuses_id', '1')->get();
 
-        return view('forms.borrow.create', compact('address'));
+        return view('forms.borrow.create', compact('address', 'assets'));
     }
 
     /**
@@ -60,18 +61,29 @@ class FormborrowController extends Controller
      */
     public function store(Request $request)
     {
-        $request['user_id'] = \Auth::user()->id;
+
+        $borrow = New FormBorrow;
+        $borrow->user_id = \Auth::user()->id;
 
         if ( $request->type == 2 ) {
             $check = Substitute::where('user_id', \Auth::user()->id)->first();
             if( $check == null ) {
                 return redirect('form-borrow')->with('message', 'กรุณาเพิ่มข้อมูลผู้ยื่นคำขอแทน');
             }
-            $request['substitute_id'] = Substitute::where('user_id', \Auth::user()->id)->first()->id;
+           $borrow->substitute_id = Substitute::where('user_id', \Auth::user()->id)->first()->id;
         }
-        
-        $borrow = New FormBorrow;
-        $borrow->fill($request->all());
+
+        $borrow->copy_card = $request->copy_card;
+        $borrow->house_res = $request->house_res;
+        $borrow->copy_train = $request->copy_train;
+        $borrow->sub_copy_citizen_id = $request->sub_copy_citizen_id;
+        $borrow->power_attorney = $request->power_attorney;
+        $borrow->objective = $request->objective;
+        $borrow->power_attorney = $request->power_attorney;
+        $borrow->accessorie_list = $request->accessorie_list;
+        $borrow->accessorie_no = $request->accessorie_no;
+        $borrow->type = $request->type;
+
 
         if ( $borrow->save() ){
             return redirect('form-borrow');
@@ -124,5 +136,30 @@ class FormborrowController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function get_number(Request $request)
+    {
+        $asset = Asset::where('id', $request->asset_id)->first()->code;
+
+        return $asset;
+    }
+    
+    public function get_data(Request $request)
+    {
+        if ( $request->chkType == 1 ){
+            $address = Profile::where('user_id', \Auth::user()->id)->first();
+            $address->title = \Auth::user()->title;
+            $address->first_name = \Auth::user()->first_name;
+            $address->last_name = \Auth::user()->last_name;
+            $address->disability_type = \Auth::user()->disabilityType->description;
+            $address->pwd_id = \Auth::user()->pwd_id;
+            $address->email = \Auth::user()->email;
+
+        }elseif ( $request->chkType == 2 ){
+            $address = Substitute::where('user_id', \Auth::user()->id)->first();
+        }
+
+        return $address;
     }
 }

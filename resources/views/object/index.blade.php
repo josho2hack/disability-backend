@@ -16,7 +16,9 @@
     <div class="row clearfix stats">
         <div class="col-md-3 col-sm-6 col-xs-12 text-center">
             <div class="boxs padder-v">
-                <div class="h2 text-info">{{ $assetcount }}</div>
+                <div class="h2 text-info">
+                    {{ $data['sum'] }}
+                </div>
                 <span class="text-muted">ทั้งหมด</span>
             </div>
         </div>
@@ -34,7 +36,7 @@
 
                 <div class="boxs-body">
                     <table id="searchTextResults" data-filter="#filter" data-page-size="25" data-sorting="false"
-                        class="footable table table-custom table-hover">
+                        class="table table-custom table-hover">
                         <thead>
                             <tr>
                                 <th colspan="12">กลุ่ม: เทคโนโลยีสารสนเทศและการสื่อสาร
@@ -48,7 +50,8 @@
                                 <th width="100">ลำดับ</th>
                                 <th width="500" style="padding-left: 100px;">กลุ่มหลัก</th>
                                 <th width="400" style="text-align:center;">รูปภาพ</th>
-                                <th width="400" >คงคลัง</th>
+                                <th width="100" style="text-align:right;">คงคลัง</th>
+                                <th></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -57,7 +60,8 @@
                                 <tr>
                                     <td>{{ $loop->index + 1 }}</td>
                                     <td colspan="2" style="padding-left: 100px"> {{ $main }}</td>
-                                    <td >{{ array_sum($total) }}</td>
+                                    <td align="right">{{ array_sum($total) }}</td>
+                                    <td></td>
                                 </tr>
                                 @foreach($total as $sub => $ac)
                                     <tr>
@@ -65,8 +69,8 @@
                                         <td colspan="1" style="padding-left: 100px;">{{ $loop->index + 1 }}. {{ $sub }}</td>
                                         <td align="center" ><img src="data:image/png;base64,{{ base64_encode($data['image'][1][$sub]) }}"
                                                 width="50" height="50"></td>
-                                        <td >{{ $ac }}</td>
-                                        </td>
+                                        <td align="right">{{ $ac }}</td>
+                                        <td></td>
                                     </tr>
                                     @endforeach
                             @endforeach
@@ -83,7 +87,7 @@
                     </table>
 
                     <table id="searchTextResults1" data-filter="#filter" data-page-size="25" data-sorting="false"
-                        class="footable table table-custom table-hover">
+                        class="table table-custom table-hover">
                         <thead>
                             <tr>
                                 <th colspan="12">กลุ่ม: เทคโนโลยีสิ่งอำนวยความสะดวกเพื่อการสื่อสาร
@@ -97,7 +101,8 @@
                                 <th width="100">ลำดับ</th>
                                 <th width="500" style="padding-left: 100px;">กลุ่มหลัก</th>
                                 <th width="400" style="text-align:center;">รูปภาพ</th>
-                                <th width="400">คงคลัง</th>
+                                <th width="100" style="text-align:right;">คงคลัง</th>
+                                <th></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -106,7 +111,8 @@
                                 <tr>
                                     <td >{{ $loop->index + 1 }}</td>
                                     <td colspan="2" style="padding-left: 100px;">{{ $main }}</td>
-                                    <td >{{ array_sum($total) }}</td>
+                                    <td align="right">{{ array_sum($total) }}</td>
+                                    <td></td>
                                 </tr>
                                 @foreach($total as $sub => $ac)
                                     <tr>
@@ -114,8 +120,8 @@
                                         <td colspan="1" style="padding-left: 100px;">{{ $loop->index + 1 }}. {{ $sub }}</td>
                                         <td align="center" ><img src="data:image/png;base64,{{ base64_encode($data['image'][2][$sub]) }}"
                                                 width="50" height="50"></td>
-                                        <td>{{ $ac }}</td>
-                                        </td>
+                                        <td align="right">{{ $ac }}</td>
+                                        <td></td>
                                     </tr>
                                     @endforeach
                             @endforeach

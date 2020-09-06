@@ -25,8 +25,8 @@ class ObjectController extends Controller
 
         foreach($disability as $assets){
 
-         $ass = Asset::where(['asset_statuses_id' => 1, 'asset_categories_id' => $assets->disability_types_id])->first();
-         $as = Asset::where(['asset_statuses_id' => 1, 'asset_categories_id' => $assets->disability_types_id])->count();
+         $ass = Asset::where(['asset_statuses_id' => 1, 'asset_categories_id' => $assets->asset_categories_id])->first();
+         $as = Asset::where(['asset_statuses_id' => 1, 'asset_categories_id' => $assets->asset_categories_id])->count();
 
          if( $ass != null ){
             $main_group_id = $ass->assetCategory->subGroup->mainGroup->id;
@@ -42,8 +42,13 @@ class ObjectController extends Controller
          }
         }
 
-        $assetcount = Asset::where('asset_statuses_id', 1)->count();
+        $main1 = empty($data['total']['1']) ? 0 : array_sum($data['total']['1']);
+        $main2 = empty($data['total']['2']) ? 0 : array_sum($data['total']['2']);
 
+        $data['sum'] = $main1 + $main2;
+
+        $assetcount = Asset::where('asset_statuses_id', 1)->count();
+        
     	return view('object.index', compact('data','assetcount'));
     }
 }

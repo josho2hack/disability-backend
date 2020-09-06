@@ -22,7 +22,7 @@
         font-size: 1.2rem;
     }
     input[type="text"]{
-        text-align: left;
+        
         width: auto;
         padding: 0px 10px;
         border-bottom: 2px dotted #4D585F;
@@ -54,6 +54,7 @@
     <div class="boxs">
         <div class="boxs-body" style="width: 900px; margin: auto;">
             <form action="{{ url('form-borrow') }}" method="POST">
+                @csrf
                 <div class="row">
                     <div class="col-sm-offset-6 col-sm-6">
                         <div class="square pull-right">
@@ -132,7 +133,7 @@
                             สำเนาบัตรประจำตัวคนพิการ พร้อมรับรองสำเนาถูกต้อง
                         </div>   
                         <div class="col-sm-3 text-right">
-                            จำนวน <input type="number"> ฉบับ 
+                            จำนวน <input type="number" name="copy_card"> ฉบับ 
                         </div>
                         <div class="col-sm-2">
                             <span class="btn btn-raised btn-xs btn-default fileinput-button m-0">
@@ -150,7 +151,7 @@
                             สำเนาทะเบียนบ้านคนพิการ พร้อมรับรองสำเนาถูกต้อง
                         </div>   
                         <div class="col-sm-3 text-right">
-                            จำนวน <input type="number"> ฉบับ 
+                            จำนวน <input type="number" name="house_res"> ฉบับ 
                         </div>
                         <div class="col-sm-2">
                             <span class="btn btn-raised btn-xs btn-default fileinput-button m-0">
@@ -168,7 +169,7 @@
                             สำเนาเอกสารรับรองการเข้ารับการฝึกอบรมตามหลักสูตรที่กระทรวงเทคโนโลยีสารสนเทศและการสื่อสารกำหนดพร้อมรับรองสำเนาถูกต้อง (ถ้ามี)
                         </div>   
                         <div class="col-sm-3 text-right">
-                            จำนวน <input type="number"> ฉบับ 
+                            จำนวน <input type="number" name="copy_train"> ฉบับ 
                         </div>
                         <div class="col-sm-2">
                             <span class="btn btn-raised btn-xs btn-default fileinput-button m-0">
@@ -186,7 +187,7 @@
                             สำเนาบัตรประจำตัวประชาชนหรือสำเนาทะเบียนบ้านของ ผู้ยื่นคำขอแทน พร้อมร้บรองสำเนาถูกต้อง
                         </div>   
                         <div class="col-sm-3 text-right">
-                            จำนวน <input type="number"> ฉบับ 
+                            จำนวน <input type="number" name="sub_copy_citizen_id"> ฉบับ 
                         </div>
                         <div class="col-sm-2">
                             <span class="btn btn-raised btn-xs btn-default fileinput-button m-0">
@@ -204,7 +205,7 @@
                             หนังสือมอบอำนาจจากคนพิการหรือหลักฐานที่แสดงว่ามีส่วน เกี่ยวข้องกับคนพิการเนื่องจากเป็นผู้ปกครอง ผู้พิทักษ์ ผู้อนุบาล หรือผู้ดูแลคนพิการ (กรณี ผู้ยื่นคำขอแทน)
                         </div> 
                         <div class="col-sm-3 text-right">
-                            จำนวน <input type="number"> ฉบับ 
+                            จำนวน <input type="number" name="power_attorney"> ฉบับ 
                         </div>
                         <div class="col-sm-2">
                             <span class="btn btn-raised btn-xs btn-default fileinput-button m-0">
@@ -218,56 +219,77 @@
                 
                 <div class="row">   
                     <div class="col-sm-offset-2 col-sm-10">
-                        ข้าพเจ้า <input type="text" name="name" style="width: 65%;"> <input type="radio" name="chkType" checked> คนพิการ <input type="radio" name="chkType"> ผู้ยื่นคำขอแทน
+                        ข้าพเจ้า <input type="text" id="name" name="name" style="width: 65%;" readonly> 
+                        <input type="radio" class="chkType" value="1" name="type"> คนพิการ 
+                        <input type="radio" class="chkType" value="2" name="type"> ผู้ยื่นคำขอแทน
                     </div>
                     <div class="col-sm-12">
-                        ประเภทความพิการ <input type="text" cname="disabilityType" style="width: 85%;">
+                        ประเภทความพิการ <input type="text" id="disabilityType" name="disabilityType" style="width: 85%;" readonly>
                     </div>
                     <div class="col-sm-12">
-                        บัตรประจำตัวคนพิการ/บัตรประชาชนเลขที่ <input type="text" name="citizenId" style="width: 53%;"> ที่อยู่ที่สามารถติดต่อได้<br>
+                        บัตรประจำตัวคนพิการ/บัตรประชาชนเลขที่ <input type="text" id="citizenId" name="citizenId" style="width: 53%;" readonly> 
+                        ที่อยู่ที่สามารถติดต่อได้<br>
                     </div>
                     <div class="col-sm-12">
-                        บ้านเลขที่ <input type="text" name="addressNo" style="width: 10%;"> หมู่ที่ <input type="text" name="subDistricNo" style="width: 10%;"> ซอย/ถนน <input type="text" name="stress" style="width: 25%;"> ตำบล/แขวง <input type="text" name="subDistrict" style="width: 25%;"> 
+                        บ้านเลขที่ <input type="text" id="addressNo" name="addressNo" style="width: 10%;" readonly> 
+                        หมู่ที่ <input type="text" id="subDistricNo" name="subDistricNo" style="width: 10%;" readonly> 
+                        ซอย/ถนน <input type="text" id="stress" name="stress" style="width: 25%;" readonly> 
+                        ตำบล/แขวง <input type="text" id="subDistrict" name="subDistrict" style="width: 25%;" readonly> 
                     </div>
                     <div class="col-sm-12">
-                        อำเภอ/เขต <input type="text" name="district" style="width: 25%;"> จังหวัด <input type="text" name="province" style="width: 25%;"> รหัสไปรษณีย์ <input type="text" name="postcode" style="width: 25%;">
+                        อำเภอ/เขต <input type="text" id="district" name="district" style="width: 25%;" readonly> 
+                        จังหวัด <input type="text" id="province" name="province" style="width: 25%;" readonly> 
+                        รหัสไปรษณีย์ <input type="text" id="postcode" name="postcode" style="width: 25%;" readonly>
                     </div>
                     <div class="col-sm-12">
-                        สถานศึกษา <input type="text" name="colledge" style="width: 58%;"> โทรศัพท์ <input type="text" name="phoneNumber" style="width: 26%;">
+                        สถานศึกษา <input type="text" id="colledge" name="colledge" style="width: 58%;" readonly> 
+                        โทรศัพท์ <input type="text" id="phoneNumber" name="phoneNumber" style="width: 26%;" readonly>
                     </div>
                     <div class="col-sm-12 mb-20">
-                        ที่อยู่อีเมล์ (e-mail address) <input type="text" name="email" style="width: 77%;">
+                        ที่อยู่อีเมล์ (e-mail address) <input type="text" id="email" name="email" style="width: 77%;" readonly>
                     </div>
 
                     <div class="col-sm-offset-2 col-sm-10">
                         มีความประสงค์ขอยืมอุปกรณ์/เครื่องมือ เทคโนโลยีสารสนเทศและการสื่อสารหรือ เทคโนโลยีสิ่งอำนวยความสะดวกเพี่อ
                     </div>
                     <div class="col-sm-12">
-                        การสื่อสารให้แก่ <input type="text" name="borrwTo" style="width: 30%;"> (ชื่อ-นามสกุลคนพิการ) <input type="text" name="disabilityName" style="width: 41%;">
+                        การสื่อสารให้แก่ <input type="text" name="borrwTo" value="{{ \Auth::user()->title.' '.\Auth::user()->first_name.' '.\Auth::user()->last_name }}" style="width: 88%;" readonly>
                     </div>
                     <div class="col-sm-12">
-                        เลขบัตรประจำตัวคนพิการ <input type="text" name="disabilityId" style="width: 65%;"> ที่อยู่ที่สามารถติดต่อได้ 
+                        เลขบัตรประจำตัวคนพิการ <input type="text" name="disabilityId" value="{{ \Auth::user()->pwd_id }}" style="width: 65%;" readonly> ที่อยู่ที่สามารถติดต่อได้ 
                     </div>
                     <div class="col-sm-12">
-                        บ้านเลขที่ <input type="text" name="disabilityAddressNo" style="width: 10%;"> หมู่ที่ <input type="text" name="disabilitySubDistricNo" style="width: 10%;"> ซอย/ถนน <input type="text" name="disabilityStress" style="width: 25%;"> ตำบล/แขวง <input type="text" name="disabilitySubDistrict" style="width: 25%;"> 
+                        บ้านเลขที่ <input type="text" value="{{ $address->house_no}}" name="disabilityAddressNo" style="width: 10%;" readonly> 
+                        หมู่ที่ <input type="text" value="{{ $address->village_no }}" name="disabilitySubDistricNo" style="width: 10%;" readonly> 
+                        ซอย/ถนน <input type="text" value="{{ $address->lane }}" name="disabilityStress" style="width: 25%;" readonly> 
+                        ตำบล/แขวง <input type="text" value="{{ $address->sub_district }}" name="disabilitySubDistrict" style="width: 25%;" readonly> 
                     </div>
                     <div class="col-sm-12">
-                        อำเภอ/เขต <input type="text" name="disabilityDistrict" style="width: 25%;"> จังหวัด <input type="text" name="disabilityProvince" style="width: 25%;"> รหัสไปรษณีย์ <input type="text" name="disabilityPostcode" style="width: 25%;">
+                        อำเภอ/เขต <input type="text" value="{{ $address->district }}" name="disabilityDistrict" style="width: 25%;" readonly> 
+                        จังหวัด <input type="text" value="{{ $address->province }}" name="disabilityProvince" style="width: 25%;" readonly> 
+                        รหัสไปรษณีย์ <input type="text" value="{{ $address->postal_code }}" name="disabilityPostcode" style="width: 25%; readonly">
                     </div>
                     <div class="col-sm-12">
-                        สถานศึกษา <input type="text" name="disabilityColledge" style="width: 58%;"> โทรศัพท์ <input type="text" name="disabilityPhoneNumber" style="width: 26%;">
+                        สถานศึกษา <input type="text" value="{{ $address->edu_place }}" name="disabilityColledge" style="width: 58%;" readonly> 
+                        โทรศัพท์ <input type="text" value="{{ $address->tel }}" name="disabilityPhoneNumber" style="width: 26%; readonly">
                     </div>
                     <div class="col-sm-12">
-                        ที่อยู่อีเมล์ (e-mail address) <input type="text" name="disabilityEmail" style="width: 77%;">
+                        ที่อยู่อีเมล์ (e-mail address) <input type="text" value="{{ \Auth::user()->email }}" name="disabilityEmail" style="width: 77%;" readonly>
                     </div>
                     <div class="col-sm-12">
-                        โดยมีวัตถุประสงค์เพื่อ (โปรดระบุ) <input type="text" name="objective1" style="width: 76%;">
+                        โดยมีวัตถุประสงค์เพื่อ (โปรดระบุ) <input type="text" name="objective1" style="width: 75%;" name="objective" required>
                     </div>
                     <div class="col-sm-12">
                         <input type="text" name="objective2" style="width: 100%;">
                     </div>
                     <div class="col-sm-12 mb-20">
-                        ในรายการอุปกรณ์ <input type="text" name="assetName" style="width: 37%;"> เลขที่อุปกรณ์ <input type="text" name="assetNo" style="width: 40%;"> 
+                        ในรายการอุปกรณ์ <select name="accessorie_list" id="assets" style="width: 37%;">
+                                    <option value="" selected disabled>- เลือก -</option>
+                                    @foreach( $assets as $asset )
+                                        <option value="{{ $asset->id }}">{{ $asset->description }}</option>
+                                    @endforeach
+                                    </select>
+                        เลขที่อุปกรณ์ <input type="text" id="assetNo" name="accessorie_no" style="width: 40%;" readonly>
                     </div>
                     <div class="col-sm-offset-2 col-sm-10">
                         ข้าพเจ้าขอรับรองว่า ข้อความข้างต้นเป็นจริงทุกประการ เมื่อได้รับอุกปกรณ์/เครื่องมือเทคโนโลยีสารสนเทศและการสื่อสาร
@@ -302,121 +324,64 @@
             </form>
         </div>
     </div>
+@endsection
+@section('footer')
+<script>
+    $(document).ready(function() {
+        $.ajaxSetup({
+            headers:
+            { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') }
+        });
+        $("#assets").change(function(){
+            var asset_id = $("option:selected", this).val();
 
-    <!-- row -->
-    {{-- <div class="row">
-        <div class="col-md-12">
-            <section class="boxs">
-                <div class="boxs-header">
-                    <h3 class="custom-font hb-cyan">
-                        <strong>สร้างแบบฟอร์มยืม</strong>
-                    </h3>
-                </div>
-                <div class="boxs-body">
-                    <form class="form-horizontal" role="form" action="{{ url('form-borrow') }}" method="POST">
-                        @csrf
-                        <div class="row">
-                            <div class="container-fluid">
-                                <div class="border">
-                                        ทก.01<br>
-                                    สำหรับคนพิการ / ผู้ยื่นคำขอแทน
-                                </div>
-                            </div>
-                        </div>
+            if (asset_id != "") {
+                $.post("{{ url('form-borrow/getNo') }}", {asset_id: asset_id}, function (data) {
+                    $("#assetNo").val(data);
+                });
+            }
+        });
 
-                        <div class="header text-center">
-                            แบบคำขอยืมอุปกรณ์และเครื่องมือเทคโนโลยีสารสนเทศและการสื่อสาร<br>    
-                            หรือเทคโนโลยีสิ่งอำนวยความสะดวกเพื่อการสื่อสาร ตามกฎกระทรวงฯ
-                        </div>
+        $( ".chkType" ).on( "click", function() {
+            var chkType = $( ".chkType:checked" ).val();
+            console.log(chkType);
+            if (chkType == "1") {
+                $.post("{{ url('form-borrow/getData') }}", {chkType: chkType}, function (data) {
+                    $("#name").val(data.title + '   ' + data.first_name + '   ' + data.last_name);
+                    $("#disabilityType").val(data.disability_type);
+                    $("#citizenId").val(data.pwd_id);
+                    $("#addressNo").val(data.house_no);
+                    $("#subDistricNo").val(data.village_no);
+                    $("#stress").val(data.lane);
+                    $("#subDistrict").val(data.sub_district);
+                    $("#district").val(data.district);
+                    $("#province").val(data.province);
+                    $("#postcode").val(data.postal_code);
+                    $("#colledge").val(data.edu_place);
+                    $("#phoneNumber").val(data.tel);
+                    $("#email").val(data.email);
+                });
+            }
 
+            if (chkType == "2") {
+                $.post("{{ url('form-borrow/getData') }}", {chkType: chkType}, function (data) {
+                    $("#name").val(data.title + '   ' + data.first_name + '   ' + data.last_name);
+                    $("#disabilityType").val('-');
+                    $("#citizenId").val(data.citizen_id);
+                    $("#addressNo").val(data.house_no);
+                    $("#subDistricNo").val(data.village_no);
+                    $("#stress").val(data.lane);
+                    $("#subDistrict").val(data.sub_district);
+                    $("#district").val(data.district);
+                    $("#province").val(data.province);
+                    $("#postcode").val(data.postal_code);
+                    $("#colledge").val(data.edu_place);
+                    $("#phoneNumber").val(data.tel);
+                    $("#email").val(data.email);
+                });
+            }
 
-                            <label for="name" class="control-label text-right " style="color: #000;">เขียนที่</label>
-
-                                <input type="text" class="form-control" name="write_at" placeholder="">
-
-
-
-                            <div class="row">
-                                <div class="col-sm-offset-6">
-                                        
-                                </div>
-                                <div class="col-sm-6">
-                                    วสา่้วสา่วสา่วสา่วสา่วสา่วส
-                                </div>
-                            </div>
-
-                        <div class="form-group">
-                            <label for="name" class="col-sm-8 control-label text-left"><li>สำเนาบัตรประจำตัวคนพิการ พร้อมรับรองสำเนาถูกต้อง</li></label>
-                            <div class="col-sm-4">
-                                <input type="number" class="form-control" name="copy_card" placeholder="จำนวนฉบับ">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="name" class="col-sm-8 control-label text-left"><li>สำเนาทะเบียนบ้านของคนพิการ พร้อมรับรองสำเนาถูกต้อง</li></label>
-                            <div class="col-sm-4">
-                                <input type="number" class="form-control" name="house_res" placeholder="จำนวนฉบับ">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="name" class="col-sm-8 control-label text-left"><li>สำเนาเอกสารรับรองการเข้ารับการฝึกอบรมตามหลักสูตรที่กระทรวงเทคโนโลยีสารสนเทศและการสื่อสารกำหนด พร้อมรับรองสำเนาถูกต้อง (ถ้ามี)</li></label>
-                            <div class="col-sm-4">
-                                <input type="number" class="form-control" name="copy_train" placeholder="จำนวนฉบับ">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="name" class="col-sm-8 control-label text-left"><li>สำเนาบัตรประจำตัวประชาชนหรือสำเนาทะเบียนบ้านของ ผู้ยื่นคำขอแทน พร้อมรับรองสำเนาถูกต้อง</li></label>
-                            <div class="col-sm-4">
-                                <input type="number" class="form-control" name="sub_copy_citizen_id" placeholder="จำนวนฉบับ">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="name" class="col-sm-8 control-label text-left"><li>หนังสือมอบอำนาจจากคนพิการหรือหลักฐานที่แสดงว่ามีส่วนเกี่ยวข้องกับคนพิการเนื่องจากเป็นผู้ปกครอง ผู้พิทักษ์ ผู้อนุบาล หรือผู้ดูและคนพิการ (กรณี ผู้ยื่นขอแทน)</li></label>
-                            <div class="col-sm-4">
-                                <input type="number" class="form-control" name="power_attorney" placeholder="จำนวนฉบับ">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                        <label for="name" class="col-sm-8 control-label text-left">
-                        <li>
-                            <label class="radio-inline">
-                              <input type="radio" name="type" value="1" checked>คนพิการ
-                            </label>
-                            <label class="radio-inline">
-                              <input type="radio" name="type" value="2">ผู้ยื่นคำขอแทน
-                            </label>
-                        </li>
-                        </label>
-                    </div>
-                        <div class="form-group">
-                            <label for="name" class="col-sm-4 control-label text-left"><li>โดยมีวัตถุประสงค์เพื่อ (โปรดระบุ) </li></label>
-                            <div class="col-sm-8">
-                                <input type="text" class="form-control" name="objective" placeholder="โดยมีวัตถุประสงค์เพื่อ (โปรดระบุ)">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="name" class="col-sm-4 control-label text-left"><li>ในรายการอุปกรณ์</li></label>
-                            <div class="col-sm-8">
-                                <input type="text" class="form-control" name="accessorie_list" placeholder="ในรายการอุปกรณ์">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="name" class="col-sm-4 control-label text-left"><li>เลขที่อุปกรณ์</li></label>
-                            <div class="col-sm-8">
-                                <input type="text" class="form-control" name="accessorie_no" placeholder="เลขที่อุปกรณ์">
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-sm-offset-2 col-sm-8">
-                                <button type="submit" class="btn btn-raised btn-success">บันทึก</button>
-                                <a href="{{ route('maingroups.index') }}" class="btn btn-raised btn-default">ยกเลิก</a>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-                <div class="boxs-footer">
-                </div>
-            </section>
-        </div>
-    </div> --}}
+        });
+    });
+</script>
 @endsection
