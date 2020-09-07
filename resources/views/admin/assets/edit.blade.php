@@ -51,6 +51,13 @@
                         @csrf
                         @method('PUT')
                         <div class="form-group">
+                            <label for="received_date" class="col-sm-2 control-label">วันที่รับ</label>
+                            <div class="col-sm-10">
+                                <input name="received_date" type="date" id="my_hidden_input" value="{{ $asset->received_date }}">
+                                {{-- <div id="datepicker" class=""></div> --}}
+                            </div>
+                        </div>
+                        <div class="form-group">
                             <label for="code" class="col-sm-2 control-label">รหัสครุภัณฑ์</label>
                             <div class="col-sm-10">
                                 <input type="text" class="form-control" name="code" placeholder=""
@@ -79,13 +86,21 @@
                                 <input type="text" class="form-control" name="price" placeholder=""
                                     value="{{ $asset->price }}">
                             </div>
-                        </div>
+                        </div>>
                         <div class="form-group">
                             <label for="budget" class="col-sm-2 control-label">วิธีได้มา</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" name="budget" placeholder=""
-                                    value="{{ $asset->budget }}">
-                                <p class="help-block mb-0">Ex: EAuction</p>
+                                <select name="budget" tabindex="5" class="chosen-select" style="width: 240px;">
+                                    <option value="EAuction" @if ($asset->budget == 'EAuction')
+                                        selected
+                                    @endif>EAuction</option>
+                                    <option value="งบลงทุน" @if ($asset->budget == 'งบลงทุน')
+                                        selected
+                                    @endif>งบลงทุน</option>
+                                    <option value="อื่นๆ" @if ($asset->budget == 'อื่นๆ')
+                                        selected
+                                    @endif>อื่นๆ</option>
+                                </select>
                             </div>
                         </div>
                         <div class="form-group">
@@ -125,6 +140,19 @@
                                 <input type="text" class="form-control" name="location" placeholder=""
                                     value="{{ $asset->location }}">
                                 <p class="help-block mb-0">Ex: ทส.</p>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="location" class="col-sm-2 control-label">ใช้ประจำที่</label>
+                            <div class="col-sm-10">
+                                <select name="location" tabindex="5" class="chosen-select" style="width: 240px;">
+                                    <option value="ทส." @if ($asset->location == 'ทส.')
+                                        selected
+                                    @endif>ทส.</option>
+                                    <option value="อื่นๆ" @if ($asset->location == 'อื่นๆ')
+                                        selected
+                                    @endif>อื่นๆ</option>
+                                </select>
                             </div>
                         </div>
                         <div class="form-group">

@@ -110,7 +110,7 @@
                         <div class="col-xs-12 col-sm-12 col-md-12">
                             <div class="form-group">
                                 <strong>ประเภทคนพิการที่มีสิทธิ์:</strong>
-                                @foreach ($asset->cate->disablilityTypes as $disablilityType)
+                                @foreach ($asset->assetCategory->disablilityTypes as $disablilityType)
                                     <ul>
                                         <li style="list-style-type: none;">{{$loop->index + 1}}. {{ $disablilityType->description }}</li>
                                     </ul>
@@ -120,26 +120,26 @@
                         <div class="col-xs-12 col-sm-12 col-md-12">
                             <div class="form-group">
                                 <strong>กลุ่มย่อย:</strong>
-                                {{ $asset->assetcategory->name }}
+                                {{ $asset->assetCategory->name }}
                             </div>
                         </div>
                         <div class="col-xs-12 col-sm-12 col-md-12">
                             <div class="form-group">
                                 <strong>กลุ่มหลัก:</strong>
-                                {{ $subgroup->name }}
+                                {{ $asset->assetSubGroup->name }}
                             </div>
                         </div>
                         <div class="col-xs-12 col-sm-12 col-md-12">
                             <div class="form-group">
                                 <strong>ประเภท:</strong>
-                                {{ $subgroup->maingroup->name }}
+                                {{ $asset->assetSubGroup->mainGroup->name }}
                             </div>
                         </div>
-                        @if ($asset->cate->image)
+                        @if ($asset->assetCategory->image)
                         <div class="col-xs-12 col-sm-12 col-md-12">
                             <div class="form-group">
                             {{-- <img src="/subgroup/{{$subgroup->id}}/avatar" /> --}}
-                            <img src="data:image/png;base64,{{ chunk_split(base64_encode($asset->cate->image)) }}">
+                            <img src="data:image/png;base64,{{ chunk_split(base64_encode($asset->assetCategory->image)) }}">
                             </div>
                         </div>
                         @endif

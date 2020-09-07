@@ -19,7 +19,7 @@ class CreateAssetsTable extends Migration
             $table->dateTime("received_date")->nullable()->comment('วันที่รับ');
             $table->string("serial_no")->nullable()->comment('S/N');
             $table->string("description",500)->nullable()->comment('รายละเอียด');
-            $table->decimal("price")->nullable()->comment('ราคา');
+            $table->decimal("price", 38, 2)->nullable()->comment('ราคา');
             $table->string("budget")->nullable()->comment('วิธีได้มา');
             $table->string("doc_no")->nullable()->comment('เลขที่เอกสาร');
             $table->string("location")->nullable()->default('ทส.')->comment('ใช้ประจำที่');

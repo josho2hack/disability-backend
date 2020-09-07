@@ -30,7 +30,7 @@
                 <li>
                     <a href="{{ route('assets.dashboard') }}">1.1 ระบบบริหารจัดการครุภัณฑ์</a>
                 </li>
-                <li class="active">1.1.2 กลุ่มย่อยอุปกรณ์และเครื่องมือ</li>
+                <li class="active">1.1.2 กลุ่มย่อยอุปกรณ์</li>
             </ol>
         </div>
     </div>

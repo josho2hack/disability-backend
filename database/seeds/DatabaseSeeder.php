@@ -125,7 +125,7 @@ class DatabaseSeeder extends Seeder
 
         DB::table('asset_statuses')->insert([
             [
-                'name' => 'คงคลัง '
+                'name' => 'คงเหลือ'
             ],
             [
                 'name' => 'รอรับ'

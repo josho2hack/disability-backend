@@ -24,7 +24,7 @@ class Asset extends Model
         return $this->belongsTo('App\AssetStatus','asset_statuses_id');
     }
 
-    public function assetSubGroups()
+    public function assetSubGroup()
     {
         return $this->belongsTo('App\SubGroup','sub_groups_id');
     }

@@ -36,19 +36,17 @@
                     <h3 class="custom-font">
                         <strong>รายการอุปกรณ์และเครื่องมือ</strong>
                     </h3>
-                </div>
-                <div class="boxs-widget">
+                    <div class="btn-group pull-right">
+                        <a href="{{ route('assets.create') }}" class="btn btn-success btn-raised mr-10">เพิ่มอุปกรณ์และเครื่องมือ</a>
+                    </div>
+                    <p><strong>ทั้งหมด <span class="text-success">{{$assets->count()}}</span> รายการ</strong></p>
                     <div class="form-group">
-                        <div class="btn-group pull-right">
-                            <a href="{{ route('assets.create') }}" class="btn btn-success btn-raised">เพิ่มอุปกรณ์และเครื่องมือ</a>
-                        </div>
-                        <p><strong>ทั้งหมด <span class="text-success">{{$assets->count()}}</span> รายการ</strong></p>
                         <label for="filter" style="padding-top: 5px">ค้นหา:</label>
                         <input id="filter" type="text" class="form-control rounded w-md mb-10 inline-block" />
                     </div>
                 </div>
-
                 <div class="boxs-body">
+
                     @if ($message = Session::get('success'))
                         <div class="alert alert-success">
                             <p>{{ $message }}</p>
@@ -63,7 +61,7 @@
                                 <th>ยี่ห้อ ชนิด แบบ ขนาดและลักษณะ</th>
                                 <th>สถานะ</th>
                                 <th>หลักฐานการจ่าย</th>
-                                <th colspan=3>ดำเนินการ</th>
+                                <th colspan=3 style="width: 5%">ดำเนินการ</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -75,18 +73,18 @@
                                     <td>{{ $asset->assetStatus->name }}</td>
                                     <td>{{ $asset->out_stock_evidance }}</td>
                                     <td>
-                                        <a href="{{ route('assets.show', $asset) }}" class="btn btn-raised btn-info"
+                                        <a href="{{ route('assets.show', $asset) }}" class="btn btn-raised btn-info btn-sm"
                                             title="รายละเอียด"> <i class="fa fa-eye"></i></a>
                                     </td>
                                     <td>
                                         <a href="{{ route('assets.edit', $asset->id) }}"
-                                            class="btn btn-raised btn-warning" title="แก้ไข"> <i class="fa fa-edit"></i></a>
+                                            class="btn btn-raised btn-warning btn-sm" title="แก้ไข"> <i class="fa fa-edit"></i></a>
                                     </td>
                                     <td>
                                         <form action="{{ route('assets.destroy', $asset->id) }}" method="post">
                                             @csrf
                                             @method('DELETE')
-                                            <button class="del btn btn-raised btn-primary" type="submit" title="ลบ">
+                                            <button class="del btn btn-raised btn-primary btn-sm" type="submit" title="ลบ">
                                                 <i class="fa fa-trash"></i></button>
                                         </form>
                                     </td>

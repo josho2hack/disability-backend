@@ -23,11 +23,10 @@
                     <li>
                         <a href="{{ route('assets.dashboard') }}">1.1 ระบบบริหารจัดการครุภัณฑ์</a>
                     </li>
-                    <li class="active">1.1.1 กลุ่มหลักอุปกรณ์และเครื่องมือ</li>
+                    <li class="active">1.1.1 กลุ่มหลักอุปกรณ์</li>
                 </ol>
             </div>
         </div>
-
     </div>
     <!-- row -->
     <div class="row">
@@ -37,17 +36,14 @@
                     <h3 class="custom-font">
                         <strong>รายการกลุ่มหลักอุปกรณ์และเครื่องมือ</strong>
                     </h3>
-                </div>
-                <div class="boxs-widget">
+                    <div class="btn-group pull-right">
+                        <a href="{{ route('maingroups.create') }}" class="btn btn-success btn-raised mr-10">สร้างกลุ่มหลัก</a>
+                    </div>
                     <div class="form-group">
-                        <div class="btn-group pull-right">
-                            <a href="{{ route('maingroups.create') }}" class="btn btn-success btn-raised">สร้างกลุ่มหลัก</a>
-                        </div>
                         <label for="filter" style="padding-top: 5px">ค้นหา:</label>
                         <input id="filter" type="text" class="form-control rounded w-md mb-10 inline-block" />
                     </div>
                 </div>
-
                 <div class="boxs-body">
 
                     @if ($message = Session::get('success'))
@@ -61,7 +57,7 @@
                             <tr>
                                 <th>ลำดับที่</th>
                                 <th>กลุ่มหลัก</th>
-                                <th colspan=3>ดำเนินการ</th>
+                                <th colspan=3 style="width: 5%">ดำเนินการ</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -70,18 +66,18 @@
                                     <td>{{ $loop->index + 1 }}</td>
                                     <td>{{ $maingroup->name }}</td>
                                     <td>
-                                        <a href="{{ route('maingroups.show', $maingroup) }}" class="btn btn-raised btn-info"
+                                        <a href="{{ route('maingroups.show', $maingroup) }}" class="btn btn-raised btn-info btn-sm"
                                             title="รายละเอียด"> <i class="fa fa-eye"></i></a>
                                     </td>
                                     <td>
                                         <a href="{{ route('maingroups.edit', $maingroup->id) }}"
-                                            class="btn btn-raised btn-warning" title="แก้ไข"> <i class="fa fa-edit"></i></a>
+                                            class="btn btn-raised btn-warning btn-sm" title="แก้ไข"> <i class="fa fa-edit"></i></a>
                                     </td>
                                     <td>
                                         <form action="{{ route('maingroups.destroy', $maingroup->id) }}" method="post">
                                             @csrf
                                             @method('DELETE')
-                                            <button class="del btn btn-raised btn-primary" type="submit" title="ลบ">
+                                            <button class="del btn btn-raised btn-primary btn-sm" type="submit" title="ลบ">
                                                 <i class="fa fa-trash"></i></button>
                                         </form>
                                     </td>

@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
+use Carbon\Carbon;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,7 +36,7 @@ Auth::routes(['verify' => true]);
 Route::get('/home', 'HomeController@index')->name('home')->middleware('verified');
 //Route::get('/logout', 'HomeController@logout');
 
-Route::get('/user-login', 'HomeController@user_login');
+Route::get('/user-login', 'HomeController@user_login')->name('user-login');
 Route::get('/admin-login', 'HomeController@admin_login');
 Route::get('/audit-login', 'HomeController@audit_login');
 Route::get('/approve-login', 'HomeController@approve_login');
@@ -83,13 +84,23 @@ Route::post('fileupload', 'FileController@insert');
 // Route::get('email/resend', 'VerificationApiController@resend')->name('verificationapi.resend');
 
 Route::get('/subgroup/{id}/avatar', 'Admin\SubGroupController@avatar');
-
+Route::get('/time', function(){
+    $dt = new Carbon();
+    $dt->settings([
+        'yearOverflow' => false,
+    ]);
+    echo show_date($dt);
+    echo formatDateThai($dt);
+    echo $dt->copy()->addYearsNoOverflow(543)->locale('th')->isoFormat('LLLL');
+    echo $dt->locale('th')->isoFormat('LLLL');
+});
 Route::get('dashboard', 'Admin\AdminController@index')->name('dashboard');
 Route::prefix('admin')->middleware('auth')->group(function () {
     Route::get('dashboard', 'Admin\AdminController@index')->name('admin');
     Route::get('assets/dashboard', 'Admin\AssetController@dashboard')->name('assets.dashboard');
     Route::get('assets/selected/{cate}', 'Admin\AssetController@selected')->name('assets.selected');
     Route::get('assets/subselected/{sub}', 'Admin\AssetController@subselected')->name('assets.sub.selected');
+    Route::get('assets/getCates/{id}', 'Admin\AssetController@getCates');
     Route::get('users/option', 'Admin\UserController@option')->name('users.option');
     Route::put('users/optionupdate', 'Admin\UserController@optionupdate')->name('users.optionupdate');
     Route::get('users/selected/{role}', 'Admin\UserController@selected')->name('users.selected');

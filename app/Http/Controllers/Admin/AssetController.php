@@ -5,7 +5,9 @@ namespace App\Http\Controllers\Admin;
 use App\Asset;
 use App\AssetCategory;
 use App\AssetStatus;
+use App\DisabilityType;
 use App\Http\Controllers\Controller;
+use App\MainGroup;
 use App\SubGroup;
 use Illuminate\Http\Request;
 
@@ -46,9 +48,22 @@ class AssetController extends Controller
      */
     public function create()
     {
-        $cates = AssetCategory::all();
+        $mains = SubGroup::with('assetCategories')->get();
         $statuses = AssetStatus::all();
-        return view('admin.assets.create',compact('cates'),compact('statuses'));
+        return view('admin.assets.create',compact('mains'),compact('statuses'));
+    }
+
+    // Fetch records
+    public function getCates($id=1){
+
+    	// Fetch Employees by Departmentid
+        $cateData['data'] = AssetCategory::orderby("name","asc")
+        			->select('id','name')
+        			->where('sub_groups_id',$id)
+        			->get();
+
+        return response()->json($cateData);
+
     }
 
     /**
@@ -79,11 +94,11 @@ class AssetController extends Controller
      */
     public function show($id)
     {
-        $asset = Asset::with('assetCategory','assetStatus','medias')->findOrFail($id);
-        $cate = AssetCategory::with('disablilityTypes')->findOrFail($asset->assetCategory->id);
-        $subgroup = SubGroup::with('maingroup')->findOrFail($asset->assetCategory->id);
-        $asset['cate'] = $cate;
-        return view('admin.assets.show', compact('asset'),compact('subgroup'));
+        $asset = Asset::with('assetCategory','assetStatus','assetSubGroup')->find($id);
+        //dd($asset);
+        //$cate = AssetCategory::with('disablilityTypes')->find($asset->assetCategory->id);
+        //dd($cate);
+        return view('admin.assets.show', compact('asset'));
     }
 
     /**

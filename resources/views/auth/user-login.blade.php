@@ -40,6 +40,11 @@
                   ระบบบริหารจัดการ<br>
                   อุปกรณ์และเครื่องมือด้าน ICT สำหรับคนพิการ
                 </h4>
+                @if(session('message'))
+                    <div class="alert alert-info" role="alert">
+                        {{ session('message') }}
+                    </div>
+                @endif
                 <p class="help-block"></p>
                 <div class="content">
                   <div class="form-group">

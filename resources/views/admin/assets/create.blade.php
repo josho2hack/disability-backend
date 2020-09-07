@@ -1,6 +1,8 @@
 @extends('layouts.admin')
 @section('header')
-
+    <link rel="stylesheet" href="{{ asset('css/datepicker.css') }}" media="screen">
+    <link href="https://getbootstrap.com/2.3.2/assets/js/google-code-prettify/prettify.css" rel="stylesheet">
+    <link href="https://getbootstrap.com/2.3.2/assets/css/bootstrap-responsive.css" rel="stylesheet">
 @endsection
 
 @section('content')
@@ -49,6 +51,14 @@
                     <form class="form-horizontal" role="form" action="{{ route('assets.store') }}" method="POST"
                         enctype="multipart/form-data">
                         @csrf
+
+                        <div class="form-group">
+                            <label for="received_date" class="col-sm-2 control-label">วันที่รับ</label>
+                            <div class="col-sm-10">
+                                <input name="received_date" type="date" id="my_hidden_input">
+                                {{-- <div id="datepicker" class=""></div> --}}
+                            </div>
+                        </div>
                         <div class="form-group">
                             <label for="code" class="col-sm-2 control-label">รหัสครุภัณฑ์</label>
                             <div class="col-sm-10">
@@ -72,14 +82,17 @@
                         <div class="form-group">
                             <label for="price" class="col-sm-2 control-label">ราคา/หน่วย</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" name="price" placeholder="">
+                                <input type="number" class="form-control" name="price" placeholder="">
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="budget" class="col-sm-2 control-label">วิธีได้มา</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" name="budget" placeholder="">
-                                <p class="help-block mb-0">Ex: EAuction</p>
+                                <select name="budget" tabindex="5" class="chosen-select" style="width: 240px;">
+                                    <option value="EAuction" selected>EAuction</option>
+                                    <option value="งบลงทุน">งบลงทุน</option>
+                                    <option value="อื่นๆ">อื่นๆ</option>
+                                </select>
                             </div>
                         </div>
                         <div class="form-group">
@@ -93,10 +106,21 @@
                             <div class="col-sm-10">
                                 <select name="asset_statuses_id" tabindex="5" class="chosen-select" style="width: 240px;">
                                     @foreach ($statuses as $status)
-                                        <option value="{{ $status->id }}"
-                                            @if ($status->id == 1)
+                                        <option value="{{ $status->id }}" @if ($status->id == 1)
                                             selected
-                                            @endif>{{ $status->name }}</option>
+                                    @endif>{{ $status->name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="sub_groups_id" class="col-sm-2 control-label">กลุ่มหลัก</label>
+                            <div class="col-sm-10">
+                                <select id="sel_main" name="sub_groups_id" tabindex="8" class="chosen-select">
+                                    @foreach ($mains as $main)
+                                        <option value="{{ $main->id }}" @if ($main->id == 1)
+                                            selected
+                                    @endif>{{ $main->name }}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -104,21 +128,18 @@
                         <div class="form-group">
                             <label for="asset_categories_id" class="col-sm-2 control-label">กลุ่มย่อย</label>
                             <div class="col-sm-10">
-                                <select name="asset_categories_id" tabindex="5" class="chosen-select" style="width: 240px;">
-                                    @foreach ($cates as $cate)
-                                        <option value="{{ $cate->id }}"
-                                            @if ($cate->id == 1)
-                                            selected
-                                            @endif>{{ $cate->name }}</option>
-                                    @endforeach
+                                <select id="sel_cate" name="asset_categories_id" tabindex="9" class="chosen-select">
+                                    <option value=""></option>
                                 </select>
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="location" class="col-sm-2 control-label">ใช้ประจำที่</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" name="location" placeholder="">
-                                <p class="help-block mb-0">Ex: ทส.</p>
+                                <select name="location" tabindex="5" class="chosen-select" style="width: 240px;">
+                                    <option value="ทส." selected>ทส.</option>
+                                    <option value="อื่นๆ">อื่นๆ</option>
+                                </select>
                             </div>
                         </div>
                         <div class="form-group">
@@ -152,9 +173,98 @@
 @endsection
 
 @section('footer')
-
+    <script src="https://getbootstrap.com/2.3.2/assets/js/google-code-prettify/prettify.js"></script>
+    <script src="{{ asset('js/bootstrap-datepicker.js') }}"></script>
+    <script src="{{ asset('js/bootstrap-datepicker-thai.js') }}"></script>
+    <script src="{{ asset('js/locales/bootstrap-datepicker.th.js') }}"></script>
 @endsection
 
 @section('footer-script')
+    <script id="example_script" type="text/javascript">
+        $('#datepicker').datepicker({
+            language: 'th-th',
+            format: 'dd/mm/yyyy'
+        });
+        $('#datepicker').on('changeDate', function() {
+            $('#my_hidden_input').val(
+                $('#datepicker').datepicker('getFormattedDate')
+            );
+        });
+    </script>
+
+    <script>
+        $(document).ready(function() {
+            // Empty the dropdown
+            //$('#sel_cate').find('option').not(':first').remove();
+            $('#sel_cate').find('option').remove();
+            // AJAX request
+            $.ajax({
+                url: 'getCates/' + 1,
+                type: 'get',
+                dataType: 'json',
+                success: function(response) {
+
+                    var len = 0;
+                    if (response['data'] != null) {
+                        len = response['data'].length;
+                    }
+
+                    if (len > 0) {
+                        // Read data and create <option >
+                        for (var i = 0; i < len; i++) {
+
+                            var id = response['data'][i].id;
+                            var name = response['data'][i].name;
+
+                            var option = "<option value='" + id + "'>" + name + "</option>";
+
+                            $("#sel_cate").append(option);
+                        }
+                    }
+
+                }
+            });
+
+            // Department Change
+            $('#sel_main').change(function() {
+
+                // Department id
+                var id = $(this).val();
+
+                // Empty the dropdown
+                $('#sel_cate').find('option').remove();
+
+                // AJAX request
+                $.ajax({
+                    url: 'getCates/' + id,
+                    type: 'get',
+                    dataType: 'json',
+                    success: function(response) {
+
+                        var len = 0;
+                        if (response['data'] != null) {
+                            len = response['data'].length;
+                        }
+
+                        if (len > 0) {
+                            // Read data and create <option >
+                            for (var i = 0; i < len; i++) {
+
+                                var id = response['data'][i].id;
+                                var name = response['data'][i].name;
+
+                                var option = "<option value='" + id + "'>" + name + "</option>";
+
+                                $("#sel_cate").append(option);
+                            }
+                        }
+
+                    }
+                });
+            });
+
+        });
+
+    </script>
 
 @endsection
