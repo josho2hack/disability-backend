@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="no-js " lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
     <meta charset="utf-8">
@@ -14,11 +14,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- vendor css files -->
     <link rel="stylesheet" href="{{ asset('assets/js/vendor/bootstrap/bootstrap.min.css') }}">
-
+    <link rel="stylesheet" href="{{ asset('assets/css/vendor/animsition.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/js/vendor/touchspin/jquery.bootstrap-touchspin.min.css') }}">
     @yield('header')
-
-    <!-- project main css files -->
-    <link rel="stylesheet" href="{{ asset('assets/css/main.css') }}">
+    <!-- CSS Files -->
+    <link href="{{ asset('assets/css/main.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/css/custom-css.css') }}" rel="stylesheet">
     <style>
         a:link {
             text-decoration: none;

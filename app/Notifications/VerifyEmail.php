@@ -3,10 +3,10 @@
 namespace App\Notifications;
 
 use Illuminate\Bus\Queueable;
-use Illuminate\Auth\Notifications\VerifyEmail as VerifyEmailBase;
 use Illuminate\Notifications\Messages\MailMessage;
+use Illuminate\Auth\Notifications\VerifyEmail as VerifyEmailBase;
 
-class VerifyEmailNotification extends VerifyEmailBase
+class VerifyEmail extends VerifyEmailBase
 {
     use Queueable;
 
@@ -39,17 +39,9 @@ class VerifyEmailNotification extends VerifyEmailBase
      */
     public function toMail($notifiable)
     {
-         return (new MailMessage)
-             ->subject('ยืนยันอีเมล์')
-             ->line('โปรดคลิกปุ่มด้านล่างเพื่อยืนยันอีเมล์')
-             ->action('ยืนยันอีเมล์',
-                 $this->verificationUrl($notifiable)
-             )
-             ->line('หากท่านไม่ได้สมัครสมาชิกต้องขอภัยมา ณ ที่นี้ด้วย');
-        /*
-         return (new MailMessage)
-             ->subject('ยืนยันอีเมล์')
-             ->view('emails.user.verify-email',['url' => $this->verificationUrl($notifiable)]);*/
+        return (new MailMessage)
+                    ->subject('ยืนยันอีเมล์ การสมัครสมาชิกระบบบริหารจัดการอุปกรณ์และเครื่องมือด้าน ICT สำหรับคนพิการ')
+                    ->markdown('mail.user.verify-email',['url' => $this->verificationUrl($notifiable)]);
     }
 
     /**

@@ -11,7 +11,7 @@ class VerificationMiddleware
     public function handle($request, Closure $next)
     {
         if (auth()->check()) {
-            if (!auth()->user()->email_verified_at) {
+            if (empty(auth()->user()->email_verified_at)) {
                 auth()->logout();
 
                 return redirect()->route('user-login')->with('message', 'โปรดตรวจสอบอีเมล์เพื่อยืนยันอีเมล์');

@@ -38,8 +38,8 @@ class Kernel extends HttpKernel
             \Illuminate\View\Middleware\ShareErrorsFromSession::class,
             \App\Http\Middleware\VerifyCsrfToken::class,
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
-            \App\Http\Middleware\ApprovalMiddleware::class,
-            \App\Http\Middleware\VerificationMiddleware::class,
+            //\App\Http\Middleware\VerificationMiddleware::class,
+            //\App\Http\Middleware\ApprovalMiddleware::class,
         ],
 
         'api' => [
@@ -68,5 +68,6 @@ class Kernel extends HttpKernel
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'cors' => \App\Http\Middleware\Cors::class,
         'admin' => \App\Http\Middleware\checkAdmin::class,
+        'approved' => \App\Http\Middleware\ApprovalMiddleware::class,
     ];
 }

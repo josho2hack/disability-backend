@@ -1,4 +1,4 @@
-@extends('layouts.main-login')
+@extends('layouts.main')
 @section('header')
     <link rel="stylesheet" href="{{ asset('assets/js/vendor/sweetalert/sweetalert2.css') }}">
 @endsection

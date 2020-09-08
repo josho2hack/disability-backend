@@ -33,7 +33,7 @@ Route::get('welcome', 'HomeController@welcome');
 
 Auth::routes(['verify' => true]);
 
-Route::get('/home', 'HomeController@index')->name('home')->middleware('verified');
+Route::get('/home', 'HomeController@index')->name('home')->middleware('verified','approved');
 //Route::get('/logout', 'HomeController@logout');
 
 Route::get('/user-login', 'HomeController@user_login')->name('user-login');

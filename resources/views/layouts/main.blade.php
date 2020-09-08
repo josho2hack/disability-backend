@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="no-js" lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
     <meta charset="utf-8" />
@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="{{ asset('assets/js/vendor/bootstrap/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/vendor/animsition.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/js/vendor/touchspin/jquery.bootstrap-touchspin.min.css') }}">
+    @yield('header')
     <!-- CSS Files -->
     <link href="{{ asset('assets/css/main.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/css/custom-css.css') }}" rel="stylesheet">
@@ -58,6 +59,7 @@
         <div id="header">
             <header class="clearfix">
                 <div class="container p-0">
+
                     <!-- Branding -->
                     <div class="branding p-0 m-0" style="background-color: #8560a9 !important; width: 80px !important;">
                         <a class="brand" href="{{ url('/') }}">
@@ -65,7 +67,7 @@
                                 @guest
 
                                 @else
-                                    {{ Auth::user()->roles()->first()->description ?? '' }}
+                                    {{ Auth::user()->roles()->first()->description }}
                                 @endguest
                             </span>
                         </a>
@@ -112,10 +114,8 @@
         </div>
         <!--/ HEADER Content  -->
         <section id="content">
-            <div class="header header-filter">
-                <div class="container">
-                    @yield('content')
-                </div>
+            <div class="container">
+                @yield('content')
             </div>
         </section>
 
@@ -195,4 +195,5 @@
     <!-- Custom Js -->
     <script src="{{ asset('assets/bundles/mainscripts.bundle.js') }}"></script>
 </body>
+
 </html>

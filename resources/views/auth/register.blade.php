@@ -15,7 +15,7 @@
                     <div class="row">
                         <div class="col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3 text-center">
                             <div class="card card-signup">
-                                <form class="form" method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
+                                <form class="form-horizontal" role="form" method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
                                     @csrf
                                     <div class="header header-primary text-center">
                                         <h4>สมัครสมาชิก</h4>
@@ -89,7 +89,11 @@
                                                 @endforeach
                                             </select>
                                         </div>
-                                        <div class="redio">
+                                        <input type="file" class="filestyle" data-buttonText="แนบบัตรคนพิการ" data-iconName="fa fa-inbox"
+                                                    name="pwd_pic" placeholder="แนบบัตรคนพิการ..." data-buttonBefore="true">
+
+                                        <div class="redio pull-left">
+                                            <label for="" class="mr-10">เพศ </label>
                                             <label for="inlineRadio1" class="form-check-label mr-10">
                                                 <input class="form-check-input" type="radio" value="1" name="gender"
                                                     id="inlineRadio1" checked>ชาย
@@ -99,10 +103,8 @@
                                                     id="inlineRadio2">หญิง
                                             </label>
                                         </div>
-                                        <div class="form-group">
-                                                <input type="file" class="filestyle" data-buttonText="แนบบัตรคนพิการ" data-iconName="fa fa-inbox"
-                                                    name="pwd_pic" placeholder="แนบบัตรคนพิการ...">
-                                        </div>
+                                        <br>
+
                                         <div class="checkbox">
                                             <label>
                                                 <input type="checkbox" id="terms_and_conditions" onclick="terms_changed(this)"> ยอมรับ
