@@ -40,7 +40,14 @@
                         <div class="col-xs-12 col-sm-12 col-md-12">
                             <div class="form-group">
                                 <strong>Id:</strong>
-                                {{ $user->id }}
+                                {{ $user->system_id }}
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-12">
+                            <div class="form-group">
+                                <strong>วันที่อนุมัติ:</strong>
+                                {{ formatDateThai($user->appove_date) }}
+                                {{ formatTimeThai($user->appove_date) }}
                             </div>
                         </div>
                         <div class="col-xs-12 col-sm-12 col-md-12">

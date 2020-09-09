@@ -10,6 +10,7 @@ use App\User;
 use App\UserOption;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Database\Eloquent\Builder;
 
 class UserController extends Controller
 {
@@ -107,6 +108,25 @@ class UserController extends Controller
             $path = $request->pwd_pic->store('users');
             $input['pwd_pic'] = $path;
         }
+
+        $year = now()->format('y');
+        $year += 43;  //Thai Year
+        $user = User::whereHas("roles", function($q) use($role_id){ $q->where("roles_id", $role_id); })->latest()->first();
+        $idtemp = substr($user->system_id,5);
+        $idtemp += 1;
+        $num_padded = sprintf("%03d", $idtemp); //add 0 3 digit before ID
+
+        if($role_id == 1){
+            $input['system_id'] = 'AM'.$year.'-'.$num_padded;
+        }elseif($role_id == 2){
+            $input['system_id'] = 'AD'.$year.'-'.$num_padded;
+        }elseif($role_id == 3){
+            $input['system_id'] = 'AP'.$year.'-'.$num_padded;
+        }elseif($role_id == 4){
+            $input['system_id'] = 'MB'.$year.'-'.$num_padded;
+        }
+
+        $input['appove_date'] = now();
 
         $user = User::create($input);
         $user->roles()->attach($role_id);

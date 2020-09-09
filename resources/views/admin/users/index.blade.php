@@ -111,11 +111,14 @@
                             @foreach ($users as $user)
                                 <tr>
                                     <td>{{ $loop->index + 1 }}</td>
-                                    <td>{{ $user->pwd_id ?? '' }}</td>
+                                    <td>{{ $user->system_id ?? '' }}</td>
                                     <td>{{ $user->disability->description ?? '' }}</td>
                                     <td>{{ $user->first_name ?? '' }}</td>
                                     <td>{{ $user->last_name ?? ''}}</td>
-                                    <td></td>
+                                    <td>{{ formatDateThai($user->appove_date) ?? ''}}
+                                        <br>
+                                        {{ formatTimeThai($user->appove_date) ?? '' }}
+                                    </td>
                                     <td>
                                         @if ($user->active == 1)
                                             <span style="color: green">เปิด</span>

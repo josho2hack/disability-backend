@@ -23,7 +23,9 @@ class DatabaseSeeder extends Seeder
                 'active' => true,
                 'email_verified_at' => now(),
                 'citizen_id' => '1234567890123',
-                'pwd_id' => '1234567890123'
+                'pwd_id' => '1234567890123',
+                'system_id' => 'AM63-001',
+                'appove_date' => now()
             ],
             [
                 'email' => 'audit@pwdsthai.org', //2
@@ -34,7 +36,9 @@ class DatabaseSeeder extends Seeder
                 'active' => true,
                 'email_verified_at' => now(),
                 'citizen_id' => '1234567890123',
-                'pwd_id' => '1234567890123'
+                'pwd_id' => '1234567890123',
+                'system_id' => 'AD63-001',
+                'appove_date' => now()
             ],
             [
                 'email' => 'approve@pwdsthai.org', //3
@@ -45,7 +49,9 @@ class DatabaseSeeder extends Seeder
                 'active' => true,
                 'email_verified_at' => now(),
                 'citizen_id' => '1234567890123',
-                'pwd_id' => '1234567890123'
+                'pwd_id' => '1234567890123',
+                'system_id' => 'AP63-001',
+                'appove_date' => now()
             ],
             [
                 'email' => 'user@pwdsthai.org',  //4
@@ -56,7 +62,9 @@ class DatabaseSeeder extends Seeder
                 'active' => true,
                 'email_verified_at' => now(),
                 'citizen_id' => '1234567890123',
-                'pwd_id' => '1234567890123'
+                'pwd_id' => '1234567890123',
+                'system_id' => 'MB63-001',
+                'appove_date' => now()
             ],
         ]);
 
@@ -111,17 +119,16 @@ class DatabaseSeeder extends Seeder
 
         $user = App\User::find(1);
         $user->roles()->attach(1);
-
-        // $dis_type = App\DisabilityType::find(1);
-        // $user->disabilityType()->associate($dis_type);
-        // $user->save();
-
         $user = App\User::find(2);
         $user->roles()->attach(2);
         $user = App\User::find(3);
         $user->roles()->attach(3);
+
         $user = App\User::find(4);
         $user->roles()->attach(4);
+        $dis_type = App\DisabilityType::find(1);
+        $user->disabilityType()->associate($dis_type);
+        $user->save();
 
         DB::table('asset_statuses')->insert([
             [
