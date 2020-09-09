@@ -5,6 +5,9 @@ namespace App\Http\Controllers\Form;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use PDF;
+use App\Profile;
+use App\Asset;
+
 
 class FormreceiveController extends Controller
 {
@@ -25,7 +28,19 @@ class FormreceiveController extends Controller
      */
     public function create()
     {
-        //
+        
+        if( \Auth::user()->disability_type_id == null ){
+            return redirect()->back()->with('message', 'กรุณาเพิ่มข้อมูลโปรไฟล์ให้ครบถ้วน');
+        }
+        $check_data = Profile::where('user_id', \Auth::user()->id)->first();
+        if ( $check_data == null){
+            return redirect()->back()->with('message', 'กรุณาเพิ่มข้อมูลโปรไฟล์ให้ครบถ้วน');
+        }
+
+        $address = Profile::where('user_id',\Auth::user()->id)->first();
+        $assets = Asset::where('asset_statuses_id', '1')->get();
+
+        return view('forms.receive.create', compact('address', 'assets'));
     }
 
     /**

@@ -50,7 +50,7 @@ class PracticeController extends Controller
     public function getsubgroup(Request $request)
     {
     	$sg = SubGroup::where('main_groups_id',$request->main_id)->get();
-		$subgroup = "<option value=''>- เลือก -</option>";
+		$subgroup = "<option value=''>- กลุ่มย่อย -</option>";
 		
 		foreach( $sg as $sub ){
 			$subgroup .= "<option value='{$sub->id}'>{$sub->name}</option>";

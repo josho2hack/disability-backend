@@ -9,6 +9,8 @@ use App\Substitute;
 use App\User;
 use App\Profile;
 use App\Asset;
+use App\MainGroup;
+use App\AssetCategory;
 
 class FormborrowController extends Controller
 {
@@ -49,8 +51,9 @@ class FormborrowController extends Controller
 
         $address = Profile::where('user_id',\Auth::user()->id)->first();
         $assets = Asset::where('asset_statuses_id', '1')->get();
+        $main = MainGroup::get();
 
-        return view('forms.borrow.create', compact('address', 'assets'));
+        return view('forms.borrow.create', compact('address', 'assets', 'main'));
     }
 
     /**
@@ -161,5 +164,23 @@ class FormborrowController extends Controller
         }
 
         return $address;
+    }
+
+    public function getcategory(Request $request)
+    {
+        $data = [];
+
+        $category = AssetCategory::where('sub_groups_id',$request->sub_id)->get();
+
+        $categories = "<option value=''>- เลือก -</option>";
+        
+        foreach( $category as $cate ){
+            $asset = Asset::where('asset_categories_id', $cate->id)->first();
+            if ($asset != null) {
+                $categories .= "<option value='".$cate->id."'>".$cate->name.':'.$asset->description."</option>";
+            }
+        }
+
+        return $categories;
     }
 }

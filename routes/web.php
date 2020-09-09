@@ -66,6 +66,7 @@ Route::get('form-receive/receive/pdf', 'Form\FormreceiveController@pdf_receive')
 Route::resource('form-borrow' , 'Form\FormborrowController');
 Route::post('form-borrow/getNo' , 'Form\FormborrowController@get_number');
 Route::post('form-borrow/getData' , 'Form\FormborrowController@get_data');
+Route::post('form-borrow/getcategory' , 'Form\FormborrowController@getcategory');
 //pdf
 Route::get('pdf/{id}', 'PDFController@pdf');
 

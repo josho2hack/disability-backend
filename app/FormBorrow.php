@@ -26,4 +26,8 @@ class FormBorrow extends Model
     {
         return $this->hasOne(Substitute::class, 'id', 'substitute_id');
     }
+
+    public function assets() {
+        return $this->hasMany('App\Asset','accessorie_list');
+    }
 }

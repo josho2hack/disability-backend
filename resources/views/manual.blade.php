@@ -1,6 +1,9 @@
 @extends('layouts.admin')
 @section('header')
     <link rel="stylesheet" href="{{ asset('assets/js/vendor/footable/css/footable.core.min.css') }}">
+    <link rel="stylesheet" href="assets/js/vendor/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/vendor/animsition.min.css">    
+    <link rel="stylesheet" href="assets/css/main.css">
 @endsection
 @section('content')
     <!-- bradcome -->
@@ -28,8 +31,7 @@
                         class="footable table table-custom table-hover">
                         <thead>
                             <tr>
-                                <th colspan="12">กลุ่ม: เทคโนโลยีสารสนเทศและการสื่อสาร
-                                   
+                                <th colspan="12">กลุ่ม: เทคโนโลยีสารสนเทศและการสื่อสาร                                   
                                     <span class="text-info">
                                         {{ $subgroup->where('main_groups_id', 1)->count() }}
                                     </span>
@@ -58,10 +60,34 @@
                                         <td align="center">
                                             <a target="_blank" href="{{ url($cate->doc) }}" class="btn btn-raised btn-info"
                                             title="รายละเอียด" @if (empty($cate->document)) disabled @endif> <i class="fa fa-desktop"></i></a>
-                                            &nbsp;&nbsp;<a target="_blank" href="{{ url("$cate->url") }}" class="btn btn-raised btn-primary"
+                                            &nbsp;&nbsp;
+                                            <button class="btn btn-raised btn-default" data-toggle="modal" data-target="#myModal2">
+                                              <i class="fa fa-youtube-play"></i>
+                                            </button>
+                                            <a target="_blank" href="{{ url("$cate->url") }}" class="btn btn-raised btn-primary"
                                             title="รายละเอียด" @if (empty($cate->url)) disabled @endif> <i class="fa fa-youtube-play"></i></a>
                                         </td>
                                     </tr>
+                                    <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog modal-lg" >
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                    <h4 class="modal-title">Modal Header Large</h4>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's
+                                                        standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled
+                                                        it to make a type specimen book. It has survived not only five centuries, but also the leap into
+                                                        electronic typesetting, remaining essentially unchanged.</p>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-raised btn-success" data-dismiss="modal">Submit</button>
+                                                    <button type="button" class="btn btn-raised btn-danger" data-dismiss="modal">Cancel</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 @endforeach
                             @endforeach
                         </tbody>
@@ -130,6 +156,8 @@
             </section>
         </div>
     </div>
+
+    
 @endsection
 @section('footer')
     <script src="{{ asset('assets/js/vendor/footable/footable.all.min.js') }}"></script>

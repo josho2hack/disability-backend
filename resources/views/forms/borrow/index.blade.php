@@ -49,7 +49,8 @@
                         class=" table table-custom table-hover">
                         <thead>
                             <tr>
-                                <th>ลำดับที่</th>
+                                <th>ลำดับ</th>
+                                <th>เลขที่</th>
                                 <th>วันที่</th>
                                 <th>รายงานแบบคำขอยืมอุปกรณ์และเครื่องมือ ฯ (ทก.01)</th>
                                 <th></th>
@@ -59,8 +60,9 @@
                             @foreach ($form as $forms)
                                 <tr>
                                     <td>{{ $loop->index + 1 }}</td>
+                                    <td>{{ $forms->id }}</td>
                                     <td>{{ date('d-m-Y', strtotime($forms->created_at)) }}</td>
-                                    <td>แบบฟอร์มขอยืม {{ $forms->accessorie_list }}</td>
+                                    <td>แบบฟอร์มขอยืม {{ $forms->accessorie_list }} จำนวน 1</td>
                                     <td>
                                         <a href="{{ url('pdf/'.$forms->id) }}" class="btn btn-raised btn-info"
                                             title="รายละเอียด"> <i class="fa fa-eye"></i></a>
