@@ -27,7 +27,7 @@
                     ->roles()
                     ->first()->name == 'Approve')1.
                     @endif
-                    2 เอกสาร ทก09 (อนุมัติ)</small>
+                    3 เอกสาร ทก10 (ยกเลิก)</small>
             </div>
             <div class="btn-group pull-right">
                 <ol class="breadcrumb">
@@ -52,7 +52,7 @@
                         ->roles()
                         ->first()->name == 'Approve')1.
                         @endif
-                        2 เอกสาร ทก09 (อนุมัติ)</li>
+                        3 เอกสาร ทก10 (ยกเลิก)</li>
                 </ol>
             </div>
         </div>
@@ -63,7 +63,7 @@
             <section class="boxs">
                 <div class="boxs-header">
                     <h3 class="custom-font">
-                        <strong>เอกสาร ทก09 (อนุมัติ)</strong>
+                        <strong>เอกสาร ทก10 (ยกเลิก)</strong>
                     </h3>
                     <div class="form-group">
                         <label for="filter" style="padding-top: 5px">ค้นหา:</label>
@@ -82,15 +82,15 @@
                         <thead>
                             <tr>
                                 <th>ลำดับ</th>
-                                <th>เลขที่ ทก.09</th>
+                                <th>เลขที่ ทก.10</th>
                                 <th>รายการ</th>
-                                <th>วันที่ / เวลา อนุมัติ</th>
+                                <th>วันที่ / เวลา ยกเลิก</th>
                                 <th>วันที่ / เวลา ส่งผล</th>
                                 <th colspan=3 style="width: 5%">ดำเนินการ</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($form09 as $form)
+                            @foreach ($form10 as $form)
                                 <tr>
                                     <td>{{ $loop->index + 1 }}</td>
                                     <td>

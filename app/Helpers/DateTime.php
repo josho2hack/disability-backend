@@ -20,6 +20,7 @@ if (! function_exists('show_date')) {
 if (! function_exists('formatDateThai')) {
 	function formatDateThai($strDate)
 	{
+        if(!empty($strDate)){
         $strYear = date("Y",strtotime($strDate))+543;
         $strMonth= date("n",strtotime($strDate));
         $strDay= date("j",strtotime($strDate));
@@ -29,12 +30,15 @@ if (! function_exists('formatDateThai')) {
         $strMonthCut = Array("","ม.ค.","ก.พ.","มี.ค.","เม.ย.","พ.ค.","มิ.ย.","ก.ค.","ส.ค.","ก.ย.","ต.ค.","พ.ย.","ธ.ค.");
         $strMonthThai=$strMonthCut[$strMonth];
         return "$strDay $strMonthThai $strYear";
+        }
+        return "";
 	}
 }
 
 if (! function_exists('formatTimeThai')) {
 	function formatTimeThai($strDate)
 	{
+        if(!empty($strDate)){
         $strYear = date("Y",strtotime($strDate))+543;
         $strMonth= date("n",strtotime($strDate));
         $strDay= date("j",strtotime($strDate));
@@ -44,6 +48,8 @@ if (! function_exists('formatTimeThai')) {
         $strMonthCut = Array("","ม.ค.","ก.พ.","มี.ค.","เม.ย.","พ.ค.","มิ.ย.","ก.ค.","ส.ค.","ก.ย.","ต.ค.","พ.ย.","ธ.ค.");
         $strMonthThai=$strMonthCut[$strMonth];
         return "$strHour:$strMinute:$strSeconds";
+        }
+        return "";
 	}
 }
 

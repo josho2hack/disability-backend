@@ -17,7 +17,7 @@
                     ->roles()
                     ->first()->name == 'Approve')1.
                     @endif
-                    อนุมัติคำขอ (ทก.07)</h3>
+                    อนุมัติคำขอ</h3>
                 <small class="text-muted">
                     @if (Auth::user()
                     ->roles()
@@ -56,7 +56,6 @@
                 </ol>
             </div>
         </div>
-
     </div>
     <!-- row -->
     <div class="row">
@@ -95,11 +94,11 @@
                                 <tr>
                                     <td>{{ $loop->index + 1 }}</td>
                                     <td>
-                                        {{ $form->id }}
+                                        {{ sprintf("%02d",$form->id) }}
                                     </td>
                                     <td>3</td>
-                                    <td>{{$form->created_at}}</td>
-                                    <td>{{$form->report}}</td>
+                                    <td>{{ formatDateThai($form->created_at) }} {{ formatTimeThai($form->created_at) }}</td>
+                                    <td>{{ formatDateThai($form->report) }} {{ formatTimeThai($form->report) }}</td>
                                     <td>
                                         <a href="{{ route('form07.show', $form) }}" class="btn btn-raised btn-info btn-sm"
                                             title="รายละเอียด"> <i class="fa fa-eye"></i></a>
@@ -109,26 +108,38 @@
                                         <form action="{{ route('form07.update', $form->id) }}" method="post">
                                             @csrf
                                             @method('PUT')
+                                            <input type="hidden" name="approve">
                                             <button class="btn btn-raised btn-success btn-sm" type="submit" title="ตรวจสอบผ่าน">
                                                 ตรวจสอบผ่าน</button>
                                         </form>
                                     </td>
                                     <td>
-                                        <a href="{{ route('form07.edit', $form->id) }}"
-                                            class="btn btn-raised btn-warning btn-sm" title="แก้ไข"> <i class="fa fa-edit"></i></a>
+                                        <form action="{{ route('form07.update', $form->id) }}" method="post">
+                                            @csrf
+                                            @method('PUT')
+                                            <input type="hidden" name="cancel">
+                                            <button class="del btn btn-raised btn-primary btn-sm" type="submit" title="ยกเลิก">
+                                                <i class="fa fa-trash"></i></button>
+                                        </form>
                                     </td>
                                     @else
                                     <td>
                                         <form action="{{ route('form07.update', $form->id) }}" method="post">
                                             @csrf
                                             @method('PUT')
+                                            <input type="hidden" name="approve">
                                             <button class="btn btn-raised btn-success btn-sm" type="submit" title="ตรวจสอบแล้ว" disabled>
                                                 ตรวจสอบแล้ว</button>
                                         </form>
                                     </td>
                                     <td>
-                                        <a href="{{ route('form07.edit', $form->id) }}"
-                                            class="btn btn-raised btn-warning btn-sm" title="แก้ไข"  disabled> <i class="fa fa-edit"></i></a>
+                                        <form action="{{ route('form07.update', $form->id) }}" method="post">
+                                            @csrf
+                                            @method('PUT')
+                                            <input type="hidden" name="cancel">
+                                            <button class="del btn btn-raised btn-primary btn-sm" type="submit" title="ยกเลิก" disabled>
+                                                <i class="fa fa-trash"></i></button>
+                                        </form>
                                     </td>
                                     @endif
                                 </tr>

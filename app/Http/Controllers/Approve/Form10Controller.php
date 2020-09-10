@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Approve;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Form10;
 
 class Form10Controller extends Controller
 {
@@ -14,7 +15,8 @@ class Form10Controller extends Controller
      */
     public function index()
     {
-        //
+        $form10 = Form10::all();
+        return view('approve.form10.index', compact('form10'));
     }
 
     /**
