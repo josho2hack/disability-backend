@@ -187,7 +187,7 @@
 </head>
 <body>
 	<div class="border">
-			ทก.01<br>
+			ทก.๐๑<br>
 		สำหรับคนพิการ / ผู้ยื่นคำขอแทน
 	</div>
 
@@ -440,7 +440,11 @@ case '12' : $month="ธันวาคม"; break;
 		</div>
 		ในรายการอุปกรณ์
 		<div class="accessorie">
-			{{ $form->accessorie_list }}
+			@if(strlen($form->accessorie_list)>55)
+	            {{ $form->accessorie_list = substr($form->accessorie_list, 0, 55)."..." }}
+	            @else
+	            {{ $form->accessorie_list}}
+	            @endif
 		</div>
 		เลขที่อุปกรณ์
 		<div class="accessorie">

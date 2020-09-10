@@ -11,7 +11,7 @@ use App\Profile;
 use App\Asset;
 use App\MainGroup;
 use App\AssetCategory;
-use App\FormSingles;
+use App\Form01;
 use App\UserDocument;
 use PDF;
 
@@ -25,7 +25,7 @@ class FormborrowController extends Controller
     public function index()
     {
         if( isset(\Auth::user()->id) ) {
-            $form = FormSingles::where(['user_id' => \Auth::user()->id, 'type_form' => 'borrow'])->get();
+            $form = Form01::where('user_id' , \Auth::user()->id)->get();
             
             return view('forms.borrow.index' ,compact('form'));
         }else{
@@ -71,7 +71,7 @@ class FormborrowController extends Controller
     public function store(Request $request)
     {
         // dd($request->all());
-        $borrow = New FormSingles;;
+        $borrow = New Form01;;
         $borrow->user_id = \Auth::user()->id;
 
         if ( $request->type == 2 ) {
@@ -239,7 +239,7 @@ class FormborrowController extends Controller
      public function pdf($id)
     {
 
-        $form = FormSingles::where('id', $id)->first();
+        $form = Form01::where('id', $id)->first();
 
         $pdf = PDF::loadview('forms.borrow.pdf', compact('form'));
         // return view('forms.borrow.pdf', compact('form'));
@@ -248,7 +248,7 @@ class FormborrowController extends Controller
 
     public function send_auditor($id)
     {
-        $send_auditor = FormSingles::find($id);
+        $send_auditor = Form01::find($id);
         $send_auditor->send_status = '1';
         $send_auditor->send_date = date('Y-m-d H:i:s');
 
