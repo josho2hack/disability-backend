@@ -196,7 +196,8 @@
 		หรือเทคโนโลยีสิ่งอำนวยความสะดวกเพื่อการสื่อสาร ตามกฎกระทรวงฯ
 	</div>
 	<div class="write-at">
-		เขียนที่..............{{ $form->write_at }}........
+		เขียนที่ {{ $form->address->house_no }} หมู่ {{ $form->address->village_no }}  ต.{{ $form->address->sub_district }}
+                        <br> อ.{{ $form->address->district }} จ.{{ $form->address->province }}  {{ $form->address->postal_code }}
 	</div>
 	<div class="date">
 		วันที่ ...{{ date('d', strtotime($form->created_at)) }}..  
@@ -234,53 +235,53 @@ case '12' : $month="ธันวาคม"; break;
 	
 	<div>
 		<span class="box">
-			<input class="largerCheckbox" type="checkbox" @if($form->copy_card)checked @else @endif>
+			<input class="largerCheckbox" type="checkbox" @if($form->doc->copy_card)checked @else @endif>
 		</span>
-		&nbsp;&nbsp;&nbsp;&nbsp;สำเนาบัตรประจำตัวคนพิการ พร้อมรับรองสำเนาถูกต้อง &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;จำนวน .....{{ $form->copy_card}}..... ฉบับ
+		&nbsp;&nbsp;&nbsp;&nbsp;สำเนาบัตรประจำตัวคนพิการ พร้อมรับรองสำเนาถูกต้อง &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;จำนวน .....@if($form->doc->copy_card)1 @else @endif..... ฉบับ
 	</div>
 	<div>
 		<span class="box">
-			<input class="largerCheckbox" type="checkbox" @if($form->house_res )checked @else @endif>
+			<input class="largerCheckbox" type="checkbox" @if($form->doc->house_res )checked @else @endif>
 		</span>
-		&nbsp;&nbsp;&nbsp;&nbsp;สำเนาทะเบียนบ้านคนพิการ พร้อมรับรองสำเนาถูกต้อง &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;จำนวน .....{{ $form->house_res}}..... ฉบับ
+		&nbsp;&nbsp;&nbsp;&nbsp;สำเนาทะเบียนบ้านคนพิการ พร้อมรับรองสำเนาถูกต้อง &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;จำนวน .....@if($form->doc->house_res )1 @else @endif..... ฉบับ
 	</div>
 	<div>
 		<span class="box">
-			<input class="largerCheckbox" type="checkbox" @if($form->copy_train )checked @else @endif>
+			<input class="largerCheckbox" type="checkbox" @if($form->doc->copy_train )checked @else @endif>
 		</span>
-		&nbsp;&nbsp;&nbsp;&nbsp;สำเนาเอกสารรับรองการเข้ารับการฝึกอบรมตามหลักสูตรที่ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;จำนวน .....{{ $form->copy_train}}..... ฉบับ<br>	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;กระทรวงเทคโนโลยีสารสนเทศและการสื่อสารกำหนด <br>
+		&nbsp;&nbsp;&nbsp;&nbsp;สำเนาเอกสารรับรองการเข้ารับการฝึกอบรมตามหลักสูตรที่ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;จำนวน .....@if($form->doc->copy_train )1 @else @endif..... ฉบับ<br>	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;กระทรวงเทคโนโลยีสารสนเทศและการสื่อสารกำหนด <br>
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;พร้อมรับรองสำเนาถูกต้อง (ถ้ามี)
 	</div>
 	<div>
 		<span class="box">
-			<input class="largerCheckbox" type="checkbox" @if($form->sub_copy_citizen_id )checked @else @endif>
+			<input class="largerCheckbox" type="checkbox" @if($form->doc->sub_copy_citizen_id )checked @else @endif>
 		</span>
-		&nbsp;&nbsp;&nbsp;&nbsp;สำเนาบัตรประจำตัวประชาชนหรือสำเนาทะเบียนบ้านของ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	จำนวน .....{{ $form->sub_copy_citizen_id}}..... ฉบับ<br>
+		&nbsp;&nbsp;&nbsp;&nbsp;สำเนาบัตรประจำตัวประชาชนหรือสำเนาทะเบียนบ้านของ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	จำนวน .....@if($form->doc->sub_copy_citizen_id )1 @else @endif..... ฉบับ<br>
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ผู้ยื่นคำขอแทน พร้อมร้บรองสำเนาถูกต้อง
 	</div>
 	<div>
 		<span class="box">
-			<input class="largerCheckbox" type="checkbox" @if($form->power_attorney )checked @else @endif>
+			<input class="largerCheckbox" type="checkbox" @if($form->doc->power_attorney )checked @else @endif>
 		</span>
-		&nbsp;&nbsp;&nbsp;&nbsp;หนังสือมอบอำนาจจากคนพิการหรือหลักฐานที่แสดงว่ามีส่วน &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;จำนวน .....{{ $form->power_attorney}}..... ฉบับ <br>
+		&nbsp;&nbsp;&nbsp;&nbsp;หนังสือมอบอำนาจจากคนพิการหรือหลักฐานที่แสดงว่ามีส่วน &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;จำนวน .....@if($form->doc->power_attorney )1 @else @endif..... ฉบับ <br>
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;เกี่ยวข้องกับคนพิการเนื่องจากเป็นผู้ปกครอง ผู้พิทักษ์ ผู้อนุบาล<br>
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;หรือผู้ดูแลคนพิการ (กรณี ผู้ยื่นคำขอแทน)
 	</div>
 	<div class="detail-1"><br>	
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		ข้าพเจ้า @if($form->type == 2) {{ $form->substitute->title }} @else {{ $form->address->title }} @endif
+		ข้าพเจ้า @if($form->type_status == 2) {{ $form->substitute->title }} @else {{ $form->user->title }} @endif
 		<div class="name">
-			@if($form->type == 2)
+			@if($form->type_status == 2)
 				{{ $form->substitute->first_name}}&nbsp;&nbsp;{{$form->substitute->last_name }}
 			@else
 				{{ $form->user->first_name }}&nbsp;&nbsp;{{ $form->user->last_name }}
 			@endif
 		</div>
-		<input type="checkbox" @if($form->type == 1) checked @else @endif>คนพิการ &nbsp;
-		<input type="checkbox" @if($form->type == 2) checked @else @endif>ผู้ยื่นคำขอแทน
+		<input type="checkbox" @if($form->type_status == 1) checked @else @endif>คนพิการ &nbsp;
+		<input type="checkbox" @if($form->type_status == 2) checked @else @endif>ผู้ยื่นคำขอแทน
 		ประเภทความพิการ
 		<div class="type">
-			@if($form->type == 2)
+			@if($form->type_status == 2)
 					-
 			@else
 				{{ $form->user->disability->description }} 
@@ -288,7 +289,7 @@ case '12' : $month="ธันวาคม"; break;
 		</div>
 		บัตรประจำตัวคนพิการ/บัตรประชาชนเลขที่
 		<div class="card">
-			@if($form->type == 2)
+			@if($form->type_status == 2)
 				{{ $form->substitute->citizen_id }}
 			@else
 				{{ $form->user->pwd_id }}
@@ -297,7 +298,7 @@ case '12' : $month="ธันวาคม"; break;
 		ที่อยู่ที่สามารถติดต่อได้
 		บ้านเลขที่
 		<div class="house">
-			@if($form->type == 2)
+			@if($form->type_status == 2)
 				{{ $form->substitute->house_no }}
 			@else
 				{{ $form->address->house_no }}
@@ -305,7 +306,7 @@ case '12' : $month="ธันวาคม"; break;
 		</div>
 		หมู่ที่
 		<div class="moo">
-			@if($form->type == 2)
+			@if($form->type_status == 2)
 				{{ $form->substitute->village_no }}
 			@else
 				{{ $form->address->village_no }}
@@ -313,7 +314,7 @@ case '12' : $month="ธันวาคม"; break;
 		</div>
 		ซอย/ถนน
 		<div class="lane">
-			@if($form->type == 2)
+			@if($form->type_status == 2)
 				{{ $form->substitute->lane }}
 			@else
 				{{ $form->address->lane }}
@@ -321,7 +322,7 @@ case '12' : $month="ธันวาคม"; break;
 		</div>
 		ตำบล/แขวง
 		<div class="district">
-			@if($form->type == 2)
+			@if($form->type_status == 2)
 				{{ $form->substitute->sub_district }}
 			@else
 				{{ $form->address->sub_district }}
@@ -329,7 +330,7 @@ case '12' : $month="ธันวาคม"; break;
 		</div>
 		อำเภอ/เขต 
 		<div class="district">
-			@if($form->type == 2)
+			@if($form->type_status == 2)
 				{{ $form->substitute->district }}
 			@else
 				{{ $form->address->district }}
@@ -337,7 +338,7 @@ case '12' : $month="ธันวาคม"; break;
 		</div>
 		จังหวัด
 		<div class="province">
-			@if($form->type == 2)
+			@if($form->type_status == 2)
 				{{ $form->substitute->province }}
 			@else
 				{{ $form->address->province }}
@@ -345,7 +346,7 @@ case '12' : $month="ธันวาคม"; break;
 		</div>
 		รหัสไปรษณีย์
 		<div class="postal_code">
-			@if($form->type == 2)
+			@if($form->type_status == 2)
 				{{ $form->substitute->postal_code }}
 			@else
 				{{ $form->address->postal_code }}
@@ -353,7 +354,7 @@ case '12' : $month="ธันวาคม"; break;
 		</div>
 		สถานศึกษา
 		<div class="edu">
-			@if($form->type == 2)
+			@if($form->type_status == 2)
 				{{ $form->substitute->edu_place }}
 			@else
 				{{ $form->address->edu_place }}
@@ -361,7 +362,7 @@ case '12' : $month="ธันวาคม"; break;
 		</div>
 		โทรศัพท์
 		<div class="tel">
-			@if($form->type == 2)
+			@if($form->type_status == 2)
 				{{ $form->substitute->tel }}
 			@else
 				{{ $form->address->tel }}
@@ -369,7 +370,7 @@ case '12' : $month="ธันวาคม"; break;
 		</div>
 		ที่อยู่อีเมล์ (e-mail address)
 		<div class="email">
-			@if($form->type == 2)
+			@if($form->type_status == 2)
 				{{ $form->substitute->email }}
 			@else
 				{{ $form->user->email }}
@@ -395,7 +396,7 @@ case '12' : $month="ธันวาคม"; break;
 		</div>
 		หมู่ที่ 
 		<div class="moo">
-			@if($form->type == 2)
+			@if($form->type_status == 2)
 				{{ $form->substitute->village_no }}
 			@else
 				{{ $form->address->village_no }}

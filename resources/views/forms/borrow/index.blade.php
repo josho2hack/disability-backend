@@ -49,23 +49,40 @@
                         class=" table table-custom table-hover">
                         <thead>
                             <tr>
-                                <th>ลำดับ</th>
-                                <th>เลขที่</th>
-                                <th>วันที่</th>
-                                <th>รายงานแบบคำขอยืมอุปกรณ์และเครื่องมือ ฯ (ทก.01)</th>
-                                <th></th>
+                                <th style="text-align: center">ลำดับ</th>
+                                <th style="text-align: center">เลขที่</th>
+                                <th style="text-align: center">อุปกรณ์</th>
+                                <th style="text-align: center">จำนวน</th>
+                                <th style="text-align: center">วัน/เวลา ที่สร้าง</th>
+                                <th style="text-align: center">วัน/เวลา ที่ส่ง</th>
+                                <th style="text-align: center"></th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach ($form as $forms)
                                 <tr>
-                                    <td>{{ $loop->index + 1 }}</td>
-                                    <td>{{ $forms->id }}</td>
-                                    <td>{{ date('d-m-Y', strtotime($forms->created_at)) }}</td>
-                                    <td>แบบฟอร์มขอยืม {{ $forms->accessorie_list }} จำนวน 1</td>
-                                    <td>
+                                    <td align="right">{{ $loop->index + 1 }}</td>
+                                    <td align="right">{{ $forms->id }}</td>
+                                    <td align="center">
+                                        @if(strlen($forms->accessorie_list)>55)
+                                        {{ $forms->accessorie_list = substr($forms->accessorie_list, 0, 55)."..." }}
+                                        @else
+                                        {{ $forms->accessorie_list}}
+                                        @endif
+                                    </td>
+                                    <td align="center"> 1 หน่วย </td>
+                                    <td align="center">{{ $forms->created_at }}</td>
+                                    <td align="center">@if ( $forms->send_status == 1 ) {{ $forms->updated_at }} @else ร่าง @endif</td>
+                                    <td align="center">
                                         <a href="{{ url('pdf/'.$forms->id) }}" class="btn btn-raised btn-info"
                                             title="รายละเอียด"> <i class="fa fa-eye"></i></a>
+                                        @if ( $forms->send_status == 0 ) 
+                                        <a href="{{ url('send_auditor/'.$forms->id) }}" class="btn btn-raised btn-success"
+                                            title="ส่ง"> <i class="fa fa-send"> | ส่ง</i></a>
+                                        @elseif ( $forms->send_status == 1 )
+                                        <a href="#" class="btn btn-raised btn-success"
+                                            title="ส่ง" disabled style="color: #000;"> <i class="fa fa-send"> | ส่งแล้ว</i></a>
+                                        @endif
                                     </td>
                                 </tr>
                             @endforeach

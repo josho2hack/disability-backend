@@ -45,6 +45,9 @@
         border: 1px solid #FCF;
         color: #FCC:
     }
+    input[type="checkbox"][disabled]{
+        cursor: auto;
+    }
 
 </style>
     <!-- bradcome -->
@@ -54,7 +57,7 @@
 
     <div class="boxs">
         <div class="boxs-body" style="width: 900px; margin: auto;">
-            <form action="{{ url('form-borrow') }}" method="POST">
+            <form action="{{ url('form-borrow') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="row">
                     <div class="col-sm-offset-6 col-sm-6">
@@ -131,17 +134,17 @@
                             <span class="btn btn-raised btn-xs btn-default fileinput-button m-0">
                                 <i class="glyphicon glyphicon-plus"></i>
                                 <span>แนบไฟล์</span>
-                                <input type="file" name="files">
+                                <input type="file" name="files_copy_card" id="files_copy_card">
                             </span>
                         </div>
-                        <div class="col-sm-1 text-right pr-0">
-                            <input type="checkbox" disabled>
+                        <div class="col-sm-1 text-right pr-0 ">
+                            <input type="checkbox" id="copy_card_check" disabled>
                         </div>
                         <div class="col-sm-6">
                             สำเนาบัตรประจำตัวคนพิการ พร้อมรับรองสำเนาถูกต้อง
                         </div>   
                         <div class="col-sm-3 text-right">
-                            จำนวน <input type="number" name="copy_card" readonly> ฉบับ 
+                            จำนวน <input type="number" name="copy_card" id="copy_card" readonly> ฉบับ 
                         </div>
                     </div>
                     <div class="form-group clearfix mt-0"> 
@@ -149,17 +152,17 @@
                             <span class="btn btn-raised btn-xs btn-default fileinput-button m-0">
                                 <i class="glyphicon glyphicon-plus"></i>
                                 <span>แนบไฟล์</span>
-                                <input type="file" name="files">
+                                <input type="file" name="files_house_res" id="file_house_res">
                             </span>
                         </div>
                         <div class="col-sm-1 text-right pr-0">
-                            <input type="checkbox" disabled>
+                            <input type="checkbox" disabled id="house_res_check">
                         </div>
                         <div class="col-sm-6">
                             สำเนาทะเบียนบ้านคนพิการ พร้อมรับรองสำเนาถูกต้อง
                         </div>   
                         <div class="col-sm-3 text-right">
-                            จำนวน <input type="number" name="house_res" readonly> ฉบับ 
+                            จำนวน <input type="number" name="house_res" id="house_res" readonly> ฉบับ 
                         </div>
                     </div>
                     <div class="form-group clearfix mt-0"> 
@@ -167,17 +170,17 @@
                             <span class="btn btn-raised btn-xs btn-default fileinput-button m-0">
                                 <i class="glyphicon glyphicon-plus"></i>
                                 <span>แนบไฟล์</span>
-                                <input type="file" name="files">
+                                <input type="file" name="file_copy_train" id="file_copy_train">
                             </span>
                         </div>
                         <div class="col-sm-1 text-right pr-0">
-                            <input type="checkbox" disabled>
+                            <input type="checkbox" disabled id="copy_train_check">
                         </div>
                         <div class="col-sm-6">
                             สำเนาเอกสารรับรองการเข้ารับการฝึกอบรมตามหลักสูตรที่กระทรวงเทคโนโลยีสารสนเทศและการสื่อสารกำหนดพร้อมรับรองสำเนาถูกต้อง (ถ้ามี)
                         </div>   
                         <div class="col-sm-3 text-right">
-                            จำนวน <input type="number" name="copy_train readonly"> ฉบับ 
+                            จำนวน <input type="number" name="copy_train" readonly id="copy_train"> ฉบับ 
                         </div>
                     </div>
                     <div class="form-group clearfix mt-0"> 
@@ -185,17 +188,17 @@
                             <span class="btn btn-raised btn-xs btn-default fileinput-button m-0">
                                 <i class="glyphicon glyphicon-plus"></i>
                                 <span>แนบไฟล์</span>
-                                <input type="file" name="files">
+                                <input type="file" name="file_sub_copy_citizen_id" id="file_sub_copy_citizen_id">
                             </span>
                         </div>
                         <div class="col-sm-1 text-right pr-0">
-                            <input type="checkbox" disabled>
+                            <input type="checkbox" disabled id="sub_copy_citizen_id_check">
                         </div>
                         <div class="col-sm-6">
                             สำเนาบัตรประจำตัวประชาชนหรือสำเนาทะเบียนบ้านของ ผู้ยื่นคำขอแทน พร้อมร้บรองสำเนาถูกต้อง
                         </div>   
                         <div class="col-sm-3 text-right">
-                            จำนวน <input type="number" name="sub_copy_c readonlyitizen_id"> ฉบับ 
+                            จำนวน <input type="number" name="sub_copy_citizen_id" readonly id="sub_copy_citizen_id"> ฉบับ 
                         </div>
                     </div>
                     <div class="form-group clearfix mt-0"> 
@@ -203,17 +206,17 @@
                             <span class="btn btn-raised btn-xs btn-default fileinput-button m-0">
                                 <i class="glyphicon glyphicon-plus"></i>
                                 <span>แนบไฟล์</span>
-                                <input type="file" name="files">
+                                <input type="file" name="file_power_attorney" id="file_power_attorney">
                             </span>
                         </div>
                         <div class="col-sm-1 text-right pr-0">
-                        <input type="checkbox" disabled>
+                        <input type="checkbox" disabled id="power_attorney_check">
                         </div>
                         <div class="col-sm-6">
                             หนังสือมอบอำนาจจากคนพิการหรือหลักฐานที่แสดงว่ามีส่วน เกี่ยวข้องกับคนพิการเนื่องจากเป็นผู้ปกครอง ผู้พิทักษ์ ผู้อนุบาล หรือผู้ดูแลคนพิการ (กรณี ผู้ยื่นคำขอแทน)
                         </div> 
                         <div class="col-sm-3 text-right">
-                            จำนวน <input type="number" name="power_atto readonlyrney"> ฉบับ 
+                            จำนวน <input type="number" name="power_attorney" readonly id="power_attorney"> ฉบับ 
                         </div>
                     </div>
                 </div>
@@ -407,6 +410,27 @@
                     $("#assets").html(data);
                 });
             }
+        });
+
+        $('#files_copy_card').change(function(e){
+            $('#copy_card').val(1);
+            $('#copy_card_check').prop("checked", true);
+        });
+        $('#file_house_res').change(function(e){
+            $('#house_res').val(1);
+            $('#house_res_check').prop("checked", true);
+        });
+        $('#file_copy_train').change(function(e){
+            $('#copy_train').val(1);
+            $('#copy_train_check').prop("checked", true);
+        });
+        $('#file_sub_copy_citizen_id').change(function(e){
+            $('#sub_copy_citizen_id').val(1);
+            $('#sub_copy_citizen_id_check').prop("checked", true);
+        });
+        $('#file_power_attorney').change(function(e){
+            $('#power_attorney').val(1);
+            $('#power_attorney_check').prop("checked", true);
         });
 
     });
