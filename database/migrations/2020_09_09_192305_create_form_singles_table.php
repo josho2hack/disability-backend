@@ -21,7 +21,7 @@ class CreateFormSinglesTable extends Migration
             $table->unsignedBigInteger('asset_id')->nullable()->comment('รหัสอุปกรณ์');
             $table->string('type_form')->nullable()->comment('ชนิดฟอร์ม');
             $table->enum('type_status',['1','2'])->default(1)->comment('ประเภท 1 คนพิการ, 2 ผู้ยื่นคำขอแทน');
-            $table->enum('send_status',['0', '1'])->default(0)->comment('สถานะการส่ง');
+            $table->enum('send_status',['0', '1', '2', '3'])->default(0)->comment('สถานะการส่ง 0 ยังไม่ส่ง, 1ส่งแล้ว , 2ยอมรับ, 3ปฏิเสธ');
             $table->dateTime('send_date')->nullable()->comment('วันที่ส่ง');
             $table->text('objective')->nullable()->comment('วัตถุประสงค์');
             $table->string('accessorie_list')->nullable()->comment('รายการอุปกรณ์');
