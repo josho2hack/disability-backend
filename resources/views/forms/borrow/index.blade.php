@@ -45,6 +45,11 @@
                             {{ session()->get('message') }}
                         </div>
                     @endif
+                    @if(session()->has('success'))
+                        <div class="alert alert-success">
+                            {{ session()->get('success') }}
+                        </div>
+                    @endif
                     <table id="searchTextResults" data-filter="#filter" data-page-size="25"
                         class=" table table-custom table-hover">
                         <thead>
@@ -72,12 +77,12 @@
                                     </td>
                                     <td align="center"> 1 หน่วย </td>
                                     <td align="center">{{ $forms->created_at }}</td>
-                                    <td align="center">@if ( $forms->send_status == 1 ) {{ $forms->updated_at }} @else ร่าง @endif</td>
+                                    <td align="center">@if ( $forms->send_status == 1 ) {{ $forms->send_date }} @else ร่าง @endif</td>
                                     <td align="center">
                                         <a href="{{ url('pdf/'.$forms->id) }}" class="btn btn-raised btn-info"
                                             title="รายละเอียด"> <i class="fa fa-eye"></i></a>
                                         @if ( $forms->send_status == 0 ) 
-                                        <a href="{{ url('send_auditor/'.$forms->id) }}" class="btn btn-raised btn-success"
+                                        <a href="{{ url('borrow/send_auditor', $forms->id) }}" class="btn btn-raised btn-success"
                                             title="ส่ง"> <i class="fa fa-send"> | ส่ง</i></a>
                                         @elseif ( $forms->send_status == 1 )
                                         <a href="#" class="btn btn-raised btn-success"

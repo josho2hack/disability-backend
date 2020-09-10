@@ -64,12 +64,17 @@ Route::get('/object', 'ObjectController@index');
 Route::resource('form-receive' , 'Form\FormreceiveController');
 Route::get('form-receive/receive/pdf', 'Form\FormreceiveController@pdf_receive');
 Route::resource('form-borrow' , 'Form\FormborrowController');
+Route::get('borrow/send_auditor/{id}' , 'Form\FormborrowController@send_auditor');
 Route::post('form-borrow/getNo' , 'Form\FormborrowController@get_number');
 Route::post('form-borrow/getData' , 'Form\FormborrowController@get_data');
 Route::post('form-borrow/getcategory' , 'Form\FormborrowController@getcategory');
 //pdf
 Route::get('pdf/{id}', 'Form\FormborrowController@pdf');
 
+Route::prefix('auditor')->middleware('auth')->group(function () {
+    Route::resource('audits', 'Auditor\AuditFormBorrowController');
+
+});
 
 
 

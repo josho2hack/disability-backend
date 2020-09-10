@@ -252,4 +252,15 @@ class FormborrowController extends Controller
         return @$pdf->stream();
     }
 
+    public function send_auditor($id)
+    {
+        $send_auditor = FormSingles::find($id);
+        $send_auditor->send_status = '1';
+        $send_auditor->send_date = date('Y-m-d H:i:s');
+
+        if($send_auditor->save()){
+            return redirect()->back()->with('success', 'ส่งแบบฟอร์มเรียบร้อยแล้ว');
+        }
+    }
+
 }
