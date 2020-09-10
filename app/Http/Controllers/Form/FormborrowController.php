@@ -71,12 +71,7 @@ class FormborrowController extends Controller
     public function store(Request $request)
     {
         // dd($request->all());
-        $borrow = New FormSingles;
-
-        $number = FormSingles::distinct('ref')->latest()->count() +1 ;
-        $number = str_pad($number, 5, 0, STR_PAD_LEFT);
-
-        $borrow->ref = 'B'. $number;
+        $borrow = New FormSingles;;
         $borrow->user_id = \Auth::user()->id;
 
         if ( $request->type == 2 ) {
@@ -84,7 +79,6 @@ class FormborrowController extends Controller
         }
         $accessorie = Asset::where('id', $request->accessorie_list)->first()->description;
         $borrow->asset_id = $request->accessorie_list;
-        $borrow->type_form = 'borrow';
         $borrow->type_status = $request->type;
         $borrow->objective = $request->objective1;
         $borrow->accessorie_list = $accessorie;
