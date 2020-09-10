@@ -17,8 +17,10 @@ class CreateForm10sTable extends Migration
             $table->id();
             $table->integer('round')->comment('ครั้งที่');
             $table->string('year')->comment('ปีงบประมาณ');
-            $table->string('offcie')->comment('หน่วยงาน');
+            $table->string('office')->comment('หน่วยงาน');
             $table->string('city')->comment('จังหวัด');
+            $table->string('comment')->nullable()->comment('เหตุผลในการยกเลิก');
+            $table->string('remark')->nullable()->comment('หมายเหตุ');
             $table->dateTime('report')->nullable()->comment('วันที่ส่งผล');
             $table->string('image')->nullable()->comment('ภาพเอกสาร');
             $table->timestamps();
