@@ -56,7 +56,7 @@
     </div>
 
     <div class="boxs">
-        <div class="boxs-body" style="width: 900px; margin: auto;">
+        <div class="boxs-body" style="width: 1200px; margin: auto;">
             <form action="{{ url('form-borrow') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="row">
@@ -287,16 +287,17 @@
                         <input type="text" name="objective2" style="width: 100%;">
                     </div>
                     <div class="col-sm-12 mb-20" style="padding-top: 5px;">
-                        ในรายการอุปกรณ์ <select name="accessorie_list" id="maingroup" style="width: 12%;">
+                        ในรายการอุปกรณ์ <select name="accessorie_list" id="maingroup" style="width: 10%;">
                                     <option value="" selected disabled>- กลุ่มหลัก -</option>
                                     @foreach( $main as $maingroup )
                                         <option value="{{ $maingroup->id }}">{{ $maingroup->name }}</option>
                                     @endforeach
                                     </select>
-                                    <select name="accessorie_list" id="subgroup" style="width: 12%;">
+                                    <select name="accessorie_list" id="subgroup" style="width: 10%;">
                                     </select>
-                                    <select name="accessorie_list" id="assets" style="width: 12%;">
-
+                                    <select name="accessorie_list" id="assets_cate" style="width: 10%;">
+                                    </select>
+                                    <select name="accessorie_list" id="assets" style="width: 10%;">
                                     </select>
                         เลขที่อุปกรณ์ <input type="text" id="assetNo" name="accessorie_no" style="width: 40%;">
                     </div>
@@ -407,10 +408,21 @@
 
             if (sub_id != "") {
                 $.post("{{ url('form-borrow/getcategory') }}", {sub_id: sub_id}, function (data) {
+                    $("#assets_cate").html(data);
+                });
+            }
+        });
+
+        $("#assets_cate").change(function(){
+            var ac_id = $("option:selected", this).val();
+
+            if (ac_id != "") {
+                $.post("{{ url('form-borrow/getassets') }}", {ac_id: ac_id}, function (data) {
                     $("#assets").html(data);
                 });
             }
         });
+
 
         $('#files_copy_card').change(function(e){
             $('#copy_card').val(1);

@@ -78,37 +78,33 @@
                     </div>
                 </div>
 
-
                 <div class="row">
-@php
+                    @php
 
-function flexNformat($value, $pattern, $split_symbol) {
-  $value_split = str_split($value, 1);
-  $count_value = count($value_split);
-  $pattern_splited = explode($split_symbol, $pattern);
-  $numPatterSplited = count($pattern_splited);
+                    function flexNformat($value, $pattern, $split_symbol) {
+                      $value_split = str_split($value, 1);
+                      $count_value = count($value_split);
+                      $pattern_splited = explode($split_symbol, $pattern);
+                      $numPatterSplited = count($pattern_splited);
 
-  $sb = 0;
-  for ($i=0; $i < $numPatterSplited; $i++) {
-    for ($ii=0; $ii < strlen($pattern_splited[$i]); $ii++) {
-      @$finalValue .= $value_split[$ii+$sb];
-      if (($ii + 1) == strlen($pattern_splited[$i])) {
-        $sb += strlen($pattern_splited[$i]);
-        if ($sb != $count_value) {
-          $finalValue .= $split_symbol;
-        }
-      }
-    }
-  }
+                      $sb = 0;
+                      for ($i=0; $i < $numPatterSplited; $i++) {
+                        for ($ii=0; $ii < strlen($pattern_splited[$i]); $ii++) {
+                          @$finalValue .= $value_split[$ii+$sb];
+                          if (($ii + 1) == strlen($pattern_splited[$i])) {
+                            $sb += strlen($pattern_splited[$i]);
+                            if ($sb != $count_value) {
+                              $finalValue .= $split_symbol;
+                            }
+                          }
+                        }
+                      }
 
-  return $finalValue;
+                      return $finalValue;
 
-}
+                    }
 
-// echo flexNformat("1234567890123", ".-....-.....-..-.", "-");
-// echo flexNformat("0123456789", "...-...-....", "-");
-
-@endphp
+                    @endphp
                     <table class="table table-bordered">
                         <thead>
                             <tr>
@@ -131,82 +127,35 @@ function flexNformat($value, $pattern, $split_symbol) {
                             
                         </thead>
                         <tbody>
+                            @foreach( $audits as $audit)
                             <tr align="center">
-                                <td rowspan="2" style="vertical-align: middle;"> 1 </td>
-                                <td> กฤตติกา ใจดี </td>
-                                <td rowspan="2" style="vertical-align: middle;"> 89/364 หมู่ 5 ต.บางพูด อ.ปากเกร็ด จ.นนทบุรี 1120 </td>
-                                <td rowspan="2" style="vertical-align: middle;"> คนพิการทางการเห็น </td>
-                                <td rowspan="2" style="vertical-align: middle;"> 50 </td>
-                                <td rowspan="2" style="vertical-align: middle;"> คอมพิวเตอร์ </td>
+                                <td rowspan="2" style="vertical-align: middle;"> {{ $loop->iteration }} </td>
+                                <td> {{ $audit->user->first_name }} {{ $audit->user->last_name }} </td>
+                                <td rowspan="2" style="vertical-align: middle;"> 
+                                    {{ $audit->address->house_no }} หมู่ {{ $audit->address->village_no }}  
+                                    ต.{{ $audit->address->sub_district }}อ.{{ $audit->address->district }} 
+                                    จ.{{ $audit->address->province }}  {{ $audit->address->postal_code }}
+                                </td>
+                                <td rowspan="2" style="vertical-align: middle;"> {{ $audit->user->disability->description }} </td>
+                                <td rowspan="2" style="vertical-align: middle;"> 
+                                    {{ (date('Y')+543) - ((date('Y', strtotime($audit->user->brithday)))+543)  }}
+                                </td>
+                                <td rowspan="2" style="vertical-align: middle;"> 
+                                    @if(strlen($audit->accessorie_list)>55)
+                                    {{ $audit->accessorie_list = substr($audit->accessorie_list, 0, 55)."..." }}
+                                    @else
+                                    {{ $audit->accessorie_list}}
+                                    @endif
+                                </td>
                                 <td rowspan="2" style="vertical-align: middle;"> 15,000 </td>
                                 <td rowspan="2" style="vertical-align: middle;"> <i class="fa fa-check"></i>  </td>
                                 <td rowspan="2" style="vertical-align: middle;">  </td>
                                 <td rowspan="2" style="vertical-align: middle;">  </td>
                             </tr>
                             <tr>
-                                <td align="center"> {{flexNformat("1234567890123", ".-....-.....-..-.", "-") }} </td>
+                                <td align="center"> {{flexNformat($audit->user->citizen_id, ".-....-.....-..-.", "-") }} </td>
                             </tr>
-                            <tr align="center">
-                                <td rowspan="2" style="vertical-align: middle;"> 2 </td>
-                                <td> ชัญญา พาสบาย </td>
-                                <td rowspan="2" style="vertical-align: middle;"> 89/364 หมู่ 5 ต.บางพูด อ.ปากเกร็ด จ.นนทบุรี 1120 </td>
-                                <td rowspan="2" style="vertical-align: middle;"> คนพิการทางการเห็น </td>
-                                <td rowspan="2" style="vertical-align: middle;"> 50 </td>
-                                <td rowspan="2" style="vertical-align: middle;"> คอมพิวเตอร์ </td>
-                                <td rowspan="2" style="vertical-align: middle;"> 15,000 </td>
-                                <td rowspan="2" style="vertical-align: middle;">  </td>
-                                <td rowspan="2" style="vertical-align: middle;"> <i class="fa fa-check"></i> </td>
-                                <td rowspan="2" style="vertical-align: middle;">  </td>
-                            </tr>
-                            <tr>
-                                <td align="center"> {{flexNformat("9876543210489", ".-....-.....-..-.", "-") }} </td>
-                            </tr>
-                            <tr align="center">
-                                <td rowspan="2" style="vertical-align: middle;"> 3 </td>
-                                <td> ชติกา รุ่งเรือง </td>
-                                <td rowspan="2" style="vertical-align: middle;"> 89/364 หมู่ 5 ต.บางพูด อ.ปากเกร็ด จ.นนทบุรี 1120 </td>
-                                <td rowspan="2" style="vertical-align: middle;"> คนพิการทางการเห็น </td>
-                                <td rowspan="2" style="vertical-align: middle;"> 50 </td>
-                                <td rowspan="2" style="vertical-align: middle;"> คอมพิวเตอร์ </td>
-                                <td rowspan="2" style="vertical-align: middle;"> 15,000 </td>
-                                <td rowspan="2" style="vertical-align: middle;"> <i class="fa fa-check"></i>  </td>
-                                <td rowspan="2" style="vertical-align: middle;">  </td>
-                                <td rowspan="2" style="vertical-align: middle;">  </td>
-                            </tr>
-                            <tr>
-                                <td align="center"> {{flexNformat("5878423159987", ".-....-.....-..-.", "-") }} </td>
-                            </tr>
-                            <tr align="center">
-                                <td rowspan="2" style="vertical-align: middle;"> 4 </td>
-                                <td> นิรดา ยินดี </td>
-                                <td rowspan="2" style="vertical-align: middle;"> 89/364 หมู่ 5 ต.บางพูด อ.ปากเกร็ด จ.นนทบุรี 1120 </td>
-                                <td rowspan="2" style="vertical-align: middle;"> คนพิการทางการเห็น </td>
-                                <td rowspan="2" style="vertical-align: middle;"> 50 </td>
-                                <td rowspan="2" style="vertical-align: middle;"> คอมพิวเตอร์ </td>
-                                <td rowspan="2" style="vertical-align: middle;"> 15,000 </td>
-                                <td rowspan="2" style="vertical-align: middle;">  </td>
-                                <td rowspan="2" style="vertical-align: middle;"> <i class="fa fa-check"></i> </td>
-                                <td rowspan="2" style="vertical-align: middle;">  </td>
-                            </tr>
-                            <tr>
-                                <td align="center"> {{flexNformat("5235698751154", ".-....-.....-..-.", "-") }} </td>
-                            </tr>
-                            <tr align="center">
-                                <td rowspan="2" style="vertical-align: middle;"> 5 </td>
-                                <td> ปาลิดา รักษา </td>
-                                <td rowspan="2" style="vertical-align: middle;"> 89/364 หมู่ 5 ต.บางพูด อ.ปากเกร็ด จ.นนทบุรี 1120 </td>
-                                <td rowspan="2" style="vertical-align: middle;"> คนพิการทางการเห็น </td>
-                                <td rowspan="2" style="vertical-align: middle;"> 50 </td>
-                                <td rowspan="2" style="vertical-align: middle;"> คอมพิวเตอร์ </td>
-                                <td rowspan="2" style="vertical-align: middle;"> 15,000 </td>
-                                <td rowspan="2" style="vertical-align: middle;"> <i class="fa fa-check"></i>  </td>
-                                <td rowspan="2" style="vertical-align: middle;">  </td>
-                                <td rowspan="2" style="vertical-align: middle;">  </td>
-                            </tr>
-                            <tr>
-                                <td align="center"> {{flexNformat("3226599874153", ".-....-.....-..-.", "-") }} </td>
-                            </tr>
-
+                            @endforeach
                         </tbody>
                     </table>
 

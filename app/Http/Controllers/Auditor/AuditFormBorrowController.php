@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auditor;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Form01;
 
 class AuditFormBorrowController extends Controller
 {
@@ -14,7 +15,9 @@ class AuditFormBorrowController extends Controller
      */
     public function index()
     {
-       // echo 123;
+       $audit = Form01::where('send_status', '1')->get();
+
+       return view('auditor.audit.index', compact('audit'));
     }
 
     /**
@@ -22,9 +25,16 @@ class AuditFormBorrowController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        $audits = [];
+        foreach( $request->check as $id ){
+            $audit[$id] = Form01::where('id', $id)->first();
+        }
+
+        $audits = collect($audit);
+
+        return view('auditor.audit.create', compact('audits'));
     }
 
     /**

@@ -220,20 +220,30 @@ class FormborrowController extends Controller
 
     public function getcategory(Request $request)
     {
-        $data = [];
 
         $category = AssetCategory::where('sub_groups_id',$request->sub_id)->get();
 
-        $categories = "<option value=''>- เลือก -</option>";
+        $categories = "<option value=''>- ประเภท -</option>";
         
         foreach( $category as $cate ){
-            $asset = Asset::where('asset_categories_id', $cate->id)->first();
-            if ($asset != null) {
-                $categories .= "<option value='".$asset->id."'>".$cate->name.':'.$asset->description."</option>";
-            }
+            $categories .= "<option value='".$cate->id."'>".$cate->name."</option>";
         }
 
         return $categories;
+    }
+
+    public function getassets(Request $request)
+    {
+
+        $assets = Asset::where(['asset_categories_id' => $request->ac_id, 'asset_statuses_id' => '1'])->get();
+
+        $list = "<option value=''>- เลือก -</option>";
+        
+        foreach( $assets as $asset ){
+            $list .= "<option value='".$asset->id."'>".$asset->description."</option>";
+        }
+
+        return $list;
     }
 
      public function pdf($id)
@@ -253,6 +263,8 @@ class FormborrowController extends Controller
         $send_auditor->send_date = date('Y-m-d H:i:s');
 
         if($send_auditor->save()){
+            $asset = Asset::find($send_auditor->asset_id);
+            $asset->asset_statuses_id = '3';
             return redirect()->back()->with('success', 'ส่งแบบฟอร์มเรียบร้อยแล้ว');
         }
     }

@@ -68,6 +68,7 @@ Route::get('borrow/send_auditor/{id}' , 'Form\FormborrowController@send_auditor'
 Route::post('form-borrow/getNo' , 'Form\FormborrowController@get_number');
 Route::post('form-borrow/getData' , 'Form\FormborrowController@get_data');
 Route::post('form-borrow/getcategory' , 'Form\FormborrowController@getcategory');
+Route::post('form-borrow/getassets' , 'Form\FormborrowController@getassets');
 //pdf
 Route::get('pdf/{id}', 'Form\FormborrowController@pdf');
 
