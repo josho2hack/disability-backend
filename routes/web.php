@@ -109,9 +109,8 @@ Route::prefix('admin')->middleware('auth')->group(function () {
         'assets' => 'Admin\AssetController',
         'maingroups' => 'Admin\MainGroupController',
         'subgroups' => 'Admin\SubGroupController',
-        'users' => 'Admin\UserController',
+        'users' => 'Admin\UserController'
     ]);
-
 
     Route::namespace('Admin')->name('admin.')->group(function () {
         Route::resource('news', 'NewsController');
@@ -120,4 +119,14 @@ Route::prefix('admin')->middleware('auth')->group(function () {
     Route::resource('surveys', 'SurveyController', ['as' => 'admin']);
     Route::resource('surveys/{id}/questions', 'QuestionController', ['as' => 'admin']);
     Route::post('surveys/{id}/questions/updates', 'QuestionController@updates')->name('admin.questions.updates');
+});
+
+Route::prefix('approve')->middleware('auth')->group(function () {
+    Route::get('', 'Approve\Form07Controller@index')->name('approve');
+
+    Route::resources([
+        'form07' => 'Approve\Form07Controller',
+        'form09' => 'Approve\Form09Controller',
+        'form10' => 'Approve\Form10Controller'
+    ]);
 });

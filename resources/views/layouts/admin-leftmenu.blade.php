@@ -94,10 +94,25 @@
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="#">
+                                    <a href="{{ route('approve')}}">
                                             <i class="fa fa-university"></i>
-                                            <span>3. อนุมัติสัญญา</span>
+                                            <span>3. อนุมัติคำขอ</span>
                                         </a>
+                                        <ul>
+                                            <li>
+                                                <a role="button" tabindex="0"
+                                                    href="{{ route('form07.index') }}">
+                                                    <i class="fa fa-angle-right"></i>3.1 เอกสารเข้า ทก07</a>
+                                            </li>
+                                            <li>
+                                                <a role="button" tabindex="0" href="{{ route('form09.index') }}">
+                                                    <i class="fa fa-angle-right"></i>3.2 เอกสาร ทก09 (อนุมัติ)</a>
+                                            </li>
+                                            <li>
+                                                <a role="button" tabindex="0" href="{{ route('form10.index') }}">
+                                                    <i class="fa fa-angle-right"></i>3.3 เอกสาร ทก10 (ยกเลิก)</a>
+                                            </li>
+                                        </ul>
                                     </li>
                                     <li>
                                         <a role="button" tabindex="0">
@@ -147,10 +162,25 @@
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="#">
+                                        <a href="{{ route('approve')}}">
                                             <i class="fa fa-university"></i>
-                                            <span>1. อนุมัติสัญญา</span>
+                                            <span>1. อนุมัติคำขอ</span>
                                         </a>
+                                        <ul>
+                                            <li>
+                                                <a role="button" tabindex="0"
+                                                    href="{{ route('form07.index') }}">
+                                                    <i class="fa fa-angle-right"></i>1.1 เอกสารเข้า ทก.07</a>
+                                            </li>
+                                            <li>
+                                                <a role="button" tabindex="0" href="{{ route('form09.index') }}">
+                                                    <i class="fa fa-angle-right"></i>1.2 เอกสาร ทก.09 (อนุมัติ)</a>
+                                            </li>
+                                            <li>
+                                                <a role="button" tabindex="0" href="{{ route('form10.index') }}">
+                                                    <i class="fa fa-angle-right"></i>1.3 เอกสาร ทก.10 (ยกเลิก)</a>
+                                            </li>
+                                        </ul>
                                     </li>
                                 @endif
                                 @if (Auth::user()
