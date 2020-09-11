@@ -113,15 +113,6 @@
                                                 ส่งผล</button>
                                         </form>
                                     </td>
-                                    <td>
-                                        <form action="{{ route('form09.update', $form->id) }}" method="post">
-                                            @csrf
-                                            @method('PUT')
-                                            <input type="hidden" name="edit" value="true">
-                                            <button class="btn btn-raised btn-warning btn-sm" type="submit" title="แก้ไข">
-                                                <i class="fa fa-edit"></i></button>
-                                        </form>
-                                    </td>
                                     @else
                                     <td>
                                         <form action="{{ route('form09.update', $form->id) }}" method="post">
@@ -130,15 +121,6 @@
                                             <input type="hidden" name="report" value="true">
                                             <button class="btn btn-raised btn-success btn-sm" type="submit" title="ส่งผลแล้ว" disabled>
                                                 ส่งผลแล้ว</button>
-                                        </form>
-                                    </td>
-                                    <td>
-                                        <form action="{{ route('form09.update', $form->id) }}" method="post">
-                                            @csrf
-                                            @method('PUT')
-                                            <input type="hidden" name="edit" value="true">
-                                            <button class="btn btn-raised btn-warning btn-sm" type="submit" title="แก้ไข" disabled>
-                                                <i class="fa fa-edit"></i></button>
                                         </form>
                                     </td>
                                     @endif

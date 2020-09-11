@@ -155,18 +155,48 @@
                                                 <span style="color: blue">อนุมัติแล้ว</span>
                                             </button>
                                         </td>
-                                        <td>
-                                            <form action="{{ route('form07.update', $form->id) }}" method="post">
-                                                @csrf
-                                                @method('PUT')
-                                                <input type="hidden" name="form01" value="1">
-                                                <input type="hidden" name="cancel" value="1">
-                                                <button class="del btn btn-raised btn-primary btn-sm" type="submit"
-                                                    title="ยกเลิก">
-                                                    <i class="fa fa-trash"></i></button>
-                                            </form>
-                                        </td>
+                                        @if (empty($form09->report))
+                                            <td>
+                                                <form action="{{ route('form07.update', $form->id) }}" method="post">
+                                                    @csrf
+                                                    @method('PUT')
+                                                    <input type="hidden" name="form01" value="1">
+                                                    <input type="hidden" name="cancel" value="1">
+                                                    <button class="del btn btn-raised btn-primary btn-sm" type="submit"
+                                                        title="ยกเลิก">
+                                                        <i class="fa fa-trash"></i></button>
+                                                </form>
+                                            </td>
+                                        @else
+                                            <button class="del btn btn-raised btn-primary btn-sm" type="submit"
+                                                title="ยกเลิก" disabled>
+                                                <i class="fa fa-trash"></i></button>
+                                        @endif
                                     @elseif(!empty($form->form10s_id))
+                                        @if (empty($form10->report))
+                                            <td>
+                                                <form action="{{ route('form07.update', $form->id) }}" method="post">
+                                                    @csrf
+                                                    @method('PUT')
+                                                    <input type="hidden" name="form01" value="1">
+                                                    <input type="hidden" name="approve" value="1">
+                                                    <button class="btn btn-raised btn-success btn-sm" type="submit"
+                                                        title="อนุมัติ">
+                                                        อนุมัติ</button>
+                                                </form>
+                                            </td>
+                                        @else
+                                            <button class="btn btn-raised btn-success btn-sm" type="submit" title="อนุมัติ"
+                                                disabled>
+                                                อนุมัติ</button>
+                                        @endif
+                                        <td>
+                                            <button class="btn btn-raised btn-success btn-sm" type="submit" title="ยกเลิก"
+                                                disabled>
+                                                <span style="color: red">ยกเลิกแล้ว</span>
+                                            </button>
+                                        </td>
+                                    @else
                                         <td>
                                             <form action="{{ route('form07.update', $form->id) }}" method="post">
                                                 @csrf
@@ -179,34 +209,16 @@
                                             </form>
                                         </td>
                                         <td>
-                                            <button class="btn btn-raised btn-success btn-sm" type="submit" title="ยกเลิก"
-                                                disabled>
-                                                <span style="color: red">ยกเลิกแล้ว</span>
-                                            </button>
+                                            <form action="{{ route('form07.update', $form->id) }}" method="post">
+                                                @csrf
+                                                @method('PUT')
+                                                <input type="hidden" name="form01" value="1">
+                                                <input type="hidden" name="cancel" value="1">
+                                                <button class="del btn btn-raised btn-primary btn-sm" type="submit"
+                                                    title="ยกเลิก">
+                                                    <i class="fa fa-trash"></i></button>
+                                            </form>
                                         </td>
-                                    @else
-                                    <td>
-                                        <form action="{{ route('form07.update', $form->id) }}" method="post">
-                                            @csrf
-                                            @method('PUT')
-                                            <input type="hidden" name="form01" value="1">
-                                            <input type="hidden" name="approve" value="1">
-                                            <button class="btn btn-raised btn-success btn-sm" type="submit"
-                                                title="อนุมัติ">
-                                                อนุมัติ</button>
-                                        </form>
-                                    </td>
-                                    <td>
-                                        <form action="{{ route('form07.update', $form->id) }}" method="post">
-                                            @csrf
-                                            @method('PUT')
-                                            <input type="hidden" name="form01" value="1">
-                                            <input type="hidden" name="cancel" value="1">
-                                            <button class="del btn btn-raised btn-primary btn-sm" type="submit"
-                                                title="ยกเลิก">
-                                                <i class="fa fa-trash"></i></button>
-                                        </form>
-                                    </td>
                                     @endif
                                 </tr>
                             @endforeach

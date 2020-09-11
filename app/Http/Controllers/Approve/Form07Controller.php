@@ -53,7 +53,9 @@ class Form07Controller extends Controller
     {
         $form07 = Form07::with('form01s')->find($id);
         $form01s = $form07->form01s;
-        return view('approve.form07.show', compact('form07', 'form01s'));
+        $form09 = Form09::where('round', $form07->round)->where('office', $form07->office)->where('year', $form07->year)->first();
+        $form10 = Form10::where('round', $form07->round)->where('office', $form07->office)->where('year', $form07->year)->first();
+        return view('approve.form07.show', compact('form07', 'form01s','form09','form10'));
     }
 
     /**
