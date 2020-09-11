@@ -67,7 +67,7 @@
                                     <td style="vertical-align: middle;" rowspan="2" align="center">
                                         <div class="checkbox">
                                         <label>
-                                            <input type="checkbox" class="check" name="check[]" value="{{ $list->id }}">
+                                            <input type="checkbox" class="check" name="check[]" value="{{ $list->borrow_single->id }}">
                                         </label>
                                     </div>
                                     </td>
