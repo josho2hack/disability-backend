@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Approve;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Form01;
 use App\Form09;
+use App\Form10;
 
 class Form09Controller extends Controller
 {
@@ -50,7 +52,8 @@ class Form09Controller extends Controller
     {
         $form09 = Form09::with('form01s')->find($id);
         $form01s = $form09->form01s;
-        return view('approve.form09.show', compact('form09','form01s'));
+        $form10 = Form10::where('round', $form09->round)->where('office', $form09->office)->where('year', $form09->year)->first();
+        return view('approve.form09.show', compact('form09','form01s','form10'));
     }
 
     /**
@@ -73,7 +76,35 @@ class Form09Controller extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        if ($request['form01'] == 1) {
+            $form01 = Form01::find($id);
+            $form09 = Form09::find($form01->form09s_id);
+            if ($request['cancel'] == 1) {
+                $form10 = Form10::where('round', $form09->round)->where('office', $form09->office)->where('year', $form09->year)->first();
+                if (empty($form10->id)) {
+                    $form10 = new Form10();
+                    $form10['round'] = $form09['round'];
+                    $form10['year'] = $form09['year'];
+                    $form10['office'] = $form09['office'];
+                    $form10['city'] = $form09['city'];
+                    $form10->save();
+                }
+                $form01['form10s_id'] = $form10->id;
+                $form01['form09s_id'] = null;
+                $form01->save();
+            }
+
+            $form09 = Form09::with('form01s')->find($form09->id);
+            $form01s = $form09->form01s;
+            return view('approve.form09.show', compact('form09', 'form01s','form10'));
+
+        } else {
+
+        $form09 = Form09::with('form01s')->find($id);
+        $form09['report'] = now();
+        $form09->save();
+        return view('approve.form09.index', compact('form09'));
+        }
     }
 
     /**

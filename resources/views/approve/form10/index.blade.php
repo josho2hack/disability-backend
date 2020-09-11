@@ -9,25 +9,28 @@
     <div class="b-b mb-10">
         <div class="row">
             <div class="col-sm-6 col-xs-12">
-                <h3 class="h3 m-0"> @if (Auth::user()
-                    ->roles()
-                    ->first()->name == 'Admin')3.
+                <h3 class="h3 m-0">
+                    @if (Auth::user()
+            ->roles()
+            ->first()->name == 'Admin')3.
                     @endif
                     @if (Auth::user()
-                    ->roles()
-                    ->first()->name == 'Approve')1.
+            ->roles()
+            ->first()->name == 'Approve')1.
                     @endif
-                    อนุมัติคำขอ</h3>
+                    อนุมัติคำขอ
+                </h3>
                 <small class="text-muted">
                     @if (Auth::user()
-                    ->roles()
-                    ->first()->name == 'Admin')3.
+            ->roles()
+            ->first()->name == 'Admin')3.
                     @endif
                     @if (Auth::user()
-                    ->roles()
-                    ->first()->name == 'Approve')1.
+            ->roles()
+            ->first()->name == 'Approve')1.
                     @endif
-                    3 เอกสาร ทก10 (ยกเลิก)</small>
+                    3 เอกสาร ทก10 (ยกเลิก)
+                </small>
             </div>
             <div class="btn-group pull-right">
                 <ol class="breadcrumb">
@@ -35,24 +38,28 @@
                         <a href="{{ route('root') }}"><i class="fa fa-home"></i></a>
                     </li>
                     <li>
-                        <a href="{{ route('approve') }}">@if (Auth::user()
-                            ->roles()
-                            ->first()->name == 'Admin')3.
+                        <a href="{{ route('approve') }}">
+                            @if (Auth::user()
+            ->roles()
+            ->first()->name == 'Admin')3.
                             @endif
                             @if (Auth::user()
-                            ->roles()
-                            ->first()->name == 'Approve')1.
-                            @endif อนุมัติคำขอ</a>
+            ->roles()
+            ->first()->name == 'Approve')1.
+                            @endif อนุมัติคำขอ
+                        </a>
                     </li>
-                    <li class="active">@if (Auth::user()
-                        ->roles()
-                        ->first()->name == 'Admin')3.
+                    <li class="active">
+                        @if (Auth::user()
+            ->roles()
+            ->first()->name == 'Admin')3.
                         @endif
                         @if (Auth::user()
-                        ->roles()
-                        ->first()->name == 'Approve')1.
+            ->roles()
+            ->first()->name == 'Approve')1.
                         @endif
-                        3 เอกสาร ทก10 (ยกเลิก)</li>
+                        3 เอกสาร ทก10 (ยกเลิก)
+                    </li>
                 </ol>
             </div>
         </div>
@@ -94,53 +101,32 @@
                                 <tr>
                                     <td>{{ $loop->index + 1 }}</td>
                                     <td>
-                                        {{ sprintf("%02d",$form->id) }}
+                                        {{ sprintf('%02d', $form->id) }}
                                     </td>
-                                    <td>3</td>
+                                    <td>{{ $form->form01s->count() }}</td>
                                     <td>{{ formatDateThai($form->created_at) }} {{ formatTimeThai($form->created_at) }}</td>
                                     <td>{{ formatDateThai($form->report) }} {{ formatTimeThai($form->report) }}</td>
                                     <td>
-                                        <a href="{{ route('form09.show', $form) }}" class="btn btn-raised btn-info btn-sm"
+                                        <a href="{{ route('form10.show', $form) }}" class="btn btn-raised btn-info btn-sm"
                                             title="รายละเอียด"> <i class="fa fa-eye"></i></a>
                                     </td>
                                     @if (empty($form->report))
-                                    <td>
-                                        <form action="{{ route('form09.update', $form->id) }}" method="post">
-                                            @csrf
-                                            @method('PUT')
-                                            <input type="hidden" name="report" value="true">
-                                            <button class="btn btn-raised btn-success btn-sm" type="submit" title="ส่งผล">
-                                                ส่งผล</button>
-                                        </form>
-                                    </td>
-                                    <td>
-                                        <form action="{{ route('form09.update', $form->id) }}" method="post">
-                                            @csrf
-                                            @method('PUT')
-                                            <input type="hidden" name="edit" value="true">
-                                            <button class="btn btn-raised btn-warning btn-sm" type="submit" title="แก้ไข">
-                                                <i class="fa fa-edit"></i></button>
-                                        </form>
-                                    </td>
+                                        <td>
+                                            <form action="{{ route('form10.update', $form->id) }}" method="post">
+                                                @csrf
+                                                @method('PUT')
+                                                <input type="hidden" name="report" value="true">
+                                                <button class="btn btn-raised btn-success btn-sm" type="submit"
+                                                    title="ส่งผล">
+                                                    ส่งผล</button>
+                                            </form>
+                                        </td>
                                     @else
-                                    <td>
-                                        <form action="{{ route('form09.update', $form->id) }}" method="post">
-                                            @csrf
-                                            @method('PUT')
-                                            <input type="hidden" name="report" value="true">
-                                            <button class="btn btn-raised btn-success btn-sm" type="submit" title="ส่งผลแล้ว" disabled>
-                                                ส่งผลแล้ว</button>
-                                        </form>
-                                    </td>
-                                    <td>
-                                        <form action="{{ route('form09.update', $form->id) }}" method="post">
-                                            @csrf
-                                            @method('PUT')
-                                            <input type="hidden" name="edit" value="true">
-                                            <button class="btn btn-raised btn-warning btn-sm" type="submit" title="แก้ไข" disabled>
-                                                <i class="fa fa-edit"></i></button>
-                                        </form>
-                                    </td>
+                                        <td>
+                                            <button class="btn btn-raised btn-success btn-sm" type="submit"
+                                                title="ส่งผลแล้ว" disabled>
+                                                <strong style="color: blue">ส่งผลแล้ว</strong></button>
+                                        </td>
                                     @endif
                                 </tr>
                             @endforeach

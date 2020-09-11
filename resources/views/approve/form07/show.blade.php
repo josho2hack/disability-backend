@@ -64,11 +64,11 @@
                     <li class="active">
                         @if (Auth::user()
             ->roles()
-            ->first()->name == 'Admin')3.1
+            ->first()->name == 'Admin')3.1.
                         @endif
                         @if (Auth::user()
             ->roles()
-            ->first()->name == 'Approve')1.1
+            ->first()->name == 'Approve')1.1.
                         @endif
                         1 รายละเอียดเอกสารเข้า ทก07
                     </li>
@@ -155,7 +155,7 @@
                                                 <span style="color: blue">อนุมัติแล้ว</span>
                                             </button>
                                         </td>
-                                        @if (empty($form09->report))
+                                        @if (empty($form10->report))
                                             <td>
                                                 <form action="{{ route('form07.update', $form->id) }}" method="post">
                                                     @csrf
@@ -168,12 +168,14 @@
                                                 </form>
                                             </td>
                                         @else
+                                        <td>
                                             <button class="del btn btn-raised btn-primary btn-sm" type="submit"
                                                 title="ยกเลิก" disabled>
                                                 <i class="fa fa-trash"></i></button>
+                                        </td>
                                         @endif
                                     @elseif(!empty($form->form10s_id))
-                                        @if (empty($form10->report))
+                                        @if (empty($form09->report))
                                             <td>
                                                 <form action="{{ route('form07.update', $form->id) }}" method="post">
                                                     @csrf
@@ -186,9 +188,11 @@
                                                 </form>
                                             </td>
                                         @else
+                                        <td>
                                             <button class="btn btn-raised btn-success btn-sm" type="submit" title="อนุมัติ"
                                                 disabled>
                                                 อนุมัติ</button>
+                                        </td>
                                         @endif
                                         <td>
                                             <button class="btn btn-raised btn-success btn-sm" type="submit" title="ยกเลิก"

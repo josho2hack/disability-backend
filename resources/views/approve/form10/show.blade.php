@@ -29,7 +29,7 @@
             ->roles()
             ->first()->name == 'Approve')1.
                     @endif
-                    2 เอกสาร ทก09 (อนุมัติ)
+                    3 เอกสาร ทก10 (ยกเลิก)
                 </small>
             </div>
             <div class="btn-group pull-right">
@@ -49,16 +49,28 @@
                             @endif อนุมัติคำขอ
                         </a>
                     </li>
+                    <li>
+                        <a href="{{ route('form10.index') }}">
+                            @if (Auth::user()
+            ->roles()
+            ->first()->name == 'Admin')3.
+                            @endif
+                            @if (Auth::user()
+            ->roles()
+            ->first()->name == 'Approve')1.
+                            @endif 3 เอกสาร ทก10 (ยกเลิก)
+                        </a>
+                    </li>
                     <li class="active">
                         @if (Auth::user()
             ->roles()
-            ->first()->name == 'Admin')3.
+            ->first()->name == 'Admin')3.3.
                         @endif
                         @if (Auth::user()
             ->roles()
-            ->first()->name == 'Approve')1.
+            ->first()->name == 'Approve')1.3.
                         @endif
-                        2 เอกสาร ทก09 (อนุมัติ)
+                        1 เอกสาร ทก10 (ยกเลิก)
                     </li>
                 </ol>
             </div>
@@ -70,7 +82,7 @@
             <section class="boxs">
                 <div class="boxs-header">
                     <h3 class="custom-font">
-                        <strong>เอกสาร ทก09 (อนุมัติ)</strong>
+                        <strong>เอกสาร ทก10 (ยกเลิก)</strong>
                     </h3>
                     <div class="form-group">
                         <label for="filter" style="padding-top: 5px">ค้นหา:</label>
@@ -84,49 +96,68 @@
                             <p>{{ $message }}</p>
                         </div>
                     @endif
+                    <strong>ครั้งที่</strong> {{ $form10->round }}
+                    <br>
+                    <strong>ประจำปีงบประมาณ</strong> {{ $form10->year }}
+                    <br>
+                    <strong>หน่วยงานที่รับคาขอฯ</strong> {{ $form10->office }}
+                    <br>
+                    <strong>จังหวัด</strong> {{ $form10->city }}
                     <table id="searchTextResults" data-filter="#filter" data-page-size="25"
                         class="footable table table-custom table-hover">
                         <thead>
                             <tr>
-                                <th>ลำดับ</th>
-                                <th>เลขที่ ทก.09</th>
-                                <th>รายการ</th>
-                                <th>วันที่ / เวลา อนุมัติ</th>
-                                <th>วันที่ / เวลา ส่งผล</th>
-                                <th colspan=3 style="width: 5%">ดำเนินการ</th>
+                                <th rowspan="2">ที่</th>
+                                <th>ชื่อ - สกุล คนพิการ</th>
+                                <th rowspan="2">ที่อยู่</th>
+                                <th rowspan="2">ประเภทความพิการ</th>
+                                <th rowspan="2">รายการอุปกรณ์/เครื่องมือฯ ที่ยกเลิก</th>
+                                <th rowspan="2">เหตุผลในการยกเลิก</th>
+                                <th rowspan="2" colspan="2" style="width: 5%">ดำเนินการ</th>
+                            </tr>
+                            <tr>
+                                <th>หมายเลขบัตรประจำตัวประชาชน</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($form09 as $form)
+                            @foreach ($form01s as $form)
                                 <tr>
                                     <td>{{ $loop->index + 1 }}</td>
                                     <td>
-                                        {{ sprintf('%02d', $form->id) }}
+                                        {{ $form->user->fullname }}
+                                        <br>
+                                        {{ $form->user->citizen_id }}
                                     </td>
-                                    <td>{{ $form->form01s->count() }}</td>
-                                    <td>{{ formatDateThai($form->created_at) }} {{ formatTimeThai($form->created_at) }}</td>
-                                    <td>{{ formatDateThai($form->report) }} {{ formatTimeThai($form->report) }}</td>
+                                    <td>{{ $form->address->house_no ?? '' }} {{ $form->address->village_no ?? '' }}
+                                        {{ $form->address->lane ?? '' }} {{ $form->address->sub_district ?? '' }}
+                                        {{ $form->address->district ?? '' }} {{ $form->address->province ?? '' }}
+                                        {{ $form->address->postal_code ?? '' }}
+                                    </td>
+                                    <td>{{ $form->user->disabilityType->description }}</td>
+                                    <td>{{ $form->accessorie_no }}</td>
+                                    <td>{{ $form->remark }}</td>
+
                                     <td>
-                                        <a href="{{ route('form09.show', $form) }}" class="btn btn-raised btn-info btn-sm"
+                                        <a href="{{ url('pdf/' . $form->id) }}" class="btn btn-raised btn-info btn-sm"
                                             title="รายละเอียด"> <i class="fa fa-eye"></i></a>
                                     </td>
-                                    @if (empty($form->report))
+                                    @if (empty($form09->report))
                                         <td>
-                                            <form action="{{ route('form09.update', $form->id) }}" method="post">
+                                            <form action="{{ route('form10.update', $form->id) }}" method="post">
                                                 @csrf
                                                 @method('PUT')
-                                                <input type="hidden" name="report" value="true">
+                                                <input type="hidden" name="form01" value="1">
+                                                <input type="hidden" name="approve" value="1">
                                                 <button class="btn btn-raised btn-success btn-sm" type="submit"
-                                                    title="ส่งผล">
-                                                    ส่งผล</button>
+                                                    title="อนุมัติ">
+                                                    อนุมัติ</button>
                                             </form>
                                         </td>
                                     @else
-                                        <td>
-                                            <button class="btn btn-raised btn-success btn-sm" type="submit"
-                                                title="ส่งผลแล้ว" disabled>
-                                                <strong style="color: blue">ส่งผลแล้ว</strong></button>
-                                        </td>
+                                    <td>
+                                        <button class="btn btn-raised btn-success btn-sm" type="submit" title="อนุมัติ" disabled>
+                                            อนุมัติ</button>
+                                    </td>
                                     @endif
                                 </tr>
                             @endforeach

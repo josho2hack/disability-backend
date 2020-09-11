@@ -64,11 +64,11 @@
                     <li class="active">
                         @if (Auth::user()
             ->roles()
-            ->first()->name == 'Admin')3.2
+            ->first()->name == 'Admin')3.2.
                         @endif
                         @if (Auth::user()
             ->roles()
-            ->first()->name == 'Approve')1.2
+            ->first()->name == 'Approve')1.2.
                         @endif
                         1 รายละเอียดเอกสาร ทก09 (อนุมัติ)
                     </li>
@@ -115,7 +115,7 @@
                                 <th rowspan="2">รายการอุปกรณ์/เครื่องมือฯ ที่ขอยืม</th>
                                 <th rowspan="2">ราคา/หน่วย</th>
                                 <th colspan="2">การขอใช้สิทธิ์</th>
-                                <th rowspan="2" colspan=3 style="width: 5%">ดำเนินการ</th>
+                                <th rowspan="2" colspan="2" style="width: 5%">ดำเนินการ</th>
                             </tr>
                             <tr>
                                 <th>หมายเลขบัตรประจำตัวประชาชน</th>
@@ -148,13 +148,7 @@
                                         <a href="{{ url('pdf/' . $form->id) }}" class="btn btn-raised btn-info btn-sm"
                                             title="รายละเอียด"> <i class="fa fa-eye"></i></a>
                                     </td>
-                                    @if (!empty($form->form09s_id))
-                                        <td>
-                                            <button class="btn btn-raised btn-success btn-sm" type="submit" title="อนุมัติ"
-                                                disabled>
-                                                <span style="color: blue">อนุมัติแล้ว</span>
-                                            </button>
-                                        </td>
+                                    @if (empty($form10->report))
                                         <td>
                                             <form action="{{ route('form09.update', $form->id) }}" method="post">
                                                 @csrf
@@ -166,24 +160,11 @@
                                                     <i class="fa fa-trash"></i></button>
                                             </form>
                                         </td>
-                                    @elseif(!empty($form->form10s_id))
-                                        <td>
-                                            <form action="{{ route('form09.update', $form->id) }}" method="post">
-                                                @csrf
-                                                @method('PUT')
-                                                <input type="hidden" name="form01" value="1">
-                                                <input type="hidden" name="approve" value="1">
-                                                <button class="btn btn-raised btn-success btn-sm" type="submit"
-                                                    title="อนุมัติ">
-                                                    อนุมัติ</button>
-                                            </form>
-                                        </td>
-                                        <td>
-                                            <button class="btn btn-raised btn-success btn-sm" type="submit" title="ยกเลิก"
-                                                disabled>
-                                                <span style="color: red">ยกเลิกแล้ว</span>
-                                            </button>
-                                        </td>
+                                    @else
+                                    <td>
+                                        <button class="del btn btn-raised btn-primary btn-sm" type="submit" title="ยกเลิก" disabled>
+                                            <i class="fa fa-trash"></i></button>
+                                    </td>
                                     @endif
                                 </tr>
                             @endforeach
