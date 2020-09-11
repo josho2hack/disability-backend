@@ -149,22 +149,31 @@
                                             title="รายละเอียด"> <i class="fa fa-eye"></i></a>
                                     </td>
                                     @if (empty($form10->report))
-                                        <td>
-                                            <form action="{{ route('form09.update', $form->id) }}" method="post">
-                                                @csrf
-                                                @method('PUT')
-                                                <input type="hidden" name="form01" value="1">
-                                                <input type="hidden" name="cancel" value="1">
+                                        @if (!empty($form09->report))
+                                            <td>
                                                 <button class="del btn btn-raised btn-primary btn-sm" type="submit"
-                                                    title="ยกเลิก">
+                                                    title="ยกเลิก" disabled>
                                                     <i class="fa fa-trash"></i></button>
-                                            </form>
-                                        </td>
+                                            </td>
+                                        @else
+                                            <td>
+                                                <form action="{{ route('form09.update', $form->id) }}" method="post">
+                                                    @csrf
+                                                    @method('PUT')
+                                                    <input type="hidden" name="form01" value="1">
+                                                    <input type="hidden" name="cancel" value="1">
+                                                    <button class="del btn btn-raised btn-primary btn-sm" type="submit"
+                                                        title="ยกเลิก">
+                                                        <i class="fa fa-trash"></i></button>
+                                                </form>
+                                            </td>
+                                        @endif
                                     @else
-                                    <td>
-                                        <button class="del btn btn-raised btn-primary btn-sm" type="submit" title="ยกเลิก" disabled>
-                                            <i class="fa fa-trash"></i></button>
-                                    </td>
+                                        <td>
+                                            <button class="del btn btn-raised btn-primary btn-sm" type="submit"
+                                                title="ยกเลิก" disabled>
+                                                <i class="fa fa-trash"></i></button>
+                                        </td>
                                     @endif
                                 </tr>
                             @endforeach

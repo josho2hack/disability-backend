@@ -142,6 +142,13 @@
                                             title="รายละเอียด"> <i class="fa fa-eye"></i></a>
                                     </td>
                                     @if (empty($form09->report))
+                                        @if (!empty($form10->report))
+                                            <td>
+                                                <button class="btn btn-raised btn-success btn-sm" type="submit"
+                                                    title="อนุมัติ" disabled>
+                                                    อนุมัติ</button>
+                                            </td>
+                                        @else
                                         <td>
                                             <form action="{{ route('form10.update', $form->id) }}" method="post">
                                                 @csrf
@@ -153,11 +160,13 @@
                                                     อนุมัติ</button>
                                             </form>
                                         </td>
+                                        @endif
                                     @else
-                                    <td>
-                                        <button class="btn btn-raised btn-success btn-sm" type="submit" title="อนุมัติ" disabled>
-                                            อนุมัติ</button>
-                                    </td>
+                                        <td>
+                                            <button class="btn btn-raised btn-success btn-sm" type="submit" title="อนุมัติ"
+                                                disabled>
+                                                อนุมัติ</button>
+                                        </td>
                                     @endif
                                 </tr>
                             @endforeach

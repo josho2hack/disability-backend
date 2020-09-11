@@ -100,9 +100,11 @@ class Form10Controller extends Controller
 
         } else {
 
-        $form10 = Form10::with('form01s')->find($id);
+        $form10 = Form10::find($id);
         $form10['report'] = now();
         $form10->save();
+
+        $form10 = Form10::with('form01s')->get();
         return view('approve.form10.index', compact('form10'));
         }
     }

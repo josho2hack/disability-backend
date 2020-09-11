@@ -100,9 +100,10 @@ class Form09Controller extends Controller
 
         } else {
 
-        $form09 = Form09::with('form01s')->find($id);
+        $form09 = Form09::find($id);
         $form09['report'] = now();
         $form09->save();
+        $form09 = Form09::with('form01s')->get();
         return view('approve.form09.index', compact('form09'));
         }
     }
