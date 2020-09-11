@@ -57,32 +57,6 @@
                             </tr>
                         </thead>
                         <tbody>
-                        @php
-
-                        function flexNformat($value, $pattern, $split_symbol) {
-                          $value_split = str_split($value, 1);
-                          $count_value = count($value_split);
-                          $pattern_splited = explode($split_symbol, $pattern);
-                          $numPatterSplited = count($pattern_splited);
-
-                          $sb = 0;
-                          for ($i=0; $i < $numPatterSplited; $i++) {
-                            for ($ii=0; $ii < strlen($pattern_splited[$i]); $ii++) {
-                              @$finalValue .= $value_split[$ii+$sb];
-                              if (($ii + 1) == strlen($pattern_splited[$i])) {
-                                $sb += strlen($pattern_splited[$i]);
-                                if ($sb != $count_value) {
-                                  $finalValue .= $split_symbol;
-                                }
-                              }
-                            }
-                          }
-
-                          return $finalValue;
-
-                        }
-
-                        @endphp
                             @foreach( $audit as $list )
                                 <tr>
                                     <td style="vertical-align: middle;" rowspan="2" align="center">
@@ -107,7 +81,7 @@
 
                                     </td>
                                     <td style="vertical-align: middle;" rowspan="2"align="center"> 1 หน่วย </td>
-                                    <td style="vertical-align: middle;" rowspan="2"align="center"> {{ $list->created_at }} </td>
+                                    <td style="vertical-align: middle;" rowspan="2"align="center"> {{ formatDateThai($list->created_at->isoFormat('Y-M-D H:mm')) }} </td>
                                     <td style="vertical-align: middle;" rowspan="2"align="center"><a href="" class="btn btn-raised btn-info"
                                             title="รายละเอียด"> <i class="fa fa-eye"></i></a></td>
                                 </tr>

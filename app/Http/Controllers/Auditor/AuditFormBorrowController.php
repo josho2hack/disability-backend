@@ -29,15 +29,16 @@ class AuditFormBorrowController extends Controller
     public function create(Request $request)
     {
         $audits = [];
-        $form = "App'Form01";
-        $slash = addslashes("$form");
         foreach( $request->check as $id ){
             $table[$id] = TransectionFormBorrow::where('id', $id)->first()->form_type;
+            $form_type = 
 
-            $table[$id] = addslashes('App'."'".$table[$id]);
+            $table[$id] = "App\\$table[$id]";
+            
             $audit[$id] = $table[$id]::where('id', $id)->first();
+            $audit[$id]['table'] = $table[$id];
         }
-dd($table);
+
         $audits = collect($audit);
 
         return view('auditor.audit.create', compact('audits'));

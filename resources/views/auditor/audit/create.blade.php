@@ -79,32 +79,6 @@
                 </div>
 
                 <div class="row">
-                    @php
-
-                    function flexNformat($value, $pattern, $split_symbol) {
-                      $value_split = str_split($value, 1);
-                      $count_value = count($value_split);
-                      $pattern_splited = explode($split_symbol, $pattern);
-                      $numPatterSplited = count($pattern_splited);
-
-                      $sb = 0;
-                      for ($i=0; $i < $numPatterSplited; $i++) {
-                        for ($ii=0; $ii < strlen($pattern_splited[$i]); $ii++) {
-                          @$finalValue .= $value_split[$ii+$sb];
-                          if (($ii + 1) == strlen($pattern_splited[$i])) {
-                            $sb += strlen($pattern_splited[$i]);
-                            if ($sb != $count_value) {
-                              $finalValue .= $split_symbol;
-                            }
-                          }
-                        }
-                      }
-
-                      return $finalValue;
-
-                    }
-
-                    @endphp
                     <table class="table table-bordered">
                         <thead>
                             <tr>
@@ -148,8 +122,8 @@
                                     @endif
                                 </td>
                                 <td rowspan="2" style="vertical-align: middle;"> 15,000 </td>
-                                <td rowspan="2" style="vertical-align: middle;"> <i class="fa fa-check"></i>  </td>
-                                <td rowspan="2" style="vertical-align: middle;">  </td>
+                                <td rowspan="2" style="vertical-align: middle;"> @if($audit->table == 'App\Form01') <i class="fa fa-check"></i>  @endif</td>
+                                <td rowspan="2" style="vertical-align: middle;">@if($audit->table == 'App\Form03') <i class="fa fa-check"></i>  @endif </td>
                                 <td rowspan="2" style="vertical-align: middle;">  </td>
                             </tr>
                             <tr>
