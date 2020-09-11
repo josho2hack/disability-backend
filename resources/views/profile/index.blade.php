@@ -60,7 +60,7 @@
                                                 <div class="form-group">
                                                     <label for="inputPassword3" class="col-sm-2 control-label">วันเกิด</label>
                                                     <div class="col-sm-10">
-                                                        <input type="text" class="form-control" value="{{ $user->brithday }}"  name="last_name" readonly>
+                                                        <input type="text" class="form-control" value="{{ $user->birthday }}"  name="last_name" readonly>
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
@@ -85,12 +85,12 @@
                                                     <label for="inputPassword3" class="col-sm-2 control-label">เพศ</label>
                                                     <div class="col-sm-10">
 
-                                                        <input type="text" class="form-control" 
+                                                        <input type="text" class="form-control"
                                                         @if( $user->gender == '1')
                                                         value="ชาย"
-                                                        @elseif( $user->gender == '2' ) 
+                                                        @elseif( $user->gender == '2' )
                                                         value="หญิง"
-                                                        @endif  
+                                                        @endif
                                                         readonly>
 
                                                     </div>
@@ -104,9 +104,9 @@
                                                         @endif
                                                     </label>
                                                     <div class="col-sm-10">
-                                                        <input type="text" class="form-control" 
+                                                        <input type="text" class="form-control"
                                                         @if ( $user->disability_type_id != null )
-                                                        value="{{ $user->disability->description }}" 
+                                                        value="{{ $user->disability->description }}"
                                                         @endif
                                                         readonly>
                                                     </div>

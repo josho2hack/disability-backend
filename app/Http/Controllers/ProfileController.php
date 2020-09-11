@@ -22,7 +22,7 @@ class ProfileController extends Controller
         $user = User::where('id',\Auth::user()->id)->first();
         $disability = DisabilityType::get();
         $profile = Profile::where('user_id', \Auth::user()->id)->first();
-        
+
     	return view('profile.edit', compact('user', 'disability', 'profile'));
     }
 
@@ -35,7 +35,7 @@ class ProfileController extends Controller
         $update->gender = $request->gender;
         $update->disability_type_id = $request->disability_type_id;
         $update->title = $request->title;
-        $update->brithday = $request->brithday;
+        $update->birthday = $request->birthday;
 
         if ( $update->save() ){
             return redirect('profile');
