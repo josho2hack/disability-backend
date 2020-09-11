@@ -74,7 +74,8 @@ Route::get('pdf/{id}', 'Form\FormborrowController@pdf');
 
 Route::prefix('auditor')->middleware('auth')->group(function () {
     Route::resource('audits', 'Auditor\AuditFormBorrowController');
-
+    Route::get('audits/form/send', 'Auditor\AuditFormBorrowController@send');
+    Route::get('audits/form/send_approver/{id}', 'Auditor\AuditFormBorrowController@send_approver');
 });
 
 

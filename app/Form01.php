@@ -36,4 +36,8 @@ class Form01 extends Model
     public function asset(){
 		return $this->hasOne(Asset::class,'id','asset_id');
 	}
+
+	public function asset(){
+		return $this->belongsTo('App\Asset', 'asset_id');
+	}
 }

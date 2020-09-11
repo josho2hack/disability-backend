@@ -39,6 +39,11 @@
                             {{ session()->get('message') }}
                         </div>
                     @endif
+                    @if(session()->has('success'))
+                        <div class="alert alert-success">
+                            {{ session()->get('success') }}
+                        </div>
+                    @endif
                     <table id="searchTextResults" data-filter="#filter" data-page-size="25"
                         class=" table table-custom table-hover" border="1">
                         <thead>
@@ -57,62 +62,36 @@
                             </tr>
                         </thead>
                         <tbody>
-                        @php
-
-                        function flexNformat($value, $pattern, $split_symbol) {
-                          $value_split = str_split($value, 1);
-                          $count_value = count($value_split);
-                          $pattern_splited = explode($split_symbol, $pattern);
-                          $numPatterSplited = count($pattern_splited);
-
-                          $sb = 0;
-                          for ($i=0; $i < $numPatterSplited; $i++) {
-                            for ($ii=0; $ii < strlen($pattern_splited[$i]); $ii++) {
-                              @$finalValue .= $value_split[$ii+$sb];
-                              if (($ii + 1) == strlen($pattern_splited[$i])) {
-                                $sb += strlen($pattern_splited[$i]);
-                                if ($sb != $count_value) {
-                                  $finalValue .= $split_symbol;
-                                }
-                              }
-                            }
-                          }
-
-                          return $finalValue;
-
-                        }
-
-                        @endphp
                             @foreach( $audit as $list )
                                 <tr>
                                     <td style="vertical-align: middle;" rowspan="2" align="center">
                                         <div class="checkbox">
                                         <label>
-                                            <input type="checkbox" class="check" name="check[]" value="{{ $list->id }}">
+                                            <input type="checkbox" class="check" name="check[]" value="{{ $list->borrow_single->id }}">
                                         </label>
                                     </div>
                                     </td>
                                     <td style="vertical-align: middle;" rowspan="2"align="center">{{ $loop->iteration }}</td>
-                                    <td style="vertical-align: middle;" rowspan="2"align="center">{{ $list->id }}</td>
+                                    <td style="vertical-align: middle;" rowspan="2"align="center">{{ $list->borrow_single->id }}</td>
                                     <td style="vertical-align: middle;" align="center"> 
-                                        {{ $list->user->first_name }} {{ $list->user->last_name }}
+                                        {{ $list->borrow_single->user->first_name }} {{ $list->borrow_single->user->last_name }}
                                     </td>
                                     <td style="vertical-align: middle;" rowspan="2"align="center"> 
-                                        @if(strlen($list->accessorie_list)>55)
-                                        {{ $list->accessorie_list = substr($list->accessorie_list, 0, 55)."..." }}
+                                        @if(strlen($list->borrow_single->accessorie_list)>55)
+                                        {{ $list->borrow_single->accessorie_list = substr($list->borrow_single->accessorie_list, 0, 55)."..." }}
                                         @else
-                                        {{ $list->accessorie_list }} 
+                                        {{ $list->borrow_single->accessorie_list }} 
                                         @endif
 
 
                                     </td>
                                     <td style="vertical-align: middle;" rowspan="2"align="center"> 1 หน่วย </td>
-                                    <td style="vertical-align: middle;" rowspan="2"align="center"> {{ $list->send_date }} </td>
+                                    <td style="vertical-align: middle;" rowspan="2"align="center"> {{ formatDateThai($list->created_at->isoFormat('Y-M-D H:mm')) }} </td>
                                     <td style="vertical-align: middle;" rowspan="2"align="center"><a href="" class="btn btn-raised btn-info"
                                             title="รายละเอียด"> <i class="fa fa-eye"></i></a></td>
                                 </tr>
                                 <tr>
-                                    <td align="center"> {{ flexNformat($list->user->citizen_id, ".-....-.....-..-.", "-") }} </td>
+                                    <td align="center"> {{ flexNformat($list->borrow_single->user->citizen_id, ".-....-.....-..-.", "-") }} </td>
                                 </tr>
                             @endforeach
                         </tbody>

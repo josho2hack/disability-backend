@@ -57,7 +57,7 @@
 
     <div class="boxs">
         <div class="boxs-body" style="width: auto; margin: auto; padding: 15px 80px;">
-            <form action="" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('audits.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="row">
                     <div class="col-sm-offset-6 col-sm-6">
@@ -73,38 +73,12 @@
                     <div class="text-center">
                         แบบรายงานการขอยืมอุปกรณ์และเครื่องมือเทคโนโลยีสารสนเทศและการสื่อสาร<br>   
                     หรือเทคโนโลยีสิ่งอำนวยความสะดวกเพื่อการสื่อสาร ตามกฎกระทรวงฯ <br><br>
-                    ครั้งที่ .............. ประจำปีงบประมาณ .....................<br>
-                    หน่วยงานที่รับคำขอฯ .................................................................... จังหวัด ...........................................
+                    ครั้งที่ <input type="text" name="round" value="{{$round}}" readonly style="width:5%;"> ประจำปีงบประมาณ <input type="text" name="year" value="{{date('Y')+543}}" style="width:10%;"><br>
+                    หน่วยงานที่รับคำขอฯ <input type="text" name="office" style="width:15%;" required> จังหวัด <input type="text" name="city" style="width:12%;" required>
                     </div>
                 </div>
 
                 <div class="row">
-                    @php
-
-                    function flexNformat($value, $pattern, $split_symbol) {
-                      $value_split = str_split($value, 1);
-                      $count_value = count($value_split);
-                      $pattern_splited = explode($split_symbol, $pattern);
-                      $numPatterSplited = count($pattern_splited);
-
-                      $sb = 0;
-                      for ($i=0; $i < $numPatterSplited; $i++) {
-                        for ($ii=0; $ii < strlen($pattern_splited[$i]); $ii++) {
-                          @$finalValue .= $value_split[$ii+$sb];
-                          if (($ii + 1) == strlen($pattern_splited[$i])) {
-                            $sb += strlen($pattern_splited[$i]);
-                            if ($sb != $count_value) {
-                              $finalValue .= $split_symbol;
-                            }
-                          }
-                        }
-                      }
-
-                      return $finalValue;
-
-                    }
-
-                    @endphp
                     <table class="table table-bordered">
                         <thead>
                             <tr>
@@ -138,7 +112,7 @@
                                 </td>
                                 <td rowspan="2" style="vertical-align: middle;"> {{ $audit->user->disability->description }} </td>
                                 <td rowspan="2" style="vertical-align: middle;"> 
-                                    {{ (date('Y')+543) - ((date('Y', strtotime($audit->user->brithday)))+543)  }}
+                                    {{ (date('Y')) - ((date('Y', strtotime($audit->user->birthday))))  }}
                                 </td>
                                 <td rowspan="2" style="vertical-align: middle;"> 
                                     @if(strlen($audit->accessorie_list)>55)
@@ -147,11 +121,12 @@
                                     {{ $audit->accessorie_list}}
                                     @endif
                                 </td>
-                                <td rowspan="2" style="vertical-align: middle;"> 15,000 </td>
-                                <td rowspan="2" style="vertical-align: middle;"> <i class="fa fa-check"></i>  </td>
-                                <td rowspan="2" style="vertical-align: middle;">  </td>
+                                <td rowspan="2" style="vertical-align: middle;"> {{ number_format($audit->asset->price) }} </td>
+                                <td rowspan="2" style="vertical-align: middle;"> {{-- @if($audit->table == 'App\Form01') --}} <i class="fa fa-check"></i>  {{-- @endif --}}</td>
+                                <td rowspan="2" style="vertical-align: middle;">{{-- @if($audit->table == 'App\Form03') <i class="fa fa-check"></i>  @endif  --}}</td>
                                 <td rowspan="2" style="vertical-align: middle;">  </td>
                             </tr>
+                            <input type="hidden" name="form_id[]" value="{{$audit->id}}">
                             <tr>
                                 <td align="center"> {{flexNformat($audit->user->citizen_id, ".-....-.....-..-.", "-") }} </td>
                             </tr>
