@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-
+use App\Asset;
 
 class Form01 extends Model
 {
@@ -31,5 +31,9 @@ class Form01 extends Model
 
 	public function address(){
 		return $this->hasOne(Profile::class,'user_id', 'user_id');
+    }
+
+    public function asset(){
+		return $this->hasOne(Asset::class,'id','asset_id');
 	}
 }

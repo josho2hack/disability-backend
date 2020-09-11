@@ -99,16 +99,16 @@
                                             <span>3. อนุมัติคำขอ</span>
                                         </a>
                                         <ul>
-                                            <li class="{{ request()->is('approve/form07') ? 'active' : '' }}">
+                                            <li class="{{ request()->is('approve/form07*') ? 'active' : '' }}">
                                                 <a role="button" tabindex="0"
                                                     href="{{ route('form07.index') }}">
                                                     <i class="fa fa-angle-right"></i>3.1 เอกสารเข้า ทก07</a>
                                             </li>
-                                            <li class="{{ request()->is('approve/form09') ? 'active' : '' }}">
+                                            <li class="{{ request()->is('approve/form09*') ? 'active' : '' }}">
                                                 <a role="button" tabindex="0" href="{{ route('form09.index') }}">
                                                     <i class="fa fa-angle-right"></i>3.2 เอกสาร ทก09 (อนุมัติ)</a>
                                             </li>
-                                            <li class="{{ request()->is('approve/form10') ? 'active' : '' }}">
+                                            <li class="{{ request()->is('approve/form10*') ? 'active' : '' }}">
                                                 <a role="button" tabindex="0" href="{{ route('form10.index') }}">
                                                     <i class="fa fa-angle-right"></i>3.3 เอกสาร ทก10 (ยกเลิก)</a>
                                             </li>
@@ -167,16 +167,16 @@
                                             <span>1. อนุมัติคำขอ</span>
                                         </a>
                                         <ul>
-                                            <li class="{{ request()->is('approve/form07') ? 'active' : '' }}">
+                                            <li class="{{ request()->is('approve/form07*') ? 'active' : '' }}">
                                                 <a role="button" tabindex="0"
                                                     href="{{ route('form07.index') }}">
                                                     <i class="fa fa-angle-right"></i>1.1 เอกสารเข้า ทก.07</a>
                                             </li>
-                                            <li class="{{ request()->is('approve/form09') ? 'active' : '' }}">
+                                            <li class="{{ request()->is('approve/form09*') ? 'active' : '' }}">
                                                 <a role="button" tabindex="0" href="{{ route('form09.index') }}">
                                                     <i class="fa fa-angle-right"></i>1.2 เอกสาร ทก.09 (อนุมัติ)</a>
                                             </li>
-                                            <li class="{{ request()->is('approve/form10') ? 'active' : '' }}">
+                                            <li class="{{ request()->is('approve/form10*') ? 'active' : '' }}">
                                                 <a role="button" tabindex="0" href="{{ route('form10.index') }}">
                                                     <i class="fa fa-angle-right"></i>1.3 เอกสาร ทก.10 (ยกเลิก)</a>
                                             </li>

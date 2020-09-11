@@ -96,7 +96,7 @@
                                     <td>
                                         {{ sprintf("%02d",$form->id) }}
                                     </td>
-                                    <td>3</td>
+                                    <td>{{ $form->form01s->count()}}</td>
                                     <td>{{ formatDateThai($form->created_at) }} {{ formatTimeThai($form->created_at) }}</td>
                                     <td>{{ formatDateThai($form->report) }} {{ formatTimeThai($form->report) }}</td>
                                     <td>

@@ -15,7 +15,7 @@ class Form09Controller extends Controller
      */
     public function index()
     {
-        $form09 = Form09::all();
+        $form09 = Form09::with('form01s')->get();
         return view('approve.form09.index', compact('form09'));
     }
 
@@ -48,7 +48,9 @@ class Form09Controller extends Controller
      */
     public function show($id)
     {
-        //
+        $form09 = Form09::with('form01s')->find($id);
+        $form01s = $form09->form01s;
+        return view('approve.form09.show', compact('form09','form01s'));
     }
 
     /**

@@ -9,25 +9,28 @@
     <div class="b-b mb-10">
         <div class="row">
             <div class="col-sm-6 col-xs-12">
-                <h3 class="h3 m-0"> @if (Auth::user()
-                    ->roles()
-                    ->first()->name == 'Admin')3.
+                <h3 class="h3 m-0">
+                    @if (Auth::user()
+            ->roles()
+            ->first()->name == 'Admin')3.
                     @endif
                     @if (Auth::user()
-                    ->roles()
-                    ->first()->name == 'Approve')1.
+            ->roles()
+            ->first()->name == 'Approve')1.
                     @endif
-                    อนุมัติคำขอ</h3>
+                    อนุมัติคำขอ
+                </h3>
                 <small class="text-muted">
                     @if (Auth::user()
-                    ->roles()
-                    ->first()->name == 'Admin')3.
+            ->roles()
+            ->first()->name == 'Admin')3.
                     @endif
                     @if (Auth::user()
-                    ->roles()
-                    ->first()->name == 'Approve')1.
+            ->roles()
+            ->first()->name == 'Approve')1.
                     @endif
-                    1 เอกสารเข้า ทก07</small>
+                    1 เอกสารเข้า ทก07
+                </small>
             </div>
             <div class="btn-group pull-right">
                 <ol class="breadcrumb">
@@ -35,34 +38,40 @@
                         <a href="{{ route('root') }}"><i class="fa fa-home"></i></a>
                     </li>
                     <li>
-                        <a href="{{ route('approve') }}">@if (Auth::user()
-                            ->roles()
-                            ->first()->name == 'Admin')3.
+                        <a href="{{ route('approve') }}">
+                            @if (Auth::user()
+            ->roles()
+            ->first()->name == 'Admin')3.
                             @endif
                             @if (Auth::user()
-                            ->roles()
-                            ->first()->name == 'Approve')1.
-                            @endif อนุมัติคำขอ</a>
+            ->roles()
+            ->first()->name == 'Approve')1.
+                            @endif อนุมัติคำขอ
+                        </a>
                     </li>
                     <li>
-                        <a href="{{ route('form07.index') }}">@if (Auth::user()
-                            ->roles()
-                            ->first()->name == 'Admin')3.
+                        <a href="{{ route('form07.index') }}">
+                            @if (Auth::user()
+            ->roles()
+            ->first()->name == 'Admin')3.
                             @endif
                             @if (Auth::user()
-                            ->roles()
-                            ->first()->name == 'Approve')1.
-                            @endif 1 เอกสารเข้า ทก07</a>
+            ->roles()
+            ->first()->name == 'Approve')1.
+                            @endif 1 เอกสารเข้า ทก07
+                        </a>
                     </li>
-                    <li class="active">@if (Auth::user()
-                        ->roles()
-                        ->first()->name == 'Admin')3.1
+                    <li class="active">
+                        @if (Auth::user()
+            ->roles()
+            ->first()->name == 'Admin')3.1
                         @endif
                         @if (Auth::user()
-                        ->roles()
-                        ->first()->name == 'Approve')1.1
+            ->roles()
+            ->first()->name == 'Approve')1.1
                         @endif
-                        1 รายละเอียดเอกสารเข้า ทก07</li>
+                        1 รายละเอียดเอกสารเข้า ทก07
+                    </li>
                 </ol>
             </div>
         </div>
@@ -87,6 +96,13 @@
                             <p>{{ $message }}</p>
                         </div>
                     @endif
+                    <strong>ครั้งที่</strong> {{ $form07->round }}
+                    <br>
+                    <strong>ประจำปีงบประมาณ</strong> {{ $form07->year }}
+                    <br>
+                    <strong>หน่วยงานที่รับคาขอฯ</strong> {{ $form07->office }}
+                    <br>
+                    <strong>จังหวัด</strong> {{ $form07->city }}
                     <table id="searchTextResults" data-filter="#filter" data-page-size="25"
                         class="footable table table-custom table-hover">
                         <thead>
@@ -116,57 +132,78 @@
                                         <br>
                                         {{ $form->user->citizen_id }}
                                     </td>
-                                <td>{{ $form->address->house_no ?? '' }} {{$form->address->village_no ?? ''}}
-                                    {{ $form->address->lane ?? '' }} {{$form->address->sub_district ?? ''}}
-                                    {{ $form->address->district ?? '' }} {{$form->address->province ?? ''}}
-                                    {{$form->address->postal_code ?? ''}}
-                                </td>
+                                    <td>{{ $form->address->house_no ?? '' }} {{ $form->address->village_no ?? '' }}
+                                        {{ $form->address->lane ?? '' }} {{ $form->address->sub_district ?? '' }}
+                                        {{ $form->address->district ?? '' }} {{ $form->address->province ?? '' }}
+                                        {{ $form->address->postal_code ?? '' }}
+                                    </td>
                                     <td>{{ $form->user->disabilityType->description }}</td>
                                     <td>{{ $form->user->age }}</td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
+                                    <td>{{ $form->accessorie_no }}</td>
+                                    <td>{{ $form->asset->price }}</td>
+                                    <td><i class="fa fa-check"></i></td>
                                     <td></td>
 
                                     <td>
-                                        <a href="{{ route('form07.show', $form) }}" class="btn btn-raised btn-info btn-sm"
+                                        <a href="{{ url('pdf/' . $form->id) }}" class="btn btn-raised btn-info btn-sm"
                                             title="รายละเอียด"> <i class="fa fa-eye"></i></a>
                                     </td>
-                                    @if (empty($form->report))
-                                    <td>
-                                        <form action="{{ route('form07.update', $form->id) }}" method="post">
-                                            @csrf
-                                            @method('PUT')
-                                            <input type="hidden" name="approve">
-                                            <button class="btn btn-raised btn-success btn-sm" type="submit" title="ตรวจสอบผ่าน">
-                                                ตรวจสอบผ่าน</button>
-                                        </form>
-                                    </td>
-                                    <td>
-                                        <form action="{{ route('form07.update', $form->id) }}" method="post">
-                                            @csrf
-                                            @method('PUT')
-                                            <input type="hidden" name="cancel">
-                                            <button class="del btn btn-raised btn-primary btn-sm" type="submit" title="ยกเลิก">
-                                                <i class="fa fa-trash"></i></button>
-                                        </form>
-                                    </td>
+                                    @if (!empty($form->form09s_id))
+                                        <td>
+                                            <button class="btn btn-raised btn-success btn-sm" type="submit" title="อนุมัติ"
+                                                disabled>
+                                                <span style="color: blue">อนุมัติแล้ว</span>
+                                            </button>
+                                        </td>
+                                        <td>
+                                            <form action="{{ route('form07.update', $form->id) }}" method="post">
+                                                @csrf
+                                                @method('PUT')
+                                                <input type="hidden" name="form01" value="1">
+                                                <input type="hidden" name="cancel" value="1">
+                                                <button class="del btn btn-raised btn-primary btn-sm" type="submit"
+                                                    title="ยกเลิก">
+                                                    <i class="fa fa-trash"></i></button>
+                                            </form>
+                                        </td>
+                                    @elseif(!empty($form->form10s_id))
+                                        <td>
+                                            <form action="{{ route('form07.update', $form->id) }}" method="post">
+                                                @csrf
+                                                @method('PUT')
+                                                <input type="hidden" name="form01" value="1">
+                                                <input type="hidden" name="approve" value="1">
+                                                <button class="btn btn-raised btn-success btn-sm" type="submit"
+                                                    title="อนุมัติ">
+                                                    อนุมัติ</button>
+                                            </form>
+                                        </td>
+                                        <td>
+                                            <button class="btn btn-raised btn-success btn-sm" type="submit" title="ยกเลิก"
+                                                disabled>
+                                                <span style="color: red">ยกเลิกแล้ว</span>
+                                            </button>
+                                        </td>
                                     @else
                                     <td>
                                         <form action="{{ route('form07.update', $form->id) }}" method="post">
                                             @csrf
                                             @method('PUT')
-                                            <input type="hidden" name="approve">
-                                            <button class="btn btn-raised btn-success btn-sm" type="submit" title="ตรวจสอบแล้ว" disabled>
-                                                ตรวจสอบแล้ว</button>
+                                            <input type="hidden" name="form01" value="1">
+                                            <input type="hidden" name="approve" value="1">
+                                            <button class="btn btn-raised btn-success btn-sm" type="submit"
+                                                title="อนุมัติ">
+                                                อนุมัติ</button>
                                         </form>
                                     </td>
                                     <td>
                                         <form action="{{ route('form07.update', $form->id) }}" method="post">
                                             @csrf
                                             @method('PUT')
-                                            <input type="hidden" name="cancel">
-                                            <button class="del btn btn-raised btn-primary btn-sm" type="submit" title="ยกเลิก" disabled>
+                                            <input type="hidden" name="form01" value="1">
+                                            <input type="hidden" name="cancel" value="1">
+                                            <button class="del btn btn-raised btn-primary btn-sm" type="submit"
+                                                title="ยกเลิก">
                                                 <i class="fa fa-trash"></i></button>
                                         </form>
                                     </td>
