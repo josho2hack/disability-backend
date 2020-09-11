@@ -93,26 +93,26 @@
                                     </div>
                                     </td>
                                     <td style="vertical-align: middle;" rowspan="2"align="center">{{ $loop->iteration }}</td>
-                                    <td style="vertical-align: middle;" rowspan="2"align="center">{{ $list->id }}</td>
+                                    <td style="vertical-align: middle;" rowspan="2"align="center">{{ $list->borrow_single->id }}</td>
                                     <td style="vertical-align: middle;" align="center"> 
-                                        {{ $list->user->first_name }} {{ $list->user->last_name }}
+                                        {{ $list->borrow_single->user->first_name }} {{ $list->borrow_single->user->last_name }}
                                     </td>
                                     <td style="vertical-align: middle;" rowspan="2"align="center"> 
-                                        @if(strlen($list->accessorie_list)>55)
-                                        {{ $list->accessorie_list = substr($list->accessorie_list, 0, 55)."..." }}
+                                        @if(strlen($list->borrow_single->accessorie_list)>55)
+                                        {{ $list->borrow_single->accessorie_list = substr($list->borrow_single->accessorie_list, 0, 55)."..." }}
                                         @else
-                                        {{ $list->accessorie_list }} 
+                                        {{ $list->borrow_single->accessorie_list }} 
                                         @endif
 
 
                                     </td>
                                     <td style="vertical-align: middle;" rowspan="2"align="center"> 1 หน่วย </td>
-                                    <td style="vertical-align: middle;" rowspan="2"align="center"> {{ $list->send_date }} </td>
+                                    <td style="vertical-align: middle;" rowspan="2"align="center"> {{ $list->created_at }} </td>
                                     <td style="vertical-align: middle;" rowspan="2"align="center"><a href="" class="btn btn-raised btn-info"
                                             title="รายละเอียด"> <i class="fa fa-eye"></i></a></td>
                                 </tr>
                                 <tr>
-                                    <td align="center"> {{ flexNformat($list->user->citizen_id, ".-....-.....-..-.", "-") }} </td>
+                                    <td align="center"> {{ flexNformat($list->borrow_single->user->citizen_id, ".-....-.....-..-.", "-") }} </td>
                                 </tr>
                             @endforeach
                         </tbody>

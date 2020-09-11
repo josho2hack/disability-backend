@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auditor;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Form01;
+use App\TransectionFormBorrow;
 
 class AuditFormBorrowController extends Controller
 {
@@ -15,7 +16,7 @@ class AuditFormBorrowController extends Controller
      */
     public function index()
     {
-       $audit = Form01::where('send_status', '1')->get();
+       $audit = TransectionFormBorrow::all();
 
        return view('auditor.audit.index', compact('audit'));
     }
@@ -28,10 +29,15 @@ class AuditFormBorrowController extends Controller
     public function create(Request $request)
     {
         $audits = [];
+        $form = "App'Form01";
+        $slash = addslashes("$form");
         foreach( $request->check as $id ){
-            $audit[$id] = Form01::where('id', $id)->first();
-        }
+            $table[$id] = TransectionFormBorrow::where('id', $id)->first()->form_type;
 
+            $table[$id] = addslashes('App'."'".$table[$id]);
+            $audit[$id] = $table[$id]::where('id', $id)->first();
+        }
+dd($table);
         $audits = collect($audit);
 
         return view('auditor.audit.create', compact('audits'));

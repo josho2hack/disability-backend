@@ -14,6 +14,7 @@ use App\AssetCategory;
 use App\Form01;
 use App\UserDocument;
 use PDF;
+use App\TransectionFormBorrow;
 
 class FormborrowController extends Controller
 {
@@ -26,12 +27,13 @@ class FormborrowController extends Controller
     {
         if( isset(\Auth::user()->id) ) {
             $form = Form01::where('user_id' , \Auth::user()->id)->get();
-
+            
             return view('forms.borrow.index' ,compact('form'));
         }else{
             return redirect('login');
         }
 
+        
     }
 
     /**
@@ -61,12 +63,6 @@ class FormborrowController extends Controller
         return view('forms.borrow.create', compact('address', 'assets', 'main'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         // dd($request->all());
@@ -141,7 +137,7 @@ class FormborrowController extends Controller
         // $borrow->accessorie_no = $request->accessorie_no;
         // $borrow->type = $request->type;
 
-
+            
     }
 
     /**
@@ -264,6 +260,14 @@ class FormborrowController extends Controller
         if($send_auditor->save()){
             $asset = Asset::find($send_auditor->asset_id);
             $asset->asset_statuses_id = '3';
+
+            if($asset->save()){
+                $transection = New TransectionFormBorrow;
+                $transection->form_id = $send_auditor->id;
+                $transection->form_type = 'Form01';
+                $transection->save(); 
+            }
+
             return redirect()->back()->with('success', 'ส่งแบบฟอร์มเรียบร้อยแล้ว');
         }
     }
