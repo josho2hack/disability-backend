@@ -76,8 +76,8 @@
                                         @endif
                                     </td>
                                     <td align="center"> 1 หน่วย </td>
-                                    <td align="center">{{ formatDateThai($forms->created_at->isoFormat('Y-M-D H:mm')) }}</td>
-                                    <td align="center">@if ( $forms->send_status == 1 ) {{ formatDateThai($forms->send_date->isoFormat('Y-M-D H:mm')) }} @else ร่าง @endif</td>
+                                    {{-- <td align="center">{{ formatDateThai($forms->created_at->isoFormat('Y-M-D H:mm')) }}</td> --}}
+                                    <td align="center">@if ( $forms->send_status == 1 ) {{ formatDateThai($forms->send_date) }} @else ร่าง @endif</td>
                                     <td align="center">
                                         <a href="{{ url('pdf/'.$forms->id) }}" class="btn btn-raised btn-info"
                                             title="รายละเอียด"> <i class="fa fa-eye"></i></a>

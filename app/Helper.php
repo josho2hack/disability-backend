@@ -1,18 +1,21 @@
 <?php
 
 function formatDateThai($FullDate){
-    $strDate = explode(" ", $FullDate);
-    $strDateSplited = explode("-", $strDate[0]);
-    $strYear = date("Y",strtotime($strDateSplited[0]))+543;
-    $strMonth= $strDateSplited[1];
-    $strDay= $strDateSplited[2];
-    // $strHour= date("H",strtotime($strDate));
-    // $strMinute= date("i",strtotime($strDate));
-    // $strSeconds= date("s",strtotime($strDate));
-    $strMonthCut = Array("","มกราคม","กุมภาพันธ์","มีนาคม","เมษายน","พฤษภาคม","มิถุนายน","กรกฎาคม","สิงหาคม","กันยายน","ตุลาคม","พฤศจิกายน","ธันวาคม");
-    $strMonthThai=$strMonthCut[$strMonth];
+    if ($FullDate!="") {
+        $strDate = explode(" ", $FullDate);
+        $strDateSplited = explode("-", $strDate[0]);
+        $strYear = date("Y",strtotime($strDateSplited[0]))+543;
+        $strMonth= date("j",strtotime($strDateSplited[1]));
+        $strDay= $strDateSplited[2];
+        // $strHour= date("H",strtotime($strDate));
+        // $strMinute= date("i",strtotime($strDate));
+        // $strSeconds= date("s",strtotime($strDate));
+        $strMonthCut = Array("","มกราคม","กุมภาพันธ์","มีนาคม","เมษายน","พฤษภาคม","มิถุนายน","กรกฎาคม","สิงหาคม","กันยายน","ตุลาคม","พฤศจิกายน","ธันวาคม");
+        $strMonthThai=$strMonthCut[$strMonth];
 
-    $finalDate = $strDay." ".$strMonthThai." ".$strYear." ".$strDate[1];
+        $finalDate = $strDay." ".$strMonthThai." ".$strYear." ".$strDate[1];
+    }
+
     return  $finalDate;
 }
 
