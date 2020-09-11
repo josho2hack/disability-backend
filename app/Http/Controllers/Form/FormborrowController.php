@@ -26,13 +26,12 @@ class FormborrowController extends Controller
     {
         if( isset(\Auth::user()->id) ) {
             $form = Form01::where('user_id' , \Auth::user()->id)->get();
-            
+
             return view('forms.borrow.index' ,compact('form'));
         }else{
             return redirect('login');
         }
 
-        
     }
 
     /**
@@ -142,7 +141,7 @@ class FormborrowController extends Controller
         // $borrow->accessorie_no = $request->accessorie_no;
         // $borrow->type = $request->type;
 
-            
+
     }
 
     /**
