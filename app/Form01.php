@@ -32,4 +32,8 @@ class Form01 extends Model
 	public function address(){
 		return $this->hasOne(Profile::class,'user_id', 'user_id');
 	}
+
+	public function asset(){
+		return $this->belongsTo('App\Asset', 'asset_id');
+	}
 }

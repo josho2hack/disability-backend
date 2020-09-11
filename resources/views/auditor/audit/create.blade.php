@@ -57,7 +57,7 @@
 
     <div class="boxs">
         <div class="boxs-body" style="width: auto; margin: auto; padding: 15px 80px;">
-            <form action="" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('audits.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="row">
                     <div class="col-sm-offset-6 col-sm-6">
@@ -73,8 +73,8 @@
                     <div class="text-center">
                         แบบรายงานการขอยืมอุปกรณ์และเครื่องมือเทคโนโลยีสารสนเทศและการสื่อสาร<br>   
                     หรือเทคโนโลยีสิ่งอำนวยความสะดวกเพื่อการสื่อสาร ตามกฎกระทรวงฯ <br><br>
-                    ครั้งที่ .............. ประจำปีงบประมาณ .....................<br>
-                    หน่วยงานที่รับคำขอฯ .................................................................... จังหวัด ...........................................
+                    ครั้งที่ <input type="text" name="round" value="{{$round}}" readonly style="width:5%;"> ประจำปีงบประมาณ <input type="text" name="year" value="{{date('Y')+543}}" style="width:10%;"><br>
+                    หน่วยงานที่รับคำขอฯ <input type="text" name="office" style="width:15%;"> จังหวัด <input type="text" name="city" style="width:12%;">
                     </div>
                 </div>
 
@@ -112,7 +112,7 @@
                                 </td>
                                 <td rowspan="2" style="vertical-align: middle;"> {{ $audit->user->disability->description }} </td>
                                 <td rowspan="2" style="vertical-align: middle;"> 
-                                    {{ (date('Y')+543) - ((date('Y', strtotime($audit->user->brithday)))+543)  }}
+                                    {{ (date('Y')) - ((date('Y', strtotime($audit->user->birthday))))  }}
                                 </td>
                                 <td rowspan="2" style="vertical-align: middle;"> 
                                     @if(strlen($audit->accessorie_list)>55)
@@ -121,11 +121,12 @@
                                     {{ $audit->accessorie_list}}
                                     @endif
                                 </td>
-                                <td rowspan="2" style="vertical-align: middle;"> 15,000 </td>
+                                <td rowspan="2" style="vertical-align: middle;"> {{ number_format($audit->asset->price) }} </td>
                                 <td rowspan="2" style="vertical-align: middle;"> @if($audit->table == 'App\Form01') <i class="fa fa-check"></i>  @endif</td>
                                 <td rowspan="2" style="vertical-align: middle;">@if($audit->table == 'App\Form03') <i class="fa fa-check"></i>  @endif </td>
                                 <td rowspan="2" style="vertical-align: middle;">  </td>
                             </tr>
+                            <input type="hidden" name="form_id[]" value="{{$audit->id}}">
                             <tr>
                                 <td align="center"> {{flexNformat($audit->user->citizen_id, ".-....-.....-..-.", "-") }} </td>
                             </tr>

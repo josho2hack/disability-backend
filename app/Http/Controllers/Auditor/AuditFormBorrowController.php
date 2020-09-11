@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Form01;
 use App\TransectionFormBorrow;
+use App\Form07;
 
 class AuditFormBorrowController extends Controller
 {
@@ -17,7 +18,7 @@ class AuditFormBorrowController extends Controller
     public function index()
     {
        $audit = TransectionFormBorrow::all();
-
+// dd($audit);
        return view('auditor.audit.index', compact('audit'));
     }
 
@@ -29,9 +30,10 @@ class AuditFormBorrowController extends Controller
     public function create(Request $request)
     {
         $audits = [];
+        $round = Form07::distinct('round')->latest()->count() +1 ;
+
         foreach( $request->check as $id ){
             $table[$id] = TransectionFormBorrow::where('id', $id)->first()->form_type;
-            $form_type = 
 
             $table[$id] = "App\\$table[$id]";
             
@@ -41,7 +43,7 @@ class AuditFormBorrowController extends Controller
 
         $audits = collect($audit);
 
-        return view('auditor.audit.create', compact('audits'));
+        return view('auditor.audit.create', compact('audits', 'round'));
     }
 
     /**
@@ -52,7 +54,18 @@ class AuditFormBorrowController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        foreach( $request->form_id as $form_id ){
+            $audit = new Form07;
+            $audit->round = $request->round;
+            $audit->year = $request->year;
+            $audit->office = $request->office;
+            $audit->city = $request->city;
+            $audit->form_id = $form_id;
+            $audit->form_type = "form01";
+            $audit->save();
+        }
+
+        return redirect('auditor/audits/form/send')->with('success', 'สร้างแบบฟอร์มเรียบร้อยแล้ว');
     }
 
     /**

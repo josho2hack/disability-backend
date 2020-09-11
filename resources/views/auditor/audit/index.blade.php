@@ -39,6 +39,11 @@
                             {{ session()->get('message') }}
                         </div>
                     @endif
+                    @if(session()->has('success'))
+                        <div class="alert alert-success">
+                            {{ session()->get('success') }}
+                        </div>
+                    @endif
                     <table id="searchTextResults" data-filter="#filter" data-page-size="25"
                         class=" table table-custom table-hover" border="1">
                         <thead>
