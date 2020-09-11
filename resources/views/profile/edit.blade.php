@@ -58,18 +58,18 @@
                                                 <div class="form-group">
                                                     <label for="inputPassword3" class="col-sm-2 control-label">วันเกิด</label>
                                                     <div class="col-sm-10">
-                                                        <input type="date" class="form-control" value="{{ $user->brithday }}"  name="brithday" >
+                                                        <input type="date" class="form-control" value="{{ $user->birthday }}"  name="birthday" >
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="inputPassword3" class="col-sm-2 control-label">เพศ</label>
                                                     <div class="col-sm-10">
                                                         <label class="radio-inline">
-                                                            <input type="radio" name="gender" value="1" 
+                                                            <input type="radio" name="gender" value="1"
                                                             @if($user->gender == 1) checked @endif> ชาย
                                                         </label>
                                                         <label class="radio-inline">
-                                                            <input type="radio" name="gender" value="2" 
+                                                            <input type="radio" name="gender" value="2"
                                                             @if($user->gender == 2) checked @endif> หญิง
                                                         </label>
                                                     </div>

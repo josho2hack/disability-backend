@@ -14,6 +14,10 @@ class AddAttributesToForm01s extends Migration
     public function up()
     {
         Schema::table('form01s', function (Blueprint $table) {
+            $table->string('office')->comment('หน่วยงาน')->default('สำนักงานปลัดกระทรวงเทคโนโลยีสารสนเทศและการสื่อสาร');
+            $table->string('city')->comment('จังหวัด')->default('กรุงเทพมหานคร');
+            $table->string('remark')->nullable()->comment('หมายเหตุ');
+            $table->string('image')->nullable()->comment('ภาพเอกสาร');
             $table->dateTime('audit_date')->nullable()->comment('วันที่ตรวจสอบผ่าน');
             $table->dateTime('approve_date')->nullable()->comment('วันที่อนุมัติ');
             $table->foreignId('form07s_id')->nullable()->comment('ทก.07')->constrained()->onDelete('set null');

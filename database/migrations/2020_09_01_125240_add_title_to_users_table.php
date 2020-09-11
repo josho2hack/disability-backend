@@ -15,7 +15,7 @@ class AddTitleToUsersTable extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->string('title')->nullable()->after('password')->comment('คำนำหน้าชื่อ');
-            $table->date('brithday')->nullable()->after('last_name')->comment('วันเกิด');
+            $table->date('birthday')->nullable()->after('last_name')->comment('วันเกิด');
         });
     }
 

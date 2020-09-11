@@ -44,15 +44,25 @@
                             ->first()->name == 'Approve')1.
                             @endif อนุมัติคำขอ</a>
                     </li>
+                    <li>
+                        <a href="{{ route('form07.index') }}">@if (Auth::user()
+                            ->roles()
+                            ->first()->name == 'Admin')3.
+                            @endif
+                            @if (Auth::user()
+                            ->roles()
+                            ->first()->name == 'Approve')1.
+                            @endif 1 เอกสารเข้า ทก07</a>
+                    </li>
                     <li class="active">@if (Auth::user()
                         ->roles()
-                        ->first()->name == 'Admin')3.
+                        ->first()->name == 'Admin')3.1
                         @endif
                         @if (Auth::user()
                         ->roles()
-                        ->first()->name == 'Approve')1.
+                        ->first()->name == 'Approve')1.1
                         @endif
-                        1 เอกสารเข้า ทก07</li>
+                        1 รายละเอียดเอกสารเข้า ทก07</li>
                 </ol>
             </div>
         </div>
@@ -63,7 +73,7 @@
             <section class="boxs">
                 <div class="boxs-header">
                     <h3 class="custom-font">
-                        <strong>เอกสารเข้า ทก07</strong>
+                        <strong>รายละเอียดเอกสารเข้า ทก07</strong>
                     </h3>
                     <div class="form-group">
                         <label for="filter" style="padding-top: 5px">ค้นหา:</label>
@@ -81,24 +91,43 @@
                         class="footable table table-custom table-hover">
                         <thead>
                             <tr>
-                                <th>ลำดับ</th>
-                                <th>เลขที่ ทก.07</th>
-                                <th>รายการ</th>
-                                <th>วันที่บันทึก</th>
-                                <th>วันที่ตรวจสอบ</th>
-                                <th colspan=3 style="width: 5%">ดำเนินการ</th>
+                                <th rowspan="2">ที่</th>
+                                <th>ชื่อ - สกุล คนพิการ</th>
+                                <th rowspan="2">ที่อยู่</th>
+                                <th rowspan="2">ประเภทความพิการ</th>
+                                <th rowspan="2">อายุ</th>
+                                <th rowspan="2">รายการอุปกรณ์/เครื่องมือฯ ที่ขอยืม</th>
+                                <th rowspan="2">ราคา/หน่วย</th>
+                                <th colspan="2">การขอใช้สิทธิ์</th>
+                                <th rowspan="2" colspan=3 style="width: 5%">ดำเนินการ</th>
+                            </tr>
+                            <tr>
+                                <th>หมายเลขบัตรประจำตัวประชาชน</th>
+                                <th>รายบุคคล</th>
+                                <th>รายกลุ่ม</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($form07 as $form)
+                            @foreach ($form01s as $form)
                                 <tr>
                                     <td>{{ $loop->index + 1 }}</td>
                                     <td>
-                                        {{ sprintf("%02d",$form->id) }}
+                                        {{ $form->user->fullname }}
+                                        <br>
+                                        {{ $form->user->citizen_id }}
                                     </td>
-                                <td>{{ $form->form01s->count() }}</td>
-                                    <td>{{ formatDateThai($form->created_at) }} {{ formatTimeThai($form->created_at) }}</td>
-                                    <td>{{ formatDateThai($form->report) }} {{ formatTimeThai($form->report) }}</td>
+                                <td>{{ $form->address->house_no ?? '' }} {{$form->address->village_no ?? ''}}
+                                    {{ $form->address->lane ?? '' }} {{$form->address->sub_district ?? ''}}
+                                    {{ $form->address->district ?? '' }} {{$form->address->province ?? ''}}
+                                    {{$form->address->postal_code ?? ''}}
+                                </td>
+                                    <td>{{ $form->user->disabilityType->description }}</td>
+                                    <td>{{ $form->user->age }}</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+
                                     <td>
                                         <a href="{{ route('form07.show', $form) }}" class="btn btn-raised btn-info btn-sm"
                                             title="รายละเอียด"> <i class="fa fa-eye"></i></a>
@@ -108,7 +137,7 @@
                                         <form action="{{ route('form07.update', $form->id) }}" method="post">
                                             @csrf
                                             @method('PUT')
-                                            <input type="hidden" name="approve" value="1">
+                                            <input type="hidden" name="approve">
                                             <button class="btn btn-raised btn-success btn-sm" type="submit" title="ตรวจสอบผ่าน">
                                                 ตรวจสอบผ่าน</button>
                                         </form>
@@ -117,7 +146,7 @@
                                         <form action="{{ route('form07.update', $form->id) }}" method="post">
                                             @csrf
                                             @method('PUT')
-                                            <input type="hidden" name="cancel" value="1">
+                                            <input type="hidden" name="cancel">
                                             <button class="del btn btn-raised btn-primary btn-sm" type="submit" title="ยกเลิก">
                                                 <i class="fa fa-trash"></i></button>
                                         </form>
