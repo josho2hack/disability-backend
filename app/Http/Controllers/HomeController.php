@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 
 use App\DisabilityType;
 use App\News;
+use App\SubGroup;
 
 class HomeController extends Controller
 {
@@ -38,13 +39,13 @@ class HomeController extends Controller
 
     public function allLogin() {
         $news = News::latest()->limit(3)->get();
+        $subgroup = SubGroup::with('assets')->get();
 
-        return view('index', compact('news'));
+        return view('index', compact('news','subgroup'));
     }
 
     public function show_news($id) {
         $news = News::find($id)->limit(1)->get();
-
         return view('shownews', compact('news'));
     }
 

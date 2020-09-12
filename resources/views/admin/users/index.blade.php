@@ -115,9 +115,9 @@
                                     <td>{{ $user->disability->description ?? '' }}</td>
                                     <td>{{ $user->first_name ?? '' }}</td>
                                     <td>{{ $user->last_name ?? ''}}</td>
-                                    <td>{{ formatDateThai($user->appove_date) ?? ''}}
+                                    <td>{{ formatDateThai($user->approve_date) ?? ''}}
                                         <br>
-                                        {{ formatTimeThai($user->appove_date) ?? '' }}
+                                        {{ formatTimeThai($user->approve_date) ?? '' }}
                                     </td>
                                     <td>
                                         @if ($user->active == 1)

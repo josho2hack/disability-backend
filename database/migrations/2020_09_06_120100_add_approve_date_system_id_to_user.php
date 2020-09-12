@@ -15,7 +15,7 @@ class AddApproveDateSystemIdToUser extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->string("system_id")->nullable()->comment('หมายเลขกำหนดของระบบ');
-            $table->dateTime("appove_date")->nullable()->comment('วันที่อนุมัติ');
+            $table->dateTime("approve_date")->nullable()->comment('วันที่อนุมัติ');
         });
     }
 

@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class SubGroup extends Model
 {
     protected $fillable = [
-        'name','main_groups_id'
+        'name','main_groups_id','icon','image'
     ];
 
     public function assetCategories()

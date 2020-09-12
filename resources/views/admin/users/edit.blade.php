@@ -46,45 +46,51 @@
                             </ul>
                         </div>
                     @endif
-                    <form class="form-horizontal" role="form" action="{{ route('users.update',$user->id) }}" method="POST"
+                    <form class="form-horizontal" role="form" action="{{ route('users.update', $user->id) }}" method="POST"
                         enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
                         <div class="form-group">
                             <label for="title" class="col-sm-2 control-label">คำนำหน้าชื่อ</label>
                             <div class="col-sm-10">
-                            <input type="text" class="form-control" name="title" placeholder="" value="{{ $user->title }}">
+                                <input type="text" class="form-control" name="title" placeholder=""
+                                    value="{{ $user->title }}">
                                 <p class="help-block mb-0">ตัวอย่าง: นาย นาง นางสาว</p>
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="first_name" class="col-sm-2 control-label">ชื่อ</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" name="first_name" placeholder="" value="{{ $user->first_name }}">
+                                <input type="text" class="form-control" name="first_name" placeholder=""
+                                    value="{{ $user->first_name }}">
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="last_name" class="col-sm-2 control-label">นามสกุล</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" name="last_name" placeholder="" value="{{ $user->last_name }}">
+                                <input type="text" class="form-control" name="last_name" placeholder=""
+                                    value="{{ $user->last_name }}">
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="pwd_id" class="col-sm-2 control-label">เลขผู้พิการ</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" name="pwd_id" placeholder="" value="{{ $user->pwd_id }}">
+                                <input type="text" class="form-control" name="pwd_id" placeholder=""
+                                    value="{{ $user->pwd_id }}">
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="citizen_id" class="col-sm-2 control-label">เลขประชาชน</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" name="citizen_id" placeholder="" value="{{ $user->citizen_id }}">
+                                <input type="text" class="form-control" name="citizen_id" placeholder=""
+                                    value="{{ $user->citizen_id }}">
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="email" class="col-sm-2 control-label">อีเมล์</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" name="email" placeholder="" value="{{ $user->email }}" disabled>
+                                <input type="text" class="form-control" name="email" placeholder=""
+                                    value="{{ $user->email }}" disabled>
                             </div>
                         </div>
                         <div class="form-group">
@@ -100,10 +106,10 @@
                                 <select name="gender" tabindex="5" class="chosen-select" style="width: 240px;">
                                     <option value="1" @if ($user->gender == 1)
                                         selected
-                                    @endif>ชาย</option>
+                                        @endif>ชาย</option>
                                     <option value="0" @if ($user->gender == 0)
                                         selected
-                                    @endif>หญิง</option>
+                                        @endif>หญิง</option>
                                 </select>
                             </div>
                         </div>
@@ -118,16 +124,16 @@
                                     @foreach ($disabilities as $disability)
                                         <option value="">เลือกประเภทคนพิการ</option>
                                         @php
-                                            if(!empty($user->disability->id))
-                                            {
-                                                $dis_id = $user->disability->id;
-                                            }else {
-                                                $dis_id = 0;
-                                            }
+                                        if(!empty($user->disability->id))
+                                        {
+                                        $dis_id = $user->disability->id;
+                                        }else {
+                                        $dis_id = 0;
+                                        }
                                         @endphp
-                                        <option value="{{ $disability->id }}" @if($disability->id == $dis_id)
-                                                selected
-                                        @endif>{{ $disability->description }}</option>
+                                        <option value="{{ $disability->id }}" @if ($disability->id == $dis_id)
+                                            selected
+                                    @endif>{{ $disability->description }}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -156,43 +162,59 @@
                             </div>
                         </div>
                         @if (!empty($user->avatar_name))
-                        <div class="form-group">
-                            <label class="col-sm-2 control-label">รูปเดิม</label>
-                            <div class="col-xs-10 col-sm-10 col-md-10">
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">รูปเดิม</label>
+                                <div class="col-xs-10 col-sm-10 col-md-10">
                                     {{-- <img src="/subgroup/{{ $subgroup->id }}/avatar" />
                                     --}}
-                                    {{-- <img src="data:image/png;base64,{{ chunk_split(base64_encode($user->cate->image)) }}"> --}}
+                                    {{-- <img
+                                        src="data:image/png;base64,{{ chunk_split(base64_encode($user->cate->image)) }}">
+                                    --}}
                                     <img src="{{ url($user->avatar) }}" alt="รูปแทนผู้ใช้">
+                                </div>
                             </div>
-                        </div>
                         @endif
 
                         <div class="form-group">
                             <label class="col-sm-2 control-label">บัตรคนพิการ</label>
                             <div class="col-sm-10">
-                                <input type="file" class="filestyle" data-buttonText="แนบบัตรคนพิการ" data-iconName="fa fa-inbox"
-                                    name="pwd_pic">
+                                <input type="file" class="filestyle" data-buttonText="แนบบัตรคนพิการ"
+                                    data-iconName="fa fa-inbox" name="pwd_pic">
                             </div>
                         </div>
                         @if (!empty($user->pwd_pic))
-                        <div class="form-group">
-                            <label class="col-sm-2 control-label">บัตรคนพิการเดิม</label>
-                            <div class="col-xs-10 col-sm-10 col-md-10">
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">บัตรคนพิการเดิม</label>
+                                <div class="col-xs-10 col-sm-10 col-md-10">
                                     {{-- <img src="/subgroup/{{ $subgroup->id }}/avatar" />
                                     --}}
-                                    <img src="data:image/png;base64,{{ chunk_split(base64_encode($user->pwd)) }}" alt="บัตรคนพิการ">>
-                                    {{-- <img src="{{ $user->pwd }}" alt="รูปแทนผู้ใช้"> --}}
+                                    <img src="data:image/png;base64,{{ chunk_split(base64_encode($user->pwd)) }}"
+                                        alt="บัตรคนพิการ">>
+                                    {{-- <img src="{{ $user->pwd }}" alt="รูปแทนผู้ใช้">
+                                    --}}
+                                </div>
                             </div>
-                        </div>
                         @endif
 
                         <hr class="line-dashed full-witdh-line" />
                         <div class="form-group">
-                            <label for="active" class="col-sm-2 control-label">เปิดใช้งาน</label>
-                            <div class="togglebutto col-sm-10">
-                                <input name="active" type="checkbox" value="1" @if ($user->active)
+                            <div class="togglebutton col-sm-offset-2 col-sm-10">
+                                <label class="control-label">
+                                    <input name="approve" type="checkbox" value="1" @if (!empty($user->approve_date))
                                     checked
-                                @endif>
+                                    @endif>
+                                    อนุมัติใช้งาน
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="togglebutton col-sm-offset-2 col-sm-10">
+                                <label class="control-label">
+                                    <input name="active" type="checkbox" value="1" @if (!empty($user->active))
+                                    checked
+                                    @endif>
+                                    เปิดใช้งาน
+                                </label>
                             </div>
                         </div>
                         <div class="form-group">

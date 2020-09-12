@@ -25,7 +25,7 @@ class DatabaseSeeder extends Seeder
                 'citizen_id' => '1234567890123',
                 'pwd_id' => '1234567890123',
                 'system_id' => 'AM63-001',
-                'appove_date' => now()
+                'approve_date' => now()
             ],
             [
                 'email' => 'audit@pwdsthai.org', //2
@@ -38,7 +38,7 @@ class DatabaseSeeder extends Seeder
                 'citizen_id' => '1234567890123',
                 'pwd_id' => '1234567890123',
                 'system_id' => 'AD63-001',
-                'appove_date' => now()
+                'approve_date' => now()
             ],
             [
                 'email' => 'approve@pwdsthai.org', //3
@@ -51,7 +51,7 @@ class DatabaseSeeder extends Seeder
                 'citizen_id' => '1234567890123',
                 'pwd_id' => '1234567890123',
                 'system_id' => 'AP63-001',
-                'appove_date' => now()
+                'approve_date' => now()
             ],
             [
                 'email' => 'user@pwdsthai.org',  //4
@@ -64,7 +64,7 @@ class DatabaseSeeder extends Seeder
                 'citizen_id' => '1234567890123',
                 'pwd_id' => '1234567890123',
                 'system_id' => 'MB63-001',
-                'appove_date' => now()
+                'approve_date' => now()
             ],
         ]);
 

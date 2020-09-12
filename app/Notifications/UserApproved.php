@@ -2,6 +2,7 @@
 
 namespace App\Notifications;
 
+use App\User;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
@@ -10,15 +11,17 @@ use Illuminate\Notifications\Notification;
 class UserApproved extends Notification
 {
     use Queueable;
+    public $user;
 
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(User $user)
     {
-        //
+        $this->user = $user;
+        //dd($this->user);
     }
 
     /**
@@ -40,7 +43,9 @@ class UserApproved extends Notification
      */
     public function toMail($notifiable)
     {
-        return (new MailMessage)->markdown('mail.user.approved');
+        return (new MailMessage)
+            ->subject('แจ้งผลการสมัครสมาชิกระบบบริหารจัดการอุปกรณ์และเครื่องมือด้าน ICT สำหรับคนพิการ')
+            ->markdown('mail.user.approved',['user' => $this->user]);
     }
 
     /**

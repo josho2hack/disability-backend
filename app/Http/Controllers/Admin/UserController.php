@@ -7,6 +7,7 @@ use App\Providers\RouteServiceProvider;
 use App\Role;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use App\User;
+use App\Notifications\UserApproved;
 use App\UserOption;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -174,6 +175,12 @@ class UserController extends Controller
             'gender' => 'required'
         ]);
 
+        if (isset($request['approve'])) {
+            $request['approve_date'] = now();
+        }else{
+            $request['approve_date'] = null;
+        }
+
         if (!isset($request['active'])) {
             $request['active'] = 0;
         }
@@ -210,6 +217,11 @@ class UserController extends Controller
             $user->roles()->detach($user->role()->id);
             $user->roles()->attach($role_id);
         }
+
+        if (isset($request['approve'])) {
+            $user->notify(new UserApproved($user));
+        }
+
         return redirect()->route('users.index')->with('success', 'ปรับปรุงอมูลเรียบร้อยแล้ว');
     }
 

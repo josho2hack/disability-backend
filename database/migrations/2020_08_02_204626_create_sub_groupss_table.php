@@ -16,6 +16,9 @@ class CreateSubGroupssTable extends Migration
         Schema::create('sub_groups', function (Blueprint $table) {
             $table->id();
             $table->string("name")->comment('ประเภทอุปกรณ์รอง');
+            $table->string("icon")->nullable()->comment('icon แทน');
+            $table->string("color")->nullable()->comment('สีพื้น icon');
+            $table->string("image")->nullable()->comment('รูปภาพ');
             $table->timestamps();
 
             $table->foreignId('main_groups_id')->comment('ประเภทอุปกรณ์หลัก')->nullable()
