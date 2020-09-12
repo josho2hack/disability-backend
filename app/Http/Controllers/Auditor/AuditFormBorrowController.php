@@ -9,6 +9,7 @@ use App\TransectionFormBorrow;
 use App\Form07;
 use App\TransectionApprove;
 use App\UserDocument;
+use PDF;
 
 class AuditFormBorrowController extends Controller
 {
@@ -78,8 +79,6 @@ class AuditFormBorrowController extends Controller
             }
         }
 
-
-
         return redirect('auditor/audits/form/send')->with('success', 'สร้างแบบฟอร์มเรียบร้อยแล้ว');
     }
 
@@ -102,7 +101,9 @@ class AuditFormBorrowController extends Controller
      */
     public function edit($id)
     {
-        //
+        $audits = Form07::find($id);
+
+        return view('auditor.audit.edit', compact('audits'));
     }
 
     /**
@@ -114,7 +115,14 @@ class AuditFormBorrowController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $audit = Form07::find($id);
+        $audit->year = $request->year;
+        $audit->office = $request->office;
+        $audit->city = $request->city;
+
+        if( $audit->save() ){
+            return redirect('auditor/audits/form/send')->with('success', 'อัพเดทเรียบร้อยแล้ว');
+        }
     }
 
     /**
@@ -166,5 +174,15 @@ class AuditFormBorrowController extends Controller
         $doc = UserDocument::where('form_id', $id)->first();
 // dd($doc);
         return view('auditor.audit.show_document', compact('doc'));
+    }
+
+    public function pdf($id)
+    {
+
+        $form = Form07::find($id);
+
+        $pdf = PDF::loadview('auditor.form.pdf', compact('form'));
+        // return view('forms.borrow.pdf', compact('form'));
+        return @$pdf->stream();
     }
 }

@@ -57,8 +57,8 @@
 
     <div class="boxs">
         <div class="boxs-body" style="width: auto; margin: auto; padding: 15px 80px;">
-            <form action="{{ route('audits.store') }}" method="POST" enctype="multipart/form-data">
-                @csrf
+            <form action="{{ route('audits.update', $audits->id) }}" method="POST" enctype="multipart/form-data">
+                @csrf @method('put')
                 <div class="row">
                     <div class="col-sm-offset-6 col-sm-6">
                         <div class="square pull-right">
@@ -73,8 +73,8 @@
                     <div class="text-center">
                         แบบรายงานการขอยืมอุปกรณ์และเครื่องมือเทคโนโลยีสารสนเทศและการสื่อสาร<br>   
                     หรือเทคโนโลยีสิ่งอำนวยความสะดวกเพื่อการสื่อสาร ตามกฎกระทรวงฯ <br><br>
-                    ครั้งที่ <input type="text" name="round" value="{{$round}}" readonly style="width:5%;"> ประจำปีงบประมาณ <input type="text" name="year" value="{{date('Y')+543}}" style="width:10%;"><br>
-                    หน่วยงานที่รับคำขอฯ <input type="text" name="office" style="width:15%;" required> จังหวัด <input type="text" name="city" style="width:12%;" required>
+                    ครั้งที่ <input type="text" name="round" value="{{ $audits->round }}" readonly style="width:5%;"> ประจำปีงบประมาณ <input type="text" name="year" value="{{ $audits->year }}" style="width:10%;"><br>
+                    หน่วยงานที่รับคำขอฯ <input type="text" name="office" value="{{ $audits->office }}" style="width:15%;" required> จังหวัด <input type="text" name="city" value="{{ $audits->office }}" style="width:12%;" required>
                     </div>
                 </div>
 
@@ -101,7 +101,7 @@
                             
                         </thead>
                         <tbody>
-                            @foreach( $audits as $audit)
+                            @foreach( $audits->form01s as $audit)
                             <tr align="center">
                                 <td rowspan="2" style="vertical-align: middle;"> {{ $loop->iteration }} </td>
                                 <td> {{ $audit->user->first_name }} {{ $audit->user->last_name }} </td>

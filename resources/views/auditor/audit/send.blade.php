@@ -51,10 +51,10 @@
                                     <td align="center"> {{ formatDateThai($list['submit_date']->isoFormat('Y-M-D H:mm:ss')) }} </td>
                                     <td align="center"> {{ $list['audit_date'] == null ? 'ร่าง' : $list['audit_date'] }} </td>
                                     <td align="center">
-                                        <a href="" class="btn btn-raised btn-info"
+                                        <a href="{{ url('auditor/pdf', $list['id']) }}" class="btn btn-raised btn-info"
                                             title="รายละเอียด"> ดู</a>
                                         @if($list['audit_date'] == null)
-                                        <a href="" class="btn btn-raised btn-warning"
+                                        <a href="{{ route('audits.edit', $list['id']) }}" class="btn btn-raised btn-warning"
                                             title="รายละเอียด"> แก้ไข</a>
                                         <a href="{{ url('auditor/audits/form/send_approver', $list['id']) }}" class="btn btn-raised btn-success"
                                             title="รายละเอียด"> ตรวจสอบ OK</a>
