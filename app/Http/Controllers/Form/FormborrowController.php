@@ -85,8 +85,8 @@ class FormborrowController extends Controller
             $doc->form_id = $borrow->id;
             if ( $request->files_copy_card ){
                 $filename1 = $request->files_copy_card->getClientOriginalName();
-                $file1 = '/user/doucment/borrow'. $filename1;
-                $request->files_copy_card->move(public_path('/user/doucment/borrow'), $file1);
+                $file1 = '/user/doucment/borrow/'. $filename1;
+                $request->files_copy_card->move(public_path('/user/doucment/borrow/'), $file1);
                 $doc->copy_card = $file1;
               }
             if ( $request->files_house_res ){

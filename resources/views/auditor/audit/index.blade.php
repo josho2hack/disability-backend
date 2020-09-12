@@ -76,7 +76,7 @@
                                     <td style="vertical-align: middle;" align="center"> 
                                         {{ $list->user->first_name }} {{ $list->user->last_name }}
                                     </td>
-                                    <td style="vertical-align: middle;" rowspan="2"align="center"> 
+                                    <td style="vertical-align: middle;" rowspan="2"align="center" title="{{ $list->accessorie_list }}"> 
                                         @if(strlen($list->accessorie_list)>55)
                                         {{ $list->accessorie_list = substr($list->accessorie_list, 0, 55)."..." }}
                                         @else
@@ -87,8 +87,11 @@
                                     </td>
                                     <td style="vertical-align: middle;" rowspan="2"align="center"> 1 หน่วย </td>
                                     <td style="vertical-align: middle;" rowspan="2"align="center"> {{ formatDateThai($list->created_at->isoFormat('Y-M-D H:mm:ss')) }} </td>
-                                    <td style="vertical-align: middle;" rowspan="2"align="center"><a href="" class="btn btn-raised btn-info"
-                                            title="รายละเอียด"> <i class="fa fa-eye"></i></a></td>
+                                    <td style="vertical-align: middle;" rowspan="2"align="center"><a href="{{ url('pdf/'.$list->id) }}" class="btn btn-raised btn-info"
+                                            title="รายละเอียด"> <i class="fa fa-eye"></i></a>
+                                    <a href="{{ url('auditor/documents/'.$list->id) }}" class="btn btn-raised btn-warning"
+                                            title="ดูเอกสาร"> <i class="fa fa-file"></i></a>
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td align="center"> {{ flexNformat($list->user->citizen_id, ".-....-.....-..-.", "-") }} </td>

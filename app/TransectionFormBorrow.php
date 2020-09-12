@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class TransectionFormBorrow extends Model
 {
+	protected $guarded = [];
     
     public function borrow_single()
     {

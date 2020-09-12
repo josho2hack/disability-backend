@@ -8,6 +8,7 @@ use App\Form01;
 use App\TransectionFormBorrow;
 use App\Form07;
 use App\TransectionApprove;
+use App\UserDocument;
 
 class AuditFormBorrowController extends Controller
 {
@@ -72,6 +73,7 @@ class AuditFormBorrowController extends Controller
             if($audit->save()){
                 $form01 = Form01::find($form_id);
                 $form01->form07s_id = $audit->id;
+
                 $form01->save();
             }
         }
@@ -135,7 +137,11 @@ class AuditFormBorrowController extends Controller
             $data[$form->id]['id'] = $form->id;
             $data[$form->id]['list'] = Form01::where('form07s_id', $form->id)->count();
             $data[$form->id]['submit_date'] = $form->created_at;
-            $data[$form->id]['audit_date'] = Form01::where('form07s_id', $form->id)->first()->audit_date;
+
+            $data[$form->id]['audit_date'] = 
+                Form01::where('form07s_id', $form->id)->first() != null ? 
+                Form01::where('form07s_id', $form->id)->first()->audit_date : 
+                null;
 
         }
 
@@ -153,5 +159,12 @@ class AuditFormBorrowController extends Controller
         if($send_approve->update()){
             return redirect()->back()->with('success', 'บันทึกเรียบร้อยแล้ว');
         }
+    }
+
+    public function documents($id)
+    {
+        $doc = UserDocument::where('form_id', $id)->first();
+// dd($doc);
+        return view('auditor.audit.show_document', compact('doc'));
     }
 }
