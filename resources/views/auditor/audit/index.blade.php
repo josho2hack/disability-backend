@@ -67,20 +67,20 @@
                                     <td style="vertical-align: middle;" rowspan="2" align="center">
                                         <div class="checkbox">
                                         <label>
-                                            <input type="checkbox" class="check" name="check[]" value="{{ $list->borrow_single->id }}">
+                                            <input type="checkbox" class="check" name="check[]" value="{{ $list->id }}">
                                         </label>
                                     </div>
                                     </td>
                                     <td style="vertical-align: middle;" rowspan="2"align="center">{{ $loop->iteration }}</td>
-                                    <td style="vertical-align: middle;" rowspan="2"align="center">{{ $list->borrow_single->id }}</td>
+                                    <td style="vertical-align: middle;" rowspan="2"align="center">{{ $list->id }}</td>
                                     <td style="vertical-align: middle;" align="center"> 
-                                        {{ $list->borrow_single->user->first_name }} {{ $list->borrow_single->user->last_name }}
+                                        {{ $list->user->first_name }} {{ $list->user->last_name }}
                                     </td>
                                     <td style="vertical-align: middle;" rowspan="2"align="center"> 
-                                        @if(strlen($list->borrow_single->accessorie_list)>55)
-                                        {{ $list->borrow_single->accessorie_list = substr($list->borrow_single->accessorie_list, 0, 55)."..." }}
+                                        @if(strlen($list->accessorie_list)>55)
+                                        {{ $list->accessorie_list = substr($list->accessorie_list, 0, 55)."..." }}
                                         @else
-                                        {{ $list->borrow_single->accessorie_list }} 
+                                        {{ $list->accessorie_list }} 
                                         @endif
 
 
@@ -91,7 +91,7 @@
                                             title="รายละเอียด"> <i class="fa fa-eye"></i></a></td>
                                 </tr>
                                 <tr>
-                                    <td align="center"> {{ flexNformat($list->borrow_single->user->citizen_id, ".-....-.....-..-.", "-") }} </td>
+                                    <td align="center"> {{ flexNformat($list->user->citizen_id, ".-....-.....-..-.", "-") }} </td>
                                 </tr>
                             @endforeach
                         </tbody>

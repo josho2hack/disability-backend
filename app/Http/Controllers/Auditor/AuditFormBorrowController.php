@@ -18,7 +18,11 @@ class AuditFormBorrowController extends Controller
      */
     public function index()
     {
-       $audit = TransectionFormBorrow::all();
+        $audit = Form01::where(['send_status' => '1',
+                                'audit_date' => null,
+                                'form07s_id' => null
+                            ])->get();
+       // $audit = TransectionFormBorrow::all();
 // dd($audit);
        return view('auditor.audit.index', compact('audit'));
     }
@@ -55,15 +59,21 @@ class AuditFormBorrowController extends Controller
      */
     public function store(Request $request)
     {
+        $audit = new Form07;
+        $audit->round = $request->round;
+        $audit->year = $request->year;
+        $audit->office = $request->office;
+        $audit->city = $request->city;
+
         foreach( $request->form_id as $form_id ){
-            $audit = new Form07;
-            $audit->round = $request->round;
-            $audit->year = $request->year;
-            $audit->office = $request->office;
-            $audit->city = $request->city;
-            $audit->form_id = $form_id;
-            $audit->form_type = "form01";
-            $audit->save();
+            
+        //     $audit->form_id = $form_id;
+        //     $audit->form_type = "form01";
+            if($audit->save()){
+                $form01 = Form01::find($form_id);
+                $form01->form07s_id = $audit->id;
+                $form01->save();
+            }
         }
 
 
@@ -119,29 +129,29 @@ class AuditFormBorrowController extends Controller
     public function send()
     {
         $data = [];
-        $forms = Form07::get();
+        $form07 = Form07::get();
 
-        foreach($forms as $form){
-            $data[$form->round]['no'] = $form->round;
-            $data[$form->round]['list'] = $form->where('round', $data[$form->round]['no'])->count();
-            $data[$form->round]['submit_date'] = $form->created_at;
-            $data[$form->round]['audit_date'] = $form->audit_date;
+        foreach($form07 as $form){
+            $data[$form->id]['id'] = $form->id;
+            $data[$form->id]['list'] = Form01::where('form07s_id', $form->id)->count();
+            $data[$form->id]['submit_date'] = $form->created_at;
+            $data[$form->id]['audit_date'] = Form01::where('form07s_id', $form->id)->first()->audit_date;
 
         }
-// dd($data);
+
         return view('auditor.audit.send', compact('data'));
     }
 
     public function send_approver($id)
     {
-        if($form07 = Form07::whereRound($id)->update(['audit_date' => date('Y-m-d H:i:s')])){
-            $send_approve =  new TransectionApprove;
-            $send_approve->form07_id = Form07::where('round', $id)->first()->id;
-            $send_approve->list = Form07::where('round', $id)->groupBy('round')->count();
-            $send_approve->save();
+        $send_approve = Form07::with('form01s')->find($id);
+        foreach( $send_approve->form01s as $form01){
+                $form01->audit_date = now();
+                $form01->save();
+        }
 
+        if($send_approve->update()){
             return redirect()->back()->with('success', 'บันทึกเรียบร้อยแล้ว');
         }
-        
     }
 }
