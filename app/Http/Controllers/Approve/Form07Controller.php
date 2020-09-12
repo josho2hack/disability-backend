@@ -18,7 +18,7 @@ class Form07Controller extends Controller
      */
     public function index()
     {
-        $form07 = Form07::with('form01s')->get();
+        $form07 = Form07::whereHas('form01s', function($q){ return $q->whereNotNull('audit_date'); })->get();
         return view('approve.form07.index', compact('form07'));
     }
 
@@ -80,9 +80,9 @@ class Form07Controller extends Controller
     {
         if ($request['form01'] == 1) {
             $form01 = Form01::find($id);
+            dd($form01);
             $form07 = Form07::with('form01s')->find($form01->form07s_id);
             if ($request['approve'] == 1) {
-                $form09 = Form09::where('round', $form07->round)->where('office', $form07->office)->where('year', $form07->year)->first();
                 if ($form09->id == null) {
                     $form09 = new Form09();
                     $form09['round'] = $form07['round'];
@@ -91,13 +91,13 @@ class Form07Controller extends Controller
                     $form09['city'] = $form07['city'];
                     $form09->save();
                 }
+                $form09 = Form09::where('round', $form07->round)->where('office', $form07->office)->where('year', $form07->year)->first();
                 $form01['form09s_id'] = $form09->id;
                 $form01['form10s_id'] = null;
                 $form01->save();
                 $form07['report'] = now();
                 $form07->save();
             } elseif ($request['cancel'] == 1) {
-                $form10 = Form10::where('round', $form07->round)->where('office', $form07->office)->where('year', $form07->year)->first();
                 if (empty($form10->id)) {
                     $form10 = new Form10();
                     $form10['round'] = $form07['round'];
@@ -106,6 +106,7 @@ class Form07Controller extends Controller
                     $form10['city'] = $form07['city'];
                     $form10->save();
                 }
+                $form10 = Form10::where('round', $form07->round)->where('office', $form07->office)->where('year', $form07->year)->first();
                 $form01['form10s_id'] = $form10->id;
                 $form01['form09s_id'] = null;
                 $form01->save();
@@ -118,7 +119,8 @@ class Form07Controller extends Controller
             return view('approve.form07.show', compact('form07', 'form01s'));
 
         } else {
-            $form07 = Form07::with('form01s')->find($id);
+            // $form07 = Form07::with('form01s')->find($id);
+            $form07 = Form07::whereHas('form01s', function($q){ return $q->whereNotNull('audit_date'); })->find($id);
             if ($request['approve'] == 1) {
                 $form09 = new Form09();
                 $form09['round'] = $form07['round'];
@@ -145,7 +147,8 @@ class Form07Controller extends Controller
 
             $form07['report'] = now();
             $form07->save();
-            return view('approve.form07.index', compact('form07'));
+
+            return redirect('approve');
         }
     }
 

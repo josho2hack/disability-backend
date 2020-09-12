@@ -81,9 +81,16 @@
     '300' => $fontDir . '/kanit-300_7e3d4308a543edc4aae4dd36f2286f3e',
   ),
   'thsarabunnew' => array(
+<<<<<<< Updated upstream
     'normal' => $fontDir . '/thsarabunnew-normal_8687cceb6f43eaa77116ac9a9fa17158',
     'bold' => $fontDir . '/thsarabunnew-bold_af9ab52c209effbeb986622d45469ea0',
     'italic' => $fontDir . '/thsarabunnew-italic_32baffac08ff10c496bf9c56c10e5171',
     'bold_italic' => $fontDir . '/thsarabunnew-bold-italic_a1a39d900a330d403d05b823a2bc56ac',
+=======
+    'normal' => $fontDir . '/thsarabunnew-normal_058f71a1ec1f478c7aa99a7d80f94e90',
+    'bold' => $fontDir . '/thsarabunnew-bold_7a8db7601eb7e8ba43be6ba8dbe7e186',
+    'italic' => $fontDir . '/thsarabunnew-italic_07f99e68b4933e4e6f0cbda6c2392b2e',
+    'bold_italic' => $fontDir . '/thsarabunnew-bold-italic_6db7384079720f2f0a7889e36e0dad25',
+>>>>>>> Stashed changes
   ),
 ) ?>

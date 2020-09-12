@@ -2,6 +2,56 @@
 
 @section('header')
     <link rel="stylesheet" href="{{ asset('assets/js/vendor/footable/css/footable.core.min.css') }}">
+    <style>
+        .square{
+            border: 1px solid #000; 
+            overflow: auto; 
+            width: 240px;
+            height: 80px;
+            text-align: center;
+            font-size: 17px;
+        }
+        .fill-text-justify{
+            text-align: justify;
+            text-justify: distribute;
+        }
+        input{
+            border: none;
+            background-color: #FFF;
+            padding: 0px;
+            padding-top: 10px;
+            width: 50px;
+            text-align: center;
+            font-size: 1.2rem;
+        }
+        input[type="text"]{
+            
+            width: auto;
+            padding: 0px 10px;
+            border-bottom: 2px dotted #4D585F;
+        }
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+        input[type="number"]{
+            border-bottom: 2px dotted #4D585F;
+            -moz-appearance: textfield;
+        }
+        input[type="checkbox"],input[type="radio"]{
+            width: auto;
+        }
+        input[type="file"]{
+            background: #1a1a1a;
+            border: 1px solid #FCF;
+            color: #FCC:
+        }
+        input[type="checkbox"][disabled]{
+            cursor: auto;
+        }
+    
+    </style>
 @endsection
 
 @section('content')
@@ -78,202 +128,81 @@
     </div>
     <!-- row -->
     <div class="row">
-        <div class="col-md-12">
-            <section class="boxs">
-                <div class="boxs-header">
-                    <h3 class="custom-font">
-                        <strong>รายละเอียดเอกสารเข้า ทก07</strong>
-                    </h3>
-                    <div class="form-group">
-                        <label for="filter" style="padding-top: 5px">ค้นหา:</label>
-                        <input id="filter" type="text" class="form-control rounded w-md mb-10 inline-block" />
-                    </div>
-                </div>
-                <div class="boxs-body">
-
-                    @if ($message = Session::get('success'))
-                        <div class="alert alert-success">
-                            <p>{{ $message }}</p>
+        <div class="boxs">
+            <div class="boxs-body" style="width: auto; margin: auto; padding: 15px 80px; height: 75vh;">
+                    <div class="row">
+                        <div class="col-sm-offset-6 col-sm-6">
+                            <div class="square pull-right">
+                                <div> ทก.๐๗ </div>
+                                <div> สำหรับคณะอนุกรรมการฯ </div>
+                            </div>
                         </div>
-                    @endif
-                    <strong>ครั้งที่</strong> {{ $form07->round }}
-                    <br>
-                    <strong>ประจำปีงบประมาณ</strong> {{ $form07->year }}
-                    <br>
-                    <strong>หน่วยงานที่รับคาขอฯ</strong> {{ $form07->office }}
-                    <br>
-                    <strong>จังหวัด</strong> {{ $form07->city }}
-                    <table id="searchTextResults" data-filter="#filter" data-page-size="25"
-                        class="footable table table-custom table-hover">
-                        <thead>
-                            <tr>
-                                <th rowspan="2">ที่</th>
-                                <th>ชื่อ - สกุล คนพิการ</th>
-                                <th rowspan="2">ที่อยู่</th>
-                                <th rowspan="2">ประเภทความพิการ</th>
-                                <th rowspan="2">อายุ</th>
-                                <th rowspan="2">รายการอุปกรณ์/เครื่องมือฯ ที่ขอยืม</th>
-                                <th rowspan="2">ราคา/หน่วย</th>
-                                <th colspan="2">การขอใช้สิทธิ์</th>
-                                <th rowspan="2" colspan=3 style="width: 5%">ดำเนินการ</th>
-                            </tr>
-                            <tr>
-                                <th>หมายเลขบัตรประจำตัวประชาชน</th>
-                                <th>รายบุคคล</th>
-                                <th>รายกลุ่ม</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ($form01s as $form)
+                    </div>
+    
+                    <div class="form-group">
+                        <div class="text-center">
+                            แบบรายงานการขอยืมอุปกรณ์และเครื่องมือเทคโนโลยีสารสนเทศและการสื่อสาร<br>   
+                        หรือเทคโนโลยีสิ่งอำนวยความสะดวกเพื่อการสื่อสาร ตามกฎกระทรวงฯ <br><br>
+                        ครั้งที่ <input type="text" name="round" value="{{ $form07->round }}" readonly style="width:5%;" readonly> ประจำปีงบประมาณ <input type="text" name="year" value="{{ $form07->year }}" style="width:10%;" readonly><br>
+                        หน่วยงานที่รับคำขอฯ <input type="text" name="office" style="width:15%;" value="{{ $form07->office }}" readonly> จังหวัด <input type="text" name="city" style="width:12%;" value="{{ $form07->city }}" readonly>
+                        </div>
+                    </div>
+    
+                    <div class="row">
+                        <table class="table table-bordered">
+                            <thead>
                                 <tr>
-                                    <td>{{ $loop->index + 1 }}</td>
-                                    <td>
-                                        {{ $form->user->fullname }}
-                                        <br>
-                                        {{ $form->user->citizen_id }}
-                                    </td>
-                                    <td>{{ $form->address->house_no ?? '' }} {{ $form->address->village_no ?? '' }}
+                                    <th rowspan="2" style="vertical-align: middle; text-align: center;">ที่</th>
+                                    <th style="vertical-align: middle; text-align: center;" >ชื่อ – สกุล คนพิการ</th>
+                                    <th style="vertical-align: middle; text-align: center;" rowspan="2">ที่อยู่</th>
+                                    <th style="vertical-align: middle; text-align: center;" rowspan="2">ประเภทความพิการ</th>
+                                    <th style="vertical-align: middle; text-align: center;" rowspan="2">อายุ</th>
+                                    <th style="vertical-align: middle; text-align: center;" rowspan="2">รายการอุปกรณ์/เครื่องมือฯ ที่ขอยืม</th>
+                                    <th style="vertical-align: middle; text-align: center;" rowspan="2">ราคา/หน่วย</th>
+                                    <th style="vertical-align: middle; text-align: center;" colspan="2">การขอใช้สิทธิ</th>
+                                    <th style="vertical-align: middle; text-align: center;" rowspan="2">หมายเหตุ</th>
+                                </tr>
+                                <tr>
+                                    <th style="text-align: center;">หมายเลขบัตรประชาชน</th>
+                                    <th style="text-align: center;">รายบุคคล</th>
+                                    <th style="text-align: center;">รายกลุ่ม</th>
+                                </tr>
+                                
+                                
+                            </thead>
+                            <tbody>
+                                @foreach ($form01s as $form)
+                                <tr align="center">
+                                    <td rowspan="2" style="vertical-align: middle;"> {{ $loop->iteration }} </td>
+                                    <td> {{ $form->user->fullname }} </td>
+                                    <td rowspan="2" style="vertical-align: middle;"> 
+                                        {{ $form->address->house_no ?? '' }} {{ $form->address->village_no ?? '' }}
                                         {{ $form->address->lane ?? '' }} {{ $form->address->sub_district ?? '' }}
                                         {{ $form->address->district ?? '' }} {{ $form->address->province ?? '' }}
                                         {{ $form->address->postal_code ?? '' }}
                                     </td>
-                                    <td>{{ $form->user->disabilityType->description }}</td>
-                                    <td>{{ $form->user->age }}</td>
-                                    <td>{{ $form->accessorie_no }}</td>
-                                    <td>{{ $form->asset->price }}</td>
-                                    <td><i class="fa fa-check"></i></td>
-                                    <td></td>
-
-                                    <td>
-                                        <a href="{{ url('pdf/' . $form->id) }}" class="btn btn-raised btn-info btn-sm"
-                                            title="รายละเอียด"> <i class="fa fa-eye"></i></a>
+                                    <td rowspan="2" style="vertical-align: middle;">{{ $form->user->disabilityType->description }}</td>
+                                    <td rowspan="2" style="vertical-align: middle;"> 
+                                        {{ $form->user->age }}
                                     </td>
-                                    @if (!empty($form->form09s_id))
-                                        <td>
-                                            <button class="btn btn-raised btn-success btn-sm" type="submit" title="อนุมัติ"
-                                                disabled>
-                                                <span style="color: blue">อนุมัติแล้ว</span>
-                                            </button>
-                                        </td>
-                                        @if (empty($form10->report))
-                                            <td>
-                                                <form action="{{ route('form07.update', $form->id) }}" method="post">
-                                                    @csrf
-                                                    @method('PUT')
-                                                    <input type="hidden" name="form01" value="1">
-                                                    <input type="hidden" name="cancel" value="1">
-                                                    <button class="del btn btn-raised btn-primary btn-sm" type="submit"
-                                                        title="ยกเลิก">
-                                                        <i class="fa fa-trash"></i></button>
-                                                </form>
-                                            </td>
-                                        @else
-                                        <td>
-                                            <button class="del btn btn-raised btn-primary btn-sm" type="submit"
-                                                title="ยกเลิก" disabled>
-                                                <i class="fa fa-trash"></i></button>
-                                        </td>
-                                        @endif
-                                    @elseif(!empty($form->form10s_id))
-                                        @if (empty($form09->report))
-                                            <td>
-                                                <form action="{{ route('form07.update', $form->id) }}" method="post">
-                                                    @csrf
-                                                    @method('PUT')
-                                                    <input type="hidden" name="form01" value="1">
-                                                    <input type="hidden" name="approve" value="1">
-                                                    <button class="btn btn-raised btn-success btn-sm" type="submit"
-                                                        title="อนุมัติ">
-                                                        อนุมัติ</button>
-                                                </form>
-                                            </td>
-                                        @else
-                                        <td>
-                                            <button class="btn btn-raised btn-success btn-sm" type="submit" title="อนุมัติ"
-                                                disabled>
-                                                อนุมัติ</button>
-                                        </td>
-                                        @endif
-                                        <td>
-                                            <button class="btn btn-raised btn-success btn-sm" type="submit" title="ยกเลิก"
-                                                disabled>
-                                                <span style="color: red">ยกเลิกแล้ว</span>
-                                            </button>
-                                        </td>
-                                    @else
-                                        <td>
-                                            <form action="{{ route('form07.update', $form->id) }}" method="post">
-                                                @csrf
-                                                @method('PUT')
-                                                <input type="hidden" name="form01" value="1">
-                                                <input type="hidden" name="approve" value="1">
-                                                <button class="btn btn-raised btn-success btn-sm" type="submit"
-                                                    title="อนุมัติ">
-                                                    อนุมัติ</button>
-                                            </form>
-                                        </td>
-                                        <td>
-                                            <form action="{{ route('form07.update', $form->id) }}" method="post">
-                                                @csrf
-                                                @method('PUT')
-                                                <input type="hidden" name="form01" value="1">
-                                                <input type="hidden" name="cancel" value="1">
-                                                <button class="del btn btn-raised btn-primary btn-sm" type="submit"
-                                                    title="ยกเลิก">
-                                                    <i class="fa fa-trash"></i></button>
-                                            </form>
-                                        </td>
-                                    @endif
+                                    <td rowspan="2" style="vertical-align: middle;"> 
+                                        {{ $form->accessorie_no }}
+                                    </td>
+                                    <td rowspan="2" style="vertical-align: middle;"> {{  number_format($form->asset->price) }} </td>
+                                    <td rowspan="2" style="vertical-align: middle;"> {{-- @if($audit->table == 'App\Form01') --}} <i class="fa fa-check"></i>  {{-- @endif --}}</td>
+                                    <td rowspan="2" style="vertical-align: middle;">{{-- @if($audit->table == 'App\Form03') <i class="fa fa-check"></i>  @endif  --}}</td>
+                                    <td rowspan="2" style="vertical-align: middle;">  </td>
                                 </tr>
-                            @endforeach
-                        </tbody>
-                        <tfoot class="hide-if-no-paging">
-                            <tr>
-                                <td colspan="3" class="text-right">
-                                    <ul class="pagination">
-                                    </ul>
-                                </td>
-                            </tr>
-                        </tfoot>
-                    </table>
-
-                </div>
-                <div class="boxs-footer">
-
-                </div>
-            </section>
+                                <tr>
+                                    <td align="center"> {{ flexNformat($form->user->citizen_id, ".-....-.....-..-.", "-") }} </td>
+                                </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+    
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
-@endsection
-
-@section('footer')
-    <script src="{{ asset('assets/js/vendor/footable/footable.all.min.js') }}"></script>
-
-    <!--  Page Specific Scripts  -->
-    <script>
-        $(function() {
-            $('.footable').footable();
-
-        });
-
-        // $(document).on('click', '.del', function(e) {
-        //     e.preventDefault();
-        //     var form = e.target.form; // storing the form
-        //     swal({
-        //         title: "คุณต้องการลบข้อมูลใช่หรือไม่?",
-        //             text: "การลบจะไม่สามารถกู้คืนได้ คุณต้องสร้างใหม่",
-        //             type: "warning",
-        //             showCancelButton: true,
-        //             confirmButtonColor: '#DD6B55',
-        //             confirmButtonText: 'ไช่, ลบข้อมูล!',
-        //             cancelButtonText: "ไม่, ยกเลิก",
-        //             closeOnConfirm: false
-        //         },
-        //         function() {
-        //             form.submit();
-        //             //swal("ลบข้อมูลเรียบร้อยแล้ว", "ข้อมูลของคุณถูกลบแล้ว", "success");
-        //         });
-        // });
-
-    </script>
 @endsection
