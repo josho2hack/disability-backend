@@ -181,8 +181,10 @@ class AuditFormBorrowController extends Controller
 
         $form = Form07::find($id);
 
-        $pdf = PDF::loadview('auditor.form.pdf', compact('form'));
+        $pdf = PDF::loadview('auditor.form.pdf', compact('form'))->setPaper('A4', 'landscape');
+
+        
         // return view('forms.borrow.pdf', compact('form'));
-        return @$pdf->stream();
+        return $pdf->stream();
     }
 }
