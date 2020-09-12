@@ -86,7 +86,7 @@
 
                                     </td>
                                     <td style="vertical-align: middle;" rowspan="2"align="center"> 1 หน่วย </td>
-                                    <td style="vertical-align: middle;" rowspan="2"align="center"> {{ formatDateThai($list->created_at->isoFormat('Y-M-D H:mm')) }} </td>
+                                    <td style="vertical-align: middle;" rowspan="2"align="center"> {{ formatDateThai($list->created_at->isoFormat('Y-M-D H:mm:ss')) }} </td>
                                     <td style="vertical-align: middle;" rowspan="2"align="center"><a href="" class="btn btn-raised btn-info"
                                             title="รายละเอียด"> <i class="fa fa-eye"></i></a></td>
                                 </tr>

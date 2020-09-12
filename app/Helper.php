@@ -16,9 +16,12 @@ function formatDateThai($FullDate){
         $strMonthThai=$strMonthCut[$strMonth];
 
         $finalDate = $strDay." ".$strMonthThai." ".$strYear." ".$strDate[1];
+    } else {
+      $finalDate = "ร่าง";
     }
 
-    return  $finalDate;
+    return $finalDate;
+
 }
 
 function flexNformat($value, $pattern, $split_symbol) {

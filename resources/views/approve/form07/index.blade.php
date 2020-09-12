@@ -104,8 +104,8 @@
                                         {{ sprintf('%02d', $form->id) }}
                                     </td>
                                     <td>{{ $form->form01s->count() }}</td>
-                                    <td>{{ formatDateThai($form->created_at) }} {{ formatTimeThai($form->created_at) }}</td>
-                                    <td>{{ formatDateThai($form->report) }} {{ formatTimeThai($form->report) }}</td>
+                                    <td>{{ formatDateThai($form->created_at->isoFormat("Y-M-D H:mm:ss")) }}</td>
+                                    <td>{{ ($form->report != null ? formatDateThai($form->report) : 'ร่าง')   }}</td>
                                     <td>
                                         <a href="{{ route('form07.show', $form) }}" class="btn btn-raised btn-info btn-sm"
                                             title="รายละเอียด"> <i class="fa fa-eye"></i></a>
