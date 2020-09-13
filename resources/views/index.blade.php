@@ -164,8 +164,8 @@
             @endif
                 <div class="col-md-2 col-sm-12 col-xs-12">
                     <section class="boxs boxs-simple text-center">
-                        <div class="boxs-widget
-                            @if (in_array($loop->index,array(0,4,8,12,16)))
+                        <div class="boxs-widget">
+                            {{-- @if (in_array($loop->index,array(0,4,8,12,16)))
                                 @if(empty($item->color))
                                     l-green
                                 @else
@@ -190,7 +190,8 @@
                                     {{ $item->color }}
                                 @endif
                             @endif p-30 -t">
-                            <i class="fa {{ $item->icon ?? 'fa-desktop' }} fa-3x"></i>
+                            <i class="fa {{ $item->icon ?? 'fa-desktop' }} fa-3x"></i> --}}
+                            <img src="{{ url($item->img) }}" alt="รูปภาพ" style="height: 103px; width: 135px;">
                         </div>
                         <div class="boxs-body">
                             <h2 class="m-0">{{ $item->assets->where('asset_statuses_id', '1')->count() }}</h2>
@@ -212,8 +213,8 @@
             @endif
                 <div class="col-md-2 col-sm-12 col-xs-12">
                     <section class="boxs boxs-simple text-center">
-                        <div class="boxs-widget
-                            @if (in_array($loop->index,array(0,4,8,12,16)))
+                        <div class="boxs-widget">
+                            {{-- @if (in_array($loop->index,array(0,4,8,12,16)))
                                 @if(empty($item->color))
                                     l-green
                                 @else
@@ -238,7 +239,8 @@
                                     {{ $item->color }}
                                 @endif
                             @endif p-30 -t">
-                            <i class="fa {{ $item->icon ?? 'fa-desktop' }} fa-3x"></i>
+                            <i class="fa {{ $item->icon ?? 'fa-desktop' }} fa-3x"></i> --}}
+                            <img src="{{ url($item->img) }}" alt="รูปภาพ" style="height: 103px; width: 135px;">
                         </div>
                         <div class="boxs-body">
                             <h2 class="m-0">{{ $item->assets->where('asset_statuses_id', '1')->count() }}</h2>
