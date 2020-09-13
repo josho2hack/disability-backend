@@ -72,10 +72,6 @@
                     <h3 class="custom-font">
                         <strong>เอกสาร ทก10 (ยกเลิก)</strong>
                     </h3>
-                    <div class="form-group">
-                        <label for="filter" style="padding-top: 5px">ค้นหา:</label>
-                        <input id="filter" type="text" class="form-control rounded w-md mb-10 inline-block" />
-                    </div>
                 </div>
                 <div class="boxs-body">
 
@@ -85,49 +81,46 @@
                         </div>
                     @endif
                     <table id="searchTextResults" data-filter="#filter" data-page-size="25"
-                        class="footable table table-custom table-hover">
+                        class="table table-custom table-hover">
                         <thead>
                             <tr>
-                                <th>ลำดับ</th>
-                                <th>เลขที่ ทก.10</th>
-                                <th>รายการ</th>
-                                <th>วันที่ / เวลา ยกเลิก</th>
-                                <th>วันที่ / เวลา ส่งผล</th>
-                                <th colspan=3 style="width: 5%">ดำเนินการ</th>
+                                <th style="text-align: center; vertical-align: middle;">ลำดับ</th>
+                                <th style="text-align: center; vertical-align: middle;">เลขที่ ทก.10</th>
+                                <th style="text-align: center; vertical-align: middle;">รายการ</th>
+                                <th style="text-align: center; vertical-align: middle;">วันที่ / เวลา ยกเลิก</th>
+                                <th style="text-align: center; vertical-align: middle;">วันที่ / เวลา ส่งผล</th>
+                                <th style="text-align: center; vertical-align: middle;">ดำเนินการ</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach ($form10 as $form)
+                            {{-- {{ dd($form) }} --}}
                                 <tr>
-                                    <td>{{ $loop->index + 1 }}</td>
-                                    <td>
+                                    <td style="text-align: center; vertical-align: middle;">{{ $loop->index + 1 }}</td>
+                                    <td style="text-align: center; vertical-align: middle;">
                                         {{ sprintf('%02d', $form->id) }}
                                     </td>
-                                    <td>{{ $form->form01s->count() }}</td>
-                                    <td>{{ formatDateThai($form->created_at) }} {{ formatTimeThai($form->created_at) }}</td>
-                                    <td>{{ formatDateThai($form->report) }} {{ formatTimeThai($form->report) }}</td>
-                                    <td>
-                                        <a href="{{ route('form10.show', $form) }}" class="btn btn-raised btn-info btn-sm"
-                                            title="รายละเอียด"> <i class="fa fa-eye"></i></a>
-                                    </td>
+                                    <td style="text-align: center; vertical-align: middle;">{{ $form->form01s->count() }}</td>
+                                    <td style="text-align: center; vertical-align: middle;">{{ formatDateThai($form->created_at) }}</td>
+                                    <td style="text-align: center; vertical-align: middle;">{{ ($form->report != '' ? formatDateThai($form->report) : 'ร่าง' ) }}</td>
+                                    <td style="text-align: center; vertical-align: middle;">
+                                        <a href="{{ route('form10.show', $form) }}" class="btn btn-raised btn-info"
+                                            title="รายละเอียด"> ดู </a>
                                     @if (empty($form->report))
-                                        <td>
-                                            <form action="{{ route('form10.update', $form->id) }}" method="post">
+                                            <form action="{{ route('form10.update', $form->id) }}" style="display: inline;" method="post">
                                                 @csrf
                                                 @method('PUT')
                                                 <input type="hidden" name="report" value="true">
-                                                <button class="btn btn-raised btn-success btn-sm" type="submit"
+                                                <button class="btn btn-raised btn-success" type="submit"
                                                     title="ส่งผล">
                                                     ส่งผล</button>
                                             </form>
-                                        </td>
                                     @else
-                                        <td>
-                                            <button class="btn btn-raised btn-success btn-sm" type="submit"
-                                                title="ส่งผลแล้ว" disabled>
-                                                <strong style="color: blue">ส่งผลแล้ว</strong></button>
-                                        </td>
+                                            <button class="btn btn-raised btn-success" type="submit" title="ส่งผลแล้ว" disabled>
+                                                <strong style="color: blue">ส่งผลแล้ว</strong>
+                                            </button>
                                     @endif
+                                    </td>
                                 </tr>
                             @endforeach
                         </tbody>

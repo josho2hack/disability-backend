@@ -84,65 +84,66 @@
                         class="table table-custom table-hover">
                         <thead>
                             <tr>
-                                <th style="text-align: center;">ลำดับ</th>
-                                <th style="text-align: center;">เลขที่ ทก.07</th>
-                                <th style="text-align: center;">รายการ</th>
-                                <th style="text-align: center;">วันที่ / เวลา ตรวจสอบ</th>
-                                <th style="text-align: center;">วันที่ / เวลา อนุมัติ</th>
-                                <th style="text-align: center;">ดำเนินการ</th>
+                                <th style="text-align: center; vertical-align: middle;">ลำดับ</th>
+                                <th style="text-align: center; vertical-align: middle;">เลขที่ ทก.07</th>
+                                <th style="text-align: center; vertical-align: middle;">รายการ</th>
+                                <th style="text-align: center; vertical-align: middle;">วันที่ / เวลา ตรวจสอบ</th>
+                                <th style="text-align: center; vertical-align: middle;">วันที่ / เวลา อนุมัติ</th>
+                                <th style="text-align: center; vertical-align: middle;">ดำเนินการ</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach ($form07 as $form)
                             <tr>
-                                    <td align="center">{{ $loop->index + 1 }}</td>
-                                    <td align="center">
-                                        {{ sprintf('%02d', $form->id) }}
+                                    <td style="text-align: center; vertical-align: middle;">{{ $loop->index + 1 }}</td>
+                                    <td style="text-align: center; vertical-align: middle;">
+                                        {{ sprintf('%02d', $form->form01s[0]->id) }}
                                     </td>
-                                    <td align="center">{{ $form->form01s->count() }}</td>
-                                    <td align="center">{{ formatDateThai($form->created_at->isoFormat("Y-M-D H:mm:ss")) }}</td>
-                                    <td align="center">{{ ($form->report != null ? formatDateThai($form->report) : 'ร่าง')   }}</td>
-                                    @php
-                                    $isApproved = false;
-                                    foreach($form->form01s as $form01)
-                                    {
-                                        if(!empty($form01->form09s_id) || !empty($form01->form10s_id))
-                                        $isApproved = true;
-                                    }
-                                    @endphp
-                                    @if (!empty($form->report) || $isApproved)
-                                        <td align="center">
-                                            <a href="{{ route('form07.show', $form) }}" class="btn btn-raised btn-info"
-                                            title="รายละเอียด"> ดู </a>
-                                            <button class="btn btn-raised btn-success" style="display: inline" type="submit" title="อนุมัติ"
-                                                disabled>
-                                                <span style="color: blue">อนุมัติแล้ว</span>
-                                            </button>
-                                            <button class="del btn btn-raised btn-primary" style="display: inline" type="submit"
-                                                title="ยกเลิก" disabled>
-                                                ยกเลิก </button>
-                                        </td>
-                                    @else
-                                        <td align="center">
-                                            <a href="{{ route('form07.show', $form) }}" class="btn btn-raised btn-info"
-                                            title="รายละเอียด"> ดู </a>
-                                            <form action="{{ route('form07.update', $form->id) }}" style="display: inline" method="post">
-                                                @csrf
-                                                @method('PUT')
-                                                <input type="hidden" name="approve" value="1">
-                                                <button class="btn btn-raised btn-success" type="submit"
-                                                    title="อนุมัติ">
-                                                    อนุมัติ</button>
-                                            </form>
-                                            <form action="{{ route('form07.update', $form->id) }}" style="display: inline" method="post">
-                                                @csrf
-                                                @method('PUT')
-                                                <input type="hidden" name="cancel" value="1">
-                                                <button class="del btn btn-raised btn-primary" type="submit"
-                                                    title="ยกเลิก">  ยกเลิก </button>
-                                            </form>
-                                        </td>
-                                    @endif
+                                    <td style="text-align: center; vertical-align: middle;">{{ $form->form01s->count() }}</td>
+                                    <td style="text-align: center; vertical-align: middle;">{{ formatDateThai($form->created_at->isoFormat("Y-M-D H:mm:ss")) }}</td>
+                                    <td style="text-align: center; vertical-align: middle;">{{ ($form->report != null ? formatDateThai($form->report) : 'ร่าง')   }}</td>
+                                    <td style="text-align: center; vertical-align: middle;">
+                                        @if (!empty($form->form01s[0]->form09s_id))
+                                                <a href="{{ route('form07.show', $form) }}" class="btn btn-raised btn-info"
+                                                title="รายละเอียด"> ดู </a>
+                                                <button class="btn btn-raised btn-success" style="display: inline" type="submit" title="อนุมัติ"
+                                                    disabled>
+                                                    <span style="color: blue">อนุมัติแล้ว</span>
+                                                </button>
+                                                <button class="del btn btn-raised btn-primary" style="display: inline" type="submit"
+                                                    title="ยกเลิก" disabled>
+                                                    ยกเลิก </button>
+
+                                        @elseif (!empty($form->form01s[0]->form10s_id))
+                                                <a href="{{ route('form07.show', $form) }}" class="btn btn-raised btn-info"
+                                                title="รายละเอียด"> ดู </a>
+                                                <button class="btn btn-raised btn-success" style="display: inline" type="submit" title="อนุมัติ"
+                                                    disabled>
+                                                    อนุมัติ
+                                                </button>
+                                                <button class="del btn btn-raised btn-primary" style="display: inline" type="submit"
+                                                    title="ยกเลิก" disabled>
+                                                    <span style="color: red"> ยกเลิกแล้ว </span></button>
+                                        @else
+                                                <a href="{{ route('form07.show', $form) }}" class="btn btn-raised btn-info"
+                                                title="รายละเอียด"> ดู </a>
+                                                <form action="{{ route('form07.update', $form->id) }}" style="display: inline" method="post">
+                                                    @csrf
+                                                    @method('PUT')
+                                                    <input type="hidden" name="approve" value="1">
+                                                    <button class="btn btn-raised btn-success" type="submit"
+                                                        title="อนุมัติ">
+                                                        อนุมัติ</button>
+                                                </form>
+                                                <form action="{{ route('form07.update', $form) }}" style="display: inline" method="post">
+                                                    @csrf
+                                                    @method('PUT')
+                                                    <input type="hidden" name="cancel" value="1">
+                                                    <button class="del btn btn-raised btn-primary" type="submit"
+                                                        title="ยกเลิก">  ยกเลิก </button>
+                                                </form>
+                                        @endif
+                                    </td>
                                 </tr>
                             @endforeach
                         </tbody>

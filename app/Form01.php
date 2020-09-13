@@ -10,12 +10,7 @@ class Form01 extends Model
 {
     use SoftDeletes;
 
-    protected $fillable = [
-        'audit_date','approve_date','form07s_id','form09s_id','form10s_id','form05s_id','form13s_id','doc_notifies_id'
-        ,'doc_contracts_id','doc_garuntee_id'
-    ];
-
-	protected $guarded = [];
+   	protected $guarded = [];
 
 	public function doc(){
 		return $this->belongsTo('App\UserDocument','id');

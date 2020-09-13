@@ -157,6 +157,18 @@
                                             <i class="fa fa-check-square"></i>
                                             <span>1. ตรวจสอบสิทธิ์</span>
                                         </a>
+                                        <ul>
+                                            <li class="{{ request()->is('auditor/audits') ? 'active' : '' }}">
+                                                <a role="button" tabindex="0"
+                                                    href="{{ route('audits.index') }}">
+                                                    <i class="fa fa-angle-right"></i>1.1 ตรวจสอบก่อนสร้าง ทก.07</a>
+                                            </li>
+                                            <li class="{{ request()->is('auditor/audits/form/send') ? 'active' : '' }}">
+                                                <a role="button" tabindex="0"
+                                                    href="{{ url('auditor/audits/form/send') }}">
+                                                    <i class="fa fa-angle-right"></i>1.2 ส่ง ทก.07</a>
+                                            </li>
+                                        </ul>
                                     </li>
                                 @endif
                                 @if (Auth::user()
@@ -186,6 +198,14 @@
                                             <li class="{{ request()->is('approve/form10*') ? 'active' : '' }}">
                                                 <a role="button" tabindex="0" href="{{ route('form10.index') }}">
                                                     <i class="fa fa-angle-right"></i>1.3 เอกสาร ทก.10 (ยกเลิก)</a>
+                                            </li>
+                                            <li class="{{ request()->is('approve/approved*') ? 'active' : '' }}">
+                                                <a role="button" tabindex="0" href="{{ route('approved') }}">
+                                                    <i class="fa fa-angle-right"></i>1.4 ทก.09 (อนุมัติแล้ว)</a>
+                                            </li>
+                                            <li class="{{ request()->is('approve/disapproved*') ? 'active' : '' }}">
+                                                <a role="button" tabindex="0" href="{{ route('disapproved') }}">
+                                                    <i class="fa fa-angle-right"></i>1.5 ทก.10 (ยกเลิกแล้ว)</a>
                                             </li>
                                         </ul>
                                     </li>

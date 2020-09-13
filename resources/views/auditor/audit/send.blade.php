@@ -51,7 +51,7 @@
                                     <td align="center"> {{ formatDateThai($list['submit_date']->isoFormat('Y-M-D H:mm:ss')) }} </td>
                                     <td align="center"> {{ $list['audit_date'] == null ? 'ร่าง' : $list['audit_date'] }} </td>
                                     <td align="center">
-                                        <a href="{{ url('auditor/pdf', $list['id']) }}" class="btn btn-raised btn-info"
+                                        <a href="{{ route('audits.show', $list['id']) }}" class="btn btn-raised btn-info"
                                             title="รายละเอียด"> ดู</a>
                                         @if($list['audit_date'] == null)
                                         <a href="{{ route('audits.edit', $list['id']) }}" class="btn btn-raised btn-warning"

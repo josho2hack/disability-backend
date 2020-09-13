@@ -6,9 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Form10 extends Model
 {
-    protected $fillable = [
-        'round','year','offcie','city','image','report','created_at','updated_at'
-    ];
+    protected $guarded = [];
 
     public function form01s(){
         return $this->hasMany('App\Form01','form10s_id');

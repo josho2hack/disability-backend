@@ -17,7 +17,7 @@ class Form10Controller extends Controller
      */
     public function index()
     {
-        $form10 = Form10::with('form01s')->get();
+        $form10 = Form10::with('form01s')->whereHas('form01s', function($q){ return $q->whereNotNull('form10s_id'); })->get();
         return view('approve.form10.index', compact('form10'));
     }
 
@@ -89,8 +89,9 @@ class Form10Controller extends Controller
                     $form09['city'] = $form10['city'];
                     $form09->save();
                 }
-                $form01['form09s_id'] = $form09->id;
-                $form01['form10s_id'] = null;
+                $form01->send_status = 3;
+                $form01->form09s_id = $form09->id;
+                $form01->form10s_id = null;
                 $form01->save();
             }
 
@@ -100,12 +101,17 @@ class Form10Controller extends Controller
 
         } else {
 
-        $form10 = Form10::find($id);
-        $form10['report'] = now();
-        $form10->save();
+            $form10 = Form10::find($id);
+            $form10['report'] = now();
+            $form10->save();
+            $form01 = Form01::whereForm10sId($id)->get();
+            $formid = $form01[0]->id;
+            $form01s = Form01::find($formid);
+            $form01s['send_status'] = '3';
+            $form01s->save();
 
-        $form10 = Form10::with('form01s')->get();
-        return view('approve.form10.index', compact('form10'));
+            $form10 = Form10::with('form01s')->get();
+            return view('approve.form10.index', compact('form10'));
         }
     }
 
@@ -118,5 +124,11 @@ class Form10Controller extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function disapproved()
+    {
+        $form10 = Form10::with('form01s')->whereNotNull('report')->whereHas('form01s', function($q){ return $q->whereNotNull('form10s_id'); })->get();
+        return view('approve.form10.disapproved', compact('form10'));
     }
 }

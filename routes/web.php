@@ -132,6 +132,8 @@ Route::prefix('admin')->middleware('auth')->group(function () {
 
 Route::prefix('approve')->middleware('auth')->group(function () {
     Route::get('', 'Approve\Form07Controller@index')->name('approve');
+    Route::get('approved', 'Approve\Form09Controller@approved')->name('approved');
+    Route::get('disapproved', 'Approve\Form10Controller@disapproved')->name('disapproved');
 
     Route::resources([
         'form07' => 'Approve\Form07Controller',

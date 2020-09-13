@@ -70,7 +70,7 @@
             <section class="boxs">
                 <div class="boxs-header">
                     <h3 class="custom-font">
-                        <strong>เอกสาร ทก09 (อนุมัติ)</strong>
+                        <strong>เอกสาร ทก09 (อนุมัติแล้ว)</strong>
                     </h3>
                 </div>
                 <div class="boxs-body">
@@ -81,57 +81,59 @@
                         </div>
                     @endif
                     <table id="searchTextResults" data-filter="#filter" data-page-size="25"
-                        class="table table-custom table-hover">
-                        <thead>
+                    class="table table-custom table-hover">
+                    <thead>
+                        <tr>
+                            <th style="text-align: center; vertical-align: middle;">ลำดับ</th>
+                            <th style="text-align: center; vertical-align: middle;">เลขที่ ทก.09</th>
+                            <th style="text-align: center; vertical-align: middle;">รายการ</th>
+                            <th style="text-align: center; vertical-align: middle;">วันที่ / เวลา ส่งผล</th>
+                            <th style="text-align: center; vertical-align: middle;">วันที่ / เวลา ทำสัญญา</th>
+                            <th style="text-align: center; vertical-align: middle;">ดำเนินการ</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($form13 as $form)
+                        {{-- {{ dd($form) }} --}}
                             <tr>
-                                <th style="text-align: center; vertical-align: middle;">ลำดับ</th>
-                                <th style="text-align: center; vertical-align: middle;">เลขที่ ทก.09</th>
-                                <th style="text-align: center; vertical-align: middle;">รายการ</th>
-                                <th style="text-align: center; vertical-align: middle;">วันที่ / เวลา อนุมัติ</th>
-                                <th style="text-align: center; vertical-align: middle;">วันที่ / เวลา ส่งผล</th>
-                                <th style="text-align: center; vertical-align: middle;">ดำเนินการ</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ($form09 as $form)
-                                <tr>
-                                    <td style="text-align: center; vertical-align: middle;">{{ $loop->index + 1 }}</td>
-                                    <td style="text-align: center; vertical-align: middle;">
-                                        {{ sprintf('%02d', $form->id) }}
-                                    </td>
-                                    <td style="text-align: center; vertical-align: middle;">{{ $form->form01s->count() }}</td>
-                                    <td style="text-align: center; vertical-align: middle;">{{ formatDateThai($form->created_at) }}</td>
-                                    <td style="text-align: center; vertical-align: middle;">{{ ($form->report != '' ? formatDateThai($form->report) : 'ร่าง' ) }}</td>
-                                    <td style="text-align: center; vertical-align: middle;">
-                                        <a href="{{ route('form09.show', $form) }}" class="btn btn-raised btn-info"
-                                            title="รายละเอียด"> ดู </a>
+                                <td style="text-align: center; vertical-align: middle;">{{ $loop->index + 1 }}</td>
+                                <td style="text-align: center; vertical-align: middle;">
+                                    {{ sprintf('%02d', $form->id) }}
+                                </td>
+                                <td style="text-align: center; vertical-align: middle;">{{ $form->form01s->count() }}</td>
+                                <td style="text-align: center; vertical-align: middle;">{{ formatDateThai($form->created_at) }}</td>
+                                {{-- {{ dd($form) }} --}}
+                                <td style="text-align: center; vertical-align: middle;">{{ ($form->report != '' ? formatDateThai($form->report) : 'ร่าง') }}</td>
+                                <td style="text-align: center; vertical-align: middle;">
+                                    <a href="{{ route('form10.show', $form) }}" class="btn btn-raised btn-info"
+                                        title="รายละเอียด"> ดู </a>
                                     @if (empty($form->report))
                                             <form action="{{ route('form09.update', $form->id) }}" style="display: inline;" method="post">
                                                 @csrf
                                                 @method('PUT')
-                                                <input type="hidden" name="report" value="true">
+                                                <input type="hidden" name="contract" value="1">
                                                 <button class="btn btn-raised btn-success" type="submit"
-                                                    title="ส่งผล">
-                                                    ส่งผล</button>
+                                                    title="ทำสัญญา">
+                                                    ทำสัญญา</button>
                                             </form>
                                     @else
                                             <button class="btn btn-raised btn-success" type="submit"
-                                                title="ส่งผลแล้ว" disabled>
-                                                <strong style="color: blue">ส่งผลแล้ว</strong></button>
+                                                title="ทำสัญญาแล้ว" disabled>
+                                                <strong style="color: green">ทำสัญญาแล้ว</strong></button>
                                     @endif
-                                    </td>
-                                </tr>
-                            @endforeach
-                        </tbody>
-                        <tfoot class="hide-if-no-paging">
-                            <tr>
-                                <td colspan="3" class="text-right">
-                                    <ul class="pagination">
-                                    </ul>
                                 </td>
                             </tr>
-                        </tfoot>
-                    </table>
+                        @endforeach
+                    </tbody>
+                    <tfoot class="hide-if-no-paging">
+                        <tr>
+                            <td colspan="3" class="text-right">
+                                <ul class="pagination">
+                                </ul>
+                            </td>
+                        </tr>
+                    </tfoot>
+                </table>
 
                 </div>
                 <div class="boxs-footer">
