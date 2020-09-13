@@ -25,13 +25,14 @@
      src: url("{{ public_path('fonts/THSarabunNew BoldItalic.ttf') }}") format('truetype');
     }
     *{
-        font-family: 'THSarabunNew', sans-serif;
-        font-size: 18px;
+        
+        
     }
     body{
-
+        font-family: 'THSarabunNew', sans-serif;
         border: 1px;
         word-wrap: break-word;
+        font-size: 18px;
     }
     @page {
       size: landscape;
@@ -45,10 +46,12 @@
         border: 1px solid #000; 
         overflow: auto; 
         width: 200px;
-        height: 100px;
+        height: 78px;
         text-align: center;
         font-size: 17px;
         float: right;
+        position: fixed;
+        line-height: 14px;
     }
     .fill-text-justify{
         text-align: justify;
@@ -56,20 +59,6 @@
     }
     .text-center{
         text-align: center;
-    }
-    input{
-        border: none;
-        background-color: #FFF;
-        padding: 0px;
-        padding-top: 10px;
-        width: 50px;
-        text-align: center;
-        font-size: 1.2rem;
-    }
-    input[type="text"]{
-        width: auto;
-        padding: 0px 10px;
-        border-bottom: 2px dotted #4D585F;
     }
 
     table {
@@ -80,6 +69,50 @@
 
     table, td, th {
       border: 1px solid ;
+    }
+
+    .sign{
+        padding-right: 120px;
+        position: fixed;
+        bottom: 160px;  
+        right: 0;
+    }
+    .sign2{
+        padding-right: 30px;
+        position: fixed;
+        bottom: 100px;  
+        right: 0;
+    }
+    .head{
+        padding-left: 200px;
+        font-size: 20px;
+    }
+    .no{
+        display: inline-block;
+        border-bottom: 1px dotted;
+        width: 50px;
+        text-align: center;
+    }
+    .round{
+        margin-left: 350px;
+    }
+    .year{
+        display: inline-block;
+        border-bottom: 1px dotted;
+        width: 100px;
+        text-align: center;
+    }
+    .office{
+        display: inline-block;
+        border-bottom: 1px dotted;
+        width: 200px;
+        text-align: center;
+    }
+    .province{
+        display: inline-block;
+        border-bottom: 1px dotted;
+        width: 150px;
+        text-align: center;
     }
 
 </style>
@@ -94,16 +127,35 @@
                     </div>
                 </div>
 
-                <div class="form-group">
-                    <div class="text-center">
-                        <br><br><br>
-                        แบบรายงานการขอยืมอุปกรณ์และเครื่องมือเทคโนโลยีสารสนเทศและการสื่อสาร<br>   
-                    หรือเทคโนโลยีสิ่งอำนวยความสะดวกเพื่อการสื่อสาร ตามกฎกระทรวงฯ <br><br>
-                    ครั้งที่ <input type="text" name="round" value="{{ $form->round }}" readonly style="width:5%;"> ประจำปีงบประมาณ <input type="text" name="year" value="{{ $form->year }}" style="width:10%;"><br>
-                    หน่วยงานที่รับคำขอฯ <input type="text" name="office" value="{{ $form->office }}" style="width:15%;" required> จังหวัด <input type="text" name="city" value="{{ $form->office }}" style="width:12%;" required>
-                    </div>
-                </div>
 
+                    <div class="head" align="center">
+                        <br> <br>
+                      <div>  แบบรายงานการขอยืมอุปกรณ์และเครื่องมือเทคโนโลยีสารสนเทศและการสื่อสาร </div>
+                       <div style="padding-right: 200px;"> หรือเทคโนโลยีสิ่งอำนวยความสะดวกเพื่อการสื่อสาร ตามกฎกระทรวงฯ </div>
+                    </div>
+
+                        <div class="round">
+                            ครั้งที่ 
+                            <div class="no">
+                                {{ $form->round }}
+                            </div>
+                            ประจำปีงบประมาณ 
+                            <div class="year">
+                                {{ $form->year }}
+                            </div>
+                        </div>
+                        <div class="off" style="margin-left: 220px;">
+                            หน่วยงานที่รับคำขอฯ
+                            <div class="office">
+                                {{ $form->office }}
+                            </div> 
+                            จังหวัด 
+                            <div class="province">
+                                {{ $form->city }}
+                            </div>
+                        </div>
+
+                    <br>
                     <table>
                         <thead>
                             <tr>
@@ -156,18 +208,12 @@
                         </tbody>
                     </table>
 
-                    <div class="row">
-                        <div class="col-sm-offset-5 col-sm-7">
-                            <div class="form-group">
-                            ลงชื่อ <input type="text" name="submitSign" style="width: 58%;"><br>
-                                <span>( <input type="text" value="อริย์ธัช ทิพย์จักร์" name="submitSign" style="width: 70%;"> )</span>
-                        </div>
-                        </div>
-                        <div class="col-sm-offset-5 col-sm-7">
-                            <div class="form-group">
-                            ตำแหน่ง <input type="text" name="submitSign" style="width: 58%;">หัวหน้าหน่วยงาน<br><br>
-                                <span>ลงวันที่<input type="text" value="" style="width: 20%;">/<input type="text" value="" style="width: 20%;">/<input type="text" value="" style="width: 20%;">
-                                </span>
-                        </div>
-                        </div>
-                    </div>
+    <br>    
+    <div class="sign" align="right">
+        <div>ลงชื่อ ......................................................................... </div>
+         <div>( .............................................................................)</div>
+    </div>
+    <div class="sign2" align="right">
+        <div>ตำแหน่ง .......................................................................................... หัวหน้าหน่วยงาน</div>
+         <div>ลงวันที่ ................../................................/...........................&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+    </div>
