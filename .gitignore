@@ -21,12 +21,16 @@ storage/fonts/thsarabunnew-normal_058f71a1ec1f478c7aa99a7d80f94e90.ufm
 storage/fonts/thsarabunnew-normal_058f71a1ec1f478c7aa99a7d80f94e90.ufm.php
 storage/fonts/dompdf_font_family_cache.php
 storage/fonts/dompdf_font_family_cache.php
-<<<<<<< Updated upstream
 /public/user/document
-=======
 storage/fonts/dompdf_font_family_cache.php
+<<<<<<< Updated upstream
 >>>>>>> Stashed changes
 public/user/doucment/borrow/test.png
+=======
+public/user/doucment/borrow/test.png
+public/user/doucment/borrow/borrowtest.png
+storage/fonts/dompdf_font_family_cache.php
+>>>>>>> Stashed changes
 storage/fonts/thsarabunnew-bold_2092a0fe1e087612a9fb2d763417513a.ttf
 storage/fonts/thsarabunnew-bold_2092a0fe1e087612a9fb2d763417513a.ufm
 storage/fonts/thsarabunnew-bold_2092a0fe1e087612a9fb2d763417513a.ufm.php

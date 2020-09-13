@@ -180,6 +180,14 @@
                                                 <a role="button" tabindex="0" href="{{ route('form10.index') }}">
                                                     <i class="fa fa-angle-right"></i>1.3 เอกสาร ทก.10 (ยกเลิก)</a>
                                             </li>
+                                            <li class="{{ request()->is('approve/approved*') ? 'active' : '' }}">
+                                                <a role="button" tabindex="0" href="{{ route('approved') }}">
+                                                    <i class="fa fa-angle-right"></i>1.4 ทก.09 (อนุมัติแล้ว)</a>
+                                            </li>
+                                            <li class="{{ request()->is('approve/disapproved*') ? 'active' : '' }}">
+                                                <a role="button" tabindex="0" href="{{ route('disapproved') }}">
+                                                    <i class="fa fa-angle-right"></i>1.5 ทก.10 (ยกเลิกแล้ว)</a>
+                                            </li>
                                         </ul>
                                     </li>
                                 @endif

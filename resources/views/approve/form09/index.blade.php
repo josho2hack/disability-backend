@@ -81,7 +81,7 @@
                         </div>
                     @endif
                     <table id="searchTextResults" data-filter="#filter" data-page-size="25"
-                        class="table able-hover">
+                        class="table table-custom table-hover">
                         <thead>
                             <tr>
                                 <th style="text-align: center; vertical-align: middle;">ลำดับ</th>

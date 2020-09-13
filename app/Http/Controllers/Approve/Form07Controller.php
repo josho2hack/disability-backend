@@ -18,7 +18,7 @@ class Form07Controller extends Controller
      */
     public function index()
     {
-        $form07 = Form07::whereHas('form01s', function($q){ return $q->whereNotNull('audit_date'); })->get();
+        $form07 = Form07::with('form01s')->whereHas('form01s', function($q){ return $q->whereNotNull('audit_date'); })->whereHas('form01s', function($q){ return $q->whereNotNull('form07s_id'); })->get();
         return view('approve.form07.index', compact('form07'));
     }
 
@@ -140,7 +140,7 @@ class Form07Controller extends Controller
                 $form10['city'] = $form07['city'];
                 $form10->save();
                 foreach ($form07->form01s as $form01) {
-                    $form01['form010s_id'] = $form10['id'];
+                    $form01['form10s_id'] = $form10['id'];
                     $form01->save();
                 }
             }
