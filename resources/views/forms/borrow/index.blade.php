@@ -78,14 +78,14 @@
                                     <td align="center"> 1 หน่วย </td>
                                     {{-- {{ dd(strlen($forms->send_date)) }} --}}
                                     <td align="center">{{ formatDateThai($forms->created_at->isoFormat('Y-M-D H:mm:ss')) }}</td>
-                                    <td align="center">@if ( $forms->send_status == 1 ) {{ formatDateThai($forms->send_date) }} @else ร่าง @endif</td>
+                                    <td align="center">@if ( $forms->send_status != 0 ) {{ formatDateThai($forms->send_date) }} @else ร่าง @endif</td>
                                     <td align="center">
                                         <a href="{{ url('pdf/'.$forms->id) }}" class="btn btn-raised btn-info"
                                             title="รายละเอียด"> <i class="fa fa-eye"></i></a>
                                         @if ( $forms->send_status == 0 ) 
                                         <a href="{{ url('borrow/send_auditor', $forms->id) }}" class="btn btn-raised btn-success"
                                             title="ส่ง"> <i class="fa fa-send"> | ส่ง</i></a>
-                                        @elseif ( $forms->send_status == 1 )
+                                        @elseif ( $forms->send_status != 0 )
                                         <a href="#" class="btn btn-raised btn-success"
                                             title="ส่ง" disabled style="color: #000;"> <i class="fa fa-send"> | ส่งแล้ว</i></a>
                                         @endif

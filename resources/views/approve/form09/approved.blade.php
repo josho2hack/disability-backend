@@ -12,13 +12,13 @@
                 <h3 class="h3 m-0">
                     @if (Auth::user()
             ->roles()
-            ->first()->name == 'Admin')3.
+            ->first()->name == 'Admin')3.2
                     @endif
                     @if (Auth::user()
             ->roles()
-            ->first()->name == 'Approve')1.
+            ->first()->name == 'Approve')1.2
                     @endif
-                    อนุมัติคำขอ
+                    เอกสาร ทก09 (อนุมัติ)
                 </h3>
                 <small class="text-muted">
                     @if (Auth::user()
@@ -27,9 +27,9 @@
                     @endif
                     @if (Auth::user()
             ->roles()
-            ->first()->name == 'Approve')1.
+            ->first()->name == 'Approve'){{-- 1. --}}
                     @endif
-                    2 เอกสาร ทก09 (อนุมัติ)
+                    {{-- 2 เอกสาร ทก09 (อนุมัติ) --}}
                 </small>
             </div>
             <div class="btn-group pull-right">

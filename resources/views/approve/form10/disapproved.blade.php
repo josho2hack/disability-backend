@@ -12,7 +12,7 @@
                 <h3 class="h3 m-0">
                     @if (Auth::user()->roles()->first()->name == 'Admin')3. @endif
                     @if (Auth::user()->roles()->first()->name == 'Approve')1. @endif
-                    อนุมัติคำขอ
+                    2 เอกสาร ทก09 (อนุมัติ)
                 </h3>
                 <small class="text-muted">
                     @if (Auth::user()->roles()->first()->name == 'Admin')3. @endif

@@ -182,7 +182,7 @@
                                     </li>
                                 </ul>
                             </li>
-                            <li>
+                            {{-- <li>
                                 <a href="#">
                                     <i class="fa fa-envelope"></i>
                                     <span>9. ข้อความ</span>
@@ -211,7 +211,7 @@
                                     <i class="fa fa-download"></i>
                                     <span>13. ดาวน์โหลด</span>
                                 </a>
-                            </li>
+                            </li> --}}
 
                         </ul>
                         <!--/ NAVIGATION Content -->

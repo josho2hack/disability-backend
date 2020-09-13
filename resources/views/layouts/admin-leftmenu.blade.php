@@ -121,7 +121,7 @@
                                             </li>
                                         </ul>
                                     </li>
-                                    <li>
+                                    {{-- <li>
                                         <a role="button" tabindex="0">
                                             <i class="fa fa-envelope"></i>
                                             <span>4. ข้อความ</span>
@@ -140,7 +140,7 @@
                                             <span>6. ตอบแบบสำรวจ</span>
                                             <span class="label label-warning">2</span>
                                         </a>
-                                    </li>
+                                    </li> --}}
                                 @endif
 
                                 @if (Auth::user()
@@ -216,7 +216,7 @@
         Auth::user()
             ->roles()
             ->first()->name == 'Approve')
-                                    <li>
+                                    {{-- <li>
                                         <a role="button" tabindex="0">
                                             <i class="fa fa-envelope"></i>
                                             <span>2. ข้อความ</span>
@@ -241,7 +241,7 @@
                                             <span>5. ตอบแบบสำรวจ</span>
                                             <span class="label label-warning">2</span>
                                         </a>
-                                    </li>
+                                    </li> --}}
                                 @endif
                                 @if (Auth::user()
             ->roles()
@@ -417,7 +417,7 @@
                                             </li>
                                         </ul>
                                     </li>
-                                    <li>
+                                    {{-- <li>
                                         <a href="#">
                                             <i class="fa fa-envelope"></i>
                                             <span>9. ข้อความ</span>
@@ -440,15 +440,15 @@
                                             <i class="fa fa-bar-chart-o"></i>
                                             <span>12. ตอบแบบสำรวจ</span>
                                         </a>
-                                    </li>
+                                    </li> --}}
                                 @endif
                             @endguest
-                            <li>
+                            {{-- <li>
                                 <a href="#">
                                     <i class="fa fa-map-o"></i>
                                     <span>แผนทีตั้งหน่วยงาน</span>
                                 </a>
-                            </li>
+                            </li> --}}
                         </ul>
                         <!--/ NAVIGATION Content -->
                     </div>
