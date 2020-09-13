@@ -9,6 +9,6 @@ class Form13 extends Model
     protected $guarded = [];
 
     public function form01s(){
-        return $this->hasMany('App\Form01','form01s_id');
+        return $this->hasMany('App\Form01','form13s_id');
     }
 }

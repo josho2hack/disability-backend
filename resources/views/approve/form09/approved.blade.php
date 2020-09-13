@@ -93,7 +93,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($form09 as $form)
+                        @foreach ($form13 as $form)
                         {{-- {{ dd($form) }} --}}
                             <tr>
                                 <td style="text-align: center; vertical-align: middle;">{{ $loop->index + 1 }}</td>
@@ -101,12 +101,13 @@
                                     {{ sprintf('%02d', $form->id) }}
                                 </td>
                                 <td style="text-align: center; vertical-align: middle;">{{ $form->form01s->count() }}</td>
-                                <td style="text-align: center; vertical-align: middle;">{{ ($form->report != '' ? formatDateThai($form->report) : 'ร่าง' ) }}</td>
-                                <td style="text-align: center; vertical-align: middle;">ร่าง</td>
+                                <td style="text-align: center; vertical-align: middle;">{{ formatDateThai($form->created_at) }}</td>
+                                {{-- {{ dd($form) }} --}}
+                                <td style="text-align: center; vertical-align: middle;">{{ ($form->report != '' ? formatDateThai($form->report) : 'ร่าง') }}</td>
                                 <td style="text-align: center; vertical-align: middle;">
                                     <a href="{{ route('form10.show', $form) }}" class="btn btn-raised btn-info"
                                         title="รายละเอียด"> ดู </a>
-                                    @if (empty($form->form01s[0]->form13s_id))
+                                    @if (empty($form->report))
                                             <form action="{{ route('form09.update', $form->id) }}" style="display: inline;" method="post">
                                                 @csrf
                                                 @method('PUT')
