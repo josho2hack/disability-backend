@@ -101,11 +101,25 @@
                                     {{ sprintf('%02d', $form->id) }}
                                 </td>
                                 <td style="text-align: center; vertical-align: middle;">{{ $form->form01s->count() }}</td>
-                                <td style="text-align: center; vertical-align: middle;">{{ formatDateThai($form->created_at) }}</td>
                                 <td style="text-align: center; vertical-align: middle;">{{ ($form->report != '' ? formatDateThai($form->report) : 'ร่าง' ) }}</td>
+                                <td style="text-align: center; vertical-align: middle;">ร่าง</td>
                                 <td style="text-align: center; vertical-align: middle;">
                                     <a href="{{ route('form10.show', $form) }}" class="btn btn-raised btn-info"
                                         title="รายละเอียด"> ดู </a>
+                                    @if (empty($form->form01s[0]->form13s_id))
+                                            <form action="{{ route('form09.update', $form->id) }}" style="display: inline;" method="post">
+                                                @csrf
+                                                @method('PUT')
+                                                <input type="hidden" name="contract" value="1">
+                                                <button class="btn btn-raised btn-success" type="submit"
+                                                    title="ทำสัญญา">
+                                                    ทำสัญญา</button>
+                                            </form>
+                                    @else
+                                            <button class="btn btn-raised btn-success" type="submit"
+                                                title="ทำสัญญาแล้ว" disabled>
+                                                <strong style="color: green">ทำสัญญาแล้ว</strong></button>
+                                    @endif
                                 </td>
                             </tr>
                         @endforeach

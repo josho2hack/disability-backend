@@ -99,11 +99,8 @@ class Form09Controller extends Controller
             $form01s = $form09->form01s;
             return view('approve.form09.show', compact('form09', 'form01s','form10'));
 
-        } else {
-
+        } elseif ($request['contract']==1) {
             $form09 = Form09::find($id);
-            $form09['report'] = now();
-            $form09->save();
 
             $form13 = new Form13();
             $form13['round'] = $form09['round'];
@@ -112,13 +109,27 @@ class Form09Controller extends Controller
             $form13['city'] = $form09['city'];
             $form13->save();
 
-            $form01 = Form01::whereForm10sId($id)->get();
+            $form01 = Form01::whereForm09sId($form09->id)->get();
+            $formid = $form01[0]->id;
+            $form01s = Form01::find($formid);
+            $form13id = Form13::latest()->get();
+            $form01s['form13s_id'] = $form13id[0]->id;
+            $form01s->save();
+
+            $form09 = Form09::with('form01s')->whereNotNull('report')->whereHas('form01s', function($q){ return $q->whereNotNull('form09s_id'); })->get();
+            return view('approve.form09.approved', compact('form09'));
+
+        }else {
+
+            $form09 = Form09::find($id);
+            $form09['report'] = now();
+            $form09->save();
+
+            $form01 = Form01::whereForm09sId($id)->get();
             $formid = $form01[0]->id;
             $form01s = Form01::find($formid);
             $form01s['send_status'] = '2';
             $form01s['approve_date'] = now();
-            $form13id = Form13::latest()->get();
-            $form01s['form13s_id'] = $form13id[0]->id;
             $form01s->save();
 
             $form09 = Form09::with('form01s')->get();
@@ -140,8 +151,7 @@ class Form09Controller extends Controller
     public function approved()
     {
         // $form09 = Form09::with('form01s')->whereNotNull('report')->whereHas('form01s', function($q){ return $q->whereNotNull('approve_date'); })->get();
-        $form09 = Form13::with('form01s')->whereHas('form01s', function($q){ return $q->whereNotNull('approve_date'); })->get();
-        dd($form09);
+        $form09 = Form09::with('form01s')->whereNotNull('report')->whereHas('form01s', function($q){ return $q->whereNotNull('form09s_id'); })->get();
         return view('approve.form09.approved', compact('form09'));
     }
 }
