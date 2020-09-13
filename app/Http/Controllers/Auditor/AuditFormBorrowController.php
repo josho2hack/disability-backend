@@ -90,7 +90,9 @@ class AuditFormBorrowController extends Controller
      */
     public function show($id)
     {
-        //
+        $audits = Form07::find($id);
+
+        return view('auditor.audit.show', compact('audits'));
     }
 
     /**

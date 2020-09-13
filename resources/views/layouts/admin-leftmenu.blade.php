@@ -150,6 +150,18 @@
                                             <i class="fa fa-check-square"></i>
                                             <span>1. ตรวจสอบสิทธิ์</span>
                                         </a>
+                                        <ul>
+                                            <li class="{{ request()->is('auditor/audits') ? 'active' : '' }}">
+                                                <a role="button" tabindex="0"
+                                                    href="{{ route('audits.index') }}">
+                                                    <i class="fa fa-angle-right"></i>1.1 ตรวจสอบก่อนสร้าง ทก.07</a>
+                                            </li>
+                                            <li class="{{ request()->is('auditor/audits/form/send') ? 'active' : '' }}">
+                                                <a role="button" tabindex="0"
+                                                    href="{{ url('auditor/audits/form/send') }}">
+                                                    <i class="fa fa-angle-right"></i>1.2 ส่ง ทก.07</a>
+                                            </li>
+                                        </ul>
                                     </li>
                                 @endif
                                 @if (Auth::user()

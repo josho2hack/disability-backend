@@ -114,6 +114,10 @@
         width: 150px;
         text-align: center;
     }
+    input[type=checkbox] {
+
+        transform: scale(1.5);
+    }
 
 </style>
 
@@ -197,7 +201,9 @@
                                     @endif
                                 </td>
                                 <td rowspan="2"> {{ number_format($audit->asset->price) }} </td>
-                                <td rowspan="2"> {{-- @if($audit->table == 'App\Form01') --}} <i class="fa fa-check"></i>  {{-- @endif --}}</td>
+                                <td rowspan="2"> 
+                                    {{-- <input type="checkbox" checked> --}}
+                                </td>
                                 <td rowspan="2">{{-- @if($audit->table == 'App\Form03') <i class="fa fa-check"></i>  @endif  --}}</td>
                                 <td rowspan="2">  </td>
                             </tr>
