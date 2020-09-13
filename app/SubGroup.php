@@ -3,12 +3,18 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
 
 class SubGroup extends Model
 {
     protected $fillable = [
-        'name','main_groups_id','icon','image'
+        'name','main_groups_id','icon','image','color'
     ];
+
+    public function getImgAttribute()
+    {
+        return Storage::url($this->image);
+    }
 
     public function assetCategories()
     {

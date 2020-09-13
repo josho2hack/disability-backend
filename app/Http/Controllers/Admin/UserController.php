@@ -112,19 +112,21 @@ class UserController extends Controller
 
         $year = now()->format('y');
         $year += 43;  //Thai Year
-        $user = User::whereHas("roles", function($q) use($role_id){ $q->where("roles_id", $role_id); })->latest()->first();
-        $idtemp = substr($user->system_id,5);
+        $user = User::whereHas("roles", function ($q) use ($role_id) {
+            $q->where("roles_id", $role_id);
+        })->latest()->first();
+        $idtemp = substr($user->system_id, 5);
         $idtemp += 1;
         $num_padded = sprintf("%03d", $idtemp); //add 0 3 digit before ID
 
-        if($role_id == 1){
-            $input['system_id'] = 'AM'.$year.'-'.$num_padded;
-        }elseif($role_id == 2){
-            $input['system_id'] = 'AD'.$year.'-'.$num_padded;
-        }elseif($role_id == 3){
-            $input['system_id'] = 'AP'.$year.'-'.$num_padded;
-        }elseif($role_id == 4){
-            $input['system_id'] = 'MB'.$year.'-'.$num_padded;
+        if ($role_id == 1) {
+            $input['system_id'] = 'AM' . $year . '-' . $num_padded;
+        } elseif ($role_id == 2) {
+            $input['system_id'] = 'AD' . $year . '-' . $num_padded;
+        } elseif ($role_id == 3) {
+            $input['system_id'] = 'AP' . $year . '-' . $num_padded;
+        } elseif ($role_id == 4) {
+            $input['system_id'] = 'MB' . $year . '-' . $num_padded;
         }
 
         $input['appove_date'] = now();
@@ -169,6 +171,7 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
         $user = User::find($id);
+        $approve_old = $user->approve_date;
         $request->validate([
             'first_name' => 'required',
             'last_name' => 'required',
@@ -176,8 +179,10 @@ class UserController extends Controller
         ]);
 
         if (isset($request['approve'])) {
-            $request['approve_date'] = now();
-        }else{
+            if (empty($approve_old)) {
+                $request['approve_date'] = now();
+            }
+        } else {
             $request['approve_date'] = null;
         }
 
@@ -219,7 +224,9 @@ class UserController extends Controller
         }
 
         if (isset($request['approve'])) {
-            $user->notify(new UserApproved($user));
+            if (empty($approve_old)) {
+                $user->notify(new UserApproved($user));
+            }
         }
 
         return redirect()->route('users.index')->with('success', 'ปรับปรุงอมูลเรียบร้อยแล้ว');

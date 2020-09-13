@@ -43,7 +43,19 @@ class MainGroupController extends Controller
             'main_groups_id' => 'required'
         ]);
 
-        SubGroup::create($request->all());
+        $input = $request->all();
+
+        if ($request->hasFile('image')) {
+
+            // Get the file from the request store to disk
+            $path = $request->image->store('public/maingroup');
+            dd($path);
+
+            // Get the path of the file
+            $input['image'] = $path;
+        }
+
+        SubGroup::create($input);
 
         //$request->session()->flash('status', 'บันทึกข้อมูลเรียบร้อยแล้ว');
         return redirect()->route('maingroups.index')->with('success', 'บันทึกข้อมูลเรียบร้อยแล้ว');
@@ -87,7 +99,18 @@ class MainGroupController extends Controller
             'name' => 'required'
         ]);
 
-        $maingroup->update($request->all());
+        $input = $request->all();
+
+        if ($request->hasFile('image')) {
+
+            // Get the file from the request store to disk
+            $path = $request->image->store('public/maingroup');
+
+            // Get the path of the file
+            $input['image'] = $path;
+        }
+
+        $maingroup->update($input);
         return redirect()->route('maingroups.index')->with('success', 'ปรับปรุงอมูลเรียบร้อยแล้ว');
     }
 

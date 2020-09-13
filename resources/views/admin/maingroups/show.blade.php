@@ -54,6 +54,28 @@
                         </div>
                         <div class="col-xs-12 col-sm-12 col-md-12">
                             <div class="form-group">
+                                <strong>สัญลักษณ์:</strong>
+                                <i class='fa {{ $maingroup->icon  }}'></i> {{ $maingroup->icon  }}
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-12">
+                            <div class="form-group">
+                                <strong>สีพื้นหลัง:</strong>
+                                <span class="{{$maingroup->color}}">{{$maingroup->color}}</span>
+                            </div>
+                        </div>
+
+                        @if ($maingroup->image)
+                            <div class="col-xs-12 col-sm-12 col-md-12">
+                                <div class="form-group">
+                                    {{-- <img src="data:image/png;base64,{{ chunk_split(base64_encode($subgroup->image)) }}"> --}}
+                                    <img src="{{ url($maingroup->img) }}" alt="รูปภาพ">
+                                </div>
+                            </div>
+                        @endif
+
+                        <div class="col-xs-12 col-sm-12 col-md-12">
+                            <div class="form-group">
                                 <strong>ประเภท:</strong>
                                 {{ $maingroup->maingroup->name  }}
                             </div>

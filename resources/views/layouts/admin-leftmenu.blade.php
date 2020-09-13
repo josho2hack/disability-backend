@@ -29,13 +29,17 @@
                                             <span>หน้าหลัก</span>
                                         </a>
                                     </li>
-                                    <li class="{{ request()->is('admin/*') ? 'active open' : '' }}">
+                                    <li class="{{ request()->is('admin*') ? 'active open' : '' }}
+                                            {{ request()->is('activity*') ? 'active open' : '' }}
+                                            {{ request()->is('fileupload*') ? 'active open' : '' }}">
                                         <a href="{{ route('admin') }}" role="button" tabindex="0">
                                             <i class="fa fa-list"></i>
                                             <span>1. ระบบจัดการครุภัณฑ์</span>
                                         </a>
                                         <ul>
-                                            <li class="{{ request()->is('admin/assets*') ? 'active' : '' }}">
+                                            <li class="{{ request()->is('admin/assets*') ? 'active' : '' }}
+                                                {{ request()->is('admin/maingroup*') ? 'active' : '' }}"
+                                                {{ request()->is('admin/subgroup*') ? 'active' : '' }}>
                                                 <a href="{{ route('assets.dashboard') }}">
                                                     <i class="fa fa-angle-right"></i>1.1 อุปกรณ์และเครื่องมือ</a>
                                             </li>
@@ -60,24 +64,27 @@
                                                 <a href="#">
                                                     <i class="fa fa-angle-right"></i>1.7 ระบบรับแจ้งปัญหา</a>
                                             </li>
-                                            <li>
+                                            <li class="{{ request()->is('admin/news*') ? 'active open' : '' }}
+                                                {{ request()->is('activity*') ? 'active open' : '' }}
+                                                {{ request()->is('fileupload*') ? 'active open' : '' }}
+                                                {{ request()->is('admin/surveys*') ? 'active open' : '' }}">
                                                 <a role="button" tabindex="0"><i class="fa fa-angle-right"></i>1.8
                                                     ระบบจัดการเว็บ</a> </a>
                                                 <ul>
-                                                    <li>
+                                                    <li class="{{ request()->is('admin/news*') ? 'active' : '' }}">
                                                         <a role="button" tabindex="0"
                                                             href="{{ route('admin.news.index') }}">
                                                             <i class="fa fa-angle-right"></i>1.8.1 จัดการข่าวสาร</a>
                                                     </li>
-                                                    <li>
+                                                    <li class="{{ request()->is('activity*') ? 'active' : '' }}">
                                                         <a role="button" tabindex="0" href="{{ url('activity') }}">
                                                             <i class="fa fa-angle-right"></i>1.8.2 จัดการกิจกรรม</a>
                                                     </li>
-                                                    <li>
+                                                    <li class="{{ request()->is('fileupload*') ? 'active' : '' }}">
                                                         <a role="button" tabindex="0" href="{{ url('fileupload') }}">
                                                             <i class="fa fa-angle-right"></i>1.8.3 จัดการไฟล์</a>
                                                     </li>
-                                                    <li>
+                                                    <li class="{{ request()->is('admin/surveys*') ? 'active' : '' }}">
                                                         <a role="button" tabindex="0"
                                                             href="{{ route('admin.surveys.index') }}">
                                                             <i class="fa fa-angle-right"></i>1.8.4 จัดการแบบสำรวจ</a>

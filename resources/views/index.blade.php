@@ -114,9 +114,82 @@
         <!-- cards row -->
         <div class="row clearfix">
             @foreach ($subgroup as $item)
-                <div class="col-md-3 col-sm-6 col-xs-12">
+                <div class="col-md-2 col-sm-12 col-xs-12">
                     <section class="boxs boxs-simple text-center">
-                        <div class="boxs-widget {{ $item->color ?? 'l-green' }} p-30 -t">
+                        <div class="boxs-widget">
+                            {{-- @if (in_array($loop->index,array(0,4,8,12,16)))
+                                @if(empty($item->color))
+                                    l-green
+                                @else
+                                    {{ $item->color }}
+                                @endif
+                            @elseif(in_array($loop->index,array(1,5,9,13,17)))
+                            @if(empty($item->color))
+                                    l-pink
+                                @else
+                                    {{ $item->color }}
+                                @endif
+                            @elseif(in_array($loop->index,array(2,6,10,14,18)))
+                                @if(empty($item->color))
+                                    l-khaki
+                                @else
+                                    {{ $item->color }}
+                                @endif
+                            @elseif(in_array($loop->index,array(3,7,11,15,19)))
+                                @if(empty($item->color))
+                                    l-blue
+                                @else
+                                    {{ $item->color }}
+                                @endif
+                            @endif p-30 -t">
+                            <i class="fa {{ $item->icon ?? 'fa-desktop' }} fa-3x"></i> --}}
+                            <img src="{{ url($item->img) }}" alt="รูปภาพ" style="height: 103px; width: 135px;">
+                        </div>
+                        <div class="boxs-body">
+                            <h2 class="m-0">{{ $item->assets->where('asset_statuses_id', '1')->count() }}</h2>
+                            <span class="text-muted">{{ $item->name }}</span>
+                        </div>
+                    </section>
+                </div>
+                @if ($loop->index == 5)
+                @break
+                @endif
+            @endforeach
+        </div>
+        <!-- cards row -->
+        <div class="row clearfix">
+            @foreach ($subgroup as $item)
+            @if(in_array($loop->index,array(0,1,2,3,4,5)))
+                @continue
+            @endif
+                <div class="col-md-2 col-sm-12 col-xs-12">
+                    <section class="boxs boxs-simple text-center">
+                        <div class="boxs-widget
+                            @if (in_array($loop->index,array(0,4,8,12,16)))
+                                @if(empty($item->color))
+                                    l-green
+                                @else
+                                    {{ $item->color }}
+                                @endif
+                            @elseif(in_array($loop->index,array(1,5,9,13,17)))
+                            @if(empty($item->color))
+                                    l-pink
+                                @else
+                                    {{ $item->color }}
+                                @endif
+                            @elseif(in_array($loop->index,array(2,6,10,14,18)))
+                                @if(empty($item->color))
+                                    l-khaki
+                                @else
+                                    {{ $item->color }}
+                                @endif
+                            @elseif(in_array($loop->index,array(3,7,11,15,19)))
+                                @if(empty($item->color))
+                                    l-blue
+                                @else
+                                    {{ $item->color }}
+                                @endif
+                            @endif p-30 -t">
                             <i class="fa {{ $item->icon ?? 'fa-desktop' }} fa-3x"></i>
                         </div>
                         <div class="boxs-body">
@@ -125,6 +198,57 @@
                         </div>
                     </section>
                 </div>
+                @if ($loop->index == 11)
+                @break
+                @endif
+            @endforeach
+        </div>
+
+         <!-- cards row -->
+         <div class="row clearfix">
+            @foreach ($subgroup as $item)
+            @if(in_array($loop->index,array(0,1,2,3,4,5,6,7,8,9,10,11)))
+                @continue
+            @endif
+                <div class="col-md-2 col-sm-12 col-xs-12">
+                    <section class="boxs boxs-simple text-center">
+                        <div class="boxs-widget
+                            @if (in_array($loop->index,array(0,4,8,12,16)))
+                                @if(empty($item->color))
+                                    l-green
+                                @else
+                                    {{ $item->color }}
+                                @endif
+                            @elseif(in_array($loop->index,array(1,5,9,13,17)))
+                            @if(empty($item->color))
+                                    l-pink
+                                @else
+                                    {{ $item->color }}
+                                @endif
+                            @elseif(in_array($loop->index,array(2,6,10,14,18)))
+                                @if(empty($item->color))
+                                    l-khaki
+                                @else
+                                    {{ $item->color }}
+                                @endif
+                            @elseif(in_array($loop->index,array(3,7,11,15,19)))
+                                @if(empty($item->color))
+                                    l-blue
+                                @else
+                                    {{ $item->color }}
+                                @endif
+                            @endif p-30 -t">
+                            <i class="fa {{ $item->icon ?? 'fa-desktop' }} fa-3x"></i>
+                        </div>
+                        <div class="boxs-body">
+                            <h2 class="m-0">{{ $item->assets->where('asset_statuses_id', '1')->count() }}</h2>
+                            <span class="text-muted">{{ $item->name }}</span>
+                        </div>
+                    </section>
+                </div>
+                @if ($loop->index == 17)
+                @break
+                @endif
             @endforeach
         </div>
     </div>

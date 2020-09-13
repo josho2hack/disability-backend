@@ -55,8 +55,10 @@
                         class="footable table table-custom table-hover">
                         <thead>
                             <tr>
-                                <th>ลำดับที่</th>
+                                <th style="width: 1%">ลำดับ</th>
                                 <th>กลุ่มหลัก</th>
+                                <th style="width: 15%">สัญลักษณ์</th>
+                                <th style="width: 10%">สีพื้นหลัง</th>
                                 <th colspan=3 style="width: 5%">ดำเนินการ</th>
                             </tr>
                         </thead>
@@ -65,6 +67,8 @@
                                 <tr>
                                     <td>{{ $loop->index + 1 }}</td>
                                     <td>{{ $maingroup->name }}</td>
+                                    <td><i class="fa {{  $maingroup->icon }}"></i> {{ $maingroup->icon }}</td>
+                                    <td class="{{ $maingroup->color }}">{{ $maingroup->color }}</td>
                                     <td>
                                         <a href="{{ route('maingroups.show', $maingroup) }}" class="btn btn-raised btn-info btn-sm"
                                             title="รายละเอียด"> <i class="fa fa-eye"></i></a>
