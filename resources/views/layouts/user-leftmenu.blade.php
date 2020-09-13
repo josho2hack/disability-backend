@@ -206,7 +206,13 @@
                                     <span>12. ตอบแบบสำรวจ</span>
                                 </a>
                             </li>
-                            
+                            <li class="{{ request()->is('downloads*') ? 'active open' : '' }}">
+                            <a href="{{ route('downloads') }}">
+                                    <i class="fa fa-download"></i>
+                                    <span>13. ดาวน์โหลด</span>
+                                </a>
+                            </li>
+
                         </ul>
                         <!--/ NAVIGATION Content -->
                     </div>

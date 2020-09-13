@@ -14,6 +14,12 @@ class FileController extends Controller
         return view('fileupload.index', compact('files'));
     }
 
+    public function show(){
+        $files = File::all();
+
+        return view('fileupload.show', compact('files'));
+    }
+
     public function add(){
     	return view('fileupload.add');
     }

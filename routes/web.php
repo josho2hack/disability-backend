@@ -88,6 +88,7 @@ Route::post('activity', 'EventController@insert');
 
 Route::get('fileupload', 'FileController@index');
 Route::get('fileupload/add', 'FileController@add');
+Route::get('downloads', 'FileController@show')->name('downloads');
 Route::post('fileupload', 'FileController@insert');
 
 // Route::get('email/verify/{id}', 'VerificationApiController@verify')->name('verificationapi.verify');
