@@ -23,7 +23,7 @@
                 <small class="text-muted">
                     @if (Auth::user()
             ->roles()
-            ->first()->name == 'Admin')3.
+            ->first()->name == 'Admin'){{-- 3. --}}
                     @endif
                     @if (Auth::user()
             ->roles()

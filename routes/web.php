@@ -129,6 +129,8 @@ Route::prefix('admin')->middleware('auth')->group(function () {
     Route::resource('surveys', 'SurveyController', ['as' => 'admin']);
     Route::resource('surveys/{id}/questions', 'QuestionController', ['as' => 'admin']);
     Route::post('surveys/{id}/questions/updates', 'QuestionController@updates')->name('admin.questions.updates');
+
+    Route::resource('contracts', 'Admin\Form13Controller');
 });
 
 Route::prefix('approve')->middleware('auth')->group(function () {

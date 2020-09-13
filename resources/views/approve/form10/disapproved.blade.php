@@ -15,9 +15,9 @@
                     2 เอกสาร ทก09 (อนุมัติ)
                 </h3>
                 <small class="text-muted">
-                    @if (Auth::user()->roles()->first()->name == 'Admin')3. @endif
-                    @if (Auth::user()->roles()->first()->name == 'Approve')1. @endif
-                    2 เอกสาร ทก09 (อนุมัติ)
+                    @if (Auth::user()->roles()->first()->name == 'Admin'){{-- 3. --}} @endif
+                    @if (Auth::user()->roles()->first()->name == 'Approve'){{-- 1. --}} @endif
+                    {{-- 2 เอกสาร ทก09 (อนุมัติ) --}}
                 </small>
             </div>
             <div class="btn-group pull-right">
