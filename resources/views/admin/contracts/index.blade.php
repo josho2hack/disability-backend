@@ -87,8 +87,8 @@
                             <th style="text-align: center; vertical-align: middle;">ลำดับ</th>
                             <th style="text-align: center; vertical-align: middle;">เลขที่ ทก.09</th>
                             <th style="text-align: center; vertical-align: middle;">รายการ</th>
-                            <th style="text-align: center; vertical-align: middle;">วันที่ / เวลา ส่งผล</th>
                             <th style="text-align: center; vertical-align: middle;">วันที่ / เวลา ทำสัญญา</th>
+                            <th style="text-align: center; vertical-align: middle;">วันที่ / เวลา สร้างหนังสือสัญญา</th>
                             <th style="text-align: center; vertical-align: middle;">ดำเนินการ</th>
                         </tr>
                     </thead>
@@ -101,16 +101,16 @@
                                     {{ sprintf('%02d', $form->id) }}
                                 </td>
                                 <td style="text-align: center; vertical-align: middle;">{{ $form->form01s->count() }}</td>
-                                <td style="text-align: center; vertical-align: middle;">{{ formatDateThai($form->created_at) }}</td>
-                                {{-- {{ dd($form) }} --}}
                                 <td style="text-align: center; vertical-align: middle;">{{ ($form->report != '' ? formatDateThai($form->report) : 'ร่าง') }}</td>
+                                {{-- {{ dd($form) }} --}}
+                                <td style="text-align: center; vertical-align: middle;">ร่าง</td>
                                 <td style="text-align: center; vertical-align: middle;">
                                     <a href="{{ route('form10.show', $form) }}" class="btn btn-raised btn-info"
                                         title="รายละเอียด"> ดู </a>
                                     @if (empty($form->report))
                                             
                                     @else
-                                            <a href="{{ route('contracts.create') }}" class="btn btn-raised btn-success" type="submit"
+                                            <a href="{{ route('contracts.create', 'id='.$form->id) }}" class="btn btn-raised btn-success" type="submit"
                                                 title="สร้างสัญญา">
                                                 สร้างสัญญา
                                             </a>

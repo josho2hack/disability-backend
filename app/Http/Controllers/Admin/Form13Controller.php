@@ -18,7 +18,7 @@ class Form13Controller extends Controller
      */
     public function index()
     {
-        $form13 = Form13::with('form01s')->whereHas('form01s', function($q){ return $q->whereNotNull('approve_date'); })->get();
+        $form13 = Form13::with('form01s')->whereNotNull('report')->get();
         return view('admin.contracts.index', compact('form13'));
     }
 
@@ -27,9 +27,11 @@ class Form13Controller extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        return view('admin.contracts.create');
+        $form = Form01::where('form13s_id', $request->id)->first();
+
+        return view('admin.contracts.create', compact('form'));
     }
 
     /**

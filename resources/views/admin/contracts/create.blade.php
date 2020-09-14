@@ -54,7 +54,7 @@
 </style>
     <!-- bradcome -->
     <div class="b-b mb-10">
-        <h3 class="h3 m-0">6.1 แบบฟอร์มยืม</h3>
+        <h3 class="h3 m-0">3.3 สร้างสัญญา</h3>
     </div>
 
     <div class="boxs">
@@ -93,70 +93,76 @@
                         </div>  
                         <div class="col-sm-12" style="padding-top: 5px;">
                         จังหวัด <input type="text" class="province" name="province"> 
-                        เมื่อวันที่ <input type="text" name="day" class="day" style="width: 5%;"> 
-                        เดือน <input type="text" class="month" name="month" style="width: 10%;"> 
-                        พ.ศ. <input type="text" name="year" class="year" style="width: 10%;"> ระหว่าง สำนักงาน
+                        เมื่อวันที่ <input type="text" name="day" class="day" style="width: 10%;"> 
+                        เดือน <input type="text" class="month" name="month" style="width: 17%;"> 
+                        พ.ศ. <input type="text" name="year" class="year" style="width: 15%;"> ระหว่าง สำนักงาน
                         </div>
                         <div class="col-sm-12" style="padding-top: 5px;">
                             ปลัดกระทรวงเทคโนโลยีสารสนเทศและการสื่อสาร โดย (ระบุชื่อ-สกุล) 
-                            <input type="text" name="permanent_secretary" class="permanent_secretary" style="width: 30%;">
+                            <input type="text" name="permanent_secretary" class="permanent_secretary" style="width: 49%;">
                         </div>
                         <div class="col-sm-12" style="padding-top: 5px;">
-                            ตำแหน่ง (ระบุตำแหน่งและคำสั่งมอบอำนาจ) <input type="text" name="rank" class="rank" style="width: 40%;">
+                            ตำแหน่ง (ระบุตำแหน่งและคำสั่งมอบอำนาจ) <input type="text" name="rank" class="rank" style="width: 67%;">
                         </div>
+
+                        @if( $form->type_status == 1 )
                         <div class="col-sm-1" style="padding-top: 5px;"></div>
                         <div class="col-sm-11" style="padding-top: 5px;">
-                        ก)  (กรณีขอยืมด้วยตนเอง) ด.ช. / ด.ญ. / นาย / นาง / นางสาว <input type="text" name="name" class="name" style="width: 30%;">
-                        </div>
-                        <div class="col-sm-12" >
-                            วัน เดือน ปีเกิด <input type="text" name="birthday" class="birthday" style="width: 20%;"> 
-                            เลขประจำตัวประชาชน <input type="text" name="citizen_id" style="width: 30%;">
+                        {{ $form->user->title }} <input type="text" name="name" class="name" value="{{ $form->user->first_name }}" style="width: 96%;">
                         </div>
                         <div class="col-sm-12" style="padding-top: 5px;">
-                            บ้านเลขที่ <input type="text" id="addressNo" name="addressNo" style="width: 10%;"> 
-                            หมู่ที่ <input type="text" id="subDistricNo" name="subDistricNo" style="width: 10%;"> 
-                            ตำบล <input type="text" id="subDistrict" name="subDistrict" style="width: 25%;"> 
-                            อำเภอ <input type="text" id="district" name="district" style="width: 25%;"> 
+                            วัน เดือน ปีเกิด <input type="text" name="birthday" class="birthday" style="width: 35%;"> 
+                            เลขประจำตัวประชาชน <input type="text" name="citizen_id" style="width: 37%;">
                         </div>
                         <div class="col-sm-12" style="padding-top: 5px;">
-                            จังหวัด <input type="text" id="province" name="province" style="width: 25%;"> 
-                            รหัสไปรษณีย์ <input type="text" id="postcode" name="postcode" style="width: 10%;">
-                            โทรศัพท์ <input type="text" value="" name="disabilityPhoneNumber" style="width: 25%;">
+                            บ้านเลขที่ <input type="text" id="addressNo" name="addressNo" style="width: 12%;"> 
+                            หมู่ที่ <input type="text" id="subDistricNo" name="subDistricNo" style="width: 12%;"> 
+                            ตำบล <input type="text" id="subDistrict" name="subDistrict" style="width: 26%;"> 
+                            อำเภอ <input type="text" id="district" name="district" style="width: 27%;"> 
                         </div>
                         <div class="col-sm-12" style="padding-top: 5px;">
-                            กำลังศึกษาระดับ <input type="text" value="" name="disabilityColledge" style="width: 20%;"> 
-                            สถานศึกษา <input type="text" value="" name="disabilityPhoneNumber" style="width: 50%;">
+                            จังหวัด <input type="text" id="province" name="province" style="width: 30%;"> 
+                            รหัสไปรษณีย์ <input type="text" id="postcode" name="postcode" style="width: 18%;">
+                            โทรศัพท์ <input type="text" value="" name="disabilityPhoneNumber" style="width: 28%;">
                         </div>
                         <div class="col-sm-12" style="padding-top: 5px;">
-                            อำเภอ <input type="text" value="" name="disabilityColledge" style="width: 25%;"> 
-                            จังหวัด <input type="text" value="" name="disabilityPhoneNumber" style="width: 50%;">
+                            กำลังศึกษาระดับ <input type="text" value="" name="disabilityColledge" style="width: 25%;"> 
+                            สถานศึกษา <input type="text" value="" name="disabilityPhoneNumber" style="width: 52%;">
                         </div>
+                        <div class="col-sm-12" style="padding-top: 5px;">
+                            อำเภอ <input type="text" value="" name="disabilityColledge" style="width: 35%;"> 
+                            จังหวัด <input type="text" value="" name="disabilityPhoneNumber" style="width: 53%;">
+                        </div>
+
+                        @elseif ( $form->type_status == 2 )
                         <div class="col-sm-1" style="padding-top: 5px;"></div>
                         <div class="col-sm-11" style="padding-top: 5px;">
-                        ข)  (กรณีมีผู้ยื่นคำขอยืมแทน) (ชื่อผู้ยื่นคำขอแทน) <input type="text" name="name" class="name" style="width: 30%;">
-                        เกี่ยวข้องเป็น <input type="text" style="width: 15%;">
+                         นาย <input type="text" name="name"  class="name" style="width: 55%;">
+                        เกี่ยวข้องเป็น <input type="text" style="width: 29%;">
                         </div>
                         <div class="col-sm-12" style="padding-top: 5px;">
                             และได้รับมอบอำนาจจากผู้พิการรายละเอียดปรากฏตามหนังสือมอบอำนาจฉบับลง
-                            วันที่ <input type="text" style="width: 5%;">
-                            เดือน <input type="text" style="width: 10%;">
-                            ปี <input type="text" style="width: 10%;">
+                            วันที่ <input type="text" style="width: 8%;">
+                            เดือน <input type="text" style="width: 12%;">
+                            ปี <input type="text" style="width: 11%;">
                         </div>
                         <div class="col-sm-12" style="padding-top: 5px;">
-                            วัน เดือน ปีเกิด <input type="text" name="birthday" class="birthday" style="width: 20%;"> 
-                            เลขประจำตัวประชาชน <input type="text" name="citizen_id" style="width: 30%;">
+                            วัน เดือน ปีเกิด <input type="text" name="birthday" class="birthday" style="width: 31%;"> 
+                            เลขประจำตัวประชาชน <input type="text" name="citizen_id" style="width: 40%;">
                         </div>
                         <div class="col-sm-12" style="padding-top: 5px;">
-                            บ้านเลขที่ <input type="text" id="addressNo" name="addressNo" style="width: 10%;"> 
-                            หมู่ที่ <input type="text" id="subDistricNo" name="subDistricNo" style="width: 10%;"> 
-                            ตำบล <input type="text" id="subDistrict" name="subDistrict" style="width: 25%;"> 
-                            อำเภอ <input type="text" id="district" name="district" style="width: 25%;"> 
+                            บ้านเลขที่ <input type="text" id="addressNo" name="addressNo" style="width: 12%;"> 
+                            หมู่ที่ <input type="text" id="subDistricNo" name="subDistricNo" style="width: 12%;"> 
+                            ตำบล <input type="text" id="subDistrict" name="subDistrict" style="width: 26%;"> 
+                            อำเภอ <input type="text" id="district" name="district" style="width: 27%;"> 
                         </div>
                         <div class="col-sm-12" style="padding-top: 5px;">
                             จังหวัด <input type="text" id="province" name="province" style="width: 25%;"> 
-                            รหัสไปรษณีย์ <input type="text" id="postcode" name="postcode" style="width: 10%;">
-                            โทรศัพท์ <input type="text" value="" name="disabilityPhoneNumber" style="width: 25%;">
+                            รหัสไปรษณีย์ <input type="text" id="postcode" name="postcode" style="width: 20%;">
+                            โทรศัพท์ <input type="text" value="" name="disabilityPhoneNumber" style="width: 31%;">
                         </div>
+                        @endif
+                        
                         <div class="col-sm-12" style="padding-top: 5px;">
                             ซึ่งต่อไปนี้จะเรียกว่า “ผู้ขอยืม”
                         </div>
@@ -195,8 +201,8 @@
 
                 <div class="row">
 
-                    <div class="col-sm-1"></div>
-                    <div class="col-sm-11">
+                    <div class="col-sm-1" style="padding-top: 20px;"></div>
+                    <div class="col-sm-11" style="padding-top: 20px;">
                         ข้อ ๑ ผู้ให้ยืมตกลงให้ผู้ขอยืม ยืมอุปกรณ์และ/หรือเครื่องมือเทคโนโลยีสารสนเทศและการสื่อสารหรือเทคโนโลยี
                     </div>
                     <div class="col-sm-12" style="padding-top: 5px;">
