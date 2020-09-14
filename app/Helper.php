@@ -24,6 +24,51 @@ function formatDateThai($FullDate){
 
 }
 
+function DateThai($FullDate){
+    // dd(strlen($FullDate));
+    if ($FullDate!="") {
+        $strDate = explode(" ", $FullDate);
+        $strDateSplited = explode("-", $strDate[0]);
+        $strYear = date("Y",strtotime($strDateSplited[0]))+543;
+        // $strMonth= date("j",strtotime($strDateSplited[1]));
+        $strMonth= returnMonthNum($strDateSplited[1]);
+        $strDay= $strDateSplited[2];
+        // $strHour= date("H",strtotime($strDate));
+        // $strMinute= date("i",strtotime($strDate));
+        // $strSeconds= date("s",strtotime($strDate));
+        $strMonthCut = Array("","ม.ค.","ก.พ.","มี.ค.","เม.ย.","พ.ค.","มิ.ย.","ก.ค.","ส.ค.","ก.ย.","ต.ค.","พ.ย.","ธ.ค.");
+        $strMonthThai=$strMonthCut[$strMonth];
+
+        $finalDate = $strDay." ".$strMonthThai." ".$strYear;
+    } else {
+      $finalDate = "ร่าง";
+    }
+
+    return $finalDate;
+
+}
+
+function fullMonth($month){
+        switch ($month)
+        {
+        case '01' : $finalmonth="มกราคม"; break;
+        case '02' : $finalmonth="กุมภาพันธ์"; break;
+        case '03' : $finalmonth="มีนาคม"; break;
+        case '04' : $finalmonth="เมษายน"; break;
+        case '05' : $finalmonth="พฤษภาคม"; break;
+        case '06' : $finalmonth="มิถุนายน"; break;
+        case '07' : $finalmonth="กรกฎาคม"; break;
+        case '08' : $finalmonth="สิงหาคม"; break;
+        case '09' : $finalmonth="กันยายน"; break;
+        case '10' : $finalmonth="ตุลาคม"; break;
+        case '11' : $finalmonth="พฤศจิกายน"; break;
+        case '12' : $finalmonth="ธันวาคม"; break;
+        }
+
+    return $finalmonth;
+
+}
+
 function flexNformat($value, $pattern, $split_symbol) {
     $value_split = str_split($value, 1);
     $count_value = count($value_split);

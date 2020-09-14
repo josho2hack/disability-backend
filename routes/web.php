@@ -72,6 +72,8 @@ Route::post('form-borrow/getassets' , 'Form\FormborrowController@getassets');
 //pdf
 Route::get('pdf/{id}', 'Form\FormborrowController@pdf');
 
+Route::resource('garuntees', 'GarunteeController');
+
 Route::prefix('auditor')->middleware('auth')->group(function () {
     Route::resource('audits', 'Auditor\AuditFormBorrowController');
     Route::get('audits/form/send', 'Auditor\AuditFormBorrowController@send');

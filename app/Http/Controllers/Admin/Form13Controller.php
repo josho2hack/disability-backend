@@ -29,9 +29,16 @@ class Form13Controller extends Controller
      */
     public function create(Request $request)
     {
-        $form = Form01::where('form13s_id', $request->id)->first();
+        $form = Form01::where('form13s_id', $request->id)->get();
+        $data = [];
 
-        return view('admin.contracts.create', compact('form'));
+            foreach($form as $f) {
+                $data['price'][$f->id] = $f->asset->price;
+                $data['total'] = array_sum($data['price']);
+            }
+        $total = $data['total'];
+
+        return view('admin.contracts.create', compact('form', 'total'));
     }
 
     /**

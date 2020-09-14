@@ -127,7 +127,7 @@
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="#">
+                                        <a href="{{ route('garuntees.index') }}">
                                             <i class="fa fa-angle-right"></i>5.2 หนังสือค้ำประกัน
                                         </a>
                                     </li>
