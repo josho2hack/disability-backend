@@ -126,9 +126,4 @@ class Form10Controller extends Controller
         //
     }
 
-    public function disapproved()
-    {
-        $form10 = Form10::with('form01s')->whereNotNull('report')->whereHas('form01s', function($q){ return $q->whereNotNull('form10s_id'); })->get();
-        return view('approve.form10.disapproved', compact('form10'));
-    }
 }

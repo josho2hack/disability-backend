@@ -76,7 +76,13 @@ class Form13Controller extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        if ($request['contract']==1) {
+            $form13s = Form13::find($id);
+            $form13s['report'] = now();
+            $form13s->save();
+
+            return redirect('admin/approved');
+        }
     }
 
     /**
@@ -94,6 +100,12 @@ class Form13Controller extends Controller
     {
         // $form09 = Form09::with('form01s')->whereNotNull('report')->whereHas('form01s', function($q){ return $q->whereNotNull('approve_date'); })->get();
         $form13 = Form13::with('form01s')->whereHas('form01s', function($q){ return $q->whereNotNull('approve_date'); })->get();
-        return view('approve.form09.approved', compact('form13'));
+        return view('admin.form.approved', compact('form13'));
+    }
+
+    public function disapproved()
+    {
+        $form10 = Form10::with('form01s')->whereNotNull('report')->whereHas('form01s', function($q){ return $q->whereNotNull('form10s_id'); })->get();
+        return view('admin.form.disapproved', compact('form10'));
     }
 }

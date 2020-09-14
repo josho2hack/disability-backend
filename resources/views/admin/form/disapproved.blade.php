@@ -71,7 +71,6 @@
                     </thead>
                     <tbody>
                         @foreach ($form10 as $form)
-                        {{-- {{ dd($form) }} --}}
                             <tr>
                                 <td style="text-align: center; vertical-align: middle;">{{ $loop->index + 1 }}</td>
                                 <td style="text-align: center; vertical-align: middle;">

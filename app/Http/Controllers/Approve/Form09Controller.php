@@ -159,10 +159,4 @@ class Form09Controller extends Controller
         //
     }
 
-    public function approved()
-    {
-        // $form09 = Form09::with('form01s')->whereNotNull('report')->whereHas('form01s', function($q){ return $q->whereNotNull('approve_date'); })->get();
-        $form13 = Form13::with('form01s')->whereHas('form01s', function($q){ return $q->whereNotNull('approve_date'); })->get();
-        return view('approve.form09.approved', compact('form13'));
-    }
 }

@@ -111,12 +111,12 @@
                                                     href="{{ route('form07.index') }}">
                                                     <i class="fa fa-angle-right"></i>3.1 เอกสารเข้า ทก07</a>
                                             </li> --}}
-                                            <li class="{{ request()->is('approve/approved*') ? 'active' : '' }}">
-                                                <a role="button" tabindex="0" href="{{ route('approved') }}">
+                                            <li class="{{ request()->is('admin/approved*') ? 'active' : '' }}">
+                                                <a role="button" tabindex="0" href="{{ url('admin/approved') }}">
                                                     <i class="fa fa-angle-right"></i>3.1 ทก.09 (อนุมัติแล้ว)</a>
                                             </li>
-                                            <li class="{{ request()->is('approve/disapproved*') ? 'active' : '' }}">
-                                                <a role="button" tabindex="0" href="{{ route('disapproved') }}">
+                                            <li class="{{ request()->is('admin/disapproved*') ? 'active' : '' }}">
+                                                <a role="button" tabindex="0" href="{{ url('admin/disapproved') }}">
                                                     <i class="fa fa-angle-right"></i>3.2 ทก.10 (ยกเลิกแล้ว)</a>
                                             </li>
                                             <li class="{{ request()->is('admin/contract*') ? 'active' : '' }}">

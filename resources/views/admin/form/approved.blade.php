@@ -10,24 +10,16 @@
         <div class="row">
             <div class="col-sm-6 col-xs-12">
                 <h3 class="h3 m-0">
-                    @if (Auth::user()
-            ->roles()
-            ->first()->name == 'Admin')3.2
+                    @if (Auth::user()->roles()->first()->name == 'Admin')3.2
                     @endif
-                    @if (Auth::user()
-            ->roles()
-            ->first()->name == 'Approve')1.2
+                    @if (Auth::user()->roles()->first()->name == 'Approve')1.2
                     @endif
                     เอกสาร ทก09 (อนุมัติ)
                 </h3>
                 <small class="text-muted">
-                    @if (Auth::user()
-            ->roles()
-            ->first()->name == 'Admin'){{-- 3. --}}
+                    @if (Auth::user()->roles()->first()->name == 'Admin'){{-- 3. --}}
                     @endif
-                    @if (Auth::user()
-            ->roles()
-            ->first()->name == 'Approve'){{-- 1. --}}
+                    @if (Auth::user()->roles()->first()->name == 'Approve'){{-- 1. --}}
                     @endif
                     {{-- 2 เอกสาร ทก09 (อนุมัติ) --}}
                 </small>
@@ -38,25 +30,17 @@
                         <a href="{{ route('root') }}"><i class="fa fa-home"></i></a>
                     </li>
                     <li>
-                        <a href="{{ route('approve') }}">
-                            @if (Auth::user()
-            ->roles()
-            ->first()->name == 'Admin')3.
+                        <a href="{{ route('admin') }}">
+                            @if (Auth::user()->roles()->first()->name == 'Admin')3.
                             @endif
-                            @if (Auth::user()
-            ->roles()
-            ->first()->name == 'Approve')1.
+                            @if (Auth::user()->roles()->first()->name == 'Approve')1.
                             @endif อนุมัติคำขอ
                         </a>
                     </li>
                     <li class="active">
-                        @if (Auth::user()
-            ->roles()
-            ->first()->name == 'Admin')3.
+                        @if (Auth::user()->roles()->first()->name == 'Admin')3.
                         @endif
-                        @if (Auth::user()
-            ->roles()
-            ->first()->name == 'Approve')1.
+                        @if (Auth::user()->roles()->first()->name == 'Approve')1.
                         @endif
                         2 เอกสาร ทก09 (อนุมัติ)
                     </li>
@@ -108,7 +92,7 @@
                                     <a href="{{ route('form10.show', $form) }}" class="btn btn-raised btn-info"
                                         title="รายละเอียด"> ดู </a>
                                     @if (empty($form->report))
-                                            <form action="{{ route('form09.update', $form->id) }}" style="display: inline;" method="post">
+                                            <form action="{{ route('contracts.update', $form->id) }}" style="display: inline;" method="post">
                                                 @csrf
                                                 @method('PUT')
                                                 <input type="hidden" name="contract" value="1">
