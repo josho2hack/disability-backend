@@ -85,7 +85,7 @@ class Form13Controller extends Controller
 
         // dd($docContracts->id);
 
-        return redirect("admin/contracts");
+        return redirect("admin/approved");
     }
 
     /**
@@ -157,5 +157,10 @@ class Form13Controller extends Controller
     {
         $form10 = Form10::with('form01s')->whereNotNull('report')->whereHas('form01s', function($q){ return $q->whereNotNull('form10s_id'); })->get();
         return view('admin.form.disapproved', compact('form10'));
+    }
+
+    public function garuntees()
+    {
+        return view('admin.contracts.garuntee');
     }
 }

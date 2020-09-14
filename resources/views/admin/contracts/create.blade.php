@@ -111,23 +111,34 @@
                         {{ $form->first()->user->title }} <input type="text" name="name" class="name" value="{{ $form->first()->user->first_name }}" style="width: 96%;">
                         </div>
                         <div class="col-sm-12" style="padding-top: 5px;">
-                            วัน เดือน ปีเกิด <input type="text" name="birthday" class="birthday" style="width: 35%;"> 
-                            เลขประจำตัวประชาชน <input type="text" name="citizen_id" style="width: 37%;">
+                            วัน เดือน ปีเกิด <input type="text" name="birthday" class="birthday" style="width: 35%;"
+                            value="{{ DateThai($form->first()->user->birthday) }}"> 
+                            เลขประจำตัวประชาชน <input type="text" name="citizen_id" style="width: 37%;"
+                            value="{{ flexNformat($form->first()->user->citizen_id, "/-1234-+++++-55-1", "-") }}">
                         </div>
                         <div class="col-sm-12" style="padding-top: 5px;">
-                            บ้านเลขที่ <input type="text" id="addressNo" name="addressNo" style="width: 12%;"> 
-                            หมู่ที่ <input type="text" id="subDistricNo" name="subDistricNo" style="width: 12%;"> 
-                            ตำบล <input type="text" id="subDistrict" name="subDistrict" style="width: 26%;"> 
-                            อำเภอ <input type="text" id="district" name="district" style="width: 27%;"> 
+                            บ้านเลขที่ <input type="text" id="addressNo" name="addressNo" style="width: 12%;"
+                            value="{{ $form->first()->address->house_no }}"> 
+                            หมู่ที่ <input type="text" id="subDistricNo" name="subDistricNo" style="width: 12%;"
+                            value="{{ $form->first()->address->village_no }}"> 
+                            ตำบล <input type="text" id="subDistrict" name="subDistrict" style="width: 26%;"
+                            value="{{ $form->first()->address->sub_district }}"> 
+                            อำเภอ <input type="text" id="district" name="district" style="width: 27%;"
+                            value="{{ $form->first()->address->district }}"> 
                         </div>
                         <div class="col-sm-12" style="padding-top: 5px;">
-                            จังหวัด <input type="text" id="province" name="province" style="width: 30%;"> 
-                            รหัสไปรษณีย์ <input type="text" id="postcode" name="postcode" style="width: 18%;">
-                            โทรศัพท์ <input type="text" value="" name="disabilityPhoneNumber" style="width: 28%;">
+                            จังหวัด <input type="text" id="province" name="province" style="width: 30%;"
+                            value="{{ $form->first()->address->province }}"> 
+                            รหัสไปรษณีย์ <input type="text" id="postcode" name="postcode" style="width: 18%;"
+                            value="{{ $form->first()->address->postal_code }}">
+                            โทรศัพท์ <input type="text" name="disabilityPhoneNumber" style="width: 28%;"
+                            value="{{ $form->first()->address->tel }}">
                         </div>
                         <div class="col-sm-12" style="padding-top: 5px;">
-                            กำลังศึกษาระดับ <input type="text" value="" name="disabilityColledge" style="width: 25%;"> 
-                            สถานศึกษา <input type="text" value="" name="disabilityPhoneNumber" style="width: 52%;">
+                            กำลังศึกษาระดับ <input type="text" name="disabilityColledge" style="width: 25%;"
+                            value="ป.ตรี"> 
+                            สถานศึกษา <input type="text" name="disabilityPhoneNumber" style="width: 52%;"
+                            value="{{ $form->first()->address->edu_place }}">
                         </div>
                         <div class="col-sm-12" style="padding-top: 5px;">
                             อำเภอ <input type="text" value="" name="disabilityColledge" style="width: 35%;"> 

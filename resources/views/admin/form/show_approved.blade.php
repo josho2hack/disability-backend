@@ -161,6 +161,7 @@
                                     <th style="vertical-align: middle; text-align: center;" rowspan="2">ราคา/หน่วย</th>
                                     <th style="vertical-align: middle; text-align: center;" colspan="2">การขอใช้สิทธิ</th>
                                     <th style="vertical-align: middle; text-align: center;" rowspan="2">หมายเหตุ</th>
+                                    <th style="vertical-align: middle; text-align: center;" rowspan="2"></th>
                                 </tr>
                                 <tr>
                                     <th style="text-align: center;">หมายเลขบัตรประชาชน</th>
@@ -200,8 +201,8 @@
                                 <tr>
                                     <td align="center"> {{ flexNformat($form->user->citizen_id, ".-....-.....-..-.", "-") }} </td>
                                     <td>
-                                        <a href="{{ route('contracts.create') }}" class="btn btn-raised btn-success" title="ทำสัญญา">
-                                            สร้างสัญญา
+                                        <a href="{{ route('garuntees') }}" class="btn btn-raised btn-success" title="ทำสัญญา">
+                                            สร้างหนังสือค้ำประกัน
                                         </a>
                                     </td>
                                 </tr>

@@ -136,6 +136,7 @@ Route::prefix('admin')->middleware('auth')->group(function () {
     Route::get('approved', 'Admin\Form13Controller@approved')->name('admin');
     Route::get('disapproved', 'Admin\Form13Controller@disapproved')->name('admin');
     Route::get('disapproved/{id}', 'Admin\Form13Controller@show_disapproved')->name('show_disapproved');
+    Route::get('garuntees', 'Admin\Form13Controller@garuntees')->name('garuntees');
     
 });
 
