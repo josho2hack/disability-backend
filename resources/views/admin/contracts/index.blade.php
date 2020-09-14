@@ -103,17 +103,20 @@
                                 <td style="text-align: center; vertical-align: middle;">{{ $form->form01s->count() }}</td>
                                 <td style="text-align: center; vertical-align: middle;">{{ ($form->report != '' ? formatDateThai($form->report) : 'ร่าง') }}</td>
                                 {{-- {{ dd($form) }} --}}
-                                <td style="text-align: center; vertical-align: middle;">ร่าง</td>
+                                <td style="text-align: center; vertical-align: middle;">{{ ($docContract->first()->created_at != '' ? formatDateThai($docContract->first()->created_at) : 'ร่าง') }}</td>
                                 <td style="text-align: center; vertical-align: middle;">
                                     <a href="{{ route('form10.show', $form) }}" class="btn btn-raised btn-info"
                                         title="รายละเอียด"> ดู </a>
-                                    @if (empty($form->report))
-                                            
+                                    @if (!empty($docContract->first()->created_at))
+                                    <a href="" class="btn btn-raised btn-success"
+                                        title="สร้างสัญญา" disabled>
+                                        <span style="color: green:">สร้างสัญญาแล้ว</span>
+                                    </a>
                                     @else
-                                            <a href="{{ route('contracts.create', 'id='.$form->id) }}" class="btn btn-raised btn-success" type="submit"
-                                                title="สร้างสัญญา">
-                                                สร้างสัญญา
-                                            </a>
+                                        <a href="{{ route('contracts.create', 'id='.$form->id) }}" class="btn btn-raised btn-success" type="submit"
+                                            title="สร้างสัญญา">
+                                            สร้างสัญญา
+                                        </a>
                                     @endif
                                 </td>
                             </tr>

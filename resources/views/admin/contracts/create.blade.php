@@ -59,12 +59,12 @@
 
     <div class="boxs">
         <div class="boxs-body" style="width: 1000px; margin: auto;">
-            <form action="{{-- {{ url('form-borrow') }} --}}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('contracts.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="row">
                     <div class="col-sm-offset-6 col-sm-6">
                         <div class="square pull-right">
-                            สัญญาเลขที่.....................
+                            สัญญาเลขที่ <input type="number" value="00001">
                         </div>
                     </div>
                 </div>
@@ -88,21 +88,21 @@
                     <div class="form-group">
                         <div class="col-sm-1 text-right" style="padding-top: 5px;"></div>
                         <div class="col-sm-11" style="padding-top: 5px;">
-                            สัญญานี้ทำขึ้น ณ <input type="text" name="house-no"> แขวง <input type="text" name="sub-district"> 
-                            เขต <input type="text" name="county">
+                            สัญญานี้ทำขึ้น ณ <input type="text" name="doc_office"> แขวง <input type="text" name="doc_sub_district"> 
+                            เขต <input type="text" name="doc_district">
                         </div>  
                         <div class="col-sm-12" style="padding-top: 5px;">
-                        จังหวัด <input type="text" class="province" name="province"> 
-                        เมื่อวันที่ <input type="text" name="day" class="day" style="width: 10%;"> 
-                        เดือน <input type="text" class="month" name="month" style="width: 17%;"> 
-                        พ.ศ. <input type="text" name="year" class="year" style="width: 15%;"> ระหว่าง สำนักงาน
+                        จังหวัด <input type="text" class="province" name="doc_province"> 
+                        เมื่อวันที่ .....{{ date('d') }}.....
+                        เดือน .....{{ date('m') }}.....
+                        พ.ศ. .....{{ date('Y')+543 }}..... ระหว่าง สำนักงาน
                         </div>
                         <div class="col-sm-12" style="padding-top: 5px;">
                             ปลัดกระทรวงเทคโนโลยีสารสนเทศและการสื่อสาร โดย (ระบุชื่อ-สกุล) 
-                            <input type="text" name="permanent_secretary" class="permanent_secretary" style="width: 49%;">
+                            <input type="text" name="PS_name" class="permanent_secretary" style="width: 49%;">
                         </div>
                         <div class="col-sm-12" style="padding-top: 5px;">
-                            ตำแหน่ง (ระบุตำแหน่งและคำสั่งมอบอำนาจ) <input type="text" name="rank" class="rank" style="width: 67%;">
+                            ตำแหน่ง (ระบุตำแหน่งและคำสั่งมอบอำนาจ) <input type="text" name="position" class="rank" style="width: 67%;">
                         </div>
 
                         @if( $form->first()->type_status == 1 )
@@ -222,6 +222,7 @@
                             </tbody>
                             <tfoot>
                                 <tr>
+                                    <input type="hidden" name="form01id" value="{{ $form->first()->id }}">
                                     <td colspan="3" align="center">รวม</td>
                                     <td align="right"> {{ $form->count() }} หน่วย </td>
                                     <td align="right"> {{ number_format($total, 2) }} </td>
@@ -243,12 +244,48 @@
                         <input type="text"> (<input type="text" style="width: 15%;">) ปี
                     </div>
                     <div class="col-sm-12" style="padding-top: 5px;">
-                        นับตั้งแต่วันที่ <input type="text" style="width: 8%;"> 
-                        เดือน <input type="text" style="width: 10%;"> 
-                        พ.ศ. <input type="text" style="width: 10%;"> 
-                        ถึงวันที่ วันที่ <input type="text" style="width: 8%;"> 
-                        เดือน <input type="text" style="width: 10%;"> 
-                        พ.ศ. <input type="text" style="width: 10%;">
+                        นับตั้งแต่วันที่ 
+                        <select name="start_day" >
+                            <option selected> วันที่ </option>
+                            @for ($i = 1; $i <= 31; $i++)
+                                <option value="{{ $i }}">{{ $i }}</option>
+                            @endfor
+                        </select>
+                        เดือน 
+                        <select name="start_month" >
+                            <option selected> เดือน </option>
+                            @for ($i = 1; $i <= 12; $i++)
+                                <option value="{{ $i }}">{{ $i }}</option>
+                            @endfor
+                        </select>
+                        พ.ศ. 
+                        <select name="start_year" >
+                            <option selected> ปี </option>
+                            @for ($i = 2560; $i <= 2600; $i++)
+                                <option value="{{ $i }}">{{ $i }}</option>
+                            @endfor
+                        </select>
+                        ถึงวันที่ วันที่ 
+                        <select name="stop_day" >
+                            <option selected> วัน </option>
+                            @for ($i = 1; $i <= 31; $i++)
+                                <option value="{{ $i }}">{{ $i }}</option>
+                            @endfor
+                        </select>
+                        เดือน 
+                        <select name="stop_month" >
+                            <option selected> เดือน </option>
+                            @for ($i = 1; $i <= 12; $i++)
+                                <option value="{{ $i }}">{{ $i }}</option>
+                            @endfor
+                        </select>
+                        พ.ศ. 
+                        <select name="stop_year" >
+                            <option selected> ปี </option>
+                            @for ($i = 2560; $i <= 2600; $i++)
+                                <option value="{{ $i }}">{{ $i }}</option>
+                            @endfor
+                        </select>
                     </div>
                     <div class="col-sm-1" style="padding-top: 5px;"></div>
                     <div class="col-sm-11" style="padding-top: 5px;">
@@ -304,7 +341,7 @@
 
                 <div class="row">
                     <div class="col-sm-offset-1 col-sm-11" style="padding-top: 5px;">
-                        ข้อ ๖ เมื่อครบกำหนดเวลายืมตามข้อ ๒ แล้ว ผู้ขอยืมจะต้องส่งคืนสิ่งของที่ยืมให้แก่ผู้ให้ยืมภายใน กำหนด <input type="text" style="width: 10%;"> 
+                        ข้อ ๖ เมื่อครบกำหนดเวลายืมตามข้อ ๒ แล้ว ผู้ขอยืมจะต้องส่งคืนสิ่งของที่ยืมให้แก่ผู้ให้ยืมภายใน กำหนด <input type="date" name="return_date" style="width: 15%;"> 
                     </div>
                     <div class="col-sm-12" style="padding-top: 5px;">
                         (<input type="text" style="width: 10%;">) วัน นับแต่วันครบกำหนด โดยผู้ขอยืมจะต้องส่งคืนสิ่งของที่ยืมให้ครบถ้วนทุกรายการและสิ่งของที่ยืม        
@@ -316,7 +353,7 @@
                         ในสภาพชำรุดเสียหายที่เกิดจากการใช้งานที่ผิดปกติ หรือผิดวิธี ผู้ให้ยืมมีสิทธิเรียกให้ผู้ขอยืมซ่อมแซมทรัพย์สินให้มีสภาพดี
                     </div>
                     <div class="col-sm-12" style="padding-top: 5px;">
-                        ดังเดิม ซึ่งผู้ขอยืมจะต้องดำเนินการให้แล้วเสร็จภายใน <input type="text" style="width: 10%;"> 
+                        ดังเดิม ซึ่งผู้ขอยืมจะต้องดำเนินการให้แล้วเสร็จภายใน <input type="text" name="estimate_day" style="width: 10%;"> 
                         (<input type="text" style="width: 10%;">) วัน หรือผู้ให้ยืมจะดำเนินการซ่อมแซม          
                     </div>
                     <div class="col-sm-12" style="padding-top: 5px;">
@@ -326,7 +363,7 @@
                         ที่ยืมล่วงเลยระยะเวลาที่กำหนดไว้ในสัญญาข้อนี้ ผู้ขอยืมยอมชำระค่าปรับให้แกผู้ให้ยืมในอัตราวันละ <input type="text" style="width: 20%;"> 
                     </div>
                     <div class="col-sm-12" style="padding-top: 5px;">
-                        (<input type="text" style="width: 20%;">) บาท ต่อสิ่งของที่ยืมหนึ่งรายการ นับจากวันที่ครบกำหนดระยะเวลาดังกล่าว จนถึงวันที่ส่งคืนสิ่งของที่
+                        (<input type="text" name="fines" style="width: 20%;">) บาท ต่อสิ่งของที่ยืมหนึ่งรายการ นับจากวันที่ครบกำหนดระยะเวลาดังกล่าว จนถึงวันที่ส่งคืนสิ่งของที่
                     </div>
                     <div class="col-sm-12" style="padding-top: 5px;">
                         ยืมครบทุกรายการแล้ว
@@ -449,7 +486,7 @@
                 </div>
 
                 <div class="text-right">
-                    <button class="btn btn-raised btn-success">ส่งข้อมูล</button>
+                    <button type="submit" class="btn btn-raised btn-success">ส่งข้อมูล</button>
                 </div>
             </form>
         </div>

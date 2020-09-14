@@ -8,6 +8,7 @@ use App\Form01;
 use App\Form09;
 use App\Form10;
 use App\Form13;
+use App\DocContract;
 
 class Form13Controller extends Controller
 {
@@ -19,7 +20,11 @@ class Form13Controller extends Controller
     public function index()
     {
         $form13 = Form13::with('form01s')->whereNotNull('report')->get();
-        return view('admin.contracts.index', compact('form13'));
+        $docContract = DocContract::with('form01s')->get();
+
+        // $form13->first()['created_doc_date'] =
+
+        return view('admin.contracts.index', compact('form13', 'docContract'));
     }
 
     /**
@@ -49,7 +54,38 @@ class Form13Controller extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $docContract = new DocContract();
+
+        $sYear = date($request->start_year) - 543;
+        $sYear = $sYear."-".$request->start_month."-".$request->start_day;
+        $startDate = date($sYear);
+        $tYear = date($request->stop_year) - 543;
+        $tYear = $tYear."-".$request->stop_month."-".$request->stop_day;
+        $stopDate = date($tYear);
+
+        $docContract->office = $request->doc_office;
+        $docContract->sub_district = $request->doc_sub_district;
+        $docContract->district = $request->doc_district;
+        $docContract->city = $request->doc_province;
+        $docContract->PS_name = $request->PS_name;
+        $docContract->start_date = $startDate; // get by start_day / month / year
+        $docContract->stop_date = $stopDate; // get by start_day / month / year
+        $docContract->return_date = $request->return_date;
+        $docContract->estimate_day = $request->estimate_day;
+        $docContract->fines = $request->fines;
+
+        $docContract->save();
+
+        $docContracts = DocContract::latest()->get();
+
+        $form01s = Form01::find($request->form01id);
+        $form01s->doc_contracts_id = $docContracts->first()->id;
+
+        $form01s->save();
+
+        // dd($docContracts->id);
+
+        return redirect("admin/contracts");
     }
 
     /**
