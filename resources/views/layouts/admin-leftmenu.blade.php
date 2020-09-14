@@ -103,7 +103,7 @@
                                     <li class="{{ request()->is('approve/*') ? 'active open' : '' }}">
                                     <a href="{{ route('approve')}}" >
                                             <i class="fa fa-university"></i>
-                                            <span>3. อนุมัติคำขอ</span>
+                                            <span>3. ระบบจัดการเอกสาร</span>
                                         </a>
                                         <ul>
 {{--                                             <li class="{{ request()->is('approve/form07*') ? 'active' : '' }}">
@@ -119,10 +119,10 @@
                                                 <a role="button" tabindex="0" href="{{ url('admin/disapproved') }}">
                                                     <i class="fa fa-angle-right"></i>3.2 ทก.10 (ยกเลิกแล้ว)</a>
                                             </li>
-                                            <li class="{{ request()->is('admin/contract*') ? 'active' : '' }}">
+                                            {{-- <li class="{{ request()->is('admin/contract*') ? 'active' : '' }}">
                                                 <a role="button" tabindex="0" href="{{ route('contracts.index') }}">
                                                     <i class="fa fa-angle-right"></i>3.3 สัญญา</a>
-                                            </li>
+                                            </li> --}}
                                         </ul>
                                     </li>
                                     {{-- <li>
@@ -171,6 +171,24 @@
                                                 <a role="button" tabindex="0"
                                                     href="{{ url('auditor/audits/form/send') }}">
                                                     <i class="fa fa-angle-right"></i>1.2 ส่ง ทก.07</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <i class="fa fa-check-square"></i>
+                                            <span>2. จัดการเอกสาร</span>
+                                        </a>
+                                        <ul>
+                                            <li class="">
+                                                <a role="button" tabindex="0"
+                                                    href="{{ route('audits.index') }}">
+                                                    <i class="fa fa-angle-right"></i>2.1 เอกสารสัญญา/หนังสือค้ำประกัน</a>
+                                            </li>
+                                            <li class="">
+                                                <a role="button" tabindex="0"
+                                                    href="{{ url('auditor/audits/form/send') }}">
+                                                    <i class="fa fa-angle-right"></i>2.2 สัญญา/หนังสือค้ำประกัน ดำเนินการแล้ว</a>
                                             </li>
                                         </ul>
                                     </li>

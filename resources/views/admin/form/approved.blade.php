@@ -87,23 +87,29 @@
                                 <td style="text-align: center; vertical-align: middle;">{{ $form->form01s->count() }}</td>
                                 <td style="text-align: center; vertical-align: middle;">{{ formatDateThai($form->created_at) }}</td>
                                 {{-- {{ dd($form) }} --}}
-                                <td style="text-align: center; vertical-align: middle;">{{ ($form->report != '' ? formatDateThai($form->report) : 'ร่าง') }}</td>
+                                <td style="text-align: center; vertical-align: middle;">{{ ($form->report != "" ? formatDateThai($form->report) : 'ร่าง') }}</td>
                                 <td style="text-align: center; vertical-align: middle;">
-                                    <a href="{{ route('form10.show', $form) }}" class="btn btn-raised btn-info"
+                                    <a href="{{ route('contracts.show', $form) }}" class="btn btn-raised btn-info"
                                         title="รายละเอียด"> ดู </a>
-                                    @if (empty($form->report))
-                                            <form action="{{ route('contracts.update', $form->id) }}" style="display: inline;" method="post">
-                                                @csrf
-                                                @method('PUT')
-                                                <input type="hidden" name="contract" value="1">
-                                                <button class="btn btn-raised btn-success" type="submit"
-                                                    title="ทำสัญญา">
-                                                    ทำสัญญา</button>
-                                            </form>
+                                        {{-- {{ dd($form->report) }} --}}
+                                    @if ($form->report != null)
+
+                                        <button class="btn btn-raised btn-success" type="submit"
+                                        title="ทำสัญญาแล้ว" disabled>
+                                        <strong style="color: green">ดำเนินการเสร็จสิ้น</strong></button>
+                                    @elseif ( ($form->form01s[0]->doc_contracts_id != null) && ($form->form01s[0]->doc_garuntee_id != null) )
+                                        <form action="{{ route('contracts.update', $form->id) }}" style="display: inline;" method="post">
+                                            @csrf
+                                            @method('PUT')
+                                            <input type="hidden" name="contract" value="1">
+                                            <button class="btn btn-raised btn-success" type="submit"
+                                                title="ทำสัญญา">
+                                                ดำเนินการ</button>
+                                        </form>
                                     @else
                                             <button class="btn btn-raised btn-success" type="submit"
                                                 title="ทำสัญญาแล้ว" disabled>
-                                                <strong style="color: green">ทำสัญญาแล้ว</strong></button>
+                                                <strong style="color: blue">รอดำเนินการ</strong></button>
                                     @endif
                                 </td>
                             </tr>
