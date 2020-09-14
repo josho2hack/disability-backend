@@ -1,12 +1,14 @@
 $(window).load(function () {
     "use strict";
     $('#calendar').fullCalendar({
+        locale: 'th',
         header: {
             left: 'prev',
             center: 'title',
             right: 'next'
         },
-        defaultDate: '2017-12-12',
+
+        //defaultDate: '2017-12-12',
         editable: true,
         droppable: true, // this allows things to be dropped onto the calendar
         drop: function () {
@@ -17,6 +19,7 @@ $(window).load(function () {
             }
         },
         eventLimit: true, // allow "more" link when too many events
+        /*
         events: [
             {
                 title: 'All Day Event',
@@ -85,6 +88,7 @@ $(window).load(function () {
                 className: 'b-l b-2x b-greensea'
             }
         ]
+        */
     });
 
     // Hide default header

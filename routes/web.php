@@ -82,11 +82,15 @@ Route::prefix('auditor')->middleware('auth')->group(function () {
     Route::get('pdf/{id}', 'Auditor\AuditFormBorrowController@pdf');
 });
 
-
-
 Route::get('activity', 'EventController@index');
 Route::get('activity/add', 'EventController@add');
 Route::post('activity', 'EventController@insert');
+
+//fullcalender
+Route::get('fullcalendar','FullCalendarController@index');
+Route::post('fullcalendar/create','FullCalendarController@create');
+Route::post('fullcalendar/update','FullCalendarController@update');
+Route::post('fullcalendar/delete','FullCalendarController@destroy');
 
 Route::get('fileupload', 'FileController@index');
 Route::get('fileupload/add', 'FileController@add');
@@ -135,7 +139,7 @@ Route::prefix('admin')->middleware('auth')->group(function () {
     Route::resource('contracts', 'Admin\Form13Controller');
     Route::get('approved', 'Admin\Form13Controller@approved')->name('admin');
     Route::get('disapproved', 'Admin\Form13Controller@disapproved')->name('admin');
-    
+
 });
 
 Route::prefix('approve')->middleware('auth')->group(function () {
