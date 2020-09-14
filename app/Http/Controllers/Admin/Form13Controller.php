@@ -96,15 +96,22 @@ class Form13Controller extends Controller
      */
     public function show($id)
     {
-        //
+        $form09 = Form09::with('form01s')->find($id);
+        $form01s = $form09->form01s;
+        $form10 = Form10::where('round', $form09->round)->where('office', $form09->office)->where('year', $form09->year)->first();
+        return view('admin.form.show_approved', compact('form09','form01s','form10'));
+
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    public function show_disapproved($id)
+    {
+        $form10 = Form10::with('form01s')->find($id);
+        $form01s = $form10->form01s;
+        $form09 = Form09::where('round', $form10->round)->where('office', $form10->office)->where('year', $form10->year)->first();
+        return view('admin.form.show_disapproved', compact('form09','form01s','form10'));
+    }
+
+
     public function edit($id)
     {
         //

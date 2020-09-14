@@ -135,6 +135,7 @@ Route::prefix('admin')->middleware('auth')->group(function () {
     Route::resource('contracts', 'Admin\Form13Controller');
     Route::get('approved', 'Admin\Form13Controller@approved')->name('admin');
     Route::get('disapproved', 'Admin\Form13Controller@disapproved')->name('admin');
+    Route::get('disapproved/{id}', 'Admin\Form13Controller@show_disapproved')->name('show_disapproved');
     
 });
 

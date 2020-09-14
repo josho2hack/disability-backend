@@ -119,10 +119,10 @@
                                                 <a role="button" tabindex="0" href="{{ url('admin/disapproved') }}">
                                                     <i class="fa fa-angle-right"></i>3.2 ทก.10 (ยกเลิกแล้ว)</a>
                                             </li>
-                                            <li class="{{ request()->is('admin/contract*') ? 'active' : '' }}">
+                                            {{-- <li class="{{ request()->is('admin/contract*') ? 'active' : '' }}">
                                                 <a role="button" tabindex="0" href="{{ route('contracts.index') }}">
                                                     <i class="fa fa-angle-right"></i>3.3 สัญญา</a>
-                                            </li>
+                                            </li> --}}
                                         </ul>
                                     </li>
                                     {{-- <li>
@@ -180,12 +180,12 @@
                                             <span>2. จัดการเอกสาร</span>
                                         </a>
                                         <ul>
-                                            <li class="{{ request()->is('auditor/audits') ? 'active' : '' }}">
+                                            <li class="">
                                                 <a role="button" tabindex="0"
                                                     href="{{ route('audits.index') }}">
                                                     <i class="fa fa-angle-right"></i>2.1 เอกสารสัญญา/หนังสือค้ำประกัน</a>
                                             </li>
-                                            <li class="{{ request()->is('auditor/audits/form/send') ? 'active' : '' }}">
+                                            <li class="">
                                                 <a role="button" tabindex="0"
                                                     href="{{ url('auditor/audits/form/send') }}">
                                                     <i class="fa fa-angle-right"></i>2.2 สัญญา/หนังสือค้ำประกัน ดำเนินการแล้ว</a>

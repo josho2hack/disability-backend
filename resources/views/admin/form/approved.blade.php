@@ -89,7 +89,7 @@
                                 {{-- {{ dd($form) }} --}}
                                 <td style="text-align: center; vertical-align: middle;">{{ ($form->report != '' ? formatDateThai($form->report) : 'ร่าง') }}</td>
                                 <td style="text-align: center; vertical-align: middle;">
-                                    <a href="{{ route('form10.show', $form) }}" class="btn btn-raised btn-info"
+                                    <a href="{{ route('contracts.show', $form) }}" class="btn btn-raised btn-info"
                                         title="รายละเอียด"> ดู </a>
                                     @if (empty($form->report))
                                             <form action="{{ route('contracts.update', $form->id) }}" style="display: inline;" method="post">

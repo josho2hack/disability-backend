@@ -80,7 +80,7 @@
                                 <td style="text-align: center; vertical-align: middle;">{{ ($form->report != '' ? formatDateThai($form->report) : 'ร่าง' ) }}</td>
                                 <td style="text-align: center; vertical-align: middle;">ไม่สมบูรณ์</td>
                                 <td style="text-align: center; vertical-align: middle;">
-                                    <a href="{{ route('form10.show', $form) }}" class="btn btn-raised btn-info"
+                                    <a href="{{ route('show_disapproved', $form) }}" class="btn btn-raised btn-info"
                                         title="รายละเอียด"> ดู </a>
                                 </td>
                             </tr>
