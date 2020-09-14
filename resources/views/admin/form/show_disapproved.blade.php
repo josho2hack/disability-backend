@@ -185,7 +185,7 @@
                                         {{ $form->user->age }}
                                     </td>
                                     <td rowspan="2" style="vertical-align: middle;"> 
-                                        {{ $form->accessorie_no }}
+                                        {{ $form->accessorie_list }}
                                     </td>
                                     <td rowspan="2" style="vertical-align: middle;"> {{  number_format($form->asset->price) }} </td>
                                     <td rowspan="2" style="vertical-align: middle;"> {{-- @if($audit->table == 'App\Form01') --}} <i class="fa fa-check"></i>  {{-- @endif --}}</td>

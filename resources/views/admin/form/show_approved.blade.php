@@ -185,15 +185,25 @@
                                         {{ $form->user->age }}
                                     </td>
                                     <td rowspan="2" style="vertical-align: middle;"> 
-                                        {{ $form->accessorie_no }}
+                                        {{ $form->accessorie_list }}
                                     </td>
                                     <td rowspan="2" style="vertical-align: middle;"> {{  number_format($form->asset->price) }} </td>
                                     <td rowspan="2" style="vertical-align: middle;"> {{-- @if($audit->table == 'App\Form01') --}} <i class="fa fa-check"></i>  {{-- @endif --}}</td>
                                     <td rowspan="2" style="vertical-align: middle;">{{-- @if($audit->table == 'App\Form03') <i class="fa fa-check"></i>  @endif  --}}</td>
                                     <td rowspan="2" style="vertical-align: middle;">  </td>
+                                    <td style="vertical-align: middle;"> 
+                                        <a href="{{ route('contracts.create') }}" class="btn btn-raised btn-info" title="ทำสัญญา">
+                                            สร้างสัญญา
+                                        </a>
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td align="center"> {{ flexNformat($form->user->citizen_id, ".-....-.....-..-.", "-") }} </td>
+                                    <td>
+                                        <a href="{{ route('contracts.create') }}" class="btn btn-raised btn-success" title="ทำสัญญา">
+                                            สร้างสัญญา
+                                        </a>
+                                    </td>
                                 </tr>
                                 @endforeach
                             </tbody>
