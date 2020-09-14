@@ -105,10 +105,10 @@
                             ตำแหน่ง (ระบุตำแหน่งและคำสั่งมอบอำนาจ) <input type="text" name="rank" class="rank" style="width: 67%;">
                         </div>
 
-                        @if( $form->type_status == 1 )
+                        @if( $form->first()->type_status == 1 )
                         <div class="col-sm-1" style="padding-top: 5px;"></div>
                         <div class="col-sm-11" style="padding-top: 5px;">
-                        {{ $form->user->title }} <input type="text" name="name" class="name" value="{{ $form->user->first_name }}" style="width: 96%;">
+                        {{ $form->first()->user->title }} <input type="text" name="name" class="name" value="{{ $form->first()->user->first_name }}" style="width: 96%;">
                         </div>
                         <div class="col-sm-12" style="padding-top: 5px;">
                             วัน เดือน ปีเกิด <input type="text" name="birthday" class="birthday" style="width: 35%;"> 
@@ -134,35 +134,48 @@
                             จังหวัด <input type="text" value="" name="disabilityPhoneNumber" style="width: 53%;">
                         </div>
 
-                        @elseif ( $form->type_status == 2 )
+                        @elseif ( $form->first()->type_status == 2 )
                         <div class="col-sm-1" style="padding-top: 5px;"></div>
                         <div class="col-sm-11" style="padding-top: 5px;">
-                         นาย <input type="text" name="name"  class="name" style="width: 55%;">
-                        เกี่ยวข้องเป็น <input type="text" style="width: 29%;">
+                         {{ $form->first()->substitute->title }} 
+                         <input type="text" name="name" value="
+                            {{ $form->first()->substitute->first_name }}
+                            {{ $form->first()->substitute->last_name }}
+                         " class="name" style="width: 55%;" readonly>
+                        เกี่ยวข้องเป็น <input type="text" style="width: 29%;" value="{{ $form->first()->substitute->related }}" readonly>
                         </div>
                         <div class="col-sm-12" style="padding-top: 5px;">
                             และได้รับมอบอำนาจจากผู้พิการรายละเอียดปรากฏตามหนังสือมอบอำนาจฉบับลง
-                            วันที่ <input type="text" style="width: 8%;">
-                            เดือน <input type="text" style="width: 12%;">
-                            ปี <input type="text" style="width: 11%;">
+                            วันที่ <input type="text" style="width: 8%;" readonly value="{{ date('d', strtotime($form->first()->substitute->proxy_date)) }}">
+                            เดือน <input type="text" style="width: 12%;" readonly value="{{fullMonth(date('m', strtotime($form->first()->substitute->proxy_date)))}}">
+                            ปี <input type="text" style="width: 11%;" readonly value="{{ date('Y', strtotime($form->first()->substitute->proxy_date))+543 }}">
                         </div>
                         <div class="col-sm-12" style="padding-top: 5px;">
-                            วัน เดือน ปีเกิด <input type="text" name="birthday" class="birthday" style="width: 31%;"> 
-                            เลขประจำตัวประชาชน <input type="text" name="citizen_id" style="width: 40%;">
+                            วัน เดือน ปีเกิด <input type="text" name="birthday" class="birthday" style="width: 31%;" readonly 
+                            value="{{ DateThai($form->first()->substitute->brithday) }}"> 
+                            เลขประจำตัวประชาชน <input type="text" name="citizen_id" style="width: 40%;" readonly 
+                            value="{{ flexNformat($form->first()->substitute->citizen_id, "/-////-/////-//-/", "-") }}">
                         </div>
                         <div class="col-sm-12" style="padding-top: 5px;">
-                            บ้านเลขที่ <input type="text" id="addressNo" name="addressNo" style="width: 12%;"> 
-                            หมู่ที่ <input type="text" id="subDistricNo" name="subDistricNo" style="width: 12%;"> 
-                            ตำบล <input type="text" id="subDistrict" name="subDistrict" style="width: 26%;"> 
-                            อำเภอ <input type="text" id="district" name="district" style="width: 27%;"> 
+                            บ้านเลขที่ <input type="text" id="addressNo" name="addressNo" style="width: 12%;" readonly 
+                            value="{{ $form->first()->substitute->house_no }}"> 
+                            หมู่ที่ <input type="text" id="subDistricNo" name="subDistricNo" style="width: 12%;" readonly 
+                            value="{{ $form->first()->substitute->village_no }}"> 
+                            ตำบล <input type="text" id="subDistrict" name="subDistrict" style="width: 26%;" readonly 
+                            value="{{ $form->first()->substitute->sub_district }}"> 
+                            อำเภอ <input type="text" id="district" name="district" style="width: 27%;" readonly 
+                            value="{{ $form->first()->substitute->district }}"> 
                         </div>
                         <div class="col-sm-12" style="padding-top: 5px;">
-                            จังหวัด <input type="text" id="province" name="province" style="width: 25%;"> 
-                            รหัสไปรษณีย์ <input type="text" id="postcode" name="postcode" style="width: 20%;">
-                            โทรศัพท์ <input type="text" value="" name="disabilityPhoneNumber" style="width: 31%;">
+                            จังหวัด <input type="text" id="province" name="province" style="width: 25%;" readonly
+                            value="{{ $form->first()->substitute->province }}"> 
+                            รหัสไปรษณีย์ <input type="text" id="postcode" name="postcode" style="width: 20%;" readonly
+                            value="{{ $form->first()->substitute->postal_code }}">
+                            โทรศัพท์ <input type="text" name="disabilityPhoneNumber" style="width: 31%;" readonly
+                            value="{{ $form->first()->substitute->tel }}">
                         </div>
                         @endif
-                        
+
                         <div class="col-sm-12" style="padding-top: 5px;">
                             ซึ่งต่อไปนี้จะเรียกว่า “ผู้ขอยืม”
                         </div>
@@ -170,34 +183,9 @@
                         <div class="col-sm-11" style="padding-top: 5px;">
                             ทั้งสองฝ่ายได้ตกลงกันมีข้อความ ดังต่อไปนี้
                         </div>
-                        <div class="col-sm-12" style="padding-top: 5px;">
-                            ได้รับแจ้งผลการอนุมัติจากคณะอนุกรรมการฯ เมื่อวันที่ <input type="text" style="width: 5%;">
-                            เดือน <input type="text" style="width: 10%;">
-                            ปี <input type="text" style="width: 10%;">
-                            รายละเอียดดังเอกสาร แนบ
-                        </div>
-                        <div class="col-sm-12" style="padding-top: 5px;">
-                            และเมื่อหน่วยงานที่รับคำขอได้แจ้งให้มารับอุปกรณ์และเครื่องมือฯ ข้าพเจ้ายินดีที่จะมารับตามแจ้ง
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-sm-offset-5 col-sm-7">
-                        <div class="form-group" style="padding-top: 5px;">
-                            ลงชื่อ <input type="text" name="submitSign" style="width: 58%;"> ผู้แจ้งความประสงค์ 
-                        </div>
-                        <div style="padding-top: 5px;">
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            ( <input type="text" name="submitSign" style="width: 55%;"> )
-                        </div>
-                        <div style="padding-top: 5px;">
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            คนพิการ/ผู้ยื่นคำขอแทน/ผู้แทนกลุ่ม
-                        </div>
-                    </div>
-                </div>
 
-                <hr>
+                    </div>
+                </div>
 
                 <div class="row">
 
@@ -221,37 +209,23 @@
                                 </tr>                       
                             </thead>
                             <tbody>
+                                @foreach( $form as $list )
                                 <tr>
-                                    <td> 1 </td>
-                                    <td> รายการสิ่งของที่ยืม1 </td>
-                                    <td> รหัส1 </td>
-                                    <td> จำนวน1 </td>
-                                    <td> ราคา (บาท)1 </td>
-                                    <td> หมายเหตุ </td>
+                                    <td align="center"> {{ $loop->iteration }} </td>
+                                    <td> {{ $list->accessorie_list }} </td>
+                                    <td align="right"> {{ $list->accessorie_no }} </td>
+                                    <td align="right"> 1 หน่วย </td>
+                                    <td align="right"> {{ number_format($list->asset->price, 2) }} </td>
+                                    <td> {{ $list->asset->remark }} </td>
                                 </tr>
-                                <tr>
-                                    <td> 2 </td>
-                                    <td> รายการสิ่งของที่ยืม1 </td>
-                                    <td> รหัส1 </td>
-                                    <td> จำนวน1 </td>
-                                    <td> ราคา (บาท)1 </td>
-                                    <td> หมายเหตุ </td>
-                                </tr>
-                                <tr>
-                                    <td> 3 </td>
-                                    <td> รายการสิ่งของที่ยืม1 </td>
-                                    <td> รหัส1 </td>
-                                    <td> จำนวน1 </td>
-                                    <td> ราคา (บาท)1 </td>
-                                    <td> หมายเหตุ </td>
-                                </tr>
+                                @endforeach
                             </tbody>
                             <tfoot>
                                 <tr>
                                     <td colspan="3" align="center">รวม</td>
-                                    <td align="center">0</td>
-                                    <td align="center">0</td>
-                                    <td align="center">0</td>
+                                    <td align="right"> {{ $form->count() }} หน่วย </td>
+                                    <td align="right"> {{ number_format($total, 2) }} </td>
+                                    <td align="center"></td>
                                 </tr>
                             </tfoot>
                         </table>
@@ -327,7 +301,6 @@
     
                 </div>
 
-                <hr>
 
                 <div class="row">
                     <div class="col-sm-offset-1 col-sm-11" style="padding-top: 5px;">
@@ -409,11 +382,11 @@
                         </div>
                     </div>
                 </div>
-
-                <hr>
+<br>
 
                 <div class="row">
                     <div class="col-sm-offset-5 col-sm-7" style="padding-top: 5px;">
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         วันที่ ...{{ date('d') }}.. เดือน .......{{ date('m') }}...... พ.ศ. ............{{ (date('Y'))+543 }}.................
                     </div>
                 </div>
@@ -483,115 +456,4 @@
     </div>
 @endsection
 @section('footer')
-<script>
-    $(document).ready(function() {
-        $.ajaxSetup({
-            headers:
-            { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') }
-        });
-        $("#assets").change(function(){
-            var asset_id = $("option:selected", this).val();
-
-            if (asset_id != "") {
-                $.post("{{ url('form-borrow/getNo') }}", {asset_id: asset_id}, function (data) {
-                    $("#assetNo").val(data);
-                });
-            }
-        });
-
-        $( ".chkType" ).on( "click", function() {
-            var chkType = $( ".chkType:checked" ).val();
-            console.log(chkType);
-            if (chkType == "1") {
-                $.post("{{ url('form-borrow/getData') }}", {chkType: chkType}, function (data) {
-                    $("#name").val(data.title + '   ' + data.first_name + '   ' + data.last_name);
-                    $("#disabilityType").val(data.disability_type);
-                    $("#citizenId").val(data.pwd_id);
-                    $("#addressNo").val(data.house_no);
-                    $("#subDistricNo").val(data.village_no);
-                    $("#stress").val(data.lane);
-                    $("#subDistrict").val(data.sub_district);
-                    $("#district").val(data.district);
-                    $("#province").val(data.province);
-                    $("#postcode").val(data.postal_code);
-                    $("#colledge").val(data.edu_place);
-                    $("#phoneNumber").val(data.tel);
-                    $("#email").val(data.email);
-                });
-            }
-
-            if (chkType == "2") {
-                $.post("{{ url('form-borrow/getData') }}", {chkType: chkType}, function (data) {
-                    $("#name").val(data.title + '   ' + data.first_name + '   ' + data.last_name);
-                    $("#disabilityType").val('-');
-                    $("#citizenId").val(data.citizen_id);
-                    $("#addressNo").val(data.house_no);
-                    $("#subDistricNo").val(data.village_no);
-                    $("#stress").val(data.lane);
-                    $("#subDistrict").val(data.sub_district);
-                    $("#district").val(data.district);
-                    $("#province").val(data.province);
-                    $("#postcode").val(data.postal_code);
-                    $("#colledge").val(data.edu_place);
-                    $("#phoneNumber").val(data.tel);
-                    $("#email").val(data.email);
-                });
-            }
-
-        });
-
-        $("#maingroup").change(function(){
-            var main_id = $("option:selected", this).val();
-
-            if (main_id != "") {
-                $.post("{{ url('practice/subgroup') }}", {main_id: main_id}, function (data) {
-                    $("#subgroup").html(data);
-                });
-            }
-        });
-
-        $("#subgroup").change(function(){
-            var sub_id = $("option:selected", this).val();
-
-            if (sub_id != "") {
-                $.post("{{ url('form-borrow/getcategory') }}", {sub_id: sub_id}, function (data) {
-                    $("#assets_cate").html(data);
-                });
-            }
-        });
-
-        $("#assets_cate").change(function(){
-            var ac_id = $("option:selected", this).val();
-
-            if (ac_id != "") {
-                $.post("{{ url('form-borrow/getassets') }}", {ac_id: ac_id}, function (data) {
-                    $("#assets").html(data);
-                });
-            }
-        });
-
-
-        $('#files_copy_card').change(function(e){
-            $('#copy_card').val(1);
-            $('#copy_card_check').prop("checked", true);
-        });
-        $('#file_house_res').change(function(e){
-            $('#house_res').val(1);
-            $('#house_res_check').prop("checked", true);
-        });
-        $('#file_copy_train').change(function(e){
-            $('#copy_train').val(1);
-            $('#copy_train_check').prop("checked", true);
-        });
-        $('#file_sub_copy_citizen_id').change(function(e){
-            $('#sub_copy_citizen_id').val(1);
-            $('#sub_copy_citizen_id_check').prop("checked", true);
-        });
-        $('#file_power_attorney').change(function(e){
-            $('#power_attorney').val(1);
-            $('#power_attorney_check').prop("checked", true);
-        });
-
-    });
-</script>
 @endsection
