@@ -105,7 +105,7 @@
                             ตำแหน่ง (ระบุตำแหน่งและคำสั่งมอบอำนาจ) <input type="text" name="rank" class="rank" style="width: 67%;">
                         </div>
 
-                        {{-- @if( $form->first()->type_status == 1 ) --}}
+                        @if( $form->first()->type_status == 1 )
                         <div class="col-sm-1" style="padding-top: 5px;"></div>
                         <div class="col-sm-11" style="padding-top: 5px;">
                         {{ $form->first()->user->title }} <input type="text" name="name" class="name" value="{{ $form->first()->user->first_name }}" style="width: 96%;">
@@ -134,7 +134,7 @@
                             จังหวัด <input type="text" value="" name="disabilityPhoneNumber" style="width: 53%;">
                         </div>
 
-                        {{-- @elseif ( $form->first()->type_status == 2 ) --}}
+                        @elseif ( $form->first()->type_status == 2 )
                         <div class="col-sm-1" style="padding-top: 5px;"></div>
                         <div class="col-sm-11" style="padding-top: 5px;">
                          {{ $form->first()->substitute->title }} 
@@ -174,7 +174,7 @@
                             โทรศัพท์ <input type="text" name="disabilityPhoneNumber" style="width: 31%;" readonly
                             value="{{ $form->first()->substitute->tel }}">
                         </div>
-                        {{-- @endif --}}
+                        @endif
 
                         <div class="col-sm-12" style="padding-top: 5px;">
                             ซึ่งต่อไปนี้จะเรียกว่า “ผู้ขอยืม”
