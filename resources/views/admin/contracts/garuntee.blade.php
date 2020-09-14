@@ -59,8 +59,9 @@
 
     <div class="boxs">
         <div class="boxs-body" style="width: 1000px; margin: auto;">
-            <form action="{{-- {{ url('form-borrow') }} --}}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('contracts.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
+                <input type="hidden" name="garuntee" value="1">
                 <div class="row">
                     <div class="col-sm-offset-6 col-sm-6">
                         <div class="square pull-right">
@@ -310,7 +311,8 @@
                 </div>
 
                 <div class="text-right">
-                    <button class="btn btn-raised btn-success">ส่งข้อมูล</button>
+                    <input type="hidden" name="form01id" value="{{ $form->id }}">
+                    <button class="btn btn-raised btn-success" type="submit">ส่งข้อมูล</button>
                 </div>
             </form>
         </div>

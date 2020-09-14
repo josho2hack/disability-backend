@@ -192,18 +192,31 @@
                                     <td rowspan="2" style="vertical-align: middle;"> {{-- @if($audit->table == 'App\Form01') --}} <i class="fa fa-check"></i>  {{-- @endif --}}</td>
                                     <td rowspan="2" style="vertical-align: middle;">{{-- @if($audit->table == 'App\Form03') <i class="fa fa-check"></i>  @endif  --}}</td>
                                     <td rowspan="2" style="vertical-align: middle;">  </td>
-                                    <td style="vertical-align: middle;"> 
-                                        <a href="{{ route('contracts.create') }}" class="btn btn-raised btn-info" title="ทำสัญญา">
-                                            สร้างสัญญา
-                                        </a>
+                                    <td style="vertical-align: middle;">
+                                        @if ($form->doc_contracts_id != null)
+                                            <a href="" style="display: inline;" disabled class="btn btn-raised btn-info" title="สร้างสัญญาแล้ว">
+                                               <span style="color: blue;">สร้างสัญญาแล้ว</span>
+                                            </a>
+                                        @else
+
+                                            <a href="{{ route('contracts.create') }}" style="display: inline;" class="btn btn-raised btn-info" title="ทำสัญญา">
+                                                สร้างสัญญา
+                                            </a>
+                                        @endif
                                     </td>
                                 </tr>
                                 <tr>
                                     <td align="center"> {{ flexNformat($form->user->citizen_id, ".-....-.....-..-.", "-") }} </td>
                                     <td>
-                                        <a href="{{ route('garuntees') }}" class="btn btn-raised btn-success" title="ทำสัญญา">
-                                            สร้างหนังสือค้ำประกัน
-                                        </a>
+                                        @if ($form->doc_garuntee_id != null)
+                                            <a href="" style="display: inline;" disabled class="btn btn-raised btn-success" title="สร้างหนังสือค้ำประกัน">
+                                                <span style="color: green;">สร้างหนังสือค้ำประกัน</span>
+                                            </a>
+                                        @else
+                                            <a href="{{ route('garuntees', $form->id) }}" style="display: inline;" class="btn btn-raised btn-success" title="สร้างหนังสือค้ำประกัน">
+                                                สร้างหนังสือค้ำประกัน
+                                            </a>
+                                        @endif
                                     </td>
                                 </tr>
                                 @endforeach

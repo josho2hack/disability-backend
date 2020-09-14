@@ -61,6 +61,7 @@
         <div class="boxs-body" style="width: 1000px; margin: auto;">
             <form action="{{ route('contracts.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
+                <input type="hidden" name="contracts" value="1">
                 <div class="row">
                     <div class="col-sm-offset-6 col-sm-6">
                         <div class="square pull-right">
