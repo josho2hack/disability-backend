@@ -12,8 +12,22 @@ class Events extends Model
     protected $table = 'events';
 
     protected $fillable = [
-        'user_id','event_category_id','event_group_id','title','description','cover_path','cover_name','cover_link'
+        'title','description','start','end','is_publish','office','city','event_category_id'
     ];
 
-	protected $guarded = [];
+    protected $guarded = [];
+
+    public function event_category(){
+        return $this->belongsTo('App\EventCategory');
+    }
+
+    public function medias()
+    {
+        return $this->belongsToMany('App\Media');
+    }
+
+    public function users()
+    {
+        return $this->belongsToMany('App\User');
+    }
 }

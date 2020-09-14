@@ -14,10 +14,10 @@ class CreateEventCategoriesTable extends Migration
     public function up()
     {
         Schema::create('event_categories', function (Blueprint $table) {
-            $table->id()                                        ->comment('รหัสผู้ใช้');
-            $table->string('name')                              ->comment('ชื่อ');
-            $table->string('slug')                              ->comment('ชื่อเรียก');
-            $table->string('color')->nullable()                 ->comment('สี');
+            $table->id();
+            $table->string('name')->comment('ชื่อหมวดหมู่');
+            $table->string('description')->comment('รายละเอียดหมวดหมู่กิจกรรม');
+            $table->string('color')->nullable()->comment('สี html');
             $table->timestamps();
             $table->softDeletes();
         });

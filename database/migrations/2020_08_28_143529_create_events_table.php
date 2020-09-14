@@ -14,22 +14,18 @@ class CreateEventsTable extends Migration
     public function up()
     {
         Schema::create('events', function (Blueprint $table) {
-            $table->id()                                    ->comment('รหัสไอดี');
-            $table->foreignId('user_id')                    ->comment('รหัสผู้ใช้')
-                ->constrained()->onDelete('cascade');
-            $table->foreignId('event_category_id')         ->comment('รหัสหมวดหมู่หลักสูตร')
-                ->constrained()->onDelete('cascade');
-            $table->foreignId('event_group_id')            ->comment('รหัสกลุ่มหลักสูตร')
-                ->constrained()->onDelete('cascade');
-            $table->string('title')                         ->comment('หัวข้อ');
-            $table->text('description')                     ->comment('รายละเอียด');
-            $table->boolean('is_publish')->default(0)       ->comment('เผยแพร่');
-            $table->integer('view')->default(0)             ->comment('จำนวนเข้าดู');
-            $table->text('cover_path')->nullable()          ->comment('พาท');
-            $table->text('cover_name')->nullable()          ->comment('ชื่อไฟล์');
-            $table->text('cover_link')->nullable()          ->comment('ลิงก์ไฟล์');
+            $table->id();
+            $table->string('title')->comment('หัวข้อ');
+            $table->text('description')->comment('รายละเอียด');
+            $table->dateTime('start')->comment('วันที่เริ่ม');
+            $table->dateTime('end')->comment('วันที่สิ้นสุด');
+            $table->boolean('is_publish')->default(0)->comment('เผยแพร่');
+            $table->string('office')->comment('หน่วยงาน');
+            $table->string('city')->comment('จังหวัด');
             $table->timestamps();
             $table->softDeletes();
+            $table->foreignId('event_category_id')->comment('รหัสหมวดหมู่')
+                ->constrained()->onDelete('cascade');
         });
     }
 

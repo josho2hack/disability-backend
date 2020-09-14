@@ -111,7 +111,6 @@
                                 <select id="disability_type_id" name="disability_type_id" class="chosen-select"
                                     style="width: 400px;">
                                     @foreach ($disabilities as $disability)
-                                        <option value="">เลือกประเภทคนพิการ</option>
                                         <option value="{{ $disability->id }}">{{ $disability->description }}</option>
                                     @endforeach
                                 </select>
