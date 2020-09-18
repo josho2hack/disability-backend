@@ -67,9 +67,9 @@
                                             <li class="{{ request()->is('admin/news*') ? 'active open' : '' }}
                                                 {{ request()->is('activity*') ? 'active open' : '' }}
                                                 {{ request()->is('fileupload*') ? 'active open' : '' }}
+                                                {{ request()->is('event*') ? 'active open' : '' }}
                                                 {{ request()->is('admin/surveys*') ? 'active open' : '' }}">
-                                                <a role="button" tabindex="0"><i class="fa fa-angle-right"></i>1.8
-                                                    ระบบจัดการเว็บ</a> </a>
+                                                <a role="button" tabindex="0"><i class="fa fa-angle-right"></i>1.8 ระบบจัดการเว็บ</a>
                                                 <ul>
                                                     <li class="{{ request()->is('admin/news*') ? 'active' : '' }}">
                                                         <a role="button" tabindex="0"

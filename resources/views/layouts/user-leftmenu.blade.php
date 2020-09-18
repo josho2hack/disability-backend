@@ -187,31 +187,31 @@
                                     <i class="fa fa-envelope"></i>
                                     <span>9. ข้อความ</span>
                                 </a>
-                            </li>
-                            <li>
+                            </li> --}}
+                            {{-- <li>
                                 <a href="#">
                                     <i class="fa fa-exclamation-triangle"></i>
                                     <span>10. ปัญหาการใช้งาน</span>
                                 </a>
-                            </li>
-                            <li>
-                                <a href="#">
+                            </li> --}}
+                            <li class="{{ request()->is('calendar*') ? 'active open' : '' }}">
+                            <a href="{{ url('/calendar') }}">
                                     <i class="fa fa-calendar"></i>
-                                    <span>11. ปฎิทินกิจกรรม</span>
+                                    <span>9. ปฎิทินกิจกรรม</span>
                                 </a>
                             </li>
-                            <li>
+                            {{-- <li>
                                 <a href="#">
                                     <i class="fa fa-bar-chart-o"></i>
                                     <span>12. ตอบแบบสำรวจ</span>
                                 </a>
-                            </li>
+                            </li> --}}
                             <li class="{{ request()->is('downloads*') ? 'active open' : '' }}">
                             <a href="{{ route('downloads') }}">
                                     <i class="fa fa-download"></i>
-                                    <span>13. ดาวน์โหลด</span>
+                                    <span>10. ดาวน์โหลด</span>
                                 </a>
-                            </li> --}}
+                            </li>
 
                         </ul>
                         <!--/ NAVIGATION Content -->

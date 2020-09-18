@@ -86,8 +86,17 @@ Route::get('activity', 'EventController@index');
 Route::get('activity/add', 'EventController@add');
 Route::post('activity', 'EventController@insert');
 
+Route::resource('events', 'EventsController');
+Route::resource('eventcategories', 'EventCategoryController');
+
 //fullcalender
+Route::get('calendar','FullCalendarUserController@index');
+Route::get('calendar/show','FullCalendarUserController@show');
+Route::post('calendar/update','FullCalendarUserController@update');
+
+//calender
 Route::get('fullcalendar','FullCalendarController@index');
+Route::get('fullcalendar/show','FullCalendarController@show');
 Route::post('fullcalendar/create','FullCalendarController@create');
 Route::post('fullcalendar/update','FullCalendarController@update');
 Route::post('fullcalendar/delete','FullCalendarController@destroy');

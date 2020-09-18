@@ -12,14 +12,21 @@ class FullCalendarController extends Controller
     {
         if(request()->ajax())
         {
-
          $start = (!empty($_GET["start"])) ? ($_GET["start"]) : ('');
          $end = (!empty($_GET["end"])) ? ($_GET["end"]) : ('');
 
          $data = Events::whereDate('start', '>=', $start)->whereDate('end',   '<=', $end)->get(['id','title','start', 'end']);
+         dd($data);
          return Response::json($data);
         }
+
         return view('fullcalendar');
+    }
+
+    public function show()
+    {
+         $data = Events::all();
+         return Response::json($data);
     }
 
     public function create(Request $request)

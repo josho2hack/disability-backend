@@ -69,6 +69,7 @@
 
 @endsection
 @section('footer-script')
+    <script src="https://cdn.jsdelivr.net/npm/moment@2.27.0/moment.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.3.2/main.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.3.2/locales-all.min.js"></script>
     {{-- <script src="{{ asset('assets/js/page/calendar.js') }}"></script>
@@ -90,31 +91,31 @@
                     center: 'title',
                     right: 'dayGridMonth,timeGridWeek,timeGridDay,listMonth'
                 },
-                initialDate: '2020-09-12',
+                //initialDate: '2020-09-12',
                 locale: initialLocaleCode,
-                buttonIcons: false, // show the prev/next text
+                buttonIcons: true, // show the prev/next text
                 weekNumbers: true,
                 navLinks: true, // can click day/week names to navigate views
                 editable: true,
                 dayMaxEvents: true, // allow "more" link when too many events
-                events: SITEURL + "fullcalendar",
+                events: SITEURL + "/fullcalendar/show",
                 displayEventTime: true,
-                eventRender: function(event, element, view) {
-                    if (event.allDay === 'true') {
-                        event.allDay = true;
-                    } else {
-                        event.allDay = false;
-                    }
-                },
+                // eventRender: function(event, element, view) {
+                //     if (event.allDay === 'true') {
+                //         event.allDay = true;
+                //     } else {
+                //         event.allDay = false;
+                //     }
+                // },
                 selectable: true,
-                selectHelper: true,
+                //selectHelper: true,
                 select: function(start, end, allDay) {
                     var title = prompt('Event Title:');
                     if (title) {
                         var start = $.fullCalendar.formatDate(start, "Y-MM-DD HH:mm:ss");
                         var end = $.fullCalendar.formatDate(end, "Y-MM-DD HH:mm:ss");
                         $.ajax({
-                            url: SITEURL + "fullcalendar/create",
+                            url: SITEURL + "/fullcalendar/create",
                             data: 'title=' + title + '&amp;start=' + start + '&amp;end=' + end,
                             type: "POST",
                             success: function(data) {
@@ -136,7 +137,7 @@
                     var start = $.fullCalendar.formatDate(event.start, "Y-MM-DD HH:mm:ss");
                     var end = $.fullCalendar.formatDate(event.end, "Y-MM-DD HH:mm:ss");
                     $.ajax({
-                        url: SITEURL + 'fullcalendar/update',
+                        url: SITEURL + '/fullcalendar/update',
                         data: 'title=' + event.title + '&amp;start=' + start + '&amp;end=' +
                             end + '&amp;id=' + event.id,
                         type: "POST",
@@ -150,7 +151,7 @@
                     if (deleteMsg) {
                         $.ajax({
                             type: "POST",
-                            url: SITEURL + 'fullcalendar/delete',
+                            url: SITEURL + '/fullcalendar/delete',
                             data: "&amp;id=" + event.id,
                             success: function(response) {
                                 if (parseInt(response) > 0) {

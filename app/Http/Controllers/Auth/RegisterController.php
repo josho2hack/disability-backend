@@ -97,6 +97,17 @@ class RegisterController extends Controller
             $register['email_verified_at'] = now();
         }
 
+        $year = now()->format('y');
+        $year += 43;  //Thai Year
+        $user = User::whereHas("roles", function ($q){
+            $q->where("roles_id", 4);
+        })->latest()->first();
+        $idtemp = substr($user->system_id, 5);
+        $idtemp += 1;
+        $num_padded = sprintf("%03d", $idtemp); //add 0 3 digit before ID
+
+        $register['system_id'] = 'MB' . $year . '-' . $num_padded;
+
         $user = User::create($register);
         $user->roles()->attach(4);
         $user->save();

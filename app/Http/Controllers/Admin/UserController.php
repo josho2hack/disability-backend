@@ -129,6 +129,8 @@ class UserController extends Controller
             $input['system_id'] = 'MB' . $year . '-' . $num_padded;
         }
 
+        //dd($input['system_id']);
+
         $input['appove_date'] = now();
 
         $user = User::create($input);
