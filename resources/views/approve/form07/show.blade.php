@@ -192,9 +192,19 @@
                                     <td rowspan="2" style="vertical-align: middle;"> {{-- @if($audit->table == 'App\Form01') --}} <i class="fa fa-check"></i>  {{-- @endif --}}</td>
                                     <td rowspan="2" style="vertical-align: middle;">{{-- @if($audit->table == 'App\Form03') <i class="fa fa-check"></i>  @endif  --}}</td>
                                     <td rowspan="2" style="vertical-align: middle;">  </td>
+                                    <td align="center">
+                                        <a href="" class="btn btn-raised btn-success" title="สร้างสัญญาแล้ว">
+                                           อนุมัติ {{ $form->id }}
+                                        </a>
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td align="center"> {{ flexNformat($form->user->citizen_id, ".-....-.....-..-.", "-") }} </td>
+                                    <td align="center">
+                                        <a href="{{ route('contracts.create') }}" class="btn btn-raised btn-danger" title="ทำสัญญา">
+                                            ปฏิเสธ
+                                        </a>
+                                    </td>
                                 </tr>
                                 @endforeach
                             </tbody>
