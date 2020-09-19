@@ -174,7 +174,7 @@
                                 @foreach ($form01s as $form)
                                 <tr align="center">
                                     <td rowspan="2" style="vertical-align: middle;"> {{ $loop->iteration }} </td>
-                                    <td> {{ $form->user->fullname }} </td>
+                                    <td style="vertical-align: middle;" align="center"> {{ $form->user->fullname }} </td>
                                     <td rowspan="2" style="vertical-align: middle;"> 
                                         {{ $form->address->house_no ?? '' }} {{ $form->address->village_no ?? '' }}
                                         {{ $form->address->lane ?? '' }} {{ $form->address->sub_district ?? '' }}
@@ -186,25 +186,57 @@
                                         {{ $form->user->age }}
                                     </td>
                                     <td rowspan="2" style="vertical-align: middle;"> 
-                                        {{ $form->accessorie_no }}
+                                        {{ $form->accessorie_list }}
                                     </td>
                                     <td rowspan="2" style="vertical-align: middle;"> {{  number_format($form->asset->price) }} </td>
                                     <td rowspan="2" style="vertical-align: middle;"> {{-- @if($audit->table == 'App\Form01') --}} <i class="fa fa-check"></i>  {{-- @endif --}}</td>
                                     <td rowspan="2" style="vertical-align: middle;">{{-- @if($audit->table == 'App\Form03') <i class="fa fa-check"></i>  @endif  --}}</td>
                                     <td rowspan="2" style="vertical-align: middle;">  </td>
-                                    <td align="center">
-                                        <a href="" class="btn btn-raised btn-success" title="สร้างสัญญาแล้ว">
-                                           อนุมัติ {{ $form->id }}
+                                    <td colspan="2" align="center">
+                                        <a href="{{ url('pdf/'.$form->id) }}" class="btn btn-raised btn-info">
+                                            ดู 
                                         </a>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td align="center"> {{ flexNformat($form->user->citizen_id, ".-....-.....-..-.", "-") }} </td>
+                                    <td align="center" style="vertical-align: middle;"> {{ flexNformat($form->user->citizen_id, ".-....-.....-..-.", "-") }} </td>
+                                   @if( $form->form09s_id == null && $form->form10s_id == null)
                                     <td align="center">
-                                        <a href="{{ route('contracts.create') }}" class="btn btn-raised btn-danger" title="ทำสัญญา">
-                                            ปฏิเสธ
-                                        </a>
+                                        <form action="{{ route('form07.update', $form->id) }}" style="display: inline" method="post">
+                                            @csrf
+                                            @method('PUT')
+                                            <input type="hidden" name="approved" value="1">
+                                            <input type="hidden" name="form07s_id" value="{{ $form->form07s_id }}">
+                                            <button class="btn btn-raised btn-success" type="submit"
+                                                title="อนุมัติ">
+                                                อนุมัติ</button>
+                                        </form>
                                     </td>
+                                    <td align="center">
+                                        <form action="{{ route('form07.update', $form->id) }}" style="display: inline" method="post">
+                                            @csrf
+                                            @method('PUT')
+                                            <input type="hidden" name="canceled" value="1">
+                                            <input type="hidden" name="form07s_id" value="{{ $form->form07s_id }}">
+                                            <button class="btn btn-raised btn-danger" type="submit"
+                                                title="ปฏิเสธ">
+                                                ปฏิเสธ</button>
+                                        </form>
+                                    </td>
+                                    @elseif( $form->form09s_id != null )
+                                    <td align="center" colspan="2">
+                                        <button class="btn btn-raised btn-success" type="submit" title="อนุมัติ" disabled> 
+                                            <span style="color: blue;">อนุมัติแล้ว</span>
+                                        </button>
+                                    </td>
+                                    @elseif ( $form->form10s_id != null )
+                                    <td align="center" colspan="2">
+                                        <button class="btn btn-raised btn-danger" type="submit" title="ปฏิเสธ" disabled> 
+                                            <span style="color: red;">ปฏิเสธแล้ว</span>
+                                        </button>
+                                    </td>
+                                    @endif
+                                    
                                 </tr>
                                 @endforeach
                             </tbody>

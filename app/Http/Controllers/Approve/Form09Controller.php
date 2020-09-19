@@ -18,7 +18,9 @@ class Form09Controller extends Controller
      */
     public function index()
     {
-        $form09 = Form09::with('form01s')->whereHas('form01s', function($q){ return $q->whereNotNull('form09s_id'); })->get();
+        $form09 = Form09::with('form01s')->whereHas('form01s', function($q){ 
+                                                return $q->whereNotNull('form09s_id')->whereNotNull('approve_date'); 
+                                            })->get();
         return view('approve.form09.index', compact('form09'));
     }
 

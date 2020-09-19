@@ -23,8 +23,6 @@ class Form13Controller extends Controller
         $form13 = Form13::with('form01s')->whereNotNull('report')->get();
         $docContract = DocContract::with('form01s')->get();
 
-        // $form13->first()['created_doc_date'] =
-
         return view('admin.contracts.index', compact('form13', 'docContract'));
     }
 

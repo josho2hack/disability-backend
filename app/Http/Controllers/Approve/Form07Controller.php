@@ -78,6 +78,62 @@ class Form07Controller extends Controller
      */
     public function update(Request $request, $id)
     {
+
+        if( $request['approved'] == 1 ){
+            $form01 = Form01::find($id);
+            $form07 = Form07::whereHas('form01s', function($q){ return $q->whereNotNull('audit_date'); })->find($request->form07s_id);
+            $form09 = Form09::whereHas('form01s', function($q) use ($form07){ 
+                                    return $q->where('form07s_id', $form07->id)->whereNotNull('form09s_id'); 
+                                })->first();
+
+            if( $form09 == null ){
+
+                $form09 = new Form09();
+                $form09['round'] = $form07['round'];
+                $form09['year'] = $form07['year'];
+                $form09['office'] = $form07['office'];
+                $form09['city'] = $form07['city'];
+                $form09->save();
+
+                $form01->form09s_id = $form09->id;
+                $form01->approve_date = now();
+                $form01->save();
+            }else{
+                $form01->form09s_id = $form09->id;
+                $form01->approve_date = now();
+                $form01->save();
+            }
+
+            return redirect('approve/form07/'.$form01->form07s_id);
+
+        }elseif( $request['canceled'] == 1){
+            $form01 = Form01::find($id);
+            $form07 = Form07::whereHas('form01s', function($q){ return $q->whereNotNull('audit_date'); })->find($request->form07s_id);
+            $form10 = Form10::whereHas('form01s', function($q) use ($form07){ 
+                                    return $q->where('form07s_id', $form07->id)->whereNotNull('form10s_id'); 
+                                })->first();
+
+            if( $form10 == null ){
+
+                $form10 = new Form10();
+                $form10['round'] = $form07['round'];
+                $form10['year'] = $form07['year'];
+                $form10['office'] = $form07['office'];
+                $form10['city'] = $form07['city'];
+                $form10->save();
+
+                $form01->form10s_id = $form10->id;
+                $form01->approve_date = now();
+                $form01->save();
+            }else{
+                $form01->form10s_id = $form10->id;
+                $form01->approve_date = now();
+                $form01->save();
+            }
+
+            return redirect('approve/form07/'.$form01->form07s_id);
+        }
+
         if ($request['form01'] == 1) {
             $form01 = Form01::find($id);
             dd($form01);
