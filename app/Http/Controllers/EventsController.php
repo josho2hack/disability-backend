@@ -36,20 +36,27 @@ class EventsController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'title' => 'required',
-            'description' => 'required',
-            'start' => 'required',
-            'end' => 'required',
-            'office' => 'required',
-            'city' => 'required',
-            'event_category_id' => 'required',
-        ]);
+        $event = new Events;
 
-        $input = $request->all();
+        $dir = 'event/images/';
+        $path = public_path($dir);
+        $filename = $request->upload->getClientOriginalName();
+        $filelink = asset($dir.$filename);
+        $request->upload->move($path, $filename);
+        $event['user_id'] = \Auth::user()->id;
+        $event['event_category_id'] = $request->event_category_id;
+        $event['event_group_id'] = $request->event_group_id;
+        $event['cover_path'] = $path;
+        $event['cover_name'] = $filename;
+        $event['cover_link'] = $filelink ;
+        $event['title'] = $request->title;
+        $event['description'] = $request->description;
+        $event['is_publish'] = 1;
 
-        Events::create($input);
-        return redirect()->route('events.index')->with('success', 'บันทึกข้อมูลเรียบร้อยแล้ว');
+
+        if ($event->save()) {
+            return redirect()->route('activity.index')->with('success', 'บันทึกข้อมูลเรียบร้อยแล้ว');
+        }
     }
 
     /**
@@ -60,7 +67,7 @@ class EventsController extends Controller
      */
     public function show($id)
     {
-        $event = Events::with('event_category')->findOrFail($id);
+        $event = Events::with('event_group')->findOrFail($id);
         return view('events.show', compact('event'));
     }
 

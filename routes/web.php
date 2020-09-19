@@ -84,7 +84,7 @@ Route::prefix('auditor')->middleware('auth')->group(function () {
 
 Route::get('activity', 'EventController@index');
 Route::get('activity/add', 'EventController@add');
-Route::post('activity', 'EventController@insert');
+Route::post('activity', 'EventsController@store');
 
 Route::resource('events', 'EventsController');
 Route::resource('eventcategories', 'EventCategoryController');

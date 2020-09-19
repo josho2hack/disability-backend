@@ -48,3 +48,8 @@ storage/fonts/dompdf_font_family_cache.php
 resources/views/approve/form07/show-backup.blade.php
 resources/views/approve/form09/show-backup.blade.php
 >>>>>>> Stashed changes
+public/assets/images/no-image.gif
+public/event/images/test.png
+public/uploads/news/news20200918050340OL9o7Dmk2AhNPSQD.jpg
+public/uploads/news/news20200918050359DXUKU26tZ9CTRW7F.jpg
+public/uploads/news/news20200918050319Y1BmjX8blrpe9rvF.jpg

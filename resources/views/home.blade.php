@@ -80,7 +80,7 @@
                 </div>
                 <div class="pw_content">
                     <div class="pw_header">
-                        <h6>{{ $item["title"] }}</h6>
+                        <h6>{{ \Str::limit($item["title"], 60) }}</h6>
                     </div>
                 </div>
             </div>

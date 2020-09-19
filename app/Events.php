@@ -11,10 +11,6 @@ class Events extends Model
 
     protected $table = 'events';
 
-    protected $fillable = [
-        'title','description','start','end','is_publish','office','city','event_category_id'
-    ];
-
     protected $guarded = [];
 
     public function event_category(){

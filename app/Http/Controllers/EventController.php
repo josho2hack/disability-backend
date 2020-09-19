@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Events;
 use App\User;
+use App\EventCategory;
+use App\EventGroup;
 
 class EventController extends Controller
 {
@@ -15,7 +17,9 @@ class EventController extends Controller
     }
 
     public function add(){
-    	return view('activity.add');
+        $event_category = EventCategory::all();
+        $event_group = EventGroup::all();
+    	return view('activity.add', compact('event_category', 'event_group'));
     }
 
     public function insert(Request $request){

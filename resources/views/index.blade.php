@@ -75,8 +75,11 @@
         <!-- bradcome -->
         <div class="b-b mb-10">
             <div class="row">
-                <div class="col-sm-6 col-xs-12">
-                    <h2 class="h3 m-0">ข่าวสารประชาสัมพันธ์</h2>
+                <div class="col-sm-12">
+                    <h2 class="h3 m-0">
+                        ข่าวสารประชาสัมพันธ์
+                        <span class="pull-right" style="font-size: 1.2rem">ดูทั้งหมด</span>
+                    </h2>
                 </div>
             </div>
         </div>
@@ -91,8 +94,8 @@
                                     alt="{{ $item['title'] }}">
                             </div>
                             <div class="pw_content">
-                                <div class="pw_header">
-                                    <h6>{{ $item['title'] }}</h6>
+                                <div class="pw_header" style="word-wrap: anywhere;">
+                                    <h6>{{ Str::limit($item['title'], 60) }}</h6>
                                 </div>
                             </div>
                         </div>
@@ -143,11 +146,11 @@
                                 @endif
                             @endif p-30 -t">
                             <i class="fa {{ $item->icon ?? 'fa-desktop' }} fa-3x"></i> --}}
-                            <img src="{{ url($item->img) }}" alt="รูปภาพ" style="height: 103px; width: 135px;">
+                            <img src="{{ ($item->img != "/storage/" ? url($item->img) : asset("assets/images/no-image.gif")) }}" alt="{{ $item->name }}" style="height: 103px; width: 135px;">
                         </div>
                         <div class="boxs-body">
                             <h2 class="m-0">{{ $item->assets->where('asset_statuses_id', '1')->count() }}</h2>
-                            <span class="text-muted">{{ $item->name }}</span>
+                            <span class="text-muted">{{ Str::limit($item->name, 30) }}</span>
                         </div>
                     </section>
                 </div>
@@ -191,11 +194,11 @@
                                 @endif
                             @endif p-30 -t">
                             <i class="fa {{ $item->icon ?? 'fa-desktop' }} fa-3x"></i> --}}
-                            <img src="{{ url($item->img) }}" alt="รูปภาพ" style="height: 103px; width: 135px;">
+                            <img src="{{ ($item->img != "/storage/" ? url($item->img) : asset("assets/images/no-image.gif")) }}" alt="{{ $item->name }}" style="height: 103px; width: 135px;">
                         </div>
                         <div class="boxs-body">
                             <h2 class="m-0">{{ $item->assets->where('asset_statuses_id', '1')->count() }}</h2>
-                            <span class="text-muted">{{ $item->name }}</span>
+                            <span class="text-muted">{{ Str::limit($item->name, 30) }}</span>
                         </div>
                     </section>
                 </div>
@@ -240,11 +243,11 @@
                                 @endif
                             @endif p-30 -t">
                             <i class="fa {{ $item->icon ?? 'fa-desktop' }} fa-3x"></i> --}}
-                            <img src="{{ url($item->img) }}" alt="รูปภาพ" style="height: 103px; width: 135px;">
+                            <img src="{{ ($item->img != "/storage/" ? url($item->img) : asset("assets/images/no-image.gif")) }}" alt="{{ $item->name }}" style="height: 103px; width: 135px;">
                         </div>
                         <div class="boxs-body">
                             <h2 class="m-0">{{ $item->assets->where('asset_statuses_id', '1')->count() }}</h2>
-                            <span class="text-muted">{{ $item->name }}</span>
+                            <span class="text-muted">{{ Str::limit($item->name, 30) }}</span>
                         </div>
                     </section>
                 </div>

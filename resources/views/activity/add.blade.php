@@ -44,6 +44,28 @@
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
+                                                    <label for="event_category_id" class="col-sm-2 control-label">หมวดหมู่ของกิจกรรม</label>
+                                                    <div class="col-sm-10">
+                                                        <select name="event_category_id" class="form-control">
+                                                            <option value="" disabled selected>-- เลือกหมวดหมูของกิจกรรม --</option>
+                                                            @foreach ($event_category as $item)
+                                                                <option value="{{ $item->id }}">{{ $item->slug }}</option>
+                                                            @endforeach
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="event_group_id" class="col-sm-2 control-label">กลุ่มของกิจกรรม</label>
+                                                    <div class="col-sm-10">
+                                                        <select name="event_group_id" class="form-control">
+                                                            <option value="" disabled selecte>-- เลือกกลุ่มของกิจกรรม --</option>
+                                                            @foreach ($event_group as $item)
+                                                                <option value="{{ $item->id }}">{{ $item->slug }}</option>
+                                                            @endforeach
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
                                                     <label for="activity_picture" class="col-sm-2 control-label">รูปภาพกิจกรรม</label>
                                                     <div class="col-sm-10">
                                                         <div class="input-group">
