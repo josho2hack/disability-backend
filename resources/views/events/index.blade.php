@@ -116,25 +116,5 @@
             $('.footable').footable();
 
         });
-
-        // $(document).on('click', '.del', function(e) {
-        //     e.preventDefault();
-        //     var form = e.target.form; // storing the form
-        //     swal({
-        //         title: "คุณต้องการลบข้อมูลใช่หรือไม่?",
-        //             text: "การลบจะไม่สามารถกู้คืนได้ คุณต้องสร้างใหม่",
-        //             type: "warning",
-        //             showCancelButton: true,
-        //             confirmButtonColor: '#DD6B55',
-        //             confirmButtonText: 'ไช่, ลบข้อมูล!',
-        //             cancelButtonText: "ไม่, ยกเลิก",
-        //             closeOnConfirm: false
-        //         },
-        //         function() {
-        //             form.submit();
-        //             //swal("ลบข้อมูลเรียบร้อยแล้ว", "ข้อมูลของคุณถูกลบแล้ว", "success");
-        //         });
-        // });
-
     </script>
 @endsection

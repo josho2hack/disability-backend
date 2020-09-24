@@ -1,6 +1,8 @@
 @extends('layouts.admin-nodashboard')
 
 @section('header')
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10.1.0/dist/sweetalert2.min.css">
+
     {{-- <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet" /> --}}
     {{-- <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet" /> --}}
     {{-- <link href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" rel="stylesheet" /> --}}
@@ -79,24 +81,24 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($eventcategories as $evetcategory)
+                                    @foreach ($eventcategories as $eventcategory)
                                         <tr>
                                             <td style="">{{ $loop->index + 1 }}</td>
-                                            <td>{{ $evetcategory->name }}</td>
-                                            <td>{{ $evetcategory->description }}</td>
-                                            <td style="color: {{ $evetcategory->color }}">{{ $evetcategory->color }}</td>
+                                            <td>{{ $eventcategory->name }}</td>
+                                            <td>{{ $eventcategory->description }}</td>
+                                            <td style="color: {{ $eventcategory->color }}">{{ $eventcategory->color }}</td>
 
                                             <td>
-                                                <a href="{{ route('eventcategories.show', $evetcategory) }}"
+                                                <a href="{{ route('eventcategories.show', $eventcategory) }}"
                                                     class="btn btn-raised btn-info btn-sm" title="รายละเอียด">
                                                     <i class="fa fa-eye"></i></a>
-                                                <a href="{{ route('eventcategories.edit', $evetcategory->id) }}"
+                                                <a href="{{ route('eventcategories.edit', $eventcategory->id) }}"
                                                     class="btn btn-raised btn-warning btn-sm" title="แก้ไข">
                                                     <i class="fa fa-edit"></i></a>
-                                                <a role="button" tabindex="0" class="btn btn-raised btn-primary btn-sm"
-                                                    onclick="document.getElementById('{{ $evetcategory->id }}').submit();" title="ลบ">
+                                                <a role="button" tabindex="0" class="warning confirm delete btn btn-raised btn-primary btn-sm"
+                                                    onclick="confirmation(event)" deleteid={{$eventcategory->id}} title="ลบ">
                                                     <i class="fa fa-trash"></i></a>
-                                                <form action="{{ route('eventcategories.destroy', $evetcategory->id) }}" id="{{ $evetcategory->id }}"
+                                                <form action="{{ route('eventcategories.destroy', $eventcategory->id) }}" id="{{ $eventcategory->id }}"
                                                         method="post">
                                                         @csrf
                                                         @method('DELETE')
@@ -115,9 +117,12 @@
 @endsection
 
 @section('footer')
+
 @endsection
 
 @section('footer-script')
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.1.0/dist/sweetalert2.all.min.js"></script>
+
     {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> --}}
     {{-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script> --}}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
@@ -282,5 +287,29 @@
 
         })
 
+        function confirmation(e) {
+            e.preventDefault();
+            form = e.currentTarget.getAttribute('deleteid');; // storing the form
+            //console.log(form);
+            Swal.fire({
+                title: 'คุณต้องการลบข้อมูลใช่หรือไม่?',
+                text: "การลบจะไม่สามารถกู้คืนได้ คุณต้องสร้างใหม่",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'ไช่, ลบข้อมูล!',
+                cancelButtonText: "ไม่, ยกเลิก",
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    document.getElementById(form).submit();
+                    Swal.fire(
+                        'Deleted!',
+                        'Your file has been deleted.',
+                        'success'
+                    )
+                }
+            })
+        };
     </script>
 @endsection
